@@ -47,7 +47,8 @@ the chapter:
 * `Salishan/chapters/chapter_Salishan_pure_corpus_README.tex`, from
   `anchor_sift/maint/data/salishan/hand_extraction/pure_corpus_index.py`.
 * `cryptography/sha256/chapters/chapter_sources.tex`, from `tools/book/build_bibliography.py` in the
-  BTCminer tree, reached through the `btc` remote in anchor_sift's `.git/config`.
+  private PQC tree. The `btc` remote in anchor_sift's `.git/config` still points at that tree's old
+  location and no longer resolves.
 
 ## Building
 
