@@ -28,7 +28,7 @@ change here, open a pull request against `main`, and pull it down after it merge
 | book | what it is |
 | --- | --- |
 | `Salishan` | the corpus work, whose tables are speakers' words written down |
-| `cryptography/sha256` | the SHA-256 readings, refutations included |
+| `HELD/cryptography/sha256` | the SHA-256 readings, refutations included |
 | `crystallography` | the lattice work |
 | `delta_null` | the null construction |
 | `millennium` | the Navier-Stokes and Euler reading |
@@ -46,16 +46,16 @@ the chapter:
 
 * `Salishan/chapters/chapter_Salishan_pure_corpus_README.tex`, from
   `anchor_sift/maint/data/salishan/hand_extraction/pure_corpus_index.py`.
-* `cryptography/sha256/chapters/chapter_sources.tex`, from `tools/book/build_bibliography.py` in the
-  private PQC tree. The `btc` remote in anchor_sift's `.git/config` still points at that tree's old
+* `HELD/cryptography/sha256/chapters/chapter_sources.tex`, from `tools/book/build_bibliography.py`
+  in the private PQC tree. The `btc` remote in anchor_sift's `.git/config` still points at that tree's old
   location and no longer resolves.
 
 ## Building
 
 Each book is a directory holding `main.tex`, `preamble.tex`, `chapters/` and `frontmatter/`. Nothing
 lands beside the source: build with `-output-directory` pointed under `anchor_sift/build/theory/`.
-The one upward path in the tree, the figure guard in `cryptography/sha256/chapters/chapter_boundary.tex`,
-resolves against that build directory and depends on a book sitting three levels below the repository
+The one upward path in the tree, the figure guard in
+`HELD/cryptography/sha256/chapters/chapter_boundary.tex`, resolves against that build directory and depends on a book sitting three levels below the repository
 root, which is where these sit both here and downstream.
 
 **Author:** dstroy0 (Douglas Quigg) <dquigg123@gmail.com>
