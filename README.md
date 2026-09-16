@@ -5,6 +5,26 @@ here and the release before making one.
 **Scope:** the seven books at this repository's root. The anchor_sift workbook is not one of them and
 is not here.
 
+## What decides publication
+
+This repository is private. Whether a file here may be published is decided by the class of its
+content in `PQC/theory/PARTITION.tsv`. That table keys PQC's own paths and anchor_sift's, and holds
+no row for any path in this repository. A directory name decides nothing, and that includes both
+`PUBLIC/` and `HELD/`.
+
+**The sha256 book is held and lives under `HELD/`.** `PARTITION.tsv:162-167` and `:172-176` class all
+eleven of its chapters HELD, and `:72` gives a book the strictest class of anything it includes.
+Measured on 2026-09-16, the copies here carry the held text: `chapter_spectral.tex` is 155 lines,
+where `:167` records 81 lines published and 155 held. The whole book, 17 files, moved from
+`PUBLIC/cryptography/sha256/` to `HELD/cryptography/sha256/` on Douglas's ruling in commit
+`77d3620`. `latexmk` with `lualatex` builds it to 57 pages from either location.
+
+**The subtree pull shown under "The flow" publishes.** `anchor_sift` is a public repository, so the
+pull carries whatever it pulls onto a public remote, and held content must not travel by it. The seed
+for the public `dstroy0/theory` repository is specified in `PLANS/THEORY_PUBLIC_PRIVATE_SPLIT.md:72`
+at the workspace root, to be built row by row from the partition and to refuse any file without a
+row.
+
 ## The flow
 
 This repository is upstream. `anchor_sift` is downstream and carries these books in its tree as a
