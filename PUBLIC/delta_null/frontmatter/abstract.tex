@@ -15,13 +15,21 @@ That is the entire method. Every discipline in this theory is that one sentence 
 what counts as a part: atoms in a cell, symbols in a corpus, bytes in a file, coordinates in a board
 layout. The computational reference is built from the object's own parts, by itself. There is no prior
 estimate, no training set, no model or neural net. This theory uses algebraic reasoning and
-subtractive physics to leverage an information field's intrinsic processing power and knowledge
-about what it carries to answer a question.
+subtractive physics to draw on what it conjectures is an information field's intrinsic processing
+power and knowledge about what it carries, to answer a question.
 
 Two propositions bound what the search half can do. Any subset of a pattern's points is a necessary
 condition for the pattern. A filter built from a subset never loses a true occurrence, whatever
-picked the subset, whatever the alphabet is, and whether or not positions are ordered. The converse fails for every proper subset, so the exact compare is irreducible and every
+picked the subset, whatever the alphabet is, and whether or not positions are ordered, so long as
+each probe compares symbols, or ranks taken in one population with the pattern's. The converse fails for every proper subset, so the exact compare is irreducible and every
 arm has to verify what its anchors admitted. Soundness is free; the reading is not.
+
+The search half is implemented in anchor\_sift at commit \texttt{1044ca6}, and Section 2.7 of the
+first chapter states its guarantees with lines and conditions: exact counts for any legal probe set
+on byte fields, and on rank fields of 256 classes or fewer under a transitive oracle; greedy
+placement within \(1 - 1/e\) of the best on alignments rejected when every alignment is scored
+(Nemhauser, Wolsey and Fisher, 1978); and a descent at most four levels deep, cut shorter by the
+corpus, the candidates available or the count asked for.
 
 This theory's proposed primitive instrumentation types are:
 
@@ -43,15 +51,17 @@ Conceptually it \emph{is} a representation of a \emph{thing}, whatever that \emp
 use information field for convenience, but using topology we can take liberties with what the
 colloquial definition of ``field'' is. Whatever this \emph{thing} is, our physical laws appear to
 be emergent properties of it, and the ruleset of the \emph{thing} appears to induce propagation
-over its entire set using deterministic wave harmonics.
+over its entire set using deterministic wave harmonics. This paragraph is a conjecture, and nothing
+in this book measures it.
 
 The negative result is that collision entropy is invariant under permutation. An object and the
 most disordered version of itself are the same cohesive coherent object and share the same
 identity. No bound built from a histogram can separate a structured domain from a rearrangement of
 the same symbols.
 
-What follows is the most basic form of the algorithm. See
-\texttt{theory/\allowbreak{}precision/\allowbreak{}chapters/\allowbreak{}chapter\_\allowbreak{}engine\_\allowbreak{}workbook.\allowbreak{}tex}
-for other arrangements. We will work through the method as it runs, and talk through its
+What follows is the most basic form of the algorithm. See the anchor\_sift engine workbook,
+\texttt{theory/\allowbreak{}workbook/\allowbreak{}chapters/\allowbreak{}chapter\_\allowbreak{}anchor\_\allowbreak{}sift\_\allowbreak{}workbook.\allowbreak{}tex}
+at commit \texttt{1044ca6}, and \texttt{docs/\allowbreak{}steering.md} in the same tree, for other
+arrangements. We will work through the method as it runs, and talk through its
 vocabulary, including new or nonstandard terms.
 \cleardoublepage
