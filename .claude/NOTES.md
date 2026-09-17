@@ -1,0 +1,284 @@
+# NOTES
+
+Written 2026-09-16 by the tree-wide objectives pass. Read this before working in theory_bucket.
+Paths are relative to the repository root unless stated otherwise.
+
+**theory_bucket's role changes more than its contents do.** It stops being a book source that
+anchor_sift copies and becomes the single upstream that every repository in this tree, public and
+private, authors its theory into and mounts back. Read section 7 first; most of the rest follows
+from it.
+
+## 1. Where the tools are, and where they go
+
+**This repository has no tools.** Measured: `git ls-files` returns 81 paths and not one is a `.sh`,
+`.ps1`, `.py`, `Makefile`, `CMakeLists.txt` or `latexmkrc`. There is no `tools/`, no `maint/`, no
+build machinery of any kind.
+
+The script that actually builds these books is `anchor_sift/maint/texbuild/build_theory.sh`, in a
+different repository, which this repository's README never names. Objective 5 moves that to
+`anchor_sift/tools/texbuild/build_theory.sh`, which changes the path but not the problem.
+
+What this repository needs under objective 5: a `tools/` directory holding its own book build. The
+rule is that the tools that build a thing belong in the repository that owns the thing, and
+theory_bucket owns the books. It needs a build script that takes an output directory as an argument
+and **defaults to a path inside its own tree**, so a standalone clone can build.
+
+`README.md:52-58` currently says the opposite: "Nothing lands beside the source: build with
+`-output-directory` pointed under `anchor_sift/build/theory/`", and the figure guard in
+`cryptography/sha256/chapters/chapter_boundary.tex` resolves against that external directory. That
+instruction is unexecutable for anyone who has not also cloned anchor_sift at a specific relative
+location, and under the new layout the consumer at that location is a submodule mount rather than a
+sibling directory.
+
+Per the standing instruction, a later repo agent fixes the tex build. **This note is that agent's
+handoff.** Do not act on it here.
+
+## 2. The dependency standard, and what theory_bucket must change
+
+The decided standard is **submodule-first**. A directory taken from another repository is taken as
+a git submodule, narrowed with `--no-cone` sparse patterns recorded in `.gitmodules` as
+`sparsePaths`, and the bootstrap asserts the post-narrow shape.
+
+**theory_bucket consumes nothing.** No `.gitmodules`, no `deps/`, no `repotools.toml`, no
+`repotools.lock`. Nothing changes on the consuming side.
+
+What changes is that this repository becomes the **mount target** for every other repository's
+`theory/`. Four consequences land here:
+
+### Step 1 blocker: two untracked items
+
+`git status --short` reports exactly two entries and nothing else:
+
+```
+?? cell_tracking/
+?? chapter_twiddle_proof.tex
+```
+
+`chapter_twiddle_proof.tex` is 17210 bytes and sits at the repository root, belonging to no book.
+`cell_tracking/` holds `chapters/`, `frontmatter/` and `preamble.tex` but **no `main.tex`** — it is
+an unfinished book.
+
+A consumer's `theory/` is a fresh clone of this repository at a pinned commit. Untracked work is
+absent downstream from the very first mount. Commit or resolve both before any repository mounts.
+This is step 1 of the dependency work, after MMgr's two histories and before anchor_sift's
+conversion.
+
+Note that objective 19 asks anchor_sift for a `theory/cell_tracking`. Under the decided layout that
+book is authored **here**, finished here, and arrives in anchor_sift through the mount. The
+untracked `cell_tracking/` directory is where that work goes.
+
+### The pin
+
+`HEAD` is `7fdd2d77458ac0e5dcde7fbbd17753f63a7d11f1`. That is the SHA consumers record as their
+gitlink until somebody moves it.
+
+### Per-book narrowing makes the root directory boundary load-bearing
+
+Consumers narrow with `--no-cone` sparse patterns, one book at a time, because objective 4 requires
+each upstream theory to be pulled individually. That makes a rule out of what is currently a
+convention: **a book is exactly one top-level directory, and nothing a consumer takes may live
+outside it.**
+
+`chapter_twiddle_proof.tex` at the root violates that today. So, in a smaller way, does
+`README.md`, which a cone-mode narrow would drag along — measured: `sparse-checkout set --cone
+Salishan crystallography` leaves `README.md`, `Salishan` and `crystallography`, while `--no-cone`
+with `MSYS2_ARG_CONV_EXCL='*'` leaves exactly the two asked for.
+
+### `.gitattributes` is absent and must be written before anyone clones this
+
+Under the old fetch path, `digest()` normalized CRLF explicitly. **A submodule has no such layer.**
+Line endings in a mount are governed entirely by this repository's `.gitattributes`, and there is
+none. A consumer cloning on a machine with a different `core.autocrlf` gets a different byte stream,
+and nothing currently checks that.
+
+`Salishan/chapters/corpus-derivation.pdf` is a genuinely tracked binary among the 81 files and must
+be marked binary explicitly. It is generated by
+`anchor_sift/maint/data/salishan/corpus_derivation.py`, which writes it beside its chapter.
+
+### The README's flow diagram is obsolete
+
+`README.md` currently documents `git subtree pull --prefix=theory_bucket` into
+`anchor_sift/theory_bucket/`, with an ASCII diagram. That mechanism retires. Rewrite it: the
+downstream shape is a git submodule mounted at the consumer's `theory/`, narrowed per book, and
+anchor_sift's `.githooks/post-merge` — which exists solely to run that subtree pull — retires with
+it.
+
+## 3. Backgrounded agents may commit
+
+Backgrounded agents are permitted to commit in this repository. The message is **terse and names
+category, subject and type only** — for example `docs build bugfix`. No body, no attribution
+trailer, no prose.
+
+Preconditions here: `core.hooksPath` is unset and this repository ships no hooks, so a commit runs
+zero gates. Stage explicitly with `git add <named paths>`. Do not use `git commit -a` or bare
+`git add .` — the two untracked items above are exactly what a bare `git add .` would sweep in
+before anyone has decided whether they are ready.
+
+This repository has no `.gitignore` either, which is why `cell_tracking/` and
+`chapter_twiddle_proof.tex` show as untracked rather than ignored. Once books are built, the build
+output needs an ignore rule or every `main.pdf` becomes a commit candidate.
+
+## 4. The build script this repository needs
+
+Objectives 8 and 18: one script that builds all of `src/` and `examples/` and walks a user through
+it, with a worked invocation in the README.
+
+**theory_bucket has no build entry point at all and no example invocation anywhere.** This is the
+largest build gap of the six public repositories. There is no `src/` and no `examples/`; the
+analogue is the books, and the script is a book build.
+
+What it needs:
+
+- One script that builds every book, or a named book, with `-output-directory` defaulting inside
+  this tree.
+- A worked invocation in the README. `README.md:52-58` currently gives prose and no command — no
+  `pdflatex`, no `latexmk`, nothing runnable.
+- It must work for a **standalone clone**. Today the documented instruction depends on a sibling
+  repository existing at a specific relative path, and the figure guard in
+  `cryptography/sha256/chapters/chapter_boundary.tex` depends on a book sitting three levels below
+  the repository root, which is where these sit both here and in a mount.
+
+The existing implementation to read before writing a new one is
+`anchor_sift/maint/texbuild/build_theory.sh` (`anchor_sift/tools/texbuild/build_theory.sh` after
+objective 5). `preamble.tex:10` in every book here already names it: "compiles twice and fails on a
+dropped glyph."
+
+Per the standing instruction, the repo agent does this work. This note is the record of what it
+needs to do.
+
+## 5. Where the skills live
+
+`D:/git_project/repos/owned/private/repo_tools/skills`
+
+Five skills are there now: `code-python`, `code-shell`, `code-verify`, `docs-readme`,
+`repotools-workflow`. None is installed anywhere a harness discovers skills, and four of five
+declare a frontmatter `name` differing from their directory name, so cross-references between them
+cite identifiers nobody can type. Objective 6 rebuckets and rewrites them; an install mechanism
+lands first.
+
+This repository is the one with the least skill coverage of the six: it is entirely prose and
+LaTeX, and no skill in the set governs LaTeX authoring, book structure or citation discipline.
+`docs-readme` is the closest and it is written for READMEs and landing documents, not for books.
+Raise that in the rebucket. The rule these books are actually written to — one claim per chapter,
+evidence against the tree for every claim, no conversational filler — lives in `code-documentation`,
+which today exists only at `C:/Users/Douglas/.claude/skills/` and is moving into the repository
+path above.
+
+## 6. The prose gates are becoming pre-commit gates
+
+Objective 12 adds an AI-word detector and objective 13 adds a British-English ban, and both become
+pre-commit gates in every repository. British spellings are banned in comments, docstrings and
+description blocks unless the subject itself is British.
+
+**This is the ordering constraint that matters most for this repository, and it has a deadline.**
+
+theory_bucket has no `repotools.toml` and no `docs_check` gate of its own. The only reason these 81
+files are checked anywhere today is that anchor_sift names `theory_bucket` in two of its root
+lists: `[prose] roots` at `anchor_sift/repotools.toml:43` and `[hooks.docs_check] roots` at line
+62. anchor_sift is also the only repository of the six with `core.hooksPath` set, so that is
+literally the only running gate over this prose.
+
+When anchor_sift's `theory_bucket/` becomes `theory/` — a mount it does not own and must not edit —
+those roots change, and **eighty files stop being checked anywhere** unless this repository has its
+own gate by then.
+
+So: **give theory_bucket its own `repotools.toml` and its own `docs_check` gate BEFORE the mount
+lands.** Not after.
+
+Two supporting facts, both already recorded upstream:
+
+- `docs_check.py`'s own module-scope comment block calls theory_bucket "the third instance" of this
+  exact failure, and notes that the guard catches a root that **vanished** but never a root that
+  **emptied**.
+- Compare the file count at the foot of the run before and after the move. That count is the only
+  thing distinguishing a root that moved from a root that emptied.
+
+Also verify which of `Config.walk` and `Config.walk_all` prunes a nested checkout before the mount
+lands, per the note at `idemIP/repotools.toml:18-22` that the two disagree. A mounted book walked
+twice and a mounted book walked zero times both read as success.
+
+## 7. The theory layout — this repository is the upstream
+
+Every repository, public and private, gets exactly two directories for written work:
+
+- `workbook/` — locally authored, top level, a sibling of `src/` and `tools/`. The book about
+  **that** repository: its engine, its results, its reproduction instructions.
+- `theory/` — wholly a git dependency of **this** repository. Nothing is authored there. Everything
+  inside arrived from here, and the whole directory can be deleted and re-fetched without losing
+  work. Each book is pulled individually.
+
+**theory_bucket is the upstream every other repository pulls from, and it now receives theory
+authored by those repositories.** All theory, from every public and private repository, is authored
+here. A repository that wants to write new theory writes it here and pulls it back into its own
+`theory/`. That is the whole reason the separation exists: `theory/` has exactly one owner and is
+safe to overwrite on fetch.
+
+What that changes for this repository:
+
+### The README's "What is not here, and why" section is now half wrong
+
+It says the anchor_sift workbook stays in anchor_sift at `theory/workbook/`. The first half is
+still right — the workbook stays in anchor_sift, because it is the book about that engine and
+separating the two would put a book in one repository and its subject in another. The second half
+is wrong: it moves to `anchor_sift/workbook/` at that repository's root, and `anchor_sift/theory/`
+becomes the mount of **this** repository. Rewrite the section to state the general rule rather than
+one repository's arrangement.
+
+### This repository receives more books than it holds today
+
+`PQC/BTCminer` has its own `theory/` and a `theory_bucket/quantum`. Both collapse the same way:
+locally authored material to `BTCminer/workbook/`, upstream theory to `BTCminer/theory/` through
+the mount. **The upstream half arrives here.** Expect `quantum` and whatever else BTCminer has
+authored locally to land as new top-level books, each one a single directory per the rule in
+section 2.
+
+Objectives 19 and 20 ask anchor_sift for cell tracking and game theory work. Under this layout both
+are authored here — `cell_tracking/` already exists untracked — and reach anchor_sift through the
+mount.
+
+### Write the reproduction-path rule into README.md
+
+A book authored here describes work whose code, tools and datasets live in a different repository.
+This repository has no engine and no tools directory, so a reproduction instruction has to name the
+consumer repository's tools by a path that resolves from a reader's checkout of **that** repository.
+
+The convention already in these books is the right one, and it should be stated rather than left
+implicit:
+
+- **A bare repo-relative path means the consuming repository.**
+- **A path into a different repository is qualified by that repository's name.**
+  `millennium/chapters/chapter_the_toolkit.tex` already does this correctly: line 6 writes
+  `BTCminer/examples/proofing/bbp_scaling.py`, line 7 writes `BTCminer/theory/PARTITION.tsv`, and
+  line 106 says "in the BTCminer tree".
+
+The convention survives a submodule mount unchanged, because the book sits at
+`anchor_sift/theory/Salishan/` and a repo-root-relative path is exactly what a reader types.
+
+**The live violation:** `preamble.tex:10` in every book here — `Salishan`, `cell_tracking`,
+`crystallography`, `delta_null`, `millennium`, `precision`, `thought_experiments` — names
+`maint/texbuild/build_theory.sh`. That is a bare path, so by the convention it means the consuming
+repository, and it is actually anchor_sift's path. It becomes a lie the instant a second repository
+mounts the same book. Qualify it as `anchor_sift/tools/texbuild/build_theory.sh` wherever the book
+is not exclusively that tree's. Once two repositories mount one book, one of them is wrong.
+
+### Decide the generator question before the mount, not after
+
+Three generators outside this repository write chapters into it:
+
+- `anchor_sift/maint/data/salishan/hand_extraction/pure_corpus_index.py:48` writes
+  `Salishan/chapters/chapter_Salishan_pure_corpus_README.tex`.
+- `anchor_sift/maint/data/salishan/corpus_derivation.py:77-79` writes
+  `Salishan/chapters/chapter_Salishan_corpus_derivation.tex` and
+  `Salishan/chapters/corpus-derivation.pdf`.
+- `BTCminer/tools/book/build_bibliography.py:25` writes
+  `cryptography/sha256/chapters/chapter_sources.tex`.
+
+The README's "What is not here, and why" already names the first two and tells a reader to edit the
+generator, not the chapter. Under a mount these become generators writing **into a dependency**, and
+under the refusal rule — enumerate the mount, refuse on any file not accounted for, name it, and say
+where it belongs — they turn the next bootstrap into a refusal.
+
+This is the one place every proposal agreed the move makes a workflow worse, and no mechanism
+resolves it. Two options and they must be chosen between before the mount lands: either the
+generator writes upstream here and the chapter returns through the dependency, or generated chapters
+land outside the mount in the consuming repository and are `\input`. Decide first.
