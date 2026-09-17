@@ -105,11 +105,11 @@ An anchor choice is any subconfiguration \(A \subseteq D\), and
   \mathrm{Anc}_A(s) \iff \forall a \in A:\; x(s+a) = x(t+a)
 \]
 
-The null used here is the \(\Sigma\)-delta null, and its operational form is the null permutation already used throughout this work. Semantically, \(\Sigma\) projects its internal structure onto an induced topology \(\tau_\Sigma\); the instrument then examines that structured carrier against its own constrained reference. Let \(\Pi_\Sigma\) be the family of permutations that preserve the observed carrier counts and stated partition. The reference is sampled as \(x^\circ_\Sigma = \pi(x)\) for \(\pi \in \Pi_\Sigma\), and for a statistic \(M\) the measured residual is
+The null used here is the \(\Sigma\)-delta null, and its operational form is the null permutation already used throughout this work. Semantically, \(\Sigma\) induces a topology \(\tau_\Sigma\) on the carrier. Let \(\Pi_\Sigma\) be the family of permutations that preserve the observed carrier counts and stated partition. The reference is sampled as \(x^\circ_\Sigma = \pi(x)\) for \(\pi \in \Pi_\Sigma\), and for a statistic \(M\) the measured residual is
 \[
   \Delta_\Sigma[M] = M(x) - \mathbb{E}_{\pi \sim \Pi_\Sigma}\!\left[M\bigl(\pi(x)\bigr)\right]
 \]
-This is not a new operator or code path: it is the null permutation identity already implemented. The residual is the object of study. The measure does not claim that a hidden generator has been reconstructed, and it does not invoke Laplace's demon. A predictive or reconstructive engine that attempts to infer the complete state from its laws would be a separate measurement. Here \(\Sigma\) supplies both the topology and the reference, and the instrument examines the engine's residue in the object itself.
+This is not a new operator or code path: it is the null permutation identity already implemented. The residual is the object of study. The measure does not claim that a hidden generator has been reconstructed, and it does not invoke Laplace's demon. A predictive or reconstructive engine that attempts to infer the complete state from its laws would be a separate measurement. Here \(\Sigma\) supplies both the topology and the reference, and \(\Delta_\Sigma[M]\) is the residual measured in the object itself.
 
 Nothing in either definition requires \(G\) to be the integers, \(D\) to be contiguous, or \(\Sigma\) to be known.
 
@@ -254,7 +254,7 @@ bench & question & reports \\
 
 \noindent\textbf{The benches are not the engine.} They cascade up to six anchors, and the descent of Section 2.7 places at most four (\texttt{anchor\_sift.h:39}, \texttt{:90}).
 
-The examples under \texttt{examples/\allowbreak{}} are 122 scripts over seven domains, each one a stage of the same pipeline, and every domain result in the other theories comes from one of them. Appendix B lists the stages and what each domain reaches.
+The examples under \texttt{examples/\allowbreak{}} are 122 scripts over nine domains, each one a stage of the same pipeline, and every domain result in the other theories comes from one of them. Appendix B lists the stages and what each domain reaches.
 
 Nothing anywhere is timed. No row is a performance claim, and every number is a property of the
 data and the geometry, identical on every part.
@@ -805,9 +805,9 @@ This table was measured against an earlier control generator and its uniform row
 
 The wrong reference costs 25 to 30 times. \texttt{uri} and \texttt{route} take the skip on real text from about 160 to about 6. That is the largest effect measured anywhere in this document.
 
-The prediction that a corpus matched table wins is refuted. \texttt{generic} beats \texttt{english} on English prose and beats it decisively on C source. So the case for instantiating the table is not that it should match the data, which is unsupported. The case is that the wrong table costs 25 times and a build holds one.
+The prediction that a corpus matched table wins is refuted. \texttt{generic} beats \texttt{english} on English prose, and by more on C source. So the case for instantiating the table is not that it should match the data, which is unsupported. The case is that the wrong table costs 25 times and a build holds one.
 
-On the uniform corpus every reference performs the same, at 277.1, 256.0, 277.7 and 277.1. At maximum entropy the choice of \(Q\) stops mattering, because there is no gradient for a reference to be a reference to, and \(D(P\|P) = 0\). The policy sweep in Section 4.3 reaches the same conclusion from the other side, removing the reference entirely instead of replacing it, and the uniform corpus again refuses to separate.
+On the uniform corpus every reference performs the same, at 277.1, 256.0, 277.7 and 277.1. At maximum entropy the choice of \(Q\) stops mattering, because \(D(P\|P) = 0\). The policy sweep in Section 4.3 reaches the same conclusion from the other side, removing the reference entirely instead of replacing it, and the uniform corpus again refuses to separate.
 
 \subsubsection{4.9 Ordered Search Versus Anchor Filtering}
 
@@ -1406,15 +1406,22 @@ Three designs have now been tried and each one lost to a different confound: pai
 
 There is a further limit in the measure that no additional corpus removes. Across 389 years of one language it reads 0.7857, and across two languages it reads 0.0204, and nothing measured here falls between those. The instrument has a slow regime and a total regime with no resolved middle.
 
-That gap is where a civilization ending sits. A port silting up until the city is abandoned does not speed up the drift of the vocabulary spoken there, it removes the speakers, and the ground then carries a different language. Ephesus runs through Anatolian, Ionic Greek, Koine, Byzantine Greek and Turkish by that route. A change at the edge of a civilization substitutes one language for another instead of altering a rate, and substitution is discrete, which is a mechanism for changes arriving in groups that does not require the drift rate to vary at all. Measuring it needs a replacement event with text on both sides of it. The drift rate is the only quantity these measurements compute.
+That gap is where a language replacement sits. A change at the edge of a civilization substitutes one language for another instead of altering a rate, and substitution is discrete, a mechanism for changes arriving in groups that does not require the drift rate to vary at all. Measuring it needs a replacement event with text on both sides, and the drift rate is the only quantity these measurements compute. For the oldest replacement events there is no text on either side and there will not be one. Writing is one channel among several, and this document cannot read the others at all. A gap in the written record across an event is not evidence that continuity failed there.
 
-For the oldest replacement events there is no text on either side and there will not be one. Göbekli Tepe was backfilled by the people who built it around 8000 BC and carries sliced pillars, repeated animal figures and an evident organizing intent, with no recoverable language attached to any of it. The community ending events in the archaeological record are the same shape, legible in the deposit and silent in every respect this document measures. So the limit there is not the size of the corpus available. There is no reading that recovers what those marks meant.
+There is a selection effect in this that no corpus work removes. The events most likely to show changes arriving in groups are the events that leave nothing to read, and the intervals that can be measured are the ones mild enough that a writing tradition survived them. A corpus of written language is a sample of the surviving cases, and it is biased against the phenomenon being asked about.
 
-Writing is also one channel among several, and the others carry information this document cannot read at all. Grave assemblages running to tens of thousands of worked beads, in materials sourced across a continent, are evidence of an organized system carrying status and obligation, and the labor in one of them is measured in years. Bodies assembled from several individuals, kept above ground for generations and then buried under an occupied floor, are a deliberate link to the past maintained in bone. Both are societies holding continuity hard, and neither leaves a term that can be read. A gap in the written record across an event is not evidence that continuity failed there, and this document measures the one channel that happens to survive as text.
+A pattern can be certainly present and its meaning permanently unrecoverable. That is Proposition 1 holding while Proposition 2 refuses. The filter of Section 2, run backward on a real object, shows it.
 
-There is a selection effect in this that no corpus work removes. Britain and Ireland carry no indigenous writing until the Roman period. The community ending deposits found there predate any local written record by two thousand years at the recent end and by far more at the older end. The events most likely to show changes arriving in groups are therefore the events that systematically leave nothing to read, and the intervals that can be measured are the ones mild enough that a writing tradition survived them. Those are the intervals where drift is what happened, and the measurements above report that. A corpus of written language is a sample of the surviving cases, and it is biased against the phenomenon being asked about.
+An Attic black-figure amphora signed by Exekias, Achilles and Ajax at a board game (Vatican inv.\ 16757, 540 to 530 BC; the photograph is by Daderot, released CC0), was read at 160 by 107 gray levels, copied fifteen times, and each copy had 40 percent of its pixels replaced by a value from nowhere. \texttt{examples/\allowbreak{}art/\allowbreak{}4\_measure/\allowbreak{}classify\_reject\_recover.\allowbreak{}py} (ART-4-007), told only that the subject repeats, recovered the image by per-pixel consensus. All 17{,}120 pixels came back bit-exact, a noise reduction ratio of 100 percent, and the filter flagged 896 of them, 5.23 percent, as a floor it would not certify because its two exact routes disagreed there. Not one flagged pixel was wrong and not one wrong pixel went unflagged. Figure~\ref{fig:ajax-recovery} shows the clean image, one damaged copy, the recovery and the uncertainty map.
 
-That is the strongest form of the asymmetry this document is built on. A pattern can be certainly present and its meaning permanently unrecoverable, which is Proposition 1 holding while Proposition 2 refuses, stated by the record instead of by an argument.
+The filter recovered the object to the bit and recovered nothing of what it meant. Ajax, Achilles, the game between them and the throw Achilles calls out are not in the pixels, and no consensus returns them. The pattern is present and recoverable to the last bit, and its meaning is not the filter's to give. That is the asymmetry this section reports, on a real object instead of a ruin.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{ajax_recovery.png}
+\caption{A real Indo-European object recovered to the bit. Left to right: the Exekias amphora detail read at 160 by 107 gray levels; one of fifteen copies with 40 percent of its pixels replaced by a value from nowhere; the per-pixel consensus recovery, bit-exact on all 17{,}120 pixels; and the uncertainty map, 896 pixels (5.23 percent) flagged as the floor the filter would not certify. The signal returns exactly and its meaning does not. Photograph by Daderot, CC0; recovered by \texttt{classify\_reject\_recover.py} (ART-4-007) and reproduced by \texttt{evidence/\allowbreak{}proofs/\allowbreak{}posits/\allowbreak{}recover\_indoeuropean\_art.py}.}
+\label{fig:ajax-recovery}
+\end{figure}
 
 None of this makes the regularities fragile, and the reason is the one result in this section that came from a controlled destruction instead of a comparison. Section 4.13.1 permutes the Morse code table, the part a person designed and the part actually transmitted, and the brevity correlation returns at -0.550 against -0.652 for the intact table while the Zipf slope does not move, -1.183 against -1.185. The assignment of codes to letters was destroyed and the measurements reassembled out of the wreckage, because they were never held in that assignment. They belong to the distribution of the words being encoded, and they reappear through any re-slice of the symbols.
 
@@ -1605,7 +1612,7 @@ The results in Sections 4.13.05 and 4.13.1 hold over seven language families and
 
 The statistic here is not theirs, since they measure a Shannon entropy reduction in bits per word and this measures a dispersion of gaps over the rare half of the symbols, and the agreement of two unlike statistics is worth something. The finding is theirs.
 
-What this document adds has to be stated carefully, because two different instruments appear in it and they have been run together in earlier drafts. The dispersion measure used here has been applied to text, to source code and to recorded sound, which are unlike media, and it separates an arranged domain from an unarranged one in each. The dispersion measure has not been applied to the pictures in Section 4.11 or to the crystal lattices, which were measured by the shift detector instead, and that is a separate instrument with a separate null.
+What this document adds has to be stated carefully, because two different instruments appear in it and they have been run together in earlier drafts. The dispersion measure used here has been applied to text, to source code and to recorded sound, which are unlike media, and it separates an arranged domain from an unarranged one in each. The dispersion measure has not been applied to pictures or to the crystal lattices, which were measured by the shift detector instead, and that is a separate instrument with a separate null.
 
 Even inside the media it does cover, the readings are not directly comparable. A waveform carries a smoothness that text does not, the symbol width differs between them, and Section 4.10 establishes that the width governs what is visible. So the supportable claim is that one measure runs on unlike media and separates in each of them, and not that it returns comparable values across them.
 
@@ -1682,7 +1689,7 @@ Section 4.0 lists eight quantities that are each a function of \(2^{-H_2}\) and 
 
 The last of those is the one that makes the collection meaningful instead of coincidental. The same expression holds from a line to an eight dimensional hypercube and over an alphabet of complex numbers with irrational parts, which is where the parameter demonstrates it is not standing in for the geometry or for what a symbol happens to be.
 
-A single scalar fixing a cost surface across every dimension and every alphabet would be a strong claim if it were unqualified. The claim is not unqualified, and the next three sections are the qualifications.
+A single scalar fixing a cost surface across every dimension and every alphabet is qualified in three ways, and the next three sections state them.
 
 \subsubsection{5.3 Dependence on Symbolization}
 
@@ -1694,7 +1701,7 @@ The clearest evidence that the choice is doing work is the corpus this document 
 
 Two results in this document depend on more of the distribution than its collision probability, and neither is predicted by it.
 
-Section 4.3.1 gives what a measure can be worth as the uninformed rate over the expected minimum of \(m\) size biased draws, and that ratio is one exactly when the probabilities are equal on the support. It is a property of the order statistics. Entropy orders the corpora wrongly: \texttt{structured} has the lowest collision entropy of the four and the highest ceiling. Section 4.8 then prices a mismatched reference at 25 to 30 times, the largest effect measured anywhere here and one no marginal predicts.
+Section 4.3.1 gives what a measure can be worth as the uninformed rate over the expected minimum of \(m\) size biased draws, and that ratio is one exactly when the probabilities are equal on the support. It is a property of the order statistics. Entropy orders the corpora wrongly: \texttt{structured} has the lowest collision entropy of the four and the highest ceiling. Section 4.8 then prices a mismatched reference at 25 to 30 times, one no marginal predicts.
 
 \subsubsection{5.5 Dependence Violations}
 
@@ -1795,7 +1802,7 @@ An adaptive search declines that pass. It has no probe set until answers start a
 
 Section 4.9.6 also measures why the two cannot be traded freely. The safe stride is a property of the pattern, and a per pattern preprocessing pass would determine it. A stride calibrated on one pattern is wrong on 0 to 62 of 63 others. A fixed probe set needs the per pattern analysis, and skipping the analysis while keeping a fixed probe set is the arrangement that fails.
 
-\subsubsection{7.3 Average-Case String Matching}
+\subsubsection{7.2 Average-Case String Matching}
 
 Read from Tsai, \emph{Average Case Analysis of the Boyer-Moore Algorithm}, Random Structures and Algorithms 28, 481 (2006), pages 1 to 4 and 14 to 16 of 18. Sections 4 and 5, which carry the Markov chain derivation, were not read.
 
@@ -1805,7 +1812,7 @@ The quantity that literature computes is \(C_n\), the number of character compar
 
 \noindent\textbf{A comparison count cannot see a declined refutation.} Section 4.9.4 prices what an in-order shift leaves uncollected, between 3\% and 99\% depending on the needle length. That quantity is invisible to \(C_n\), because a comparison count records what the algorithm did and a forfeited refutation is something it never did. The gap is not a defect in thirty years of analysis. It is outside what the metric measures, and it becomes visible only once the traversal order is treated as a free variable, which Section 7.1 credits to Vishkin.
 
-\subsubsection{7.2 Thermodynamic Information Bounds}
+\subsubsection{7.3 Thermodynamic Information Bounds}
 
 Sections 4.3 and 4.8 reach for a physical analogy: a reference measure is worth the divergence of the domain from it, and at equilibrium there is no gradient and nothing to extract. Read from Parrondo, Horowitz and Sagawa, \emph{Thermodynamics of information}, Nature Physics 11, 131 (2015).
 
@@ -1847,7 +1854,7 @@ Section 4.13 therefore may not read a Zipf slope, a brevity correlation or a typ
 
 That one separates completely, and across the whole sweep. Every memoryless arm scores between 0.99 and 1.01, which is a corpus indistinguishable from its own shuffle and is what a process with no memory has to give, whatever its alphabet size or delimiter rate. Every natural corpus scores at or above 1.79. This is the measure Sproat grants, writing of the randomization method that it "seems to make sense as a way to spot memoryless non-equiprobable processes masquerading as structured systems", and his stated limit on it applies here unchanged: a non-linguistic system that has structure passes it as well. So the surviving measure establishes that a corpus is not memoryless. It does not establish that a corpus is a language, and this document does not claim it does.
 
-The surviving measure is also the one Section 7.2 can price. A corpus equal to its own shuffle carries no gradient and offers nothing to extract. The equilibrium reading holds exactly here, and the ratio above one is a distance from that equilibrium.
+The surviving measure is also the one Section 7.3 can price. A corpus equal to its own shuffle carries no gradient and offers nothing to extract. The equilibrium reading holds exactly here, and the ratio above one is a distance from that equilibrium.
 
 \noindent\textbf{What a cipher does to the surviving measure.} Sproat's stated limit is that a structured non-linguistic system passes this test as well. The question is what it takes to make a text stop passing it. One English corpus was put through transforms that keep every symbol in the same seat range, so the same measurement path reads all of them (\texttt{data/\allowbreak{}transform\_\allowbreak{}corpus.\allowbreak{}py}).
 
@@ -2101,7 +2108,7 @@ The interface is \texttt{begin}, \texttt{take}, \texttt{finish} with the one sho
 
 Every domain enters at stage 1 and leaves at whichever stage it has an answer for.
 
-The examples under \texttt{examples/\allowbreak{}} are 122 scripts over seven domains, each one a
+The examples under \texttt{examples/\allowbreak{}} are 122 scripts over nine domains, each one a
 stage of the same pipeline. A domain enters at stage 1 and leaves at whichever stage it has an
 answer for.
 
@@ -2127,19 +2134,22 @@ domain & scripts & reaches \\
 \midrule
 \texttt{language}        & 60 & oracle \\
 \texttt{any\_corpus}     & 18 & sift \\
-\texttt{art}             &  6 & measure \\
-\texttt{crystallography} &  6 & oracle \\
-\texttt{proteins}        &  4 & sift \\
+\texttt{crystallography} &  9 & oracle \\
+\texttt{proteins}        &  8 & oracle \\
+\texttt{cell\_tracking}  &  7 & oracle \\
+\texttt{art}             &  7 & measure \\
+\texttt{game\_theory}    &  6 & oracle \\
 \texttt{source}          &  4 & measure \\
-\texttt{sound}           &  1 & represent \\
+\texttt{sound}           &  3 & measure \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-Two domains reach an oracle and the rest stop short of one. Crystallography has published cell
-edges and language has hand extractions, and those are the only two places an answer exists that
-this work did not produce. Everything else is measured against its own null permutation and says
-so.
+Five of these domains carry an oracle stage, and the rest stop short of one. This book's results
+rest on two oracle answers this work did not produce: crystallography's published cell edges and
+language's hand extractions. The proteins and game theory oracles test against published values as
+well, and those comparisons belong to their own theories. Everything this book measures beyond the
+two named is taken against its own null permutation and says so.
 
 % A Markdown horizontal rule that came through the conversion. LaTeX set it as a stray em dash
 % floating above the attribution.
