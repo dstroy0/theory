@@ -28,7 +28,7 @@ row.
 ## The flow
 
 This repository is upstream. `anchor_sift` is downstream and carries these books in its tree as a
-git subtree under `theory_bucket/`, so they ship with the release and a clone gets them without a
+git subtree under `theory_bucket/`. They ship with the release and a clone gets them without a
 second fetch.
 
 ```
@@ -64,7 +64,7 @@ and its subject in another.
 Two chapters in this tree are generated and say so in their own first lines. Edit the generator, not
 the chapter:
 
-* `Salishan/chapters/chapter_Salishan_pure_corpus_README.tex`, from
+- `Salishan/chapters/chapter_Salishan_pure_corpus_README.tex`, from
   `anchor_sift/maint/data/salishan/hand_extraction/pure_corpus_index.py`.
 * `HELD/cryptography/sha256/chapters/chapter_sources.tex`, from `tools/book/build_bibliography.py`
   in the private PQC tree. The `btc` remote in anchor_sift's `.git/config` still points at that tree's old

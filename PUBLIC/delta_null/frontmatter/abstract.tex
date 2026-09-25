@@ -1,6 +1,6 @@
 \pdfbookmark[1]{Abstract}{Abstract}
-% classicthesis style=linedheaders sets \chapter* flush left and owns that formatting, so the
-% header is set by hand here to centre it. The rules match the width the class uses.
+% classicthesis style=linedheaders sets \chapter* flush left and owns that formatting. The
+% header is set by hand here to center it. The rules match the width the class uses.
 \thispagestyle{empty}
 \begin{center}
   \rule{\textwidth}{0.4pt}\\[0.9em]
@@ -20,7 +20,7 @@ those parts, and the measure is the exact departure from it.
 Two propositions bound what the search half can do. Any subset of a pattern's points is a necessary
 condition for the pattern. A filter built from a subset never loses a true occurrence, whatever
 picked the subset, whatever the alphabet is, and whether or not positions are ordered, so long as
-each probe compares symbols, or ranks taken in one population with the pattern's. The converse fails for every proper subset, so the exact compare is irreducible and every
+each probe compares symbols, or ranks taken in one population with the pattern's. The converse fails for every proper subset. The exact compare is irreducible and every
 arm has to verify what its anchors admitted. Soundness is free; the reading is not.
 
 The search half is implemented in anchor\_sift at commit \texttt{1044ca6}, and Section 2.7 of the
@@ -33,12 +33,12 @@ corpus, the candidates available or the count asked for.
 This theory's proposed primitive instrumentation types are:
 
 \begin{enumerate}
-  \item \textbf{Identity.} The target set $T$, measured against its own maximum information
+  \item \textbf{Identity.} The target set \(T\), measured against its own maximum information
     entropy. Unitless (Shannon, \emph{A Mathematical Theory of Communication}, Bell System
     Technical Journal 27, pp.~379--423 and 623--656, 1948; entropy at section 6, page 389, where
-    $H$ is a maximum at $\log n$ with every $p_i$ equal).
-  \item \textbf{Null permutation identity}, $\Delta_{\Sigma}$. The departure of $T$ from the
-    maximum entropy arrangement of its own parts. Its bit form reads the exact invariances of $T$
+    \(H\) is a maximum at \(\log n\) with every \(p_i\) equal).
+  \item \textbf{Null permutation identity}, \(\Delta_{\Sigma}\). The departure of \(T\) from the
+    maximum entropy arrangement of its own parts. Its bit form reads the exact invariances of \(T\)
     that a drawn null does not reproduce.
 \end{enumerate}
 
