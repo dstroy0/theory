@@ -21,7 +21,7 @@
 
 Three results carry everything below. All three are established, and none is proposed.
 
-Every probe is a necessary condition of an occurrence, so any conjunction of probes loses no true
+Every probe is a necessary condition of an occurrence, any conjunction of probes loses no true
 occurrence and the full compare removes the false survivors. The count is exact for any probe set.
 
 The sift is therefore a sound filter and its errors are one directional. A discrepancy is always an
@@ -49,7 +49,7 @@ costs nothing. An engine that never enumerates symbols cannot notice that the sy
 
 **What it leaks is known exactly, and that is the unusual part.** Two positions carrying the same
 byte still carry the same byte after `f`. The encoding hides values and preserves the equality
-pattern, so an observer learns the partition of positions into equal classes and nothing finer. That
+pattern, an observer learns the partition of positions into equal classes and nothing finer. That
 partition is the quantity `A(d)` measures. The leak of this construction is the statistic section 5
 uses as a signal, so the engine can compute and report its own exposure.
 

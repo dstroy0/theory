@@ -21,7 +21,7 @@ different repository, which this repository's README never names. Objective 5 mo
 What this repository needs under objective 5: a `tools/` directory holding its own book build. The
 rule is that the tools that build a thing belong in the repository that owns the thing, and
 theory_bucket owns the books. It needs a build script that takes an output directory as an argument
-and **defaults to a path inside its own tree**, so a standalone clone can build.
+and **defaults to a path inside its own tree**, a standalone clone can build.
 
 `README.md:52-58` currently says the opposite: "Nothing lands beside the source: build with
 `-output-directory` pointed under `anchor_sift/build/theory/`", and the figure guard in
@@ -109,7 +109,7 @@ Backgrounded agents are permitted to commit in this repository. The message is *
 category, subject and type only** — for example `docs build bugfix`. No body, no attribution
 trailer, no prose.
 
-Preconditions here: `core.hooksPath` is unset and this repository ships no hooks, so a commit runs
+Preconditions here: `core.hooksPath` is unset and this repository ships no hooks, a commit runs
 zero gates. Stage explicitly with `git add <named paths>`. Do not use `git commit -a` or bare
 `git add .` — the two untracked items above are exactly what a bare `git add .` would sweep in
 before anyone has decided whether they are ready.
@@ -239,7 +239,7 @@ mount.
 ### Write the reproduction-path rule into README.md
 
 A book authored here describes work whose code, tools and datasets live in a different repository.
-This repository has no engine and no tools directory, so a reproduction instruction has to name the
+This repository has no engine and no tools directory, a reproduction instruction has to name the
 consumer repository's tools by a path that resolves from a reader's checkout of **that** repository.
 
 The convention already in these books is the right one, and it should be stated rather than left

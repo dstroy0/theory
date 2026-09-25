@@ -130,7 +130,7 @@ reading assumed a memoryless process would not reproduce it.
 
 `reference/ciphers.py` is the graded form of the same move. A shuffle deletes every arrangement at
 once and gives a single floor. A cipher deletes a NAMED part of one and gives a background per part:
-a substitution renames the symbols and moves nothing, so any measure reading where symbols fall must
+a substitution renames the symbols and moves nothing, any measure reading where symbols fall must
 return the same value to the last decimal; a repeating key of length `k` splits the gaps `k` ways; a
 full-length pseudorandom addend is the only mapping there that erases outright.
 

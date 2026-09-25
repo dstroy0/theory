@@ -195,7 +195,7 @@ the engine can hold in any class, at any moment.
 
 **The total productive work is bounded no matter how many times the question changes.** Theorem 5's
 variant is the survivor count, and it does not reset when the class changes. Every level that places
-a probe strictly decreases it, across all classes, so at most `|A|` levels in the whole run can
+a probe strictly decreases it, across all classes, at most `|A|` levels in the whole run can
 prune. Changing the question cannot buy unbounded work; it can only buy up to `|A|` productive levels
 in total.
 
@@ -288,7 +288,7 @@ speed. **A self-referential input loop is exactly as safe as an arbitrary planne
 say completely.**
 
 **And the generator cannot buy unbounded productive work.** Theorem 5's variant is the survivor
-count, it never increases, and it does not reset when `G` changes the question. So across an infinite
+count, it never increases, and it does not reset when `G` changes the question. across an infinite
 run, driven by a Turing complete generator feeding on its own output, at most `|A|` probes can ever
 prune. Everything beyond that is `G` spinning, each spin detected by one stop condition, with the
 answer correct throughout.
