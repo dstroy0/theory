@@ -263,6 +263,11 @@ Doug's definition of the higher-order and negative-order hypercomputer (24 Septe
 3. "listen, of course there would be incoherent information that looks coherent at first glance, the things that will fail to construct inside of the machine do not exist, not cannot exist, do not exist as we can perceive and understand them, we do not bound anything, that is what is beautiful about this, everything answers only for itself and we only ask what is this, where are we?"
 4. "from a fundamental perspective, knowing what we know, we can literally semantically load a program just like the naturals load themselves in a repeating order, to prove the set."
 
+Doug, 24 September, verbatim, on the same machine. Posit.
+
+- "what do you call a higher order hypercomputer plus a negative order hypercomputer? we completely bypass tetration pentation hexation all the way to infiniy and back using our 4d bottle"
+  - The orders in ℤ and ±ω below are this section's derived form of "all the way to infiniy and back". "The 4d bottle" has no definition here.
+
 - **The loop rule** (Anchor_sift's). Every record program halts, since each has a fixed step count. An Ω for the record machine needs a machine R* that applies a stack of floors again and again until a halt register is set.
 - **Order** (the reading Doug confirmed): how many times the loop runs a floor. A negative order counts runs of the floor's inverse.
 
@@ -337,7 +342,7 @@ Doug's definition of the higher-order and negative-order hypercomputer (24 Septe
 
 ## Goodstein: ω-towers held as finite objects
 
-`goodstein` (engine/sims, a host sim in exact integers, 7 checks, 0 failed, cell_tracking main c633988, run 20260924_191006). Doug, 24 September: "perform tetration of omega".
+`goodstein` (engine/sims, a host sim in exact integers, 7 checks, 0 failed, cell_tracking main c633988, run 20260924_191006). Doug, 24 September: "Omega omega omega", then "perform tetration of omega".
 
 - **The objects.**
   - n in hereditary base b: n written in base b, every exponent written in base b again, down to the digits.

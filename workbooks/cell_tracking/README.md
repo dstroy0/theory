@@ -29,3 +29,4 @@ A claim changes status only when a run changes it, and the run is named. Nothing
 | [scan_then_sort.md](scan_then_sort.md) | the rule that orders the driver: every frame of every sample scanned first, sorting only at the end |
 | [walk_back.md](walk_back.md) | the rule every tracker stage is held to: it can be walked back to what it came from |
 | [build_right_first.md](build_right_first.md) | the rule against building an interim version already known to need redoing |
+| [records.md](records.md) | the commit texts written for the cell program, dated, as they were written |

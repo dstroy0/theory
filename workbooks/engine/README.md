@@ -37,5 +37,6 @@ A claim changes status only when a run changes it, and the run is named. Nothing
 | [scriptura_blocks.md](scriptura_blocks.md) | the one rule on what scriptura's SWAR memory scans may be handed, and why it settles the over-read question |
 | [peer_sessions.md](peer_sessions.md) | how other sessions that build on the engine take it: a git dependency pinned at a commit |
 | [build_time.md](build_time.md) | what the time a build takes is spent on |
+| [records.md](records.md) | the commit and pull request texts written for the engine, dated, as they were written |
 
 The runs the ledger cites are in `runs/`, and `data/stroke_cells.txt` is the stroke cells as data.
