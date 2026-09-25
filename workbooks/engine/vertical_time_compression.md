@@ -320,7 +320,7 @@ Doug's framing (24 September, paraphrased): domain and range are complete and de
 
 ## The lens
 
-Doug's posit (24 September): "The crystal is a lens between our universe and information space: the cleaner the crystal, the better the lensing and tetrated resources."
+Doug's posit of 24 September, the crystal as a lens between our universe and information space, is kept verbatim in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md). What the engine measures and derives about it follows.
 
 - **What the measure supports.** Measured in the scratch run above: the crystal concentrates a lane's structure. The ramp's 857 bits go to 70, 12×, and the pinch ranks the four classes by their complexity. A cleaner crystal, a sparser heap, is a sharper focus, and the pinch is a per-lane reading of how much structure the lens sees.
 - **What bounds it.** Derived.

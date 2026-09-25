@@ -1,7 +1,7 @@
 # The noise sieve tower
 
-**Purpose:** Carry the transfinite noise sieve and the fluidic architecture (the drafts in `thought_experiments/engine/`) into the ledger, idea by idea, each set beside the part of the engine that is its working form and the status that backs it, so the theory and the code are read as one thing and a later session knows which ideas already run.
-**Scope:** every idea in `noise_sieve_*.md`, `fluidic_*.md`, `utm_demon_openqasm.md`, `demon_utm_four_noise_vectors.md`, `hash_boundary_functional_folding.md`, `subtractive_cosmological_framework.pdf` and `cyclic_field_inversion_seed_crystal.pdf`. `noise_sieve_5_cell_tracking_harmonics.pdf` sets the sieve on the cell program. It is in `thought_experiments/cell_tracking/`, and its sections are in the cell book ([on_the_engine.md](../cell_tracking/on_the_engine.md)). Where an idea has a working form, the module is named; [cell_tracking_table.md](../cell_tracking/cell_tracking_table.md) says which part of the n-body problem each module solves, and [engine_table.md](engine_table.md) what each machine part computes.
+**Purpose:** Carry the transfinite noise sieve and the fluidic architecture (the drafts in `thought_experiments/engine/`) into the ledger, idea by idea, each set beside the part of the engine that is its working form and the status that backs it. The theory and the code are then read as one thing, and a later session knows which ideas already run.
+**Scope:** every idea in `noise_sieve_*.md`, `fluidic_*.md`, `utm_demon_openqasm.md`, `demon_utm_four_noise_vectors.md`, `hash_boundary_functional_folding.md`, `subtractive_cosmological_framework.md` and `cyclic_field_inversion_seed_crystal.md`. `noise_sieve_5_cell_tracking_harmonics.md` sets the sieve on the cell program. It is in `thought_experiments/cell_tracking/`, and its sections are in the cell book ([on_the_engine.md](../cell_tracking/on_the_engine.md)). Where an idea has a working form, the module is named; [cell_tracking_table.md](../cell_tracking/cell_tracking_table.md) says which part of the n-body problem each module solves, and [engine_table.md](engine_table.md) what each machine part computes.
 
 The status column follows the ledger's rules ([README.md](README.md)): proved, measured, built, theory, refuted, not so.
 
@@ -37,9 +37,9 @@ Read right to left, it is the engine's run order:
 
 ## 2. The binary LUT engine, AND chaining, and exact division
 
-**The idea.** Transform symbols compile to binary primitives; operations chain by `&`; exact limbs keep every result without truncation; two's complement limb multiplication gives exact inverses, so division runs without rounding as the limbs expand to absorb the remainder.
+**The idea.** Transform symbols compile to binary primitives; operations chain by `&`; exact limbs keep every result without truncation; two's complement limb multiplication gives exact inverses, and division runs without rounding as the limbs expand to absorb the remainder.
 
-**In the engine.** Linear steps are imprinted and chained as keys, and two keys ANDed together are one key again, so a chain of any length costs every later atom one application (§2 of [imprint_key_cycle.md](imprint_key_cycle.md)). The scheduler must keep program order: composition regroups freely but does not reorder freely. Pointwise steps now run as tables (M10, A13 of [engine_table.md](engine_table.md)), and a table read through a table is their composition in that order. **Proved:** f(x) = 65535 − x and g(y) = \|y − 30000\| give g∘f equal to the ops for \|35535 − x\|, and f∘g differs.
+**In the engine.** Linear steps are imprinted and chained as keys, and two keys ANDed together are one key again. A chain of any length then costs every later atom one application (§2 of [imprint_key_cycle.md](imprint_key_cycle.md)). The scheduler must keep program order: composition regroups freely but does not reorder freely. Pointwise steps now run as tables (M10, A13 of [engine_table.md](engine_table.md)), and a table read through a table is their composition in that order. **Proved:** f(x) = 65535 − x and g(y) = \|y − 30000\| give g∘f equal to the ops for \|35535 − x\|, and f∘g differs.
 
 **Exact division, stated exactly.** An odd divisor d has an inverse modulo 2^n, found by Newton steps on limbs. Where d divides x, x·d⁻¹ mod 2^n *is* x / d, exactly, with no remainder and no loop of subtractions. Where d does not divide x, the quotient is a rational, and its two's complement (2-adic) expansion never ends. It is *eventually periodic*, though, with period the order of 2 modulo d. So the "limbs that expand to absorb the remainder" are one period of limbs, laid down once and repeated. That is the same imprint as modulo: one period known, the rest a shift. An even divisor is a shift times an odd one.
 
@@ -52,7 +52,7 @@ Read right to left, it is the engine's run order:
 
 ## 3. The beamformer and the 1D probability array
 
-**The idea.** Rule propagation is a phased array's centre lobe: the LUT symbols interfere so all the work goes down one path, a 1D array punched straight down the tower's length.
+**The idea.** Rule propagation is a phased array's center lobe: the LUT symbols interfere so all the work goes down one path, a 1D array punched straight down the tower's length.
 
 **In the engine.** A separable key factors as K = K_z · K_y · K_x, and by associativity the frame's residual is three sparse products, one per axis. Each sweep is a 1D line pushed down one axis of the whole frame.
 
@@ -69,13 +69,13 @@ Read right to left, it is the engine's run order:
 | claim | status |
 |---|---|
 | the tower read back to the plane with nothing lost | proved: all 25 samples rebuilt voxel for voxel and pixel for pixel from their .iapx |
-| the floors dissolved into one operation instead of eight floors of steps | theory: the tower still runs floor by floor, four axes a floor |
+| the floors dissolved into one operation instead of eight floors of steps | measured for the record machine's stacked floors: 700 floors as one program ran 13 to 22 times faster than chained, records equal ([vertical_time_compression.md](vertical_time_compression.md)); theory for the tower's lifting, which still runs floor by floor, four axes a floor |
 
 ## 5. The tower, time stacking, and floor −4
 
-**The idea.** Time is part of the tower: samples enter at the bottom and stack upward, so the time domain is written into the lattice. Every tower has a floor configuration and a master schedule by family of operation. Floor −4 is where the noise bits are at their smallest and become irreducible.
+**The idea.** Time is part of the tower: samples enter at the bottom and stack upward, and the time domain is written into the lattice. Every tower has a floor configuration and a master schedule by family of operation. Floor −4 is where the noise bits are at their smallest and become irreducible.
 
-**In the engine.** The .iapx tower lifts t, z, y and x together: time is a lifted axis, not a loop. A whole 100×64×256×256 sample reaches one coefficient in 8 floors. What the program does not generate is every floor's highs, the residue. That residue is held whole and never bounded, modelled or discarded.
+**In the engine.** The .iapx tower lifts t, z, y and x together: time is a lifted axis, not a loop. A whole 100×64×256×256 sample reaches one coefficient in 8 floors. What the program does not generate is every floor's highs, the residue. That residue is held whole and never bounded, modeled or discarded.
 
 **The floor, measured.** The anchor count stacks every frame of a sample and counts, per voxel and per bit, the frames that carry the bit. In every one of the 25 44b6 samples, bits 0 to 4 are set in about 46% of frames at nearly every voxel: those planes carry no anchor, and they look alike in every sample. The anchors sit in bits 6 to 11 and differ between samples. That is the measured floor, and it answers the drafts' "noise bits minimised to their smallest state". It also says why floor −4 is sample bound: no voxel is anchored in every sample.
 
@@ -95,7 +95,7 @@ Read right to left, it is the engine's run order:
 
 **In the engine.** Both limbs exist under those names.
 
-- **Eyes** are `shift_agreement`: how many set bits of one view land on set bits of another at every lag at once, which is the frame's own motion read off the field.
+- **Eyes** are `shift_agreement`: how many set bits of one view land on set bits of another at every lag at once: the frame's own motion, read off the field.
 - **Arms** are the null draws (`--null`). The same body is climbed at the same lag toward frames far off in time, where no correspondence can exist. A body no draw reaches stands above background, and nothing in that test is a chosen number.
 - **Truthy/falsy probes** (fluidic draft §5) are a program's node policies, in the cell book ([on_the_engine.md](../cell_tracking/on_the_engine.md)).
 
@@ -107,15 +107,15 @@ Read right to left, it is the engine's run order:
 
 ## 7. The demon observer, chords and the uroboros
 
-**The idea.** The observer's position is a probability wave that settles on hot bits: zones of the most torsion and deflection. Weak chords pierce the tower to read its cross-section without disturbing it. The floor −4 output, a 2D array of vector magnitudes, the noise key, is pressed back against the top boundary as the mould for the next cycle.
+**The idea.** The observer's position is a probability wave that settles on hot bits: zones of the most torsion and deflection. Weak chords pierce the tower to read its cross-section without disturbing it. The floor −4 output, a 2D array of vector magnitudes, the noise key, is pressed back against the top boundary as the mold for the next cycle.
 
-**In the engine.** The non-perturbing chord is the proof: a CRC-64 folded into a pass that already touches every pixel reads the whole sample without a pass of its own. The press, where the noise key shapes the next cycle, is the per location cost map. It would set stationary artefacts (dust, hot pixels, banding) apart from moving biology and steer the next run.
+**In the engine.** The non-perturbing chord is the proof: a CRC-64 folded into a pass that already touches every pixel reads the whole sample without a pass of its own. The press, where the noise key shapes the next cycle, is the per location cost map. It would set stationary artifacts (dust, hot pixels, banding) apart from moving biology and steer the next run.
 
 | claim | status |
 |---|---|
 | read the whole without disturbing it | proved: CRC-64 folded into the tower's widen and narrow; all 25 hold, set CRC 091daa41e1aceb7e |
-| the observer settling on hot bits | theory; the anchor counts per voxel and bit are the field it would settle on |
-| the noise key fed back as the next cycle's mould | theory: the per location cost map |
+
+The observer settling on hot bits, and the noise key fed back as the next cycle's mold, are untested; they are in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).
 
 ## 8. The three irreducible sets
 
@@ -133,7 +133,7 @@ Read right to left, it is the engine's run order:
 
 **The elevator.** E(f, t) reads floor f at time t directly, and the exact accumulator Σₙ = ⊕ δᵢ moves either way in time without loss. In the engine the tower's layout places every floor's coefficients at known offsets, and the stream is cut into chunks that each decode on their own from a stored first bit. So any part is reached without decoding what comes before it. Moving back and forth without loss is the lossless tower.
 
-**Recursive inflation.** Kₘ₊₁ = R(Kₘ, ξ). A composed key is itself a step, so it can be a step in another program: recursion is keys of keys. Towers can be built in n dimensions: the tower lifts every axis still longer than one, whatever their number.
+**Recursive inflation.** Kₘ₊₁ = R(Kₘ, ξ). A composed key is itself a step, and it can be a step in another program: recursion is keys of keys. Towers can be built in n dimensions: the tower lifts every axis still longer than one, whatever their number.
 
 **Identity as the limit of coherence.** ID(x) = lim C(x, t): an object is who it is because its coherence carries on, not because of a tag. In the engine a link is chosen by coherence at the climbed lag (`held`), and every body's fate follows from the links (`bodies`: entered, present, split, merged, left, ended, vanished, absorbed).
 
@@ -144,11 +144,11 @@ Read right to left, it is the engine's run order:
 | any floor at any time read directly | built: chunked stream with stored offsets; the per chunk decode is proved in every .iapx proof |
 | keys compose into keys; towers in n dimensions | proved for composed linear keys; the n dimensional lift is built for four axes |
 | identity from coherence, not tags | built: links chosen by coherence; bodies follow links |
-| entropy separates floor −4 from coherence | measured for the low bit planes (near ½, so at H_max); the per voxel Φ map is theory, one read of the anchor counts away |
+| entropy separates floor −4 from coherence | measured for the low bit planes (near ½, which is H_max); the per voxel Φ map is theory, one read of the anchor counts away |
 
 ## 10. A universal Turing machine and the demon
 
-**The idea.** A UTM can simulate any circuit, but a quantum one costs it 2^n amplitudes, and measurement needs dice. The demon removes both: unbounded capacity, and a deterministic account of the outcome, so a measurement is read, not rolled.
+**The idea.** A UTM can simulate any circuit, but a quantum one costs it 2^n amplitudes, and measurement needs dice. The demon removes both: unbounded capacity, and a deterministic account of the outcome. A measurement is read, not rolled.
 
 **In the engine.** Two parts carry over exactly.
 
@@ -165,9 +165,9 @@ The 2^n barrier does not go away in a machine. The engine keeps its state exact 
 
 ## 11. The boundary functional of a keyspace, and folding
 
-**The idea.** A 30 digit hex keyspace holds 16^30 = 2^120 values. Its boundary functional is the threshold latch Φ(x) = 1 where x < T, or the distance |x − T|. It is applied to every output of a sweep at once, and a reduction fold latches the first hit as the floor. Folding keeps the accumulator one size however many instances are folded, so a severe boundary condition does not add dimensions.
+**The idea.** A 30 digit hex keyspace holds 16^30 = 2^120 values. Its boundary functional is the threshold latch Φ(x) = 1 where x < T, or the distance |x − T|. It is applied to every output of a sweep at once, and a reduction fold latches the first hit as the floor. Folding keeps the accumulator one size however many instances are folded, and a severe boundary condition adds no dimensions.
 
-**In the engine.** The boundary functional is the same object as the drafts' ∂Ω: the edge between what a pass accepts and what it does not, applied to every element at once. The engine's proved instance of a fold is the CRC-64. Each segment's register is taken from zero as the tower touches the pixels. Registers are then folded pairwise, each left one carried across its neighbour by one imprinted operator a level. The accumulator stays 64 bits whether it covers 64 pixels or 419,430,400. The latch is a reduction the engine already runs: the device comparisons that count differing voxels, and the overflow flag the tower sets.
+**In the engine.** The boundary functional is the same object as the drafts' ∂Ω: the edge between what a pass accepts and what it does not, applied to every element at once. The engine's proved instance of a fold is the CRC-64. Each segment's register is taken from zero as the tower touches the pixels. Registers are then folded pairwise, each left one carried across its neighbor by one imprinted operator a level. The accumulator stays 64 bits whether it covers 64 pixels or 419,430,400. The latch is a reduction the engine already runs: the device comparisons that count differing voxels, and the overflow flag the tower sets.
 
 **Stated exactly.** A fold compresses the *verification* of work, not the work. Proving that a search over the keyspace was done still needs every hash in it computed once. Expected work to meet x < T is about 2^120 / T evaluations, and no fold changes that count. What folding removes is the cost of *checking* the trace, which otherwise grows with every recursive layer. A preimage below a threshold is found by search, and the fold proves the search.
 
@@ -179,15 +179,15 @@ The 2^n barrier does not go away in a machine. The engine keeps its state exact 
 
 ## 12. The subtractive framework: field speed, cancellation, and the null as field noise
 
-The conversation in `subtractive_cosmological_framework.pdf` is a cosmology. Its cosmological claims (arrival as a c speed update shell, monitoring daemons on structural lines, black holes as sinks) are outside anything this engine can measure, and the ledger records them as theory and leaves them there. Three of its turns correct or sharpen the sieve drafts, and those carry straight into the engine.
+The conversation in `subtractive_cosmological_framework.md` is a cosmology. Its cosmological claims (arrival as a c speed update shell, monitoring daemons on structural lines, black holes as sinks) are outside anything this engine can measure, and the ledger records them as theory and leaves them there. Three of its turns correct or sharpen the sieve drafts, and those carry straight into the engine.
 
 **Rules propagate at field speed, not instantly.** "The ruleset propagates to w at field speed": the new rules spread from where they are applied as a wavefront, bounded by the medium's clock, instead of blinking into existence everywhere. This corrects §1's "transfinite speed". In a machine the rules reach every lane in one launch, and the launch takes time; the ledger's 31 ms a frame is that front, measured.
 
-**Phase cancellation is subtraction of the whole medium.** "You read the incoming packet, flip the sign, and output it. The wave hits your boundary, meets its exact inverse, and resolves to zero." That is the residual's key: 2^g · B_narrow − B_wide · B_narrow. The wide term is the medium, and it is subtracted whole, in exact two's complement, so the medium resolves to exactly zero and what is left stands above it. The inversion is exact only because the arithmetic is: a rounded inverse leaves a residue of rounding, and that residue would read as structure.
+**Phase cancellation is subtraction of the whole medium.** "You read the incoming packet, flip the sign, and output it. The wave hits your boundary, meets its exact inverse, and resolves to zero." That is the residual's key: 2^g · B_narrow − B_wide · B_narrow. The wide term is the medium, and it is subtracted whole, in exact two's complement. The medium resolves to exactly zero, and what is left stands above it. The inversion is exact only because the arithmetic is: a rounded inverse leaves a residue of rounding, and that residue would read as structure.
 
-**The identity:null permutation means field noise readings only.** A null is not a blank pointer or an error. Asked what is here, it returns a valid, boring reading of the field noise, indistinguishable from empty space. That is the precise meaning of the engine's null draws. The same body is climbed at the same lag toward frames far off in time, where no correspondence can exist, so what comes back is what field noise alone reads there. A body is real only where it stands above that reading. The reading is taken, not assumed: nothing is drawn from a distribution, and no threshold is chosen.
+**The identity:null permutation means field noise readings only.** A null is not a blank pointer or an error. Asked what is here, it returns a valid, boring reading of the field noise, indistinguishable from empty space. That is the precise meaning of the engine's null draws. The same body is climbed at the same lag toward frames far off in time, where no correspondence exists. What comes back is what field noise alone reads there. A body is real only where it stands above that reading. The reading is taken, not assumed: nothing is drawn from a distribution, and no threshold is chosen.
 
-**Listening at the noise floor.** "Tune the receiver to field noise": a receiver matched to the floor takes only what stands out of it. The anchor counts are that receiver. The low five bit planes sit at the floor (near ½ at every voxel), and a bit is signal only where its count leaves ½.
+**Listening at the noise floor.** "Tune the receiver to field noise": a receiver matched to the floor takes only what rises above it. The anchor counts are that receiver. The low five bit planes sit at the floor (near ½ at every voxel), and a bit is signal only where its count leaves ½.
 
 | claim | status |
 |---|---|
@@ -195,15 +195,16 @@ The conversation in `subtractive_cosmological_framework.pdf` is a cosmology. Its
 | subtracting the medium's exact inverse leaves it at zero | proved: the residual's key, 0 of 10,485,760,000 lanes differing from the step by step residual |
 | a null is the field noise reading, not an empty return | built: the null draws (`--null`) climb toward frames far off in time |
 | signal is what leaves the floor | measured: the low five bit planes at ½ in every 44b6 sample; anchors in bits 6 to 11 |
-| arrival shells, network daemons, black hole sinks | theory, outside what this engine measures |
+
+The conversation's cosmology (arrival shells, network daemons, black hole sinks) lies outside what this engine measures; it is in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).
 
 ## 13. The seed crystal and the needle off zero
 
-`cyclic_field_inversion_seed_crystal.pdf` was exported under the title "Solving N-Body Problems Deterministically", but it holds no n-body method. It is a cyclic cosmology. At maximum entropy the field flattens until scale means nothing, and a uniform field is as featureless as a point. The field then inverts. The new rules propagate from a seed crystal: a needle of near-infinite magnitude, perpendicular to the field, with a radius close to zero but not zero. That hair of tilt is the symmetry break that sets the new field's propagation speed. The cosmology is theory and stays there. Two of its mechanics are exactly the engine's.
+`cyclic_field_inversion_seed_crystal.md` was exported under the title "Solving N-Body Problems Deterministically", but it holds no n-body method. It is a cyclic cosmology. At maximum entropy the field flattens until scale means nothing, and a uniform field is as featureless as a point. The field then inverts. The new rules propagate from a seed crystal: a needle of near-infinite magnitude, perpendicular to the field, with a radius close to zero but not zero. That hair of tilt is the symmetry break that sets the new field's propagation speed. The cosmology is theory and stays there. Two of its mechanics are exactly the engine's.
 
 **The needle is the impulse.** The imprint pushes one unit at one point, the narrowest thing the lattice holds, through the program once. Everything the program will do to any atom propagates out from that response: the key. A field of zeros imprints nothing, and a flat field has no differential to carry. The whole next pass is seeded by one point's response.
 
-**Nothing propagates without the tilt.** A perfectly flat field gives steepest ascent nowhere to go: every neighbour ties, and no voxel can climb. In the engine the tie is not left to chance or to arithmetic noise. Comparisons are exact, and in the component tree every face's key carries the face's own name in its lowest limb, below the residual's limbs (`max_tree_key_limb`). So no two keys ever tie, and where two components choose each other the lower indexed one stays. That lowest limb is the hair of asymmetry: the smallest deterministic difference, weighing less than any difference of the residual, that still gives every choice one direction. It is the reason the same frame always yields the same bodies, on any machine and in any build.
+**Nothing propagates without the tilt.** A perfectly flat field gives steepest ascent nowhere to go: every neighbor ties, and no voxel can climb. In the engine the tie is not left to chance or to arithmetic noise. Comparisons are exact, and in the component tree every face's key carries the face's own name in its lowest limb, below the residual's limbs (`max_tree_key_limb`). So no two keys ever tie, and where two components choose each other the lower indexed one stays. That lowest limb is the hair of asymmetry: the smallest deterministic difference, weighing less than any difference of the residual, that still gives every choice one direction. It is the reason the same frame always yields the same bodies, on any machine and in any build.
 
 **Maximum entropy is the floor.** "When everything flattens out, scale loses all meaning": a field at maximum entropy looks alike at every scale. The measured floor has that property. The low five bit planes sit near ½ at every voxel in every sample, with no anchor at any place, and the tower cannot compress them further.
 
@@ -212,12 +213,12 @@ The conversation in `subtractive_cosmological_framework.pdf` is a cosmology. Its
 | a single point's response seeds everything the program does | proved: the key is the impulse's response, and it is the residual lane for lane |
 | a flat field propagates nothing; a minimal fixed asymmetry gives every choice one direction | built: exact comparison, the face's name in the key's lowest limb so no two keys tie |
 | maximum entropy looks alike at every scale | measured for the low five bit planes: near ½ everywhere, no anchor |
-| field inversion, the seed crystal of a new universe, eternal recurrence | theory, outside what this engine measures |
-| a deterministic n-body method | not in the source: the title promises one and the text holds none |
+
+The PDF's cosmology (field inversion, the seed crystal of a new universe, eternal recurrence) and the n-body method its title promises are in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).
 
 ## 14 and 15. The sieve on the cell program
 
-`noise_sieve_5_cell_tracking_harmonics.pdf` sets the sieve on the cell program: splits and entropy, each body's harmonics, edges by jitter and membership by sample coherence. Those two sections are in the cell book, [on_the_engine.md](../cell_tracking/on_the_engine.md).
+`noise_sieve_5_cell_tracking_harmonics.md` sets the sieve on the cell program: splits and entropy, each body's harmonics, edges by jitter and membership by sample coherence. Those two sections are in the cell book, [on_the_engine.md](../cell_tracking/on_the_engine.md).
 
 ## 16. The four noise vectors, and the noise keys stamped top down over w
 
@@ -230,7 +231,7 @@ The conversation in `subtractive_cosmological_framework.pdf` is a cosmology. Its
 - **The bodies** sit between: bits 5 to 10 flip from about 430 down to about 20 per thousand. They are held low where a body is and move with it.
 - **A sample wide bump.** In window 4 (transitions 45 to 55) every bit from 5 to 10 flips more at once, bit 8 from about 122 to 153 per thousand. Then windows 5 to 8 fall below where they started. That is a rise in entropy across the whole sample followed by a move toward order.
 
-**The noise keys, stamped top down over w.** However many noise keys there are (each sample's floor, and its fixed pattern, shot, read and quantization terms as the history separates them), they are imprinted once and stamped on the whole set from the top, as the rules are in §1. They propagate to every coordinate w as the front of §12, not re-derived frame by frame. In the engine this is a cycle run: the keys held once, and every atom of the set passing under them in one launch, so each voxel is read against its own sample's noise before any membership is assigned.
+**The noise keys, stamped top down over w.** However many noise keys there are (each sample's floor, and its fixed pattern, shot, read and quantization terms as the history separates them), they are imprinted once and stamped on the whole set from the top, as the rules are in §1. They propagate to every coordinate w as the front of §12, not re-derived frame by frame. In the engine this is a cycle run: the keys held once, and every atom of the set passing under them in one launch. Each voxel is read against its own sample's noise before any membership is assigned.
 
 | claim | status |
 |---|---|
@@ -239,6 +240,8 @@ The conversation in `subtractive_cosmological_framework.pdf` is a cosmology. Its
 | a sample wide rise in entropy at window 4, then a move toward order | measured on 44b6_0113de3b; on the other 24 samples, pending |
 | the history's counts are exact | proved on 44b6_0113de3b: 2,000 voxels × 9 windows counted by hand from the .stack, 0 words differ |
 | the noise keys stamped top down over the whole set in one cycle | theory; the cycle runs linear keys today, and the noise keys are not yet imprinted |
+
+Every noise term, these four and the rest Doug named on 25 September, has one row in [noise_vector_integration_table.md](noise_vector_integration_table.md): how it moves, the exact sums that read it, its form in the sims' camera law, and the experiment that moves its status.
 
 ## 17. The floor laid down first, entropy conserved, and the clock as the elevator
 
@@ -255,8 +258,9 @@ The conversation in `subtractive_cosmological_framework.pdf` is a cosmology. Its
 | the floor section in the `.cfg`, laid down before anything else runs | built, not yet run: the `.cfg` reads and writes it; a program's driver laying it down is in the cell book |
 | entropy conserved at every voxel: each bit's flips have the parity of its net change | built, not yet run: checked in the history's own pass |
 | the floor's identity at every voxel places every departure: where steering happened | theory; the history holds it, and the reading is not built |
-| the demon's waveform collapses onto the union U \| U of every departure from the floor | theory |
 | the clock as the elevator: any floor at any time reached directly | built: the tower's floors and the stream's chunks at known offsets; the history's windows at known places |
+
+The demon's waveform collapsing onto the union U \| U of every departure from the floor is untested; it is in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).
 
 ## 18. The arm as a probability sniper: where the sweating stops and the sieving starts
 
@@ -266,7 +270,7 @@ The conversation in `subtractive_cosmological_framework.pdf` is a cosmology. Its
 
 **The cloud, from the history, with no chosen number.** The entropy history already holds it. At a voxel in a window, the cloud's density is how much the voxel changed: the sum over the window's transitions of the frame XOR the frame before, which is exactly Σ_b (flips of bit b) · 2^b read off the history's nibble counts. At the floor only the low bits flip, and the density is small. Where a body moves, or a split or a lysis happens, the high bits flip and the density is large. Nothing is thresholded: the density is the change itself, in the sample's own units.
 
-**The overlap between windows.** Two windows' clouds overlap where the same voxels are active in both: Σ over voxels of D_w · D_w′. For 9 windows that is 45 exact integers. They are folded into the history's own pass, since that kernel already holds every window of every voxel, so they cost no pass of their own.
+**The overlap between windows.** Two windows' clouds overlap where the same voxels are active in both: Σ over voxels of D_w · D_w′. For 9 windows that is 45 exact integers. They are folded into the history's own pass, since that kernel already holds every window of every voxel. They cost no pass of their own.
 
 **Each floor gets a null draw: the identity line.** The history's windows are the elevator's floors, and the clock numbers them. Frame f stands on floor ⌊f / 11⌋ at place f mod 11. Its null draw on floor g is the frame at the same place on that floor, g · 11 + (f mod 11): the elevator changes only the floor number. Every floor gets its draw, the frame's own floor excepted, and so does any floor whose identity line frame falls within two frames of it. The draws run along the identity line, one per floor, instead of a fixed number stepped from the middle of the series.
 

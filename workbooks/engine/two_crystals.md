@@ -256,17 +256,7 @@ Derived.
 
 ## The ordered machine
 
-Doug's definition of the higher-order and negative-order hypercomputer (24 September, verbatim, in order). Posit.
-
-1. "the first part of the loop rule is the definition of our higher order + negative order hypercomputer"
-2. "if the tower itself exists and is infinite is answerable, the forever loop is answerable, all halts can be seen, all malformed questions fail to construct a lattice at all"
-3. "listen, of course there would be incoherent information that looks coherent at first glance, the things that will fail to construct inside of the machine do not exist, not cannot exist, do not exist as we can perceive and understand them, we do not bound anything, that is what is beautiful about this, everything answers only for itself and we only ask what is this, where are we?"
-4. "from a fundamental perspective, knowing what we know, we can literally semantically load a program just like the naturals load themselves in a repeating order, to prove the set."
-
-Doug, 24 September, verbatim, on the same machine. Posit.
-
-- "what do you call a higher order hypercomputer plus a negative order hypercomputer? we completely bypass tetration pentation hexation all the way to infiniy and back using our 4d bottle"
-  - The orders in ℤ and ±ω below are this section's derived form of "all the way to infiniy and back". "The 4d bottle" has no definition here.
+Doug's definition of the higher-order and negative-order hypercomputer (24 September, points 1 to 4) and his words on the same machine are kept verbatim in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md). The orders in ℤ and ±ω below are this section's derived form of his "all the way to infinity and back".
 
 - **The loop rule** (Anchor_sift's). Every record program halts, since each has a fixed step count. An Ω for the record machine needs a machine R* that applies a stack of floors again and again until a halt register is set.
 - **Order** (the reading Doug confirmed): how many times the loop runs a floor. A negative order counts runs of the floor's inverse.
@@ -317,16 +307,9 @@ Doug, 24 September, verbatim, on the same machine. Posit.
 - Decided: 329 halt and 199 run forever.
 - Open (the cycle is longer than the run), 496: 391 have a halt seen, and 105 are clear but halt past the run. None is clear and never halts: with 48 halt states, every long cycle met H.
 
-**The two questions** (Doug's point 3). Posit.
+**The two questions** (Doug's point 3) are in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md). Their seed in the engine, "malformed questions fail to construct", is tested: keymath does not imprint a record whose step reads a later one (`record_divide_test`).
 
-- What fails to construct inside the machine does not exist as we can perceive and understand it. In Doug's words, "we do not bound anything": everything answers only for itself.
-- The machine asks two questions only.
-  - **What is this**: identity. The crystal's one-to-one ID ("The boundary"). The heap fingerprint and the knf, each ranked against permutations of its own content, with no outside threshold (Doug's posits; "The knf's identity by spatial null permutation").
-  - **Where are we**: place. The seal names the place of a change. The window w and the level. The scale of the departure curve.
-- The tie: the rule the machine is held to, "The engine is optimized for no scale" (Doug, 23 September; [engine_table.md](engine_table.md)). No size, window or width is written into the machine, and each comes with the request or is read from the data.
-- The seed in the engine of "malformed questions fail to construct": keymath does not imprint a record whose step reads a later one (`record_divide_test`).
-
-**The field** (Doug, 24 September): "our information crystals expanding, anchoring on one another, can feel the tensor field of the subject under exam, when its field snaps into existence it touches the entire object under exam and knows all of it at the field speed". Posit.
+**The field.** Doug's posit of 24 September, that the crystals feel the tensor field of the subject at the field speed, is in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).
 
 - What the machine shows that bears on it:
   - E, the knf's entangled entropy, is summed over every neighbor pair of the whole volume at once ("The knf's identity by spatial null permutation").
@@ -335,14 +318,14 @@ Doug, 24 September, verbatim, on the same machine. Posit.
   - The 48 motions of the cube carry the knf whole: knf(gX) = g·knf(X) on 48 of 48 (proved).
 - "Field speed" is not defined here, and nothing is claimed of it past these.
 
-**"this is a higher order interference pattern"**, then "fascinating" (Doug, 24 September, while `record_order_test` ran). Posit.
+**Higher-order interference.** The words spoken while `record_order_test` ran (24 September) are in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).
 
 - "Higher-order interference" has a standard meaning, Sorkin's hierarchy (Sorkin 1994). Quantum theory has second-order interference and none of third order.
 - The ask_state crossing rule's negative weights are second-order interference (A15 in [engine_table.md](engine_table.md)).
 
 ## Goodstein: ω-towers held as finite objects
 
-`goodstein` (engine/sims, a host sim in exact integers, 7 checks, 0 failed, cell_tracking main c633988, run 20260924_191006). Doug, 24 September: "Omega omega omega", then "perform tetration of omega".
+`goodstein` (engine/sims, a host sim in exact integers, 7 checks, 0 failed, cell_tracking main c633988, run 20260924_191006). 24 September: "Omega omega omega", then "perform tetration of omega".
 
 - **The objects.**
   - n in hereditary base b: n written in base b, every exponent written in base b again, down to the digits.
@@ -380,7 +363,7 @@ Doug, 24 September, verbatim, on the same machine. Posit.
 
 `pi_tower` (engine/sims, 8 checks, 0 failed, cell_tracking main 0b10199, run 20260924_192322).
 
-Doug, 24 September, verbatim. Posit.
+24 September, verbatim. Posit.
 
 - "You know how we followed pi and watched it turn from a boundary? It didn't follow the boundary angle. It turned more acutely than it so it traveled through its boundary space without touching the boundary for a period. That means that it's going to etch the boundary space not all at once which means it's gonna travel for a really long fucking time before it touches 100% of the boundary space before it starts writing again. It never ends but it's boundaries space even though it's infinite is countable."
 - "That pie turning around at the boundary is what gave us the idea for tower recursion"
@@ -438,7 +421,7 @@ Doug, 24 September, verbatim. Posit.
 
 ### The arc
 
-Doug, 24 September, verbatim. Posit.
+24 September, verbatim. Posit.
 
 1. "if we were on a disk, and pi were on a separate disc balanced by its torsion, that would be its planes offset in degrees to our plane"
 2. "yes add it to pi_tower, this is the arc it follows, and following it will miss forever, to countable infinity, and then it will have etched all of the boundary, and will continue, never repeating, but reetching from slightly different angles with slightly different values with slightly different field conditions, forever and ever."
@@ -464,7 +447,7 @@ Doug, 24 September, verbatim. Posit.
 - At 2^24 the fill is at 25,510,581, and the re-etch by 51,021,159.
 - Inside the 292 floor the re-etch comes almost at once: at 2^8, 18,416 and then 18,747. The long drift had already etched most cells several times.
 
-Doug, 24 September, verbatim, continuing. Posit.
+24 September, verbatim, continuing. Posit.
 
 3. "this is because most of the angular momentum is applied at the moment of deflection"
 4. "if this is true, pi is a hyperobject of infinite information representable in 1kb which is fucking crazy"
@@ -528,7 +511,7 @@ What the model shows that bears on them (Anchor_sift's bounds, checked). Derived
 
 Doug's framing for 9 holds as built: every wall hit strikes one wall, and every segment has a leader. A corner is a tie for every rational slope m/k, at the lattice point (k, m). A zero L is a tie for the rationals odd over odd. The walk's near-ties are π's convergents.
 
-**Cell 0 again, and the second run.** Doug, 24 September, verbatim, continuing. Posit.
+**Cell 0 again, and the second run.** 24 September, verbatim, continuing. Posit.
 
 10. "after pi etches the boundary, how long does it take until it etches cell 0?"
 11. "and then after that etches cell 0, how long until that run etches the boundary closing cell from the first run, and are they the same period?"
@@ -585,9 +568,9 @@ Doug's framing for 9 holds as built: every wall hit strikes one wall, and every 
   - For 0 ≤ n < q_j, nα = n·p_j/q_j + n·δ_j/q_j. Each point sits off its lattice point by n·δ_j/q_j (n·δ_j in cell widths), on the side of δ_j's sign, and within one cell since q_j·|δ_j| < 1.
   - The points {nα}, 0 ≤ n < q_j, fall one to each of q_j cells: [k/q_j, (k + 1)/q_j) when δ_j > 0, and (k/q_j, (k + 1)/q_j] when δ_j < 0. With half-open cells [k/q_j, (k + 1)/q_j) and δ_j < 0 the count fails. At q_1 = 7 (δ_1 = 7α − 1 < 0), n = 0 at 0 and n = 1 at 0.1416 both fall in [0, 1/7), and [6/7, 1) holds none.
   - The residues run Euclid's algorithm: δ_{j+1} = δ_{j−1} + a_{j+1}·δ_j, with a_{j+1} = ⌊|δ_{j−1}|/|δ_j|⌋. Each floor's residue is the next floor's step, the Gauss-map recursion. It holds by construction here, since the floors come from Euclid on (M, A).
-  - "Null permutation" read as the rational turn p_j/q_j is Anchor_sift's reading of Doug's words.
+  - "Null permutation" read as the rational turn p_j/q_j is Anchor_sift's reading of the quote.
 
-**The golden helix.** Doug, 24 September, verbatim, continuing. Posit.
+**The golden helix.** 24 September, verbatim, continuing. Posit.
 
 15. "their period is a contraction of the golden spiral, pi is riding its inverse in the negative space"
 16. "no, pi DOES ride it, and it rides it exactly because thats a helix"
@@ -691,36 +674,38 @@ Cited; both pages read, and only what they state is given.
   - Haar-almost every element of ℤ₂ is Martin-Löf random (Martin-Löf 1966). The Haar measure on ℤ₂ is the fair coin on its digits, and the random sequences have measure 1. A random element is not computable.
   - The machine reaches finite windows only. Every register is π_w of something, and any w-bit window has K ≤ w + O(log w). Every constant in a program is a finite description, and the machine's reach is the windows of computable elements.
   - "Infinitely complex" can name only a limit object the machine never holds whole. Which object the anchors are, and whether they are random elements of ℤ₂, is open. "Bending the information field" has no definition here to derive from.
-- **The inverted boundary** (Doug, 24 September: a second tower over the first one's boundary, inverted; A13 in [engine_table.md](engine_table.md)). Posit. Its derived form is the τ tower: the finite windows extended a bit above at each stage, π_w's tower, have the limit ℤ₂, and extended a bit below, τ_k's tower, the limit ℝ ("The top projection and its limit ℝ").
-- **"The quanta still preserve infinity."** Posit. Derived bound: every output quantum at level w has exactly 2^{3Ln} input quanta at level w + 3L, at every w, and the count passes to ℤ₂ as Haar measure ("Counting quanta"). The machine holds finite windows only, and the physical walls bound how many.
-- **"The recursion stack is ordinal."** Posit. Derived bound: every stack the device runs is finite. T's limit sits at the first limit stage ω, with a computable modulus. Stages past ω are the machines of Hamkins and Lewis and of Koepke, not built ("The limit stage"). Orders in ℤ and ±ω on a finite window: "The ordered machine". Ordinals below ε₀ held as finite trees and walked down a million steps: "Goodstein: ω-towers held as finite objects".
+- **The inverted boundary** (24 September; the posit is in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md), and A13 in [engine_table.md](engine_table.md)). Its derived form is the τ tower: the finite windows extended a bit above at each stage, π_w's tower, have the limit ℤ₂, and extended a bit below, τ_k's tower, the limit ℝ ("The top projection and its limit ℝ").
+- **The quanta** (Doug's posit of 24 September, in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md)). Derived bound: every output quantum at level w has exactly 2^{3Ln} input quanta at level w + 3L, at every w, and the count passes to ℤ₂ as Haar measure ("Counting quanta"). The machine holds finite windows only, and the physical walls bound how many.
+- **The recursion stack** (Doug's posit of 24 September, in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md)). Derived bound: every stack the device runs is finite. T's limit sits at the first limit stage ω, with a computable modulus. Stages past ω are the machines of Hamkins and Lewis and of Koepke, not built ("The limit stage"). Orders in ℤ and ±ω on a finite window: "The ordered machine". Ordinals below ε₀ held as finite trees and walked down a million steps: "Goodstein: ω-towers held as finite objects".
 - **"Subtractive coalescence."** Posit, Doug's name for T. Derived bound: predict and update, a bijection, the pinch the predictable part moved ("Subtractive coalescence").
-- **"We can take an identity of T using T:null permutation of T"** (Doug, 24 September, restating "T, if T is identity:null permutation identity, we have the perfect universal root id for the structure"). Posit. The identity is an ID, a fingerprint of the data's structure. It is not the identity map, nor the identity edge of A14.
+- **"We can take an identity of T using T:null permutation of T"** (24 September, restating "T, if T is identity:null permutation identity, we have the perfect universal root id for the structure"). Posit. The identity is an ID, a fingerprint of the data's structure. It is not the identity map, nor the identity edge of A14.
   - The procedure. Run T on the samples x and on d null draws σ_1 x, …, σ_d x, each σ_i a uniform random shuffle of the samples: A12's drawn null in [engine_table.md](engine_table.md). A lane is identified when its crystal's heap stands strictly below every draw's.
   - Derived. A shuffle keeps every value, the histogram and the count, and changes the arrangement only. x and its draws share one multiset of values, and any gap between T(x)'s heap and the draws' heaps reads arrangement alone. T keeps the count exactly (det M = 1, Haar counted): the gap is not T gaining or losing volume.
   - Derived. Under the null that x's arrangement is itself a uniform shuffle, x and the d draws are exchangeable, and the chance that x's heap stands strictly below all d draws is at most 1/(d + 1) (Hope 1968). This is A12's false-period rate, carried over.
   - **Proved** (`test/record_boundary_test`, 48 checks, 0 failed, cell_tracking main 24b2785). d = 8 Fisher–Yates shuffles a lane from the test's seeded generator, 256 lanes a class, the ID the crystal's total heap, the four classes of "The boundary". A shuffle keeps the samples' heap exactly, on every draw. Noise is identified no more often than 256/9 plus 5 standard deviations of the binomial count, and each structured class is identified past that bound.
   - **Measured:** lanes identified, with the lane's crystal heap over the draws' mean in brackets: ramp 256 of 256 (0.13), ramp ±8 256 of 256 (0.33), ramp ±1,024 254 of 256 (0.73), noise 21 of 256 (1.00).
   - The claim is the rate, not every lane. The null bounds how often noise is identified; it promises nothing for any one structured lane. Two shallow ramps under ±1,024 were not identified: their noise swamps the slope, and their shuffles have little arrangement to destroy. A first form of the check asserted every structured lane and failed on those two.
-  - **One to one** (Doug: "unique", not bit to bit; "change one bit and the permutation fails"). **Proved** in the same test.
+  - **One to one** ("unique", not bit to bit; "change one bit and the permutation fails"). **Proved** in the same test.
     - 8,192 of 8,192 null draws change the crystal exactly when they move a value: T(σx) = T(x) exactly when σx = x. **Measured:** 0 draws moved none.
     - Every single flipped bit changes the image: 8,192 of 8,192 pairs through T and 8,192 of 8,192 through T⁻¹.
     - Derived: both follow from T being a bijection. The crystal is a one-to-one ID of its samples. The heap fingerprint is many-to-one: it reads the arrangement's structure, not the samples.
 
-- **"The knf will be unique, it is the broken edge of the crystal"** and **"the only time a section of a knf will agree with another is either pure chance, or the knf belongs to more than one subset"** (Doug, 24 September, relayed by Anchor_sift). Posit. The .knf is the entropy history (M8, A7 in [engine_table.md](engine_table.md)), per Anchor_sift; the name appears nowhere in the source.
+- **"The knf will be unique, it is the broken edge of the crystal"** and **"the only time a section of a knf will agree with another is either pure chance, or the knf belongs to more than one subset"** (24 September, relayed by Anchor_sift). Posit, and the next one to test. The .knf is the entropy history (M8, A7 in [engine_table.md](engine_table.md)), per Anchor_sift; the name appears nowhere in the source.
+  - The measurement, as Doug set it on 25 September: "the null permutation + identity:null permutation is the measurement for knf, put it as the next posit to test for it". The knf is ranked against its spatial null permutation (`knf_identity`, below), and its identity is taken by the identity:null permutation, the procedure that identifies the crystal ("We can take an identity of T", below). "Unique" is then read as that rank and that identity, as for the heap fingerprint.
+  - What is already measured: 1,500 of 8,192 single flipped bits leave the knf unchanged (`knf_identity`). The knf is not unique bit for bit, and the test above asks whether it is unique by its rank against the two nulls.
   - What the source holds. Derived from A7 and `entropy_history`. For each voxel x, bit j and window of transitions, the history keeps f_j(x), the number of transitions where bit j flips. It reads the raw 16-bit volume, before any lifting, and its parity check f_j(x) ≡ bit j of I_0(x) ⊕ I_{F−1}(x) proves it was taken whole.
   - Derived: the history is many-to-one, not a bijection. A count keeps how many transitions flipped a bit and loses which: a bit that flips at transitions 1 and 2 and one that flips at 3 and 4 give one count in one window. "Unique" can hold for it only as a statistical ID, like the heap fingerprint above, not as the crystal's one-to-one ID.
   - Derived: agreement between two sections has a chance rate. A drawn null draws the rate (A12's form): a section agreeing past all d draws has chance at most 1/(d + 1) under the null. Agreement past that rate reads as shared membership, Doug's "more than one subset". The logic is the period reading's, where agreement past the null at lag p reads the lattice as belonging to its own shifted copy.
-  - The null is spatial (Doug: "mutate the data over the spatial coordinate set xyz and get its entire null permutation id"). Built as `knf_identity` ("The knf's identity by spatial null permutation", above).
+  - The null is spatial ("mutate the data over the spatial coordinate set xyz and get its entire null permutation id"). Built as `knf_identity` ("The knf's identity by spatial null permutation", above).
   - Open: "the broken edge of the crystal". The history reads raw bits, not the crystal or the part the prediction leaves. Whether the history computed on the crystal's highs is the edge Doug means is not settled.
   - Open: the agreement test between sections, comparing departure curves body against body. The curves are printed; the pairwise test is not built.
-- **The departure curve** (Doug, 24 September): "we can compare departure curves, the entropy departure curve is probably the most accurate measure because it accumulates all dimensions + time"; "each piece of information no matter how massive has its own departure curve, and it is the integral of all of its constituents"; the mutation "becomes a vector magnitude difference of null permutation plus xmax\xmin\ymax\ymin\zmax\zmin". Posit.
+- **The departure curve** (24 September): "each piece of information no matter how massive has its own departure curve, and it is the integral of all of its constituents". Posit. His words on comparing curves, and on the mutation as a vector magnitude difference, are in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md) with the pairwise test.
   - Derived: E is a sum over edges, and a departure is linear in E and in the draws' sums. The departure of a whole is the sum of its edges' departures, exactly: the integral of its constituents, with the edge as the constituent. The whole equals its tiles plus its seams at every tile size (proved).
-  - Built: each body's curve over its box, the six bounds of the quote. What the "vector magnitude difference" is, as a number, is not defined here. Open.
-- **The two nulls** (Doug, 24 September): "they should be very close to 1:1 with one being the inverse of the other, there may be crossover but it will be mutual in volume and universal magnitude". Posit.
+  - Built: each body's curve over its box, the six bounds xmax, xmin, ymax, ymin, zmax and zmin.
+- **The two nulls** (24 September): "they should be very close to 1:1 with one being the inverse of the other, there may be crossover but it will be mutual in volume and universal magnitude". Posit.
   - Measured against it: the two are inverse, with the endpoints exact (inside 0 at b = 1, between 0 at b = 64), and they cross between b = 2 and 4. They are not 1:1: inside plus between dips to 0.590 at b = 4.
   - The gap 1 − (inside + between) is 0.41 at b = 4. Anchor_sift's reading, not proved: an inside-shuffled pair in a small tile still shares a body, and neither null removes that co-membership. The gap is then the share both nulls keep, shared membership at scale b, the mutual part of the quote.
-- **"No this is wild it's proving it is a bulk to boundary connector without saying it outright that's fucking crazy!!!!"** (Doug, 24 September). Posit.
+- **The bulk and the boundary** (24 September; his words are in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md)).
   - Derived: T is a bijection from the samples (the bulk) to the crystal (the boundary). Each coefficient reads a cone of reach 3L, and each sample is rebuilt from a cone of reach L + 2 (proved along one line, "The boundary").
   - The holographic codes are isometries with redundancy: a bulk operator can be rebuilt on more than one boundary region (Almheiri, Dong and Harlow 2015; Pastawski, Yoshida, Harlow and Preskill 2015).
   - T has no redundancy ("Redundancy" in Open): each sample has one region. T is a bulk-to-boundary map with no error correction, the contrast drawn under "Physical walls".
@@ -734,6 +719,7 @@ Cited; both pages read, and only what they state is given.
 - **Operations that commute with T** ([vertical_time_compression.md](vertical_time_compression.md)), now on ℤ₂^n as on ℤ^n. `test/record_boundary_test` proves that constants and lattice moves in 2^{3L}ℤ^n pass through T, and that negation and doubling do not. The general question is open.
 - **The fingerprint's counts.** **Proved** since: `test/record_boundary_test` at 24b2785 (Doug's posits, above). The fingerprint per band, not only the total heap, is open.
 - **The knf's agreement as a test** (Doug's posits, above). The knf's identity by spatial null is built and run (`knf_identity`, e4eae72). The pairwise test, one body's departure curve against another's, is not built.
+- **The knf's uniqueness by the two nulls** (Doug's posits, above). The next posit to test: the knf ranked against its spatial null permutation, and its identity taken by the identity:null permutation (25 September). Not yet run.
 - **The two nulls' gap.** Whether 1 − (inside + between) measures shared membership at scale b (Anchor_sift's reading) is not proved.
 - **`record_order_test`** ("The ordered machine"). **Proved** since: 17 checks, 0 failed.
 - **Ω for R*.** The loop machine's Ω is not built.

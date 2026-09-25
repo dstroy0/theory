@@ -9,7 +9,7 @@
 
 \section{\texorpdfstring{0. Why these ideas get resisted}{0. Why these ideas get resisted}}
 
-Ordinary code is written as instructions: do this, then this, to every input, every time. The cost of a program is its steps times its inputs, and nobody questions that. A key breaks that product. The steps are paid once, on one stand-in, and every input after that costs one application, whatever the program's length. That sounds like something for nothing, so it gets doubted, then hedged, then argued down to “an optimisation that works for some cases”. It is not an optimisation. It is what composition \emph{is} once every step is exact.
+Ordinary code is written as instructions: do this, then this, to every input, every time. The cost of a program is its steps times its inputs, and nobody questions that. A key breaks that product. The steps are paid once, on one stand-in, and every input after that costs one application, whatever the program's length. That sounds like something for nothing. It gets doubted, then hedged, then argued down to “an optimization that works for some cases”. It is not an optimization. It is what composition \emph{is} once every step is exact.
 
 The second default is floating point. Most code rounds at every step and treats the error as noise to be managed. Under rounding, none of what follows holds, and so it looks like it cannot hold. The engine does not round, and so it does.
 
@@ -25,7 +25,7 @@ T3(T2(T1(x))) = (T3 ∘ T2 ∘ T1)(x)
 
 So the whole chain can be composed first, before any input exists, into one map, and that map applied afterwards. A chain of a thousand steps and a chain of one step then cost an input the same: one application of the composed map.
 
-\textbf{The condition, and why it is everything.} a → b and b → c give a → c only where the b one step hands over is \emph{exactly} the b the next step takes in. If a step rounds its output, the next step receives a b′ ≠ b, and the chain is no longer one map: (T3 ∘ T2) ∘ T1 and T3 ∘ (T2 ∘ T1) give different numbers, and composing first is no longer the same as running the steps. That is why every step in this engine is closed and exact: integers as wide as they grow, nothing rounded, truncated or wrapped at a hand off. Under that condition transitivity holds for chains of any length, and the whole chain collapses to one object.
+\textbf{The condition, and why it is everything.} a → b and b → c give a → c only where the b one step hands over is \emph{exactly} the b the next step takes in. If a step rounds its output, the next step receives a b′ ≠ b, and the chain is no longer one map: (T3 ∘ T2) ∘ T1 and T3 ∘ (T2 ∘ T1) give different numbers, and composing first is no longer the same as running the steps. For this reason every step in this engine is closed and exact: integers as wide as they grow, nothing rounded, truncated or wrapped at a hand off. Under that condition transitivity holds for chains of any length, and the whole chain collapses to one object.
 
 \section{\texorpdfstring{2. The imprint: run the program once, on the impulse}{2. The imprint: run the program once, on the impulse}}
 
@@ -57,7 +57,7 @@ Two keys applied one after the other are one key: the second applied to the firs
 
 \section{\texorpdfstring{4. Unbounded operations in a small key}{4. Unbounded operations in a small key}}
 
-This is the claim that gets refused on sight, so here it is exactly, with the engine's numbers.
+This is the claim that meets the most doubt on sight. Here it is exactly, with the engine's numbers.
 
 \textbf{What a key's size depends on.} A key's size depends on the program's \emph{reach}: how far one input's influence spreads, and how wide the exact weights grow. It does not depend at all on how many times the program is applied, or on how many inputs pass through it. Apply the key to one voxel or to a trillion: the key is the same bytes.
 
@@ -65,9 +65,9 @@ This is the claim that gets refused on sight, so here it is exactly, with the en
 
 \textbf{The CRC key: 2\textasciicircum{}48 steps in 24 KiB.} A CRC is linear over GF(2). Its advance across 2\textasciicircum{}k zero bytes is a 64 × 64 bit matrix, and squaring the matrix doubles the distance. The key holds 48 of them: 48 × 64 columns × 8 bytes = 24,576 bytes. With them the register is carried across any run of up to 2\textasciicircum{}48 bytes (about 281 trillion byte steps) in at most 48 matrix applications. \textbf{Proved:} the folded CRC of 44b6\_\allowbreak{}0113de3b equals the CRC taken byte by byte, 363bf8bdffac8f29.
 
-\textbf{Periodic operations: infinitely many steps in one period.} Anything that repeats is known entirely from one period. Modulo is a wave. The mirror fold at a frame's edges repeats with period twice the line, and the cycle lays one period down once as a table and reads every tap from it. The two's complement expansion of 1/d, for odd d, is eventually periodic with period the order of 2 modulo d, so division by d is one period of limbs, repeated. In each case the operation applied without end is held completely in one period.
+\textbf{Periodic operations: infinitely many steps in one period.} Anything that repeats is known entirely from one period. Modulo is a wave. The mirror fold at a frame's edges repeats with period twice the line, and the cycle lays one period down once as a table and reads every tap from it. The two's complement expansion of 1/d, for odd d, is eventually periodic with period the order of 2 modulo d. Division by d is one period of limbs, repeated. In each case the operation applied without end is held completely in one period.
 
-\textbf{Where it does not hold, stated plainly.} A key cannot be smaller than the program's reach. Smoothing of order n has a row of n + 1 taps, and a longer smoothing has a longer row. What is bounded by the reach is the key; what is unbounded is how many times it is applied and how many steps it stands for.
+\textbf{Where it does not hold, stated plainly.} A key cannot be smaller than the program's reach. Smoothing of order n has a row of n + 1 taps, and a longer smoothing has a longer row. The reach sets the size of the key. How many times the key is applied, and how many steps it stands for, have no limit.
 
 {\small
 \setlength{\tabcolsep}{6pt}
@@ -86,7 +86,7 @@ a key's size does not depend on how many inputs pass through it & built: the sam
 
 \section{\texorpdfstring{5. key : transform → product, in one cycle}{5. key : transform → product, in one cycle}}
 
-A check or a filter is a key too, and it does not need a pass of its own. Fold it into the pass that already touches the data. The tower's widen reads every voxel once, so the CRC is taken there. The narrow writes every rebuilt voxel once, so the rebuilt sample's CRC is taken there. The product comes out of the same pass.
+A check or a filter is a key too, and it does not need a pass of its own. Fold it into the pass that already touches the data. The tower's widen reads every voxel once, and the CRC is taken there. The narrow writes every rebuilt voxel once, and the rebuilt sample's CRC is taken there. The product comes out of the same pass.
 
 This also keeps transitivity. The transform and the check are one product: the transform holds AND the check holds, or neither does. A check run in a separate pass checks a different moment than the transform happened in.
 
@@ -99,11 +99,11 @@ Floating point has a floor: below some relative size, a difference is lost. Exac
 Two consequences follow, and both are used.
 
 \begin{itemize}
-\item \textbf{Ties are broken deterministically, never by noise.} In the component tree every face's key carries its own name in the lowest limb, so no two keys ever tie. The smallest possible difference decides, and it decides the same way on every machine: the Windows and Linux builds give byte identical edges.
-\item \textbf{The medium is subtracted exactly.} The wide term, the medium's own scattering, is subtracted whole, so what the residual keeps is only what stands above it. Under rounding the subtraction would leave a residue of rounding, and that residue would read as structure.
+\item \textbf{Ties are broken deterministically, never by noise.} In the component tree every face's key carries its own name in the lowest limb. No two keys ever tie. The smallest possible difference decides, and it decides the same way on every machine: the Windows and Linux builds give byte identical edges.
+\item \textbf{The medium is subtracted exactly.} The wide term, the medium's own scattering, is subtracted whole. What the residual keeps is only what stands above it. Under rounding the subtraction would leave a residue of rounding, and that residue would read as structure.
 \end{itemize}
 
-\section{\texorpdfstring{7. The noise is read, never modelled}{7. The noise is read, never modelled}}
+\section{\texorpdfstring{7. The noise is read, never modeled}{7. The noise is read, never modeled}}
 
 The residue left after the bodies are subtracted is the sample's own field noise. It is deterministic, constant for that sample, and unique to it. It is held whole in the .iapx, never bounded, fitted, thresholded or thrown away. Where the engine needs a background to stand a body against, it reads one. The null draws climb the same body toward frames far off in time, where only the field noise can answer. A body is real where it stands above that reading. No distribution is assumed, and no random number is drawn anywhere in the tracker.
 

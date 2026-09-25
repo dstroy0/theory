@@ -5,4 +5,4 @@
 
 | file | origin |
 |---|---|
-| `noise_sieve_5_cell_tracking_harmonics.pdf` | the sieve applied to this competition: the engine holds nothing and gradients define themselves; a split as a boundary discontinuity; mitosis and lysis judged over the whole sample by an entropy bump; each body's spherical harmonic fingerprint, dipole and quadrupole dominant |
+| `noise_sieve_5_cell_tracking_harmonics.md` | the sieve applied to this competition: the engine holds nothing and gradients define themselves; a split as a boundary discontinuity; mitosis and lysis judged over the whole sample by an entropy bump; each body's spherical harmonic fingerprint, dipole and quadrupole dominant |

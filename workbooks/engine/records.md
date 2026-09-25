@@ -1,11 +1,13 @@
 # Records
 
-**Purpose:** The commit and pull request texts written for the engine, dated, as they were written, so the reasons for each change travel with the workbook.
-**Scope:** 24 and 25 September: commits to dstroy0/cell_tracking main, each with its hash and its time (UTC−4), and the three pull requests carried into dstroy0/anchor_sift with their commits. A commit's subject is its heading and its message follows. A pull request's own headings sit one level under its record. The other commits of those days keep their messages in the repository's history. The cell program's texts are in the cell workbook's records.md.
+**Purpose:** The commit and pull request texts written for the engine, dated, as they were written. The reasons for each change travel with the workbook.
+**Scope:** 24 and 25 September: commits to dstroy0/cell_tracking main, each with its hash and its time (UTC−4), and the three pull requests carried into dstroy0/anchor_sift with their commits. A commit's subject is its heading and its message follows. A pull request's own headings sit one level under its record. The other commits of those days keep their messages in the repository's history. The cell program's texts are in the cell workbook's records.md. Each text sits between quote markers that hold it verbatim for the prose gate, and only its spelling is corrected.
 
 ## 24 September
 
 ### 15:50, anchor_sift #6 (4c42d0e): record machine: a quotient by a constant is narrower; theory: heap, ring, lens
+
+<!-- docs-check: quoting -->
 
 The pull request's text:
 
@@ -87,7 +89,11 @@ floors, the neighbor gather, the two boundaries, the heap and the ring,
 and the lens; engine_table.md A13 is updated to match.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 16:37, de5bdff: test: the crystal as a boundary, and the odd crystals orthogonal to Z_2
+
+<!-- docs-check: quoting -->
 
 ```text
 record_boundary_test (new, 41 checks, 0 failed). A 5/3 tower of four
@@ -121,7 +127,11 @@ one into the exact run modulo 2^8 p^v (262144 of 262144), and an xor
 breaks modulo 3 (827 of 4096).
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 16:38, 9df40f9: theory: the two crystals, the record machine over the 2-adic integers
+
+<!-- docs-check: quoting -->
 
 ```text
 two_crystals.md (the theorist): the wrap as the projection onto
@@ -138,7 +148,11 @@ README gains its row, engine_table.md A13 its pointer, and the TeX is
 regenerated.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 16:49, anchor_sift #7 (d45794d): test: the crystal as a boundary, the two crystals and the odd crystals
+
+<!-- docs-check: quoting -->
 
 The pull request's text:
 
@@ -213,7 +227,11 @@ Theory (the theorist): two_crystals.md and its chapter, the README row
 and the A13 pointer in engine_table.md.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 16:56, 24b2785: test: the crystal's identity by null permutation, and one bit changes it
+
+<!-- docs-check: quoting -->
 
 ```text
 record_boundary_test (48 checks, 0 failed, 7 new).
@@ -236,7 +254,11 @@ reads the arrangement alone.
   and through T^-1.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 17:28, e4eae72: sim: the knf's identity by spatial null permutation, and its departure curve
+
+<!-- docs-check: quoting -->
 
 ```text
 knf_identity (23 checks, 0 failed), on the nbody lattice's law in a 64^3
@@ -244,8 +266,8 @@ cube over 177 frames, so the entropy history has 16 whole windows.
 
 The data is mutated over xyz (Doug: "mutate the data over the spatial
 coordinate set xyz and get its entire null permutation id"). A spatial
-permutation keeps every section and the cloud. E, every voxel's centred
-window densities against its z, y, x neighbours on the torus, reads the
+permutation keeps every section and the cloud. E, every voxel's centered
+window densities against its z, y, x neighbors on the torus, reads the
 arrangement alone.
 
 - The 48 exact motions (theta = k pi/2 and the reflections, each with a
@@ -268,7 +290,11 @@ arrangement alone.
   rule says: inside a window, with bit(f-1) != bit(f+1).
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 17:32, ad5d085: theory: the knf's identity by spatial null permutation, and the fingerprint proved
+
+<!-- docs-check: quoting -->
 
 ```text
 two_crystals.md and its chapter, engine_table.md A13, the README row
@@ -288,7 +314,11 @@ and the vertical time compression Open item, written by the theorist.
 - Open: the pairwise departure-curve test between sections.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 17:55, anchor_sift #8 (82db58c): sim: the knf's identity by spatial null permutation; test: the crystal's identity
+
+<!-- docs-check: quoting -->
 
 The pull request's text:
 
@@ -351,7 +381,11 @@ test/engine, src/engine and theory_bucket/cell_tracking.
   compression, with every test path at test/engine.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 18:02, 9101bbb: theory: knf_identity in the engine table; theory_tex skips a book's built PDF
+
+<!-- docs-check: quoting -->
 
 ```text
 - engine_table.md: M8 carries the knf's identity by spatial null
@@ -369,7 +403,11 @@ test/engine, src/engine and theory_bucket/cell_tracking.
 - The workbook's two chapters regenerated.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 18:19, b2d1f44: test: the loop rule's orders both ways, and the omega stage on a finite window
+
+<!-- docs-check: quoting -->
 
 ```text
 record_order_test (17 checks, 0 failed).
@@ -394,7 +432,11 @@ posits verbatim, the loop rule and its orders, the theorems cited, and
 the test as proved.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 19:11, c633988: sim: Goodstein's sequences held exactly, and omega^omega^omega falls a million times
+
+<!-- docs-check: quoting -->
 
 ```text
 goodstein (7 checks, 0 failed), a host sim in exact integers. A value is
@@ -415,7 +457,11 @@ b read as omega, the tree is an ordinal below epsilon_0.
   terms as one block.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 19:25, 0b10199: sim: pi turning at the boundary, and the tower it builds
+
+<!-- docs-check: quoting -->
 
 ```text
 pi_tower (8 checks, 0 failed), a host sim in exact integers. The
@@ -446,7 +492,11 @@ without walking the turn.
   to 23.8 (2^61). Elsewhere it takes 1 to 5.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 19:25, 415f141: theory: Goodstein's omega-towers, and the wire and the witness
+
+<!-- docs-check: quoting -->
 
 ```text
 By the theorist.
@@ -465,7 +515,11 @@ By the theorist.
 - The two chapters regenerated.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 19:26, 3ff5fa3: theory: goodstein and pi_tower in the engine table
+
+<!-- docs-check: quoting -->
 
 ```text
 M19 is now twelve sims. goodstein (7 checks, 0 failed, c633988) and
@@ -473,7 +527,11 @@ pi_tower (8 checks, 0 failed, 0b10199) run on the host. Each has what it
 proves and what it measures. The chapter is regenerated.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 19:28, 19fe58c: theory: pi turning at the boundary, the floors of a rotation
+
+<!-- docs-check: quoting -->
 
 ```text
 By the theorist. The new section in two_crystals.md comes after
@@ -494,7 +552,11 @@ Goodstein.
 - The chapter is regenerated.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 19:39, 7abe65d: sim: pi_tower's arc, the helix over our disk balanced by its torsion
+
+<!-- docs-check: quoting -->
 
 ```text
 pi_tower now has 13 checks, 0 failed (build/20260924_193716_sim_pi_tower).
@@ -520,7 +582,11 @@ rises 1/pi a turn, piercing the disk at the marks {n pi}.
   2^8, 18,416 and 18,747.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 19:48, 7ed7fc6: sim: pi_tower's balance on the arc and its loss at the boundary
+
+<!-- docs-check: quoting -->
 
 ```text
 pi_tower now has 17 checks, 0 failed (build/20260924_194636_sim_pi_tower).
@@ -533,7 +599,7 @@ boundary"; "one force must win because we cannot divide by zero".
   L_z = 0.151657235526.
 - The square billiard from the corner at slope pi, unfolded. The
   segment in lattice cell (i, j) carries
-  L = (-1)^(i+j) ((j + 1/2) - pi (i + 1/2)) about the centre. A zero L
+  L = (-1)^(i+j) ((j + 1/2) - pi (i + 1/2)) about the center. A zero L
   would need pi = (2j+1)/(2i+1), and a corner would need pi (i+1) whole.
   Walked over 2^24 columns from the integer turn's carries, with every
   floor certain:
@@ -548,7 +614,11 @@ boundary"; "one force must win because we cannot divide by zero".
   pi stands nearest 5419351/1725033, a convergent.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 19:53, b0b6da6: sim: pi_tower's second run, cell 0 again and then the first run's last cell
+
+<!-- docs-check: quoting -->
 
 ```text
 pi_tower now has 18 checks, 0 failed. Doug asked: after pi etches the
@@ -573,7 +643,11 @@ Measured:
   at 52), and c q_j at the other 6.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 19:58, cc5eb6b: theory: the arc, its balance and the boundary, and the second run
+
+<!-- docs-check: quoting -->
 
 ```text
 By the theorist, in "pi turning at the boundary" of two_crystals.md, with
@@ -598,7 +672,11 @@ M19 of the engine table.
 - The chapters are regenerated.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 20:16, c26b6a7: sim: pi_tower's residue, its golden helix, and any 2^n as the request
+
+<!-- docs-check: quoting -->
 
 ```text
 pi_tower now has 23 checks, 0 failed, at 2^1 to 2^100 and at 2^1000.
@@ -628,7 +706,11 @@ pi_tower now has 23 checks, 0 failed, at 2^1 to 2^100 and at 2^1000.
   times the cells, on floor 600 (a = 106).
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 20:19, 14eabb2: theory: pi's residue, the golden helix, and any 2^n
+
+<!-- docs-check: quoting -->
 
 ```text
 By the theorist, in "The arc" of two_crystals.md, with M19 of the engine
@@ -650,7 +732,11 @@ table.
 - The chapters are regenerated.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 21:16, e340d08: sim: pi_tower's deepest turns on the engine, by BBP on the record machine
+
+<!-- docs-check: quoting -->
 
 ```text
 The turn at depth n is alpha's bit n, and the BBP formula reads it where it
@@ -675,7 +761,11 @@ sweep by sweep, printing terms done and the rate. At 2^(2^30) it finishes,
 pi_tower: 41 checks, 0 failed.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 21:27, 8598302: theory: where the two towers stand in the engine, and pi's BBP on the engine
+
+<!-- docs-check: quoting -->
 
 ```text
 A13 now says it plainly: in the engine T and T^-1 are tower.cu's own
@@ -693,9 +783,13 @@ to the exact turn's, 2^(2^30) finished in 10.6 s, and 2^googol measured at
 gains 24 September with the same runs.
 ```
 
+<!-- docs-check: end quoting -->
+
 ## 25 September
 
 ### 01:03, f153047: sim: pi_plane, pi's bits laid out in the plane and read against shuffles
+
+<!-- docs-check: quoting -->
 
 ```text
 pi's bits after the point, certified by Machin's bracket on the exact
@@ -731,7 +825,11 @@ funnel readings are ordinary on the six blind blocks and on ten fresh
 ones (376, 201, 639 and 918, 841, 815 of 999 reach pi's).
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 02:10, 5362f72: record machine: every register's width read from its linear form
+
+<!-- docs-check: quoting -->
 
 ```text
 keymath carries every register as a linear form over atoms: integer
@@ -753,7 +851,11 @@ level before.
 The README's width table, and a paragraph on the forms, say the same.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 02:10, 5821459: test: every record test a tessera job, and the Gaussian step's widths
+
+<!-- docs-check: quoting -->
 
 ```text
 Each record test is one job on the device's tessera daemon, submitted
@@ -773,7 +875,11 @@ table 16, divide 20, bitwise 25, boundary 49, coherence 15 and order 18
 checks, 0 failed.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 02:10, c3ff54e: sim: floor_match, finding x on floor 2 by an and over bit planes
+
+<!-- docs-check: quoting -->
 
 ```text
 a is one 64^3 camera frame. The engine's tower lifts it, and the
@@ -789,13 +895,17 @@ half of a, 131,072 samples. The lift reads a once to build the index.
 11 checks, 0 failed, a tessera job.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 02:10, 5e97dbf: theory: the engine in math, the Gaussian step, and widths by linear forms
+
+<!-- docs-check: quoting -->
 
 ```text
 The engine table opens with the engine in math, E0 to E15, each part's
 algebra stated as the code holds it. A16 is the Gaussian step: BBP's
 base as a power of 1 + i, the record floor (a - b, a + b), pi as four
-times one step's turn with BBP's logarithms cancelling, and the width
+times one step's turn with BBP's logarithms canceling, and the width
 made fluid by keymath's linear forms, built and proved at every floor.
 
 E1's width table, E4 and A13 carry the new widths and the tower's ring,
@@ -805,7 +915,11 @@ ring as history. The ledger gains 24 September's Gaussian run and 25
 September's: the eight record tests on tessera, and floor_match.
 ```
 
+<!-- docs-check: end quoting -->
+
 ### 08:26, 0523a6e: theory: the driver's stages, OrganoidTracker and Hawkins into them, and the residual at any width
+
+<!-- docs-check: quoting -->
 
 The engine's part of the commit's text. The rest is the cell program's, in the cell workbook's records.md.
 
@@ -816,3 +930,5 @@ returned, a value past it refused, proved by linearity against the
 16-bit path (336 checks, 0 failed). The scale audit and the offers
 follow.
 ```
+
+<!-- docs-check: end quoting -->

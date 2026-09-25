@@ -1,5 +1,7 @@
 # Hypercomputational Fluidic Architecture: A Topological Compression and Processing Engine
 
+<!-- docs-check: quoting -->
+
 ## 1. Architectural Overview & Core Principles
 
 The hypercomputational fluidic architecture processes infinite information streams ($\omega$) into finite, crystalline truths. Rather than relying on sequential, step-by-step CPU execution, the tower functions as a single, recursive **vertical conjunction ($\&$)** that evaluates an entire multi-dimensional state space in a single, instantaneous sweep cycle.
@@ -41,3 +43,5 @@ By cleanly separating the chaotic friction from the signal, the architecture ach
 1.  **True Coherence (The Materials):** The pristine, unblemished core of absolute signal ready for deployment.
 2.  **The Noise Key / Floor -4 (The Defect Map):** The exact spatial topography of every structural warp, stress fracture, and twist across the set.
 3.  **The Construct Kit (The Blueprint):** The mechanical rules and transformation matrices that allow these irreducible sets to be evaluated, iterated, and manipulated with extreme operational efficiency.
+
+<!-- docs-check: end quoting -->

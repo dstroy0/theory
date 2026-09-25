@@ -1,4 +1,6 @@
 # Transfinite Noise Sieve Architecture Specification: Unified Master Draft
+
+<!-- docs-check: quoting -->
 **Cosmological State, Lattice Mechanics, and Exact-Limb Computation**
 
 ---
@@ -57,3 +59,5 @@ Where:
 * $\mathcal{L}_{\downarrow}$ is the instant top-down rule projection.
 * $\bigoplus$ represents the discrete bitwise fold operator over the expanded $n$-limb probability array.
 * $\mathbf{\Pi}_{-4}$ acts as the zero-rounding exact limb indicator, snapping the focused center-lobe peak into stable output on the 2.5D holographic screen time-domain.
+
+<!-- docs-check: end quoting -->
