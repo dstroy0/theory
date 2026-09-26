@@ -254,7 +254,7 @@ BANNED = (
         # clear that the payload follows" was not caught until this line took the seventh.
         r"\b(name|definition|token|type|structure|constraint)s?\s+(says|say|signals|signal|encodes|encode|"
         r"conveys|convey|announces|announce|advertises|advertise|makes clear|make clear)\b",
-        # `so an` is the same construction and was unmatched until 2026-09-16.
+        # `so an` is the same construction, and no pattern here matched it until 2026-09-16.
         # code-documentation:112 describes a CLAUSE -- "the personified consequence clause" -- and
         # this pattern implemented a TOKEN. Every `so a NN, down from NN` reported before this line
         # changed measured the matcher and not the tree: 21 of 105 instances across seven scoped
@@ -333,7 +333,7 @@ BANNED = (
         r"\b(what|that) matters (is|here|most)\b",
         #
         # The machine-prose vocabulary. None of these is wrong English and none is a claim about a
-        # measurement. None of them breaks a build. They are the words a reader has learned
+        # measurement. No build fails on one. They are the words a reader has learned
         # to read as unwritten, and a page carrying them gets skimmed instead of read. Nothing in a
         # library about memory, entropy or crystal axes needs any of them.
         #
@@ -632,7 +632,7 @@ BANNED = (
         #
         # The rule this tier enforces is that a fact is stated once, flat, and left alone.
         #
-        # Moral entitlement. Whatever is owed here is settled in the licence and in SPEECH.tsv.
+        # Moral entitlement. Whatever is owed here is settled in the license and in SPEECH.tsv.
         r"\b(is|are|was|were) (the least|what) (they|we|he|she|you|somebody) (are |is |)?(owed|deserve)",
         r"\b(the least|more) (they|we|you) (deserve|are owed)\b",
         r"\bwe owe (them|him|her|you|it)\b",
@@ -1400,11 +1400,11 @@ QUOTED = (
     re.compile(r"salish and neighbouring", re.IGNORECASE),
 )
 
-# A span the writing sets off as a citation of a form. A token inside one is a NAME and not a USE,
-# and that is the same reasoning QUOTED already carries for a proper name: the document is pointing
+# A span the writing sets off as a citation of a form. A token inside one is mentioned by name,
+# the same reasoning QUOTED already carries for a proper name: the document is pointing
 # at the token, not reaching for it.
 #
-# WHAT MEASURED IT, and this is the single highest-leverage precision rule in the file. The two
+# WHAT MEASURED IT. No precision rule in the file removes more false findings than this one. The two
 # documents that authorize this checker were run against it. code-documentation/SKILL.md reported
 # 283 prose findings and 228 hits in it sit inside one of these spans, code-comments/SKILL.md
 # another 35. Every one is the standard writing out a token it bans, letting a reader see which
@@ -1423,7 +1423,7 @@ QUOTED = (
 # the standards and five in ProtoCore, and three of those five were real TIER A findings inside a
 # heading label: BUGS.md:376 "**What survives from F1/F2:**", :518 "**Why it is deferred rather than
 # fixed:**", :1576 "**What it uncovered:**". Bold marks a heading in this tree far more often than
-# it marks a citation. The arm was a net loss and is recorded here.
+# it marks a citation. The arm was a net loss, and this note keeps the record of it.
 #
 # The italic arm refuses a span holding a table cell separator. ProtoCore TUNING.md:154 is a table
 # row where two unrelated asterisks in different cells paired across the row and swallowed a real
@@ -1440,7 +1440,7 @@ QUOTED = (
 # where a comment names a symbol.
 NAMED_SPAN = re.compile(r"`[^`\n]{1,300}`")
 NAMED_IN_MARKDOWN = (
-    # Italic, excluding a neighbouring asterisk so **bold** is not read as an italic span opening
+    # Italic, excluding a neighboring asterisk so **bold** is not read as an italic span opening
     # on its second asterisk, and excluding a cell separator for the reason above.
     re.compile(r"(?<!\*)\*[^*\n|]{1,300}\*(?!\*)"),
     # The short quoted form. PASSAGE stays for the long quotation, which is a different thing: it
@@ -1466,10 +1466,10 @@ NAMED_IN_MARKDOWN = (
 # `optimisation` sites at :305, :311 and :321 were hidden twice, by the extension list AND by the
 # locale stage being ten literals. An author who added the extension and not the pattern would have
 # watched :123 fire, read the file as covered, and left the other three invisible 182 lines further
-# down. Both halves of this pass are needed to see all four, and that is why they are one pass.
+# down. Both halves of this pass are needed to see all four, and they are therefore one pass.
 BUILD_SUFFIXES = (".sh", ".ps1", ".cmake", ".yml", ".yaml")
 
-# Named, not suffixed. A build file is as likely to be named as it is to be extended, and an
+# Build files matched by their whole name. A build file is as likely to be named as it is to be extended, and an
 # extension list cannot express `CMakeLists.txt`. Carried from
 # repo_tools/docs/docs_maint/ai_words.py, which this pass supersedes.
 BUILD_NAMES = ("CMakeLists.txt", "Makefile", "GNUmakefile", "Dockerfile")
@@ -1510,7 +1510,7 @@ def checked_file(path):
 # THE EXCLUSION LAYER. EVERY EXCLUSION REFUSES AND SAYS SO
 # ====================================================================
 #
-# THE FOUR STAGES CALL IN HERE AND NONE OF THEM CARRIES A SKIP OF ITS OWN. A skip written four times
+# THE FOUR STAGES CALL IN HERE, AND NO STAGE HOLDS A SKIP OF ITS OWN. A skip written four times
 # is four places to forget it and four places for the four copies to drift apart. That is the same
 # fault the note above LOCALE records about a rule table duplicated into the table that enforces it.
 # There are three call sites and no others: prose_only applies the blanking rules once, and
@@ -1528,7 +1528,7 @@ def checked_file(path):
 # EVERY EXCLUSION STATES ITS REASON IN THE SOURCE AND NOT ONLY ITS RULE. A bare list of paths is the
 # kind of thing a later maintainer deletes as overcautious, and they are right to: a rule nobody can
 # check is a rule nobody can keep. A list saying why survives. The prior art is idemIP's
-# repotools.toml:40-43, followed here instead of reinvented:
+# repotools.toml:40-43, followed here instead of written again:
 #
 #     # The two files in this tree that are prose. docs/ is deliberately not a root: everything
 #     # under docs/learn is the RFC corpus as the RFC Editor published it, which is not ours to
@@ -1539,7 +1539,7 @@ def checked_file(path):
 # make it a discovered rule and not three preferences, and a discovered rule gets written once.
 #
 # EVERY RULE HERE IS A FIRST-CLASS RULE AND NOT A SPECIAL CASE. Each one has a name, a reason, a
-# measured cost and a test. A special case is a rule with none of those, and it is the thing the
+# cost taken from a run, and a test. A special case is a rule with none of those, and it is the thing the
 # next person deletes.
 
 
@@ -1829,8 +1829,8 @@ def reconcile_command(manifest):
 # in front of the register scan. Carried from repo_tools/docs/docs_maint/ai_words.py, which this
 # pass supersedes.
 #
-# WHERE A BLOCK ENDS IS THE WHOLE RULE, and getting it wrong in either direction has a cost that was
-# measured before this landed. A first attempt split blocks on blank source lines. A `#` alone on a
+# WHERE A BLOCK ENDS DECIDES EVERY RESULT HERE. Getting it wrong in either direction has a cost that
+# was measured before this landed. A first attempt split blocks on blank source lines. A `#` alone on a
 # line is not blank. The entire 28-line comment header of a maint script read as one block and
 # 164 findings went quiet across this tree alone, among them six hits in a file about orthography
 # and two tier A hits in another. A block is split instead on MARKER-stripped emptiness, the same
@@ -2057,7 +2057,7 @@ def generated_regions(lines):
 # paragraph mentioning Canada does not get to write `is what makes`. Only a convention finding goes
 # quiet, and only inside the run carrying the subject.
 #
-# THE SUBJECT IS THE CONVENTION AND NOT THE COUNTRY, and the pattern says so. A bare \bbritish\b
+# THE SUBJECT IS THE CONVENTION. The pattern exempts a word about writing and never a country. A bare \bbritish\b
 # would exempt "British Telecom's optimisation", where the subject is a company and the convention
 # is a live finding. Each arm names a word about writing: `english`, `spelling`, `convention`,
 # `usage`, `variant`, `orthography`.
@@ -2105,7 +2105,7 @@ NAMED_STANDARD = re.compile(
 # requirement whose wording is not this tree's to edit.
 #
 # NOT A SCAN EXEMPTION. Nothing in BANNED matches a capitalized normative keyword. Exempting a
-# run for carrying one would buy nothing and cost whatever else is in the run. It is a rewrite
+# run for carrying one would gain nothing and cost whatever else is in the run. It is a rewrite
 # refusal and only that: a line carrying one is never rewritten, because reflowing a requirement is
 # how a requirement stops being the one that was agreed.
 RFC_2119 = re.compile(
@@ -2167,8 +2167,8 @@ def context_exempt(text):
 # there is no construction a machine can repair.
 #
 # THE REWRITING HALF IS DELIBERATELY NOT IMPLEMENTED. `--fix` runs this policy over the findings and
-# prints what it would and would not touch, and writes nothing. The gate is here first, and on
-# purpose: whoever adds the writing half has to come through fix_refusal, and cannot add it without
+# prints what it would and would not touch, and writes nothing. The gate is here first,
+# deliberately: whoever adds the writing half has to come through fix_refusal, and cannot add it without
 # meeting the manifest, verbatim, generated and legal refusals that are already tested beside it.
 FIX_TIERS = frozenset(("alphabet",))
 
@@ -2708,8 +2708,8 @@ MARKDOWN_RULE = re.compile(r"^\s*-{3,}\s*$")
 MARKDOWN_BOLD = re.compile(r"\*\*(?=\S)[^*]*\S\*\*")
 MARKDOWN_ITALIC = re.compile(r"(?<![A-Za-z0-9])\\_(?=[A-Za-z])[^\\]*\\_(?![A-Za-z0-9])")
 
-# A drawing, not emphasis. The SHA-256 shadow chapters plot one row per bit and the asterisks in
-# those rows are ink. Three or more of the characters a plot is ruled with says so.
+# A drawing. The SHA-256 shadow chapters plot one row per bit and the asterisks in those rows are
+# ink. Three or more of the characters a plot is ruled with mark a line as a drawing.
 ASCII_ART = re.compile(r"[#=|+~^]{3,}")
 
 
@@ -3426,7 +3426,7 @@ def main():
         "catches nothing." % (checked, len(roots))
     )
 
-    # A run that checks nothing has not passed. A run that reads no files and reports success is the failure
+    # A run that checks nothing has not passed. Reading no files and reporting success is the failure
     # a commit hook cannot see, and it is how a wrong path goes unnoticed for as long as it takes
     # somebody to wonder why the count never moves.
     if checked == 0:

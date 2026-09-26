@@ -2,7 +2,7 @@
 
 Combining Laplace's Demon (omniscient physical state knowledge) with a non-halting, mathematically perfect UTM allows us to treat video noise not as a random statistical distribution, but as a fully deterministic, computable function of atomic interactions, photon arrivals, and circuit thermodynamics.
 
-Below is a rigorous framework representing this noise function by integrating across $n$ still frames using four distinct vector magnitudes corresponding to fundamental physical noise components.
+Below is a framework representing this noise function by integrating across $n$ still frames using four distinct vector magnitudes corresponding to fundamental physical noise components.
 
 ## 1. Theoretical Foundations (The Demon & The UTM)
 

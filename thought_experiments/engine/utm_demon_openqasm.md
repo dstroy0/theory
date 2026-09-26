@@ -17,7 +17,7 @@ Laplace's Demon is a hypothetical intellect that knows the exact position, momen
 
 By pairing the UTM with Laplace's Demon, two major limitations are eliminated:
 
-- **Infinite Memory & Processing:** The Demon possesses boundless computational capacity. The exponential $2^n$ memory barrier of the UTM vanishes because the Demon can instantly process infinite-dimensional Hilbert spaces.
+- **Infinite Memory & Processing:** The Demon possesses unbounded computational capacity. The exponential $2^n$ memory barrier of the UTM vanishes because the Demon can instantly process infinite-dimensional Hilbert spaces.
 - **Deterministic Resolution of "Randomness":** In standard quantum mechanics, measurement is probabilistic. However, if Laplace's Demon operates under a deterministic interpretation of quantum mechanics (such as the Many-Worlds Interpretation or De Broglie–Bohm Pilot Wave theory), quantum randomness is an illusion. The Demon doesn't "roll dice" to simulate a measurement; it tracks the exact, deterministic trajectory of the universal wave function.
 
 ## 3. How They Work Together to "Solve" OpenQASM
