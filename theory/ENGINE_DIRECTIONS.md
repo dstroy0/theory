@@ -335,7 +335,7 @@ The per-candidate column of the table holds. The sentence placing the census at 
 single scan does not.
 
 Because `C` does not read the needle (the note under section 8), determinant scoring picks the same
-offsets for every needle of a given length. *A reading, not proved.* A Gram matrix of agreement
+offsets for every needle of a given length. *A needle-aware Gram, a reading.* A Gram matrix of agreement
 indicators, one vector per candidate offset `o` with entry 1 at alignment `s` when
 `needle[o] == corpus[s + o]`, is positive semidefinite and reads the needle. Its entries count the
 alignments where two probes agree together, the joint event the destroy rule tests. Building it costs
