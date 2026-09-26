@@ -312,7 +312,6 @@ Each item is algebra on the equation above, exact, **theory until built**. What 
 | the null in the marginal | ω(b, none) is the best null draw's held count, a count of the body's voxels like T, but T is counted at the drift and h⁰ at the climbed null lag | `score_best_null`, score_sample.cu |
 | `cohere` (off in base.cfg) | a mean motion is divided by truncating division | group_objects.cu |
 | the cut | one level (the most components) for the whole frame | `max_tree_objects` as the program calls it |
-| `RUN_PART_ROOM` | 16, not measured | track_driver.cu |
 
 ## What the program asks of the engine, and what it offers
 
