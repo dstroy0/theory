@@ -94,7 +94,7 @@ artifacts and an artifact cannot fetch anything at run time.
 
 ## What a reader should check first
 
-The controls, not the results. Every claim in this work is only worth what its null is worth, and
+This section lists the controls. Every claim in this work is only worth what its null is worth, and
 each null is measured through the same code as the measurement it bounds. None is computed from
 theory:
 

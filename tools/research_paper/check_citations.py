@@ -10,7 +10,7 @@ r"""Print every line citation a research paper change added beside the lines it 
         --local README.md PUBLIC/delta_null
 
 A research paper cites another repository by line, as \texttt{path:N} or \texttt{path:N-M}, and a bare \texttt{:N} on the
-same source line means the file named last. A line number is a claim about one commit, so each citation is
+same source line means the file named last. A line number is a claim about one commit, and each citation is
 resolved against the commit its path is pinned to and printed beside the sentence that cites it. Reading that
 output is the check: a line that exists and says something else is as wrong as a line that does not exist,
 and only a reader can tell the two apart.

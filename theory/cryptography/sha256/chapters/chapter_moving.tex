@@ -109,7 +109,7 @@ them however many rounds are looked at, because the rounds are compared one at a
 discarded.
 
 But the rounds are not independent samples of an unknown thing. They are a deterministic sequence,
-so the structure at round \(r\) is related to the structure at \(r+1\) by the round function, and
+and the structure at round \(r\) is related to the structure at \(r+1\) by the round function, and
 that relation is carried in the \emph{phase} of the residue spectrum, which every earlier
 reading threw away by taking a magnitude. A structure standing still holds its phase. One drifting
 at \(v\) residues per round advances it by \(2\pi f v / 32\) each round. Noise does neither.
@@ -134,7 +134,7 @@ A uniform grid in \(v\) is therefore correct at one frequency and wrong at all t
 first pass used one, and at \(f = 15\) its step was \(1.875\) in drift where forty-two rounds
 resolve \(0.195\), ten times too coarse to be safe. That mattered, because the first pass's
 loudest SHA-256 cell sat at exactly \(f = 15\). Scanning uniformly in drift is the same map with
-the degenerate point resolved, and it is one grid that is correct at every frequency at once.
+the degenerate point resolved: a single grid correct at every frequency at once.
 
 \subsection{The result}
 

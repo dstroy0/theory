@@ -61,7 +61,7 @@ The four alternatives in those names:
 \end{itemize}
 
 Two readings of those definitions, both from the statement and neither new. (C) is not the negation
-of (A): the negation of (A) is (C) with $f = 0$, and (C) allows any $f$ in $F_5$, so (A) and (C) can
+of (A): the negation of (A) is (C) with $f = 0$, and (C) allows any $f$ in $F_5$. (A) and (C) can
 both be true, and likewise (B) and (D). The previous chapter called that two different removals, and
 the removal instances below are that shape on one field each. Fefferman's own sentence on the
 unforced case is that either (A) and (B) hold, or else there is a smooth divergence-free $u^\circ$
@@ -80,7 +80,7 @@ his account of them, since the papers are unread here. The errata page also corr
 numbers (10) to a weak form with the signs
 $-\iint u\cdot\partial_t\theta - \sum\iint u_iu_j\,\partial_j\theta_i = \nu\iint u\cdot\Delta\theta
 + \iint f\cdot\theta + \iint p\,\operatorname{div}\theta$; in the text as fetched (10) is the
-periodicity of $u$ and the weak form is (12), so the errata refer to an earlier numbering. Recorded as
+periodicity of $u$ and the weak form is (12); the errata refer to an earlier numbering. Recorded as
 read.
 
 \section{What they knew, what they wanted, what we know}
@@ -95,7 +95,7 @@ and (B) hold when $u^\circ$ satisfies a smallness condition, and for general $u^
 also for $\nu = 0$, on a short interval $[0,T)$ with $T$ depending on the datum; the largest such $T$
 is the blowup time, and either (A) and (B) hold or some smooth divergence-free datum has a solution
 with finite blowup time, near which the velocity is unbounded. For Euler with finite blowup time the
-vorticity satisfies the Beale--Kato--Majda divergence, so it blows up rapidly; many numerical
+vorticity satisfies the Beale--Kato--Majda divergence and blows up rapidly; many numerical
 computations appear to show Euler blowup, and the extreme numerical instability of the equations
 makes reliable conclusions hard to draw; he points to Bertozzi and Majda's book. Leray, 1934: weak
 solutions always exist in three dimensions with suitable growth; their uniqueness for Navier--Stokes
@@ -127,7 +127,7 @@ words, and is not on the Clay list.
   Arnold and Childress.
 \item For a generic datum in $R_{\mathrm{div}}$ the Taylor coefficients to order 4 are exact,
   divergence-free, real-valued, and the vorticity route agrees at every order; their mode support
-  grows by one in $|k|_1$ per order, measured, so no fixed horizon holds the solution. What happens
+  grows by one in $|k|_1$ per order, measured. No fixed horizon holds the solution. What happens
   past order 4, whether the series converges, and for how long, is not known here.
 \item At $t = 0$, on both data, the energy identity holds exactly, with the nonlinear term and the
   pressure moving no energy. That is one instant; (7) is every instant.
@@ -136,7 +136,7 @@ words, and is not on the Clay list.
 \item On one datum each, the solution sets of Euler and of Navier--Stokes do not contain each other's
   member, and the forced and unforced sets do not; the residuals are exact and proportional to $\nu$
   or equal to $f$. Two instances, no theorem.
-\item $R_{\mathrm{div}}$ is countable and $D_8$ is not, so the exactly nameable data are a
+\item $R_{\mathrm{div}}$ is countable and $D_8$ is not. The exactly nameable data are a
   measure-zero island in the data class; everything the ring does is on that island.
 \item The boundary kind of each object, read by probe: none on the ABC coefficients and on the exact
   ring, completeness on a generic datum's horizon, format on any decimal report of a coefficient with
@@ -161,7 +161,7 @@ carrying one positive integer denominator, the way the engine's exact reader car
 decimal places. The denominator is widened past a power of ten for one reason: Leray's projection
 divides by $|k|^2$, and $1/3$ has no exact decimal at any scale, and a decimal scale would then have
 to refuse where an integer denominator carries the value exactly. Every field is normalized by the
-common divisor of its integers, so equality is equality of integers, and $\pi$ is a symbol:
+common divisor of its integers. Equality is then equality of integers, and $\pi$ is a symbol:
 Lindemann's theorem makes term-by-term zero the exact zero test. Call the ring $R$, real-valued when
 the coefficient at $-k$ is the conjugate of the one at $k$, and $R_{\mathrm{div}}$ its
 divergence-free vector fields. The solution is carried as Taylor coefficients at $t=0$,
@@ -172,13 +172,13 @@ with $P$ Leray's projection and the pressure from the same sum, which is (1) dif
 at $t=0$ with (2) enforced by $P$. Nothing is rounded.
 
 \begin{itemize}
-\item $R_{\mathrm{div}} \subset D_8$: every element is a trigonometric polynomial, so smooth and
-  periodic, and the divergence is an exact identity. That inclusion is what the whole of the next
-  section rests on.
+\item $R_{\mathrm{div}} \subset D_8$: every element is a trigonometric polynomial, hence smooth and
+  periodic, and the divergence is an exact identity. The next section rests on that
+  inclusion.
 \item $R_{\mathrm{div}}$ meets $D_4$ only at zero: a nonzero periodic field does not decay. So the
   ring reaches (B) and (D)'s data and none of (A) and (C)'s.
 \item $R_{\mathrm{div}}$ is closed under the constructors of the recurrence, products, derivatives,
-  and Leray's projection with the denominator widened, so every Taylor coefficient of a solution with
+  and Leray's projection with the denominator widened. Every Taylor coefficient of a solution with
   datum in $R_{\mathrm{div}}$ is in $R_{\mathrm{div}}$; shown to order 4 and true by construction at
   every order.
 \item The solution itself, $u(t)$ for $t>0$, is not in $R$: for the ABC datum it is
@@ -258,7 +258,7 @@ represented here.
 \textbf{The island.} $F_b = \sum_n 2b_n n^{-n}\cos(2\pi n x)\,e_y$, for a bit sequence $b$, is
 divergence-free and real-valued at every truncation, distinct sequences give distinct fields, and the
 bits read back from the coefficients. The full sums are smooth, since $n^{-n}$ beats every power of
-$n$, and periodic, so they sit in $D_8$. The bit sequences are uncountable, by Cantor's diagonal as
+$n$, and periodic, and they sit in $D_8$. The bit sequences are uncountable, by Cantor's diagonal as
 the engine's set-theory posit reproduces it, and the ring is countable.
 
 \section{The boundary function, asked to define itself}
@@ -373,7 +373,7 @@ numbers from running the torus example at that moment. The left panel is the sha
 alternatives read off the set definitions above: the base is the plane of pairs (datum, force), the
 front edge is force zero, a stalk over a point is the solution set for that pair. (A) and (B) speak of
 the edge, (C) and (D) of the plane, and the edge lies in the plane. Every stalk but one is drawn as a
-question, because that is what it is; the one drawn solid is the ABC datum, one instance.
+question, because each is an open question; the one drawn solid is the ABC datum, one instance.
 
 \IfFileExists{../../build/theory/figures/navier_stokes_sets.pdf}{%
 \begin{figure}[htbp]
@@ -395,7 +395,7 @@ Every object above is the field's. The problem statement, its numbered condition
 alternatives and the errata are Charles Fefferman's for the Clay Mathematics Institute, read in full.
 The equations are Navier's and Stokes's, the inviscid case Euler's. The field with
 $\operatorname{curl}u$ proportional to $u$ is Beltrami's; the three-term example is Arnold's (1965)
-and Childress's (1970), reported from memory of the literature and unread here, so the file verifies
+and Childress's (1970), reported from memory of the literature and unread here. The file verifies
 the solution itself and does not rest on the citation. The projection onto divergence-free fields and
 the pressure it defines are Leray's. The recovery of a velocity from its vorticity is the Biot--Savart
 law; the vorticity equation is Helmholtz's. The energy sum over modes is Parseval's. The
@@ -439,7 +439,7 @@ better finding was in the refusal.
 
 \textbf{Withdrawn}, for the duration of one run. That two bit patterns produced two distinct fields
 whose bits read back. The first build of the island summed $\cos 2\pi x$ for every $n$ in place of
-$\cos 2\pi n x$, so every bit landed on one mode. The check that reads the bits back refused it; the
+$\cos 2\pi n x$, and every bit landed on one mode. The check that reads the bits back refused it; the
 harmonic was corrected and the check passed. Recorded because a wrong construction had produced a
 true reading of distinctness by accident, and only the second check caught it.
 

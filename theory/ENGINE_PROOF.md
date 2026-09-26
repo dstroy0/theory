@@ -54,7 +54,7 @@ full compare.
 
 *Lemma 1 (necessity).* If `t` is an occurrence then `P_p(t)` holds, for every probe `p`.
 An occurrence satisfies `c[t + j] = w[j]` for every `j` in `[0, m)`, and `O_p` is contained in
-`[0, m)`, so the required equalities are a subset of the ones the occurrence supplies.
+`[0, m)`. The required equalities are therefore a subset of the ones the occurrence supplies.
 
 *Lemma 2 (superset).* `Occ` is contained in `Surv(S)` for every plan `S`. Apply Lemma 1 to each probe
 in `S`; a conjunction of conditions each satisfied by `t` is satisfied by `t`.
@@ -90,14 +90,14 @@ trajectory, and nothing is assumed about how one plan follows another.
 
 *Proof.* Each `S_i` is a plan. Apply Theorem 1. ∎
 
-The predicate `Count(current plan) = N` is what the refinement loop is required to establish, so it
-is the loop's postcondition. Theorem 3 says it holds at every point of the loop, including before the
+The predicate `Count(current plan) = N` is what the refinement loop is required to establish, and it
+is therefore the loop's postcondition. Theorem 3 says it holds at every point of the loop, including before the
 first iteration, where the plan is empty. **The invariant and the postcondition are the same
 predicate.**
 
 That identity is the whole explanation of the anytime property. An ordinary loop carries an invariant
 strictly weaker than its postcondition, and termination is what closes the gap; the loop must finish
-before its promise is true. Here there is no gap to close, so termination establishes nothing that is
+before its promise is true. Here there is no gap to close. Termination establishes nothing that is
 not already established, and interrupting the refinement at any instant and running the sweep returns
 `N`.
 
@@ -110,7 +110,7 @@ be computable, and not required to terminate on any input.
 diverges at step `k`, then interrupting and sweeping with `S_k` returns `N`.**
 
 *Proof.* Theorem 1 is quantified over all plans. Its statement contains no reference to definedness,
-computability, or termination of anything, so no such hypothesis can be needed to discharge it. Each
+computability, or termination of anything. No such hypothesis can be needed to discharge it. Each
 defined `S_i` is a plan; apply Theorem 1. For the divergent case, `S_k` is a plan; apply Theorem 1. ∎
 
 This is the theorem worth stating to anyone who has read the guide's claim about halting. It says the
@@ -129,16 +129,16 @@ V(i) = |Surv(S_i)|
 
 which is a non-negative integer.
 
-**`V` strictly decreases at every level that does not stop, so the descent performs at most `|A|`
+**`V` strictly decreases at every level that does not stop. The descent therefore performs at most `|A|`
 levels and terminates. No depth bound is required for this.**
 
 *Proof.* At a level that does not stop, the chosen probe attains a survivor count strictly below the
-current one, so `V(i+1) < V(i)`. A strictly decreasing sequence of non-negative integers is finite,
+current one, which gives `V(i+1) < V(i)`. A strictly decreasing sequence of non-negative integers is finite,
 and its length is at most `V(0) = |A|`. ∎
 
 **The depth constant is a resource limit and not the termination argument.**
 `ANCHOR_STEER_ANCHORS` bounds the work and the register footprint. Theorem 5 shows the recursion is
-well founded on a measure the field supplies, so removing the constant leaves a terminating descent.
+well founded on a measure the field supplies. Removing the constant leaves a terminating descent.
 
 *Corollary, self-correcting depth.* The number of probes placed is decided by the field. A field
 offering more discrimination admits more strictly decreasing levels before the stop condition fires,
@@ -162,7 +162,7 @@ equivalent to continuing, and destroying the levels below costs nothing.**
 `|Surv(S_k)|`. Since no probe can increase the survivor count, the minimum being equal means every
 `p` in `C_k` leaves `Surv(S_k)` unchanged. Continuing would place such a probe, leaving
 `Surv(S_{k+1}) = Surv(S_k)`. Every element of `C_{k+1}` lies in `C_k` and therefore leaves that same
-survivor set unchanged, so the minimum over `C_{k+1}` again equals the whole survivor count and the
+survivor set unchanged. The minimum over `C_{k+1}` again equals the whole survivor count and the
 condition fires. Induction on the level. ∎
 
 *The precondition is exactly non-increasing enumeration.* Shrinking is safe, by the containment step
@@ -184,13 +184,13 @@ being a search and starts being an instrument.
 below will, and the plan in hand is correct by Theorem 1.
 
 **Exit two, ask a slightly different question.** Enlarge the candidate set. Theorem 6's precondition
-is non-increasing enumeration, so its proof does not cover growing the class, and that omission
+is non-increasing enumeration. Its proof does not cover growing the class, and that omission
 points the useful way: a candidate absent from the class that fired has never been shown to
-leave the survivor set unchanged, so it may prune.
+leave the survivor set unchanged, and it may prune.
 
 Formally, let `C^(0) ⊆ C^(1) ⊆ C^(2) ...` be an ascending chain of question classes, each a set of
 probes. The engine descends inside a class until the stop condition fires, then moves to the next
-class and descends again. Each class is a set of necessary conditions, so Theorem 1 covers every plan
+class and descends again. Each class is a set of necessary conditions, and Theorem 1 covers every plan
 the engine can hold in any class, at any moment.
 
 **The total productive work is bounded no matter how many times the question changes.** Theorem 5's
@@ -251,8 +251,8 @@ polynomial time.** The first is Theorem 1 and the second is this one, and they a
 things: one about the answer, one about the cost of getting it.
 
 **The honest gap.** `f` counts refutations and the engine's cost is reads. Under short circuiting a
-refuted alignment costs reads up to the position of its refuting probe in the evaluation order, so
-the coverage bound governs refutation and transfers to reads only with an accounting of the order.
+refuted alignment costs reads up to the position of its refuting probe in the evaluation order. The
+coverage bound governs refutation and transfers to reads only with an accounting of the order.
 Theorem 2 says the order does not affect the answer. It does affect the cost, and that is the next
 thing to prove instead of a thing proved here.
 
@@ -270,8 +270,8 @@ Between `G` and the plan sits a TOTAL CHECKER: a candidate is admitted only if i
 `[0, m)` and it compares against the needle's own byte at each offset. That check is finite,
 decidable, and already implemented as `anchor_steer_probe_fits`.
 
-**Every admitted candidate is a necessary condition, so Theorem 1 applies to the plan at every
-instant, so the machine emits a correct count continuously while `G` runs forever.**
+**Every admitted candidate is a necessary condition. Theorem 1 applies to the plan at every
+instant, and the machine emits a correct count continuously while `G` runs forever.**
 
 This is the untrusted generator behind a trusted checker, the pattern of proof-carrying code and of a
 solver emitting a certificate that a small verified program checks. The generator gets to be

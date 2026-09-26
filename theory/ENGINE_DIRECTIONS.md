@@ -38,7 +38,7 @@ It never reads a value for any other purpose, never orders two symbols, and neve
 one.
 
 So let `f` be any injective function on the alphabet. Applying `f` to every byte of both the corpus
-and the needle preserves every equality and reverses none, so every probe returns what it returned
+and the needle preserves every equality and reverses none. Every probe returns what it returned
 before, every survivor set is identical, and the count is unchanged. Take `f` to be a keyed
 pseudorandom permutation and the engine counts occurrences in a corpus nobody running it can read,
 for a needle nobody running it can read.
@@ -51,7 +51,7 @@ costs nothing. An engine that never enumerates symbols cannot notice that the sy
 byte still carry the same byte after `f`. The encoding hides values and preserves the equality
 pattern, an observer learns the partition of positions into equal classes and nothing finer. That
 partition is the quantity `A(d)` measures. The leak of this construction is the statistic section 5
-uses as a signal, so the engine can compute and report its own exposure.
+uses as a signal, and the engine can compute and report its own exposure.
 
 ## It can search for a pattern nobody wrote down
 
@@ -61,7 +61,7 @@ requires that an occurrence satisfy the probe.
 Put both ends in the corpus. A probe testing `corpus[at + o1] == corpus[at + o2]` asks whether the
 window at `at` carries the same symbol at two of its own positions. A set of such probes specifies a
 pattern by its internal equalities alone: which positions must agree, with no statement about what
-they must agree on. Any window matching that partition satisfies every probe, so the filter stays
+they must agree on. Any window matching that partition satisfies every probe. The filter stays
 sound and the count stays exact under the same argument.
 
 The search target becomes a shape. `abcabc` and `xyzxyz` satisfy the same equality pattern, and so
@@ -122,7 +122,7 @@ table that is currently read as a performance result.
 This section changes the planner, and it starts with a fact that has to be checked instead of
 assumed.
 
-Write each corpus position as a one-hot vector over the alphabet, so `x_i` has a single 1 in the
+Write each corpus position as a one-hot vector over the alphabet: `x_i` has a single 1 in the
 coordinate for `corpus[i]`. Then `corpus[i] == corpus[j]` exactly when the inner product of `x_i` and
 `x_j` is 1, and it is 0 otherwise. So
 
@@ -131,10 +131,10 @@ A(d) = (1/n) * sum over i of <x_i, x_{i+d}>
 ```
 
 which makes `A` an autocorrelation of a vector-valued sequence. A function of that form is positive
-semidefinite, so for any offsets `o_1 ... o_k` the matrix `M` with `M_ij = A(o_i - o_j)` is positive
+semidefinite. For any offsets `o_1 ... o_k` the matrix `M` with `M_ij = A(o_i - o_j)` is positive
 semidefinite. It is a Gram matrix, and its entries are counts over a shared denominator.
 
-Write `C` for the same matrix before dividing, so `C_ij` counts the positions where the corpus agrees
+Write `C` for the same matrix before dividing. `C_ij` counts the positions where the corpus agrees
 with itself at lag `o_i - o_j`. `C` is an integer matrix.
 
 ## Probe selection is a determinantal point process
@@ -172,7 +172,7 @@ field's own counts.
 ## The destroy rule is a rank test
 
 The destroy rule fires when the best candidate leaves the truthy population exactly as it found it.
-In the determinant picture, a probe that prunes nothing contributes no volume, so the determinant
+In the determinant picture, a probe that prunes nothing contributes no volume. The determinant
 does not grow and the marginal `det(C_{S+p}) / det(C_S)` is at its floor. The rule is a rank
 deficiency test, and the determinant is its quantitative form: the rule reports a Boolean, and the
 determinant reports how far from redundant each candidate is.
@@ -218,7 +218,7 @@ No section above changes the count, because no section alters what a probe is. T
 encoding section applies a bijection to both sides, the pattern section replaces the needle with a
 partition and replaces the verifier to match, the hardware section weakens probes in the sound
 direction, and the three Laplacian sections change only which probes get chosen. Every one of them
-sits inside the necessary-condition family, so the worst outcome available to any of them is a slower
+sits inside the necessary-condition family, and the worst outcome available to any of them is a slower
 search.
 
 Two of them could be wrong as CLAIMS instead of as code, section 5 and section 9. Section 5
@@ -253,7 +253,7 @@ sampling rule, and their guarantees are what a scored descent would inherit.
 
 **Salomon Bochner**, for the theorem that a positive definite function is the transform of a positive
 measure. That is the general form of the fact section 6 establishes directly: an autocorrelation is
-positive semidefinite, so the census matrix is a Gram matrix.
+positive semidefinite, and the census matrix is therefore a Gram matrix.
 
 **Simon Sidon**, 1932, and **Paul Erdős and Pál Turán**, 1941, for `B2` sets, whose pairwise
 differences are all distinct. **James Singer**, 1938, for perfect difference sets. These are the

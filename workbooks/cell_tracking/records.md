@@ -1,6 +1,6 @@
 # Records
 
-**Purpose:** The commit texts written for the cell program, dated, as they were written, so the reasons for each change travel with the workbook.
+**Purpose:** The commit texts written for the cell program, dated, as they were written. The reasons for each change travel with the workbook.
 **Scope:** commits to dstroy0/cell_tracking main, each with its hash and its time (UTC−4). A commit's subject is its heading and its message follows. The engine's texts are in the engine workbook's records.md.
 
 ## 25 September

@@ -18,7 +18,7 @@ Every published method in this research paper rounds. A fast Fourier transform c
 machine precision, a sub-pixel peak is fitted by a curve, a variational problem is solved to a
 tolerance, and a spherical integral is a quadrature on a mesh. Each rounding is small, and each is
 fed to the next stage: the translation that was rounded is removed before the rotation is estimated,
-and the rotation that was rounded is removed before the flow is. A stratified pipeline is exactly the
+and the rotation that was rounded is removed before the flow is. A stratified pipeline is the
 arrangement in which small errors compound, because every stage reads the residual the last stage
 left, including what the last stage got wrong.
 

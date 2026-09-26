@@ -57,8 +57,8 @@ and does nothing with any alternative.
 The errata page carries a second item: an equation it numbers (10) "should read" a weak form with the
 signs `- int u . d theta/dt - sum int u_i u_j d theta_i/dx_j = nu int u . Laplacian theta + int f . theta
 
-- int p (div theta)`. In the text as fetched, (10) is the periodicity of `u` and the weak form is (12),
-  so the errata refer to an earlier numbering; recorded as read, and the weak form is not used here.
+- int p (div theta)`. In the text as fetched, (10) is the periodicity of `u` and the weak form is (12):
+  the errata refer to an earlier numbering; recorded as read, and the weak form is not used here.
 
 ## Their sets, defined
 
@@ -258,7 +258,7 @@ with (2) enforced by Leray's projection. Nothing is rounded.
 - The island. `F_b = sum_n 2 b_n n^-n cos(2 pi n x) e_y`, for a bit sequence `b`, is divergence-free
   and real-valued at every truncation, distinct sequences give distinct fields, and the bits read back
   from the coefficients. The full sums are smooth, since `n^-n` beats every power of `n`, and periodic,
-  so they sit in (8). The bit sequences are uncountable (Cantor, `proof_set_theory.py`) and the ring is
+  and they sit in (8). The bit sequences are uncountable (Cantor, `proof_set_theory.py`) and the ring is
   countable. The exactly nameable data are a countable island in the data class.
 
 ## Entry 2, 2026-09-17: the boundary function asked to define itself
@@ -313,8 +313,8 @@ proof that reaches the same knot, and this is that: it shows the knot and does n
   its energy in `|k|^2 = 1` at every order, and a route with one mode dropped is caught.
 - The coefficient growth, the knot. For ABC the energy obeys the exact law
   `E(u_{m+1}) = (16 nu^2 pi^4) E(u_m) = (4 pi^4 / 25) E(u_m)`, a single ring quantity, constant in the
-  order. A constant rate makes the time series `sum u_m t^m/m!` the entire function `e^{-4 nu pi^2 t} u_0`,
-  so the analyticity radius is infinite and the datum never blows up, matching the closed form of entry 1.
+  order. A constant rate makes the time series `sum u_m t^m/m!` the entire function `e^{-4 nu pi^2 t} u_0`.
+  The analyticity radius is infinite and the datum never blows up, matching the closed form of entry 1.
   For the generic datum the energy is an exact Laurent polynomial in `pi` whose `pi`-degree rises by four
   every order, `0, 4, 8, 12, 16, 20`, an integer signal that the coefficients grow. The rate's limit is
   the reciprocal of the time the solution stays analytic, and a finite radius is a blowup. Every finite

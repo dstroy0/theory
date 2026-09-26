@@ -33,7 +33,7 @@ def read(path):
         for raw in handle:
             line = raw.rstrip("\n")
             # The gate prints the roots it scanned before any finding, one per indented line. A file is keyed
-            # relative to its root, so two copies of one tree placed under different directories compare as
+            # relative to its root. Two copies of one tree placed under different directories compare as
             # the same file.
             if "roots configured:" in line:
                 reading_roots = True

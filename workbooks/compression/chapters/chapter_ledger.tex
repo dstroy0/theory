@@ -1,7 +1,7 @@
 \chapter{\texorpdfstring{Ledger}{Ledger}}
 \label{chap:ledger}
 
-\textbf{Purpose:} Every measurement, in the order it was taken, with the samples it ran on, the number, and what it settled, so no result is taken twice and none is quoted without its run.
+\textbf{Purpose:} Every measurement, in the order it was taken, with the samples it ran on, the number, and what it settled. No result is taken twice and none is quoted without its run.
 
 \textbf{Scope:} runs of the .kcr codec, its variants, and the measurements of the floor it answers to. Samples are named by their id; “the 25” means the first 25 44b6 training samples by name.
 
@@ -68,7 +68,7 @@ Settles: refuted. The first ratio was a coincidence, and pairing along t hurts o
 
 \subsection{\texorpdfstring{A mock of the floor}{A mock of the floor}}
 
-A synthetic set with a known generator, so every code length can be checked against the true one: 32 frames of 32 × 32 (32,768 voxels); each voxel's noise is Binomial(2s + 16, ½), drawn as the popcount of xorshift64 bits, where s is a disc of signal peaking at 40; a fixed pattern in [0, 8) per place. Raw is 7 bits a voxel. Every length is the bit length of an exact integer (a product of binomial coefficients, or a multinomial), with no float. The script is scratch (\texttt{experiment.\allowbreak{}py}), not in the tree.
+A synthetic set with a known generator, against which every code length can be checked: 32 frames of 32 × 32 (32,768 voxels); each voxel's noise is Binomial(2s + 16, ½), drawn as the popcount of xorshift64 bits, where s is a disc of signal peaking at 40; a fixed pattern in [0, 8) per place. Raw is 7 bits a voxel. Every length is the bit length of an exact integer (a product of binomial coefficients, or a multinomial), with no float. The script is scratch (\texttt{experiment.\allowbreak{}py}), not in the tree.
 
 {\footnotesize
 \setlength{\tabcolsep}{6pt}
@@ -95,7 +95,7 @@ Read from the frames through \texttt{maint/\allowbreak{}zarr\_\allowbreak{}frame
 
 {\footnotesize
 \setlength{\tabcolsep}{6pt}
-\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.2425\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.2377\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.2267\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.2931\linewidth-2\tabcolsep\relax}}
+\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.2425\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.2377\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.2267\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.2932\linewidth-2\tabcolsep\relax}}
 \toprule
 what & samples & result & settles \\
 \midrule
@@ -105,9 +105,9 @@ linear complexity, bits 0 to 5 & 44b6\_\allowbreak{}0113de3b: 4,109 voxels in ti
 linear complexity, bits 6 to 11 & the same & in time, mean L falls 48.72 → 43.48 → 36.68 → 26.56 → 19.43 → 1.79, low 201 → 4,024; along rows from bit 7 & structure begins at bit 6; bit 11 is almost constant \\
 noise variance by level, from successive frame differences & 44b6\_\allowbreak{}0113de3b, 4,109 voxels × 100 frames, by mean decile & from σ 7.6 at level 47.2 (variance / mean 1.22) to σ 218.7 at level 523.0 (variance / mean 91.43) & variance grows far faster than shot noise above the dimmest decile: the frame-to-frame change there is mostly bodies moving, which the tracks predict \\
 the conditional floor, motion left in & the same & 7.403 bits a voxel (46.3\%) by each voxel's σ; 7.687 (48.0\%) by empirical counts per σ bin & an upper bound for a temporal-only model; above the stream's 6.49 \\
-one frame alone against its 4 neighbors, order 0 & frame 50, 462,400 voxels & 6.287 bits a voxel (39.3\%) & a reference only: it uses neighbors on both sides, so no coder can spend it \\
+one frame alone against its 4 neighbors, order 0 & frame 50, 462,400 voxels & 6.287 bits a voxel (39.3\%) & a reference only: it uses neighbors on both sides, and no coder can spend it \\
 the shot-limited floor, first estimate & extrapolated from the dimmest decile: variance = 1.22 × level at every decile & about 6.00 bits a voxel, 37.5\% of raw & superseded by the two rows below \\
-the photon transfer curve, motion removed in time & 44b6\_\allowbreak{}0113de3b, 41,528 voxels (every 101st) × 99 differences, each binned by its pair's level; σ from the median absolute deviation & variance / level 1.15 to 1.35 from level 24 to 104, first and second differences agreeing; 1.55 at 120, 3.17 at 312, 45.85 at 504, a plateau near 170,000 past 700 & shot noise in the dim range; above 120 the change is in most frames, so the median cannot take it; the all-bins fit (138.4 × level − 23,437, 4.97 bits) is not a curve and is discarded \\
+the photon transfer curve, motion removed in time & 44b6\_\allowbreak{}0113de3b, 41,528 voxels (every 101st) × 99 differences, each binned by its pair's level; σ from the median absolute deviation & variance / level 1.15 to 1.35 from level 24 to 104, first and second differences agreeing; 1.55 at 120, 3.17 at 312, 45.85 at 504, a plateau near 170,000 past 700 & shot noise in the dim range; above 120 the change is in most frames, and the median cannot take it; the all-bins fit (138.4 × level − 23,437, 4.97 bits) is not a curve and is discarded \\
 the same, structure removed by local coherence & 44b6\_\allowbreak{}0113de3b, 10 frame pairs of whole frames, 41,943,040 voxel-frames; the frame difference against its x, y and z neighbors & corr(d, d\_\allowbreak{}x) 0.007 at level 24, 0.348 at 104, 0.680 at 200, 0.985 at 1000; var(d − d\_\allowbreak{}x) / 4 at 1.17 to 1.23 × level from 40 to 200; fitted variance = 1.162 × level + 2.46 & the bright excess is structure, not noise; the noise is shot at gain 1.162 with read noise about 1.6 and no dark offset; the z correlation of 0.12 at the dimmest levels is not explained \\
 F4, measured & the same & 5.902 bits a voxel (36.9\%) by the shot line; 5.979 (37.4\%) less the x neighbor, robust; 6.008 (37.6\%) best axis, plain; 6.913 (43.2\%) structure in & one frame given everything else costs 5.90 bits a voxel; the stream's 6.49 is 0.59 above it: 3.7 points of raw, about 310 KB a frame \\
 \bottomrule

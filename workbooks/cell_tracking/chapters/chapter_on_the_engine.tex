@@ -1,7 +1,7 @@
 \chapter{\texorpdfstring{The cell program on the engine}{The cell program on the engine}}
 \label{chap:on-the-engine}
 
-\textbf{Purpose:} Hold what the engine's workbooks measured on the cell program's samples, and the sieve's sections that set it on the cells, so the engine workbook carries the machine alone and points here for the program's numbers.
+\textbf{Purpose:} Hold what the engine's workbooks measured on the cell program's samples, and the sieve's sections that set it on the cells. The engine workbook carries the machine alone and points here for the program's numbers.
 
 \textbf{Scope:} text moved on 25 September out of the engine workbook: engine\_\allowbreak{}table.md (M2, M5, M9, M10, M12 and M14), noise\_\allowbreak{}sieve\_\allowbreak{}tower.md (§14 and §15, and its lines on the program's node policies, links, random numbers, edge rows and floor) and tessera\_\allowbreak{}scheduler.md (the driver's jobs). Each part names where it stood, and its words are as they stood there. Statuses follow \hyperref[chap:readme]{README.md}.
 
@@ -38,7 +38,7 @@ Every wiring build checked on 44b6\_\allowbreak{}0113de3b: 38/0/12 edges and 0 l
 \texttt{track\_\allowbreak{}driver} runs every job through tessera. \texttt{-\allowbreak{}-\allowbreak{}ingest} is one job, and so is each \texttt{-\allowbreak{}-\allowbreak{}run} part.
 
 \begin{itemize}
-\item \textbf{The signum} is the BLAKE3 hash of the part's name, a NUL, and the whole effective request, so a changed setting is a new signum.
+\item \textbf{The signum} is the BLAKE3 hash of the part's name, a NUL, and the whole effective request. A changed setting gives a new signum.
 \item \textbf{The declaration} is the largest sample's lattice in 16-bit lanes. For \texttt{-\allowbreak{}-\allowbreak{}ingest} it comes from the source's description (\texttt{engine\_\allowbreak{}source\_\allowbreak{}lanes}, which reads no voxel); for every other part, from the \texttt{.\allowbreak{}iapx} head.
 \item \textbf{The times} are 2 s holding, 20 ms sweep and 5 s idle.
 \item \textbf{The daemon} is \texttt{tessera\_\allowbreak{}daemon} beside the driver, which the driver starts when none answers.
@@ -147,7 +147,7 @@ the floor section in the \texttt{.\allowbreak{}cfg}, laid down before anything e
 
 \texttt{noise\_\allowbreak{}sieve\_\allowbreak{}5\_\allowbreak{}cell\_\allowbreak{}tracking\_\allowbreak{}harmonics.\allowbreak{}md} sets the sieve on the Biohub volumes directly. It is the source nearest the score, and each of its mechanics has a concrete form here.
 
-\textbf{The engine holds nothing; gradients define themselves.} No gradient is tuned and no threshold is chosen: the field carves the boundaries where the data puts them. This is already the engine's rule for its cuts. It is also the rule the node policies \texttt{stands} and \texttt{above\_\allowbreak{}null} were written to: a body is a node because of what it is here, not because it ranks in a chosen top n.
+\textbf{The engine holds nothing; gradients define themselves.} No gradient is tuned and no threshold is chosen: the field carves the boundaries where the data puts them. This is already the engine's rule for its cuts. It is also the rule the node policies \texttt{stands} and \texttt{above\_\allowbreak{}null} were written to: a body is a node because it stands here, not because it ranks in a chosen top n.
 
 \textbf{One precision note.} The source speaks of a 10\textasciicircum{}−68 precision floor. The engine has no precision floor: its arithmetic is exact at every width it runs, and every width is proved before the run. The only floor is the measured one in the data (noise\_\allowbreak{}sieve\_\allowbreak{}tower §5).
 

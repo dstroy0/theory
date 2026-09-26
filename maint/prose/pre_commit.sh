@@ -4,7 +4,7 @@
 # Doug, 2026-09-25: "theory/ workbooks/ and thought_experiments/ from our repo have a zero tolerance
 # gate, other repo files are ignored. only our concerns are flagged".
 #
-# prose_ratchet.tsv holds its header and no file, so every staged file under the three roots has a
+# prose_ratchet.tsv holds its header and no file. Every staged file under the three roots has a
 # ceiling of 0 prose findings. A breaking finding anywhere under the roots stops the commit.
 # Exit codes are docs_check's: 1 breaking, 2 read nothing, 3 a staged file carries prose, 4 no
 # ratchet. printed_check reads the .py under the roots; none are there today, and its 2 says so.

@@ -1,6 +1,6 @@
 # Ledger
 
-**Purpose:** Every measurement, in the order it was taken, with the samples it ran on, the number, and what it settled, so no result is taken twice and none is quoted without its run.
+**Purpose:** Every measurement, in the order it was taken, with the samples it ran on, the number, and what it settled. No result is taken twice and none is quoted without its run.
 **Scope:** runs of the tracker and its driver, and their scores. Samples are named by their id; "the 25" means the first 25 44b6 training samples by name. Logs are under `cell_tracking/logs/`.
 
 ## 2026-09-21
@@ -30,7 +30,7 @@ The metric (`maint/score_submission.py`): nodes matched to key nodes within 7 µ
 
 ### The 6bba samples
 
-The training set is 71 samples of 44b6 and 128 of 6bba; the test set holds both. Every run until now was on 44b6. 6bba's keys are far denser (345 to 1,183 edges a sample, against about 50 to 270 for 44b6), so under micro averaging 6bba carries most of the score.
+The training set is 71 samples of 44b6 and 128 of 6bba; the test set holds both. Every run until now was on 44b6. 6bba's keys are far denser (345 to 1,183 edges a sample, against about 50 to 270 for 44b6), and under micro averaging 6bba carries most of the score.
 
 | what | samples | result | settles |
 |---|---|---|---|

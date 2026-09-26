@@ -1,6 +1,6 @@
 # The workbook is the ledger
 
-**Purpose:** One place where every idea the cell program rests on is written down beside what stands behind it, so a later session knows at a glance which claims are proved, which are measured, which are built but unmeasured, and which are still only theory.
+**Purpose:** One place where every idea the cell program rests on is written down beside what stands behind it. A later session then knows at a glance which claims are proved, which are measured, which are built but unmeasured, and which are still only theory.
 **Scope:** `workbooks/cell_tracking/`. The thought experiment that sets the sieve on the cell program is in `thought_experiments/cell_tracking/`. The machine the program runs on is the engine workbook, `workbooks/engine/`.
 
 ## How an entry is kept
@@ -13,7 +13,7 @@ Every claim carries one status, and the status says what backs it:
 | **measured** | a number was taken on named samples; the number is given, and whether it held up |
 | **built** | the code exists and runs; no measurement yet says whether it helps |
 | **theory** | stated, not built |
-| **refuted** | measured, and the measurement went against it; kept, with the number, so it is not tried again blind |
+| **refuted** | measured, and the measurement went against it; kept, with the number, and not tried again blind |
 | **not so** | fails on its own arithmetic or in any machine, before anything is measured; kept, with the reason |
 
 A claim changes status only when a run changes it, and the run is named. Nothing is deleted from the ledger. An idea that failed stays, with the number that failed it.

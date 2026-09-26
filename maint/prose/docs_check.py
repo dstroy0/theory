@@ -45,7 +45,7 @@ import sys
 # as dialect detection and correct it toward Oxford. `-ise` is not reliably British. Oxford usage
 # is `-ize` and always was. A tree written in Oxford English trips none of this and a tree
 # written in American English trips none of it either. The arm enforces a HOUSE AMERICAN convention
-# against one common British convention. It is not a claim about where the writer is from.
+# against one common British convention. It makes no claim about where the writer is from.
 #
 # PRECISION, MEASURED BEFORE THESE LANDED. The arms were run over five repositories here and over
 # 544 files of CPython's standard library and site-packages, which is a large body of American and
@@ -137,7 +137,7 @@ _ISE_STEMS = (
 )
 
 # Words ending in -our that American spells the same way. `our`, `your`, `four`, `hour`, `tour`,
-# `pour`, `sour`, `dour`, `flour`, `scour` and `amour` are absent on purpose: the {3,} floor in the
+# `pour`, `sour`, `dour`, `flour`, `scour` and `amour` are absent deliberately: the {3,} floor in the
 # arm already refuses them, and listing a short one here would exempt every British word ending in
 # the same letters. `dour` would take `ardour` and `candour` with it.
 _OUR_WORDS = (
@@ -160,7 +160,7 @@ LOCALE = LOCALE_NAMED + (
     # `noise`, `raise`, `praise`, `guise`, `cruise`, `tortoise` and `malaise` without naming one of
     # them. `w` is out of the class, which refuses `otherwise`, `likewise` and every `-wise`
     # compound. The {2,} floor refuses `wise`, `rise`, `prise`, `arise` and `anise`, which are too
-    # short to reach it. What is left is the suffix attached to a stem, and _ISE_STEMS names the
+    # short to reach it. The remainder is the suffix attached to a stem, and _ISE_STEMS names the
     # English words that reach that shape and are not British.
     r"\b(?![A-Za-z]*(?:%s)%s\b)[A-Za-z]{2,}[bcdfghjklmnpqrstvxz]is%s\b"
     % ("|".join(_ISE_STEMS), _ISE_TAIL, _ISE_TAIL),
@@ -231,8 +231,8 @@ BANNED = (
         # The same shape, caught by its grammar. It reports where the standard permits it too. It is
         # a prose finding and never a breaking one: a person decides each site.
         r"\b(is|was|are|were) an? [\w-]+ and not an? [\w-]+",
-        # The same shape with no copula and no article, which is how code-documentation section 146
-        # writes both of the examples it bans by name: "Declared, not allocated." and "A number, not
+        # The same shape with no copula and no article. code-documentation section 146 uses it to
+        # write both of the examples it bans by name: "Declared, not allocated." and "A number, not
         # a guess." Every X-not-Y pattern in this file wanted (is|was|are|were) and an article. The
         # two sentences the standard names walked past all three of them. Derived by running the
         # standard's own illustrations through the checker: 4 of 28 named phrases were missed and
@@ -642,7 +642,7 @@ BANNED = (
         # about what a diagnostic tells you, "the whole point of the file" names what a function is
         # for, and "as distinctive as it should be" is a measurement against a prediction. None of
         # those is the register this tier is after, and banning them would have cost five true
-        # sentences to catch two of mine. What is left is the shape that only ever shows up in a
+        # sentences to catch two of mine. The remaining shape only ever shows up in a
         # sermon.
         r"\bthe more valuable\b",
         r"\bthe (smallest|least) part of what\b",
@@ -735,29 +735,29 @@ BANNED = (
         # was kept only if it scored high AND tripped nothing already in this tuple, and a shape
         # only if it recurred across both batches, since one high score is that detector's noise. No
         # document from either tree was sent anywhere: the register is the thing being
-        # characterised, and prose about nothing characterises it as well as prose about the work,
+        # characterized, and prose about nothing characterizes it as well as prose about the work,
         # with nothing at stake in it.
         #
         # Each was then run against the whole tree. These ten matched nothing already written. "not
         # merely" was REJECTED by the same test: it hit eighteen live lines, every one of them the
-        # deliberate X-and-not-merely-Y idiom this work uses on purpose. Banning it would have
+        # deliberate X-and-not-merely-Y idiom this work uses deliberately. Banning it would have
         # removed a construction and not a tic, the failure a ban list has to be
         # checked for before anything is added to it.
         #
         # One calibration note for anyone extending this. The detector scored "It was a warm
         # afternoon and the window was open" at 0.99, which looks like a false positive and is not
         # one: that sentence is scene-setting, which belongs to fiction, and in technical prose a
-        # register mismatch is exactly what it reads. Narrative openers are a real shape here and no
+        # register mismatch is how it reads. Narrative openers are a real shape here and no
         # pattern below reaches them, because a regex cannot see register. They still have to be
         # caught by eye.
 
         # The hedge that closes a section while conceding nothing.
         r"\b(further|additional|more) (research|work|study|studies|investigation|analysis) (is|are) needed\b",
-        # Announcing emphasis instead of emphasising.
+        # Announcing emphasis instead of emphasizing.
         r"\bit is worth (emphasi[sz]ing|stressing|highlighting)\b",
         # The universal caveat, which says only that cases differ.
         r"\bone-size-fits-all\b",
-        # A summary adverb opening a sentence that goes on to summarise nothing.
+        # A summary adverb opening a sentence that goes on to summarize nothing.
         r"(?m)^\s*Ultimately,",
         # Architectural metaphor doing the work a plain claim should do.
         r"\bthe foundation (up)?on which\b",
@@ -891,7 +891,7 @@ BANNED = (
         r"\bno reference beside it\b",
         # WITHDRAWN: bare \bbeside it\b. It fired on code-documentation/SKILL.md:84, "cite the line
         # that shows the thing being said, not the line beside it", where beside it is literal
-        # adjacency in a file and is the whole of what that rule is about. The bounded form above
+        # adjacency in a file, and that rule is about adjacency alone. The bounded form above
         # stays. The reading, as a thing that happens without a reader.
         r"\bthe reading has not been done\b",
         # A script given a character: it reports, it never decides, it is honest about itself.
@@ -985,8 +985,8 @@ BANNED = (
 #   book         code-documentation:158  "A name already sitting in the tree is not evidence"
 #
 # So the gate flagged the standard it enforces, 65 times across the two files before this pass,
-# every one of them outside a code span and in the standard's own running prose. That is the whole
-# of the over-reach class and it needed no enumeration to find.
+# every one of them outside a code span and in the standard's own running prose. Those 65 are the
+# over-reach class entire, and it needed no enumeration to find.
 #
 # WHY NONE OF THEM COULD BE BOUNDED THE WAY paradigm shift IS. The construction these read as a tic
 # in is an inanimate subject taking a human verb, and no regex separates it from the correct
@@ -1251,7 +1251,7 @@ def stage_of(pattern):
     space, and that makes it a shape instead of a vocabulary item. Everything else is word.
 
     This answers what a pattern LOOKS like. tier_of answers what authority it carries, and the two
-    disagree on purpose: see the note above AUTHORITY.
+    disagree deliberately: see the note above AUTHORITY.
     """
     if pattern in LOCALE:
         return "alphabet"
@@ -1286,7 +1286,7 @@ def stage_of(pattern):
 #   several words too and is TIER B, because section 137 lists adjectives.
 #
 # WHAT THE TIER CHANGES. Nothing about whether a run passes: prose never fails a build in either
-# tier, --strict included, and the exit rule at the foot of main() is the whole of that contract.
+# tier, --strict included, and the exit rule at the foot of main() states that contract in full.
 # It changes what the report says, and it is the line an autofix would have to respect.
 #
 # A BANNED HINGE IS DISSOLVED, NEVER REPLACED. There is no --fix here and there must never be one
@@ -1904,7 +1904,7 @@ def form_closes(form, line, opening):
 def comment_blocks(said):
     """(start, stop) for each contiguous comment block in a prose view, as 0-based half-open spans.
 
-    Emptiness is measured on the MARKER-stripped text, which is what makes a lone `#` a separator.
+    Emptiness is measured on the MARKER-stripped text, and a lone `#` is therefore a separator.
     A lone ` */` strips to empty too, and it closes the C block above it: it belongs to that block
     and ends it. Read as a separator it was left behind when a license block was blanked.
     """
@@ -2101,7 +2101,7 @@ NAMED_STANDARD = re.compile(
 )
 
 # A normative keyword as RFC 2119 defines it, in capitals. Case matters and the pattern is compiled
-# without IGNORECASE on purpose: "this may be null" is prose and "the sender MAY retransmit" is a
+# without IGNORECASE deliberately: "this may be null" is prose and "the sender MAY retransmit" is a
 # requirement whose wording is not this tree's to edit.
 #
 # NOT A SCAN EXEMPTION. Nothing in BANNED matches a capitalized normative keyword. Exempting a
@@ -2123,8 +2123,8 @@ CONTEXT_REASON = (
 def context_exempt(text):
     """Tiers that go quiet in one run because of what the run is about.
 
-    Returns a frozenset of tier names. Empty for every run in every tree measured today, and that is
-    the point: an exemption that fires often is a rule that was written too wide.
+    Returns a frozenset of tier names. Empty for every run in every tree measured today. An exemption
+    that fires often is a rule that was written too wide.
     """
     if any(one.search(text) for one in BRITISH_SUBJECT):
         return frozenset(("alphabet",))
@@ -2280,8 +2280,8 @@ for one in DEFAULT_ROOTS:
 # Git EXPORTS GIT_DIR and GIT_WORK_TREE to a hook. A rev-parse that inherits them answers about that
 # repository instead of about the directory it was asked from. --show-toplevel returns the hook's
 # own checkout as the root of whatever tree this tool was pointed at. The worktree repair that
-# landed --git-common-dir was written against this and the clearing did not come with it, which is
-# how a correct query kept giving a wrong answer under a hook. Every git query in this file goes
+# landed --git-common-dir was written against this and the clearing did not come with it. A correct
+# query kept giving a wrong answer under a hook because of that. Every git query in this file goes
 # through here. There is one place to add the next variable to.
 GIT_HANDOFF = (
     "GIT_DIR",
@@ -2350,7 +2350,7 @@ def main_checkout():
 # tool once ran taught the reason, and it generalizes: "scanned none" and "there are none" must
 # never be the same output, for any root and not only a closed one.
 #
-# PRINT THE ROOTS IT WAS CONFIGURED WITH, and this is the line that matters most. One repository
+# PRINT THE ROOTS IT WAS CONFIGURED WITH. This requirement outranks the rest. One repository
 # declares roots = ["README.md", "test"] for both its prose gate and its commit hook. Its sixty
 # translation units and its CMakeLists.txt are outside that declared scope, and they stay outside it
 # after every repair this tool has had. A run reporting "0 findings" over two configured roots reads
@@ -2636,7 +2636,7 @@ def banned_hits(lines, quotations=False, comments=False, path=None, ledger=None)
 # this change, at 51f492f with the structural repair applied: 3,981 of 4,296 prose lines carried the
 # unmeasured wording and 315 carried the measured one. 92.7 percent of every prose line the tool
 # emitted made a claim about 1.1 million human words. The misdescription was not an edge case in the
-# report, it was almost the whole of it.
+# report; it was almost all of the report.
 #
 # Absence from these papers is weak evidence and the wording now says which papers. A reader can
 # weigh it. A phrase can be missing because the domain is. Re-cut this against an English corpus, or
@@ -2805,7 +2805,7 @@ def dead_links(path, lines):
 
 # Doug, 2026-09-25, chose that the gate check the markdown and skip the chapters built from it. The
 # exemptions a verbatim text is held under (a quoted span, a quiet block, a .verbatim marker) are
-# read in the .md and are lost in the conversion, so the same quote passed in the .md and failed
+# read in the .md and are lost in the conversion. The same quote passed in the .md and failed
 # in its chapter. The cost: markdown the converter left in a chapter is no longer caught here.
 #
 # The chapters carry no comment line saying they are generated; the theory research papers hold no TeX
@@ -2866,7 +2866,7 @@ def walk_markdown(roots, ledger=None):
     for one in found:
         if os.path.abspath(one) == mine:
             continue
-        # This tool's own test files carry banned prose on purpose, to prove the gate flags it.
+        # This tool's own test files carry banned prose deliberately, to prove the gate flags it.
         # Repairing them would break the tests. They sit beside this file and are excluded here, the
         # exclusion recorded like every other. A fixtures/ directory is already skipped by
         # SKIP_DIRS; these are the tests that live next to the gate.
@@ -3426,7 +3426,7 @@ def main():
         "catches nothing." % (checked, len(roots))
     )
 
-    # Checking nothing is not passing. A run that reads no files and reports success is the failure
+    # A run that checks nothing has not passed. A run that reads no files and reports success is the failure
     # a commit hook cannot see, and it is how a wrong path goes unnoticed for as long as it takes
     # somebody to wonder why the count never moves.
     if checked == 0:

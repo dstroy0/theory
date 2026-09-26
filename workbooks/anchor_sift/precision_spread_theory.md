@@ -145,7 +145,7 @@ a census over 8885 COD entries refused 4411 of them, family-dependent (garnet 97
 feldspar 2.9 percent), reported from `maint/analysis/survey/crystal_gate_census.py`. Two further
 judgment-picked parameters, `EXACT_TILES = 4` and a harmonic-family cap of 2, sit in the period reader
 and can decide which period is reported; the crystallography session notes their effect is unmeasured,
-so the reader is not parameter-free. Chemistry reports bond lengths,
+and the reader is not parameter-free. Chemistry reports bond lengths,
 masses, and electronegativities as the measured oracle. Particle physics reports `a0`, `R_inf`,
 `alpha`, and the mass ratio as measured, `R_inf` to about `10^-12` relative. Protein reports the
 deposited coordinate at three places as the floor, with two independently refined copies of one

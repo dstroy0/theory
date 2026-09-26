@@ -177,7 +177,7 @@ Every open question becomes an exact lookup or filter, no search and no bound.
    on-path cycle detection. Their agreement is the check.
 5. **Positive control.** Bare kings and every insufficient-material class are all draws; the table
    must return V = 1/2 everywhere and value of the move 0. The example already confirms this exactly,
-   so the control is in place before the table is built.
+   and the control is in place before the table is built.
 
 ## Open problems
 

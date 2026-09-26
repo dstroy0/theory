@@ -5,4 +5,4 @@
 
 ## Found, 24 September
 
-- 44b6_0113de3b.iapx grew from 341,008,288 (22 September) to 396,922,152 (24 September), +16.4%. The seal's cost is 5.4%, so the rest is unexplained. Not investigated.
+- 44b6_0113de3b.iapx grew from 341,008,288 (22 September) to 396,922,152 (24 September), +16.4%. The seal's cost is 5.4%, and the rest is unexplained. Not investigated.

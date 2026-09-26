@@ -4,7 +4,7 @@
 # Install once per clone:   git config core.hooksPath tools/hooks
 #
 # This repository, dstroy0/theory and theory_bucket before 2026-09-26, shipped no hooks until this
-# file existed, so commits here ran zero gates. It is public, and a banned word committed here is
+# file existed, and commits here ran zero gates. It is public, and a banned word committed here is
 # published with it. The name guard is a tree-wide control and not a per-repository preference. Root CLAUDE.md refuses every commit in a repository whose
 # core.hooksPath is unset.
 #
@@ -18,10 +18,10 @@
 #
 # This is idemIP's tools/git-hooks/pre-commit at c2ab33a, itself a copy of MMgr's, with its two
 # variable names changed and this paragraph and the one above rewritten for this repository. The
-# copies are kept apart on purpose: each repository has to install without depending on another.
+# copies are kept apart deliberately: each repository has to install without depending on another.
 # The directory is tools/hooks here, where idemIP and MMgr use tools/git-hooks. A worktree-isolated
-# session reads the word "git" twice in a command naming tools/git-hooks and refuses to run it, so
-# the shorter name keeps every commit in this repository runnable from a worktree.
+# session reads the word "git" twice in a command naming tools/git-hooks and refuses to run it.
+# The shorter name keeps every commit in this repository runnable from a worktree.
 #
 # IT FAILS CLOSED
 #

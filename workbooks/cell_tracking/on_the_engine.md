@@ -1,6 +1,6 @@
 # The cell program on the engine
 
-**Purpose:** Hold what the engine's workbooks measured on the cell program's samples, and the sieve's sections that set it on the cells, so the engine workbook carries the machine alone and points here for the program's numbers.
+**Purpose:** Hold what the engine's workbooks measured on the cell program's samples, and the sieve's sections that set it on the cells. The engine workbook carries the machine alone and points here for the program's numbers.
 **Scope:** text moved on 25 September out of the engine workbook: [engine_table.md](../engine/engine_table.md) (M2, M5, M9, M10, M12 and M14), [noise_sieve_tower.md](../engine/noise_sieve_tower.md) (§14 and §15, and its lines on the program's node policies, links, random numbers, edge rows and floor) and [tessera_scheduler.md](../engine/tessera_scheduler.md) (the driver's jobs). Each part names where it stood, and its words are as they stood there. Statuses follow [README.md](README.md).
 
 ## From the engine table
@@ -35,7 +35,7 @@ Every wiring build checked on 44b6_0113de3b: 38/0/12 edges and 0 lanes differ, b
 
 `track_driver` runs every job through tessera. `--ingest` is one job, and so is each `--run` part.
 
-- **The signum** is the BLAKE3 hash of the part's name, a NUL, and the whole effective request, so a changed setting is a new signum.
+- **The signum** is the BLAKE3 hash of the part's name, a NUL, and the whole effective request. A changed setting gives a new signum.
 - **The declaration** is the largest sample's lattice in 16-bit lanes. For `--ingest` it comes from the source's description (`engine_source_lanes`, which reads no voxel); for every other part, from the `.iapx` head.
 - **The times** are 2 s holding, 20 ms sweep and 5 s idle.
 - **The daemon** is `tessera_daemon` beside the driver, which the driver starts when none answers.
@@ -93,7 +93,7 @@ The `.cfg`'s `floor` section names where each sample's noise keys are held (`--f
 
 `noise_sieve_5_cell_tracking_harmonics.md` sets the sieve on the Biohub volumes directly. It is the source nearest the score, and each of its mechanics has a concrete form here.
 
-**The engine holds nothing; gradients define themselves.** No gradient is tuned and no threshold is chosen: the field carves the boundaries where the data puts them. This is already the engine's rule for its cuts. It is also the rule the node policies `stands` and `above_null` were written to: a body is a node because of what it is here, not because it ranks in a chosen top n.
+**The engine holds nothing; gradients define themselves.** No gradient is tuned and no threshold is chosen: the field carves the boundaries where the data puts them. This is already the engine's rule for its cuts. It is also the rule the node policies `stands` and `above_null` were written to: a body is a node because it stands here, not because it ranks in a chosen top n.
 
 **One precision note.** The source speaks of a 10^−68 precision floor. The engine has no precision floor: its arithmetic is exact at every width it runs, and every width is proved before the run. The only floor is the measured one in the data (noise_sieve_tower §5).
 

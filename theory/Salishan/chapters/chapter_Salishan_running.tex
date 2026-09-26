@@ -91,7 +91,7 @@ A reader is not the source of the corpus. The hand extraction is, and the reader
 python H/oracle_check.py
 \end{lstlisting}
 
-Checks each hand extraction against the paper it was read off, in both directions. A form written down that the paper does not hold is a typing slip. A word in the paper that no row holds is a row somebody skipped. That is what a person reading a thirty-seven page paper into a table produces. Both must be zero.
+Checks each hand extraction against the paper it was read off, in both directions. A form written down that the paper does not hold is a typing slip. A word in the paper that no row holds is a row somebody skipped. A person reading a thirty-seven page paper into a table produces both. Both must be zero.
 
 Two papers are checked against a drafted page text and the output line says so. For those, direction one measures the draft and not the table: a form the table holds and the draft does not is a place where a person read the page and a rule in \texttt{lyon\_\allowbreak{}encoding.\allowbreak{}py} got it wrong. Direction two still means what it means everywhere else.
 
@@ -206,7 +206,7 @@ Module & Holds \\
 \end{longtable}
 \normalsize
 
-\texttt{TEXT\_\allowbreak{}SPACE} is the one definition of what characters these orthographies are written with. \texttt{salish\_\allowbreak{}unsorted.\allowbreak{}py} and \texttt{H/\allowbreak{}papers.\allowbreak{}py} each held their own copy of that union until the copies were noticed; both read it from \texttt{salish\_\allowbreak{}marking.\allowbreak{}py} now, and a per-paper set is written as that plus what the paper adds.
+\texttt{TEXT\_\allowbreak{}SPACE} is the only definition of what characters these orthographies are written with. \texttt{salish\_\allowbreak{}unsorted.\allowbreak{}py} and \texttt{H/\allowbreak{}papers.\allowbreak{}py} each held their own copy of that union until the copies were noticed; both read it from \texttt{salish\_\allowbreak{}marking.\allowbreak{}py} now, and a per-paper set is written as that plus what the paper adds.
 
 \textbf{Author:} dstroy0 (Douglas Quigg) <dquigg123@gmail.com> \textbf{Date:} 2026-09-04
 

@@ -10,7 +10,7 @@ must be changed through their generator.
 This repository, https://github.com/dstroy0/theory, was named theory_bucket until 2026-09-26. A
 project that writes theory takes it as a git submodule at `theory/` and does not copy the research papers in.
 anchor_sift holds it that way. It is also a GitHub template repository, and a repository generated
-from the template is a copy with no link back here, so a project that writes theory uses the
+from the template is a copy with no link back here. A project that writes theory uses the
 submodule. The paths below are written from anchor_sift's root, where the
 generator and the build script live. The research papers sit three shelves deep:
 
