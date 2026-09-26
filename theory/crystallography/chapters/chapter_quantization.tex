@@ -3,6 +3,8 @@
 \textbf{Purpose:} Explain how an answer landed finer than the grid it was measured on, and why that question stopped needing an answer.
 \textbf{Scope:} \texttt{recover\_\allowbreak{}lattice\_\allowbreak{}period} and \texttt{recover\_\allowbreak{}exact\_\allowbreak{}period} in \texttt{src/\allowbreak{}engine/\allowbreak{}python/\allowbreak{}measure/\allowbreak{}shift\_\allowbreak{}agreement.\allowbreak{}py}
 
+\textbf{Note, 26 September.} \texttt{src/\allowbreak{}engine/\allowbreak{}python/\allowbreak{}measure/\allowbreak{}shift\_\allowbreak{}agreement.\allowbreak{}py} was deleted with \texttt{src/\allowbreak{}engine/\allowbreak{}python/} by commit \texttt{74601c1} on 26 September, and \texttt{recover\_\allowbreak{}lattice\_\allowbreak{}period} and \texttt{recover\_\allowbreak{}exact\_\allowbreak{}period} are defined in no file at anchor\_sift \texttt{1948ae1}; the examples that call them import the deleted tree. This chapter describes them as they were before the deletion.
+
 \section{The objection}
 
 The grid was 0.25 angstroms. Errors below that were reported. A reader should stop there and ask how a measurement resolves anything finer than the spacing it samples at, because most of the time the answer is that it does not and the extra digits are decoration.

@@ -3,6 +3,8 @@
 \textbf{Purpose:} State the construction, and mark the boundary of what this work can claim about it.
 \textbf{Scope:} \texttt{examples/\allowbreak{}crystallography/\allowbreak{}6\_\allowbreak{}oracle/\allowbreak{}proof\_\allowbreak{}positive\_\allowbreak{}control.\allowbreak{}py}, \texttt{src/\allowbreak{}engine/\allowbreak{}python/\allowbreak{}measure/\allowbreak{}shift\_\allowbreak{}agreement.\allowbreak{}py}, \texttt{src/\allowbreak{}engine/\allowbreak{}python/\allowbreak{}representation/\allowbreak{}exact.\allowbreak{}py}
 
+\textbf{Note, 26 September.} \texttt{shift\_\allowbreak{}agreement.\allowbreak{}py} and \texttt{exact.\allowbreak{}py} were deleted with \texttt{src/\allowbreak{}engine/\allowbreak{}python/} by commit \texttt{74601c1} on 26 September, and neither is in a file at anchor\_sift \texttt{1948ae1}; \texttt{proof\_\allowbreak{}positive\_\allowbreak{}control.\allowbreak{}py} still imports both.
+
 \section{The construction}
 
 Tile a published unit cell, carry every site as an exact integer, and score how well the arrangement agrees with itself shifted by each candidate offset along one axis. The offset where agreement peaks is the cell edge.
