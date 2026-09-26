@@ -15,7 +15,7 @@ anchor_sift `1948ae1`. Every run recorded below was made before the deletion.
 deleted, each byte-identical to its state before the deletion, and biohub pins anchor_sift at
 `d09b489`. `representation/exact.py` is at the pin again; nothing here was rerun against it.
 
-Kept by the precision measurement specialist. This is a workbook, not a result. It follows the rail the
+This is a workbook, not a result. It follows the rail the
 millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`) and the analytic
 number theory workbook beside this file already follows:
 

@@ -6,8 +6,7 @@ does not multiply accuracy. **Scope:** the set of exact quantities the engine an
 the identities among them, and `examples/0_experimental/exact_identities_spread_precision.py`, which
 runs the mathematical case.
 
-Written by the precision measurement specialist. Names are chosen to avoid meanings already in use, on
-the anchor sift theorist's record: `closure` is taken for the transitive closure of the equality oracle
+Names are chosen to avoid meanings already in use in this tree: `closure` is taken for the transitive closure of the equality oracle
 (`src/engine/nbody/anchor_sift/anchor_sift.h:443-453` at anchor_sift `1948ae1`, moved from
 `src/engine/c/engine/` by `bdaed61` on 24 September), `coherence` for lag-agreement structure
 (`theory/workbooks/anchor_sift/chapters/chapter_anchor_sift_workbook.tex:294` and `bench_coherence.c`), `topology`
@@ -25,9 +24,9 @@ Let `Q` be a set of exact quantities. A quantity is one of two kinds.
   `pi`, `e`, `ln 2`, `zeta(2)`. A defined quantity can be computed to any number of places. Its
   precision is a budget, not a floor.
 - MEASURED: a deposited value with an uncertainty fixed upstream by whoever measured it. Examples: a
-  crystal cell edge (crystallography session: published to about 4 to 5 places with a bracketed
-  uncertainty), a physical constant such as the Bohr radius or the Rydberg energy (particle physics
-  session: `a0`, `R_inf`, `alpha`, the electron-proton mass ratio). A measured quantity has a real
+  crystal cell edge (crystallography: published to about 4 to 5 places with a bracketed
+  uncertainty), a physical constant such as the Bohr radius or the Rydberg energy (particle
+  physics: `a0`, `R_inf`, `alpha`, the electron-proton mass ratio). A measured quantity has a real
   precision floor, and no arithmetic on this end lowers it.
 
 An exact identity is a relation `q = f(q_1, ..., q_k)` that holds with no rounding, where `f` is built
@@ -119,67 +118,65 @@ The spread does not multiply accuracy everywhere. The six domains surveyed fall 
 the regime, not the domain, decides whether an identity raises precision.
 
 **Regime A, defined.** Identities raise precision without bound. The natural constants above. Particle
-physics reports one hub, the Rydberg energy `R_inf`, from which every hydrogen-like level
+physics has one hub, the Rydberg energy `R_inf`, from which every hydrogen-like level
 `E(n,Z) = -R_inf Z^2/n^2` and radius `r(n,Z) = a0 n^2/Z` follows by an exact rational identity in the
-hub. Game theory reports minimum Shannon entropy decided with no logs by `prod p_i^{p_i} = 2^{-H}`,
+hub. Game theory decides minimum Shannon entropy with no logs by `prod p_i^{p_i} = 2^{-H}`,
 cleared to integers through the least common multiple of the share denominators, and an entropy order
-becomes an exact rational comparison (`src/engine/python/representation/game/rules.py`, `measure/outcome_entropy.py`,
-as reported; note, 26 September: both were deleted with `src/engine/python/` by `74601c1` on 26
+becomes an exact rational comparison (`src/engine/python/representation/game/rules.py`, `measure/outcome_entropy.py`;
+note, 26 September: both were deleted with `src/engine/python/` by `74601c1` on 26
 September and are in no file at anchor_sift `1948ae1`; later, 26 September: `d09b489`, anchor_sift
 PR 12, put both back byte-identical, and biohub pins `d09b489`). Removable uncertainty in this regime is zero.
 
 **Regime B, counting.** Quantities are exact integers or rationals by their nature, and identities
-propagate exactly with nothing to raise: the multiplier is one. Chemistry reports the
+propagate exactly with nothing to raise: the multiplier is one. Chemistry carries the
 conservation identities, stoichiometry balancing atom counts and the valence handshake
 `sum valence = 2 * bond count`, plus one defined constant, the Avogadro number, exact by the 2019 SI
-definition. Particle physics reports the integer capacities `2(2l+1)` and `2n^2` and the Madelung
+definition. Particle physics carries the integer capacities `2(2l+1)` and `2n^2` and the Madelung
 closure to 118. The engine carries the set-algebra identity that the alignments a probe set rejects are
 a union, and every LEGAL probe set gives the same count after the full compare, where an illegal probe
 reading outside the pattern is not covered and the survivor set before the compare is a superset
-(`docs/steering.md:118`, `T subset S_p for every legal probe p`, as reported by the anchor sift
-theorist), and the transitive closure of the equality oracle into classes.
+(`docs/steering.md:118`, `T subset S_p for every legal probe p`), and the transitive closure of the equality oracle into classes.
 These are exact and load-free, and they do not multiply precision because the quantities have none to
 gain.
 
-**Regime C, measured.** An irreducible upstream floor. Crystallography reports that the recovered
+**Regime C, measured.** An irreducible upstream floor. In crystallography the recovered
 period equals the published edge to the digit and never finer, and that the metric tensor is
 deliberately left out of the exact path, because a general cell angle has a transcendental cosine that
-does not stay in exact integers or rationals (`crystal.py:240`, as reported). That domain also carries a
+does not stay in exact integers or rationals (`crystal.py:240`). That domain also carries a
 completeness floor of its own, separate from the deposit: a right-angle gate, `RIGHT_ANGLE_SLACK = 0.01`
 at `crystal.py:112`, admits a cell to the exact path only where every angle is within `0.01` of 90, and
 a census over 8885 COD entries refused 4411 of them, family-dependent (garnet 97.5 percent admitted,
-feldspar 2.9 percent), reported from `maint/analysis/survey/crystal_gate_census.py` (note, 26 September: `crystal.py` was
+feldspar 2.9 percent), measured by `maint/analysis/survey/crystal_gate_census.py` (note, 26 September: `crystal.py` was
 `src/engine/python/representation/structure/crystal.py`, deleted by `74601c1` on 26 September, and
 the census script imports from that tree; later, 26 September: `d09b489`, anchor_sift PR 12, put it
 back byte-identical, and biohub pins `d09b489`). Two further
 judgment-picked parameters, `EXACT_TILES = 4` and a harmonic-family cap of 2, sit in the period reader
-and can decide which period is reported; the crystallography session notes their effect is unmeasured,
-and the reader is not parameter-free. Chemistry reports bond lengths,
-masses, and electronegativities as the measured oracle. Particle physics reports `a0`, `R_inf`,
-`alpha`, and the mass ratio as measured, `R_inf` to about `10^-12` relative. Protein reports the
+and can decide which period is reported. Their effect is unmeasured,
+and the reader is not parameter-free. Chemistry takes bond lengths,
+masses, and electronegativities as the measured oracle. Particle physics takes `a0`, `R_inf`,
+`alpha`, and the mass ratio as measured, `R_inf` to about `10^-12` relative. Protein takes the
 deposited coordinate at three places as the floor, with two independently refined copies of one
 molecule agreeing on the exact integer torsion term at zero residues, since last-place refinement
 noise makes each one distinct.
 
 Regime C has one opening. An identity can form a RATIO in which the measured constant cancels, and the
-ratio is then floor-free and exact. Particle physics reports the cleanest case: within one spectral
+ratio is then floor-free and exact. Particle physics gives the cleanest case: within one spectral
 series, `lambda(H-beta) / lambda(H-alpha) = 20/27` exactly, with `R_inf` canceled, and a whole ladder
 of line ratios is physical-constant-free and exact while the absolute scale still carries the CODATA
 uncertainty. The spread reaches Regime C only by cancellation, predicting exact ratios, never by
 raising an absolute past its deposit. Where the absolute is needed with its uncertainty, the engine now
 carries it: `anchor_exact_from_measured` and `representation.exact.measured(text, digits)` return the
-value and its bracketed uncertainty at one scale (on `origin/main` at `656be3e`, reported by the lead
-of the private precision repository).
+value and its bracketed uncertainty at one scale (on `origin/main` at `656be3e`).
 
 ## 6. Two floors: precision and completeness
 
 The spread raises precision. It does not raise completeness, and the two are separate floors.
 
-Game theory reports the sharpest statement: an unsolved game tree, chess, has an unbounded winning-path
+Game theory gives the sharpest statement: an unsolved game tree, chess, has an unbounded winning-path
 tree whose entropy is estimated at a horizon the domain refuses to fold into the number. No spread buys
 back an unsolved tree, because the limit is a missing computation, not a rounding. Particle physics
-reports the same shape from physics: the Bohr model omits fine structure, the Lamb shift, and QED, and
-the model truncation dominates far above the constant uncertainty. Protein reports it as deposition: the
+has the same shape: the Bohr model omits fine structure, the Lamb shift, and QED, and
+the model truncation dominates far above the constant uncertainty. Protein has it as deposition: the
 arithmetic is already exact, and a scheme that wants more precision has to lift the experiment, not the
 computation.
 
@@ -227,7 +224,7 @@ never a rounding artifact, and its false-alarm rate on clean codewords is zero, 
 hundred of them.
 
 That second property is the two-route discipline made into a code. Two exact readings compared residue
-by residue agree exactly or name where they differ, the protein session's enantiomer case: two
+by residue agree exactly or name where they differ, the protein enantiomer case: two
 independently refined copies of one molecule disagree on the exact torsion term at every residue, and an
 exact compare reports the disagreement where a rounded one would have merged them. The code turns that
 comparison into detection and, with enough redundancy, correction. That is how exact precision is used
@@ -238,7 +235,7 @@ to detect uncertainty: the redundancy measures it.
 Every domain surveyed carries the same object: a set of quantities `Q` with an exact-identity
 hypergraph, the generation operator, and the derivation topology `tau_Q`. The structure is domain-blind, as
 the rest of this engine is. What differs across domains is only which regime a quantity's identities sit
-in. The map, as each session reported it:
+in. The map, domain by domain:
 
 | domain             | representation                                               | the identity that carries                          | regime                       | floor                                                                     |
 | ------------------ | ------------------------------------------------------------ | -------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------- |
@@ -263,7 +260,7 @@ statement of the goal names both.
   millionfold by computing a few hubs and taking the set they generate.
 - In the measured regime the absolutes keep their floor. The gain there is the floor-free ratio, where
   the measured constant cancels and the prediction is exact, plus accumulation: an exact count loses
-  nothing however many are added, as the image transforms session states for the translation counts.
+  nothing however many are added, as the image transforms research paper states for the translation counts.
 - The method is the incremental spread: compute next the hub with the largest marginal gain, the small
   primes and `pi` and `R_inf` and the defined constants, the ones that pull the most others up.
 
@@ -319,4 +316,4 @@ which carries its own citations. Each result above is reproduced in exact intege
 beside it. The citations record what is known, and the examples are the proof.
 
 See [[ntt-precision-constants]] for the constants the image transforms transform rests on, and the
-coordination log beside this file for how the survey was gathered.
+precision log beside this file for how the survey was gathered.

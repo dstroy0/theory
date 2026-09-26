@@ -163,7 +163,7 @@ Doug's (24 September): a second tower stacked over the first one's boundary, inv
   - The file stays far below the samples read. The count of samples read is not a bound on the file.
   - Depth-first is one order among many, and the order with the smallest file is not known here. Finding the smallest register file for a program without recomputation is NP-complete in general (Sethi, "Complete register allocation problems", SIAM J. Comput. 4, 1975).
 - **Widths across levels.** Derived.
-  - **The constant-divisor narrowing** (Anchor_sift, 24 September). keymath gives a quotient or exact quotient whose divisor is a constant c the dividend's width less ⌊log2 c⌋ bits, never under 1. The engine's quotient rounds toward zero and the exact quotient does not round: |q| ≤ |v|/c < 2^{w − ⌊log2 c⌋} for a w-bit dividend. The floor toward −∞ belongs to the lifting's composite of an and, a difference and an exact quotient, never to one operation. The exact quotient now works at its numerator's width and checks q · c against the whole numerator. **Proved** (`test/engine/record_divide_test`, 19 checks, 0 failed): 40-bit factors times 3, 12 and 2^32 + 7 divide back exactly, a 64-bit value over 2^32 + 7 equals the library's quotient, and the widths are exactly the rule's.
+  - **The constant-divisor narrowing** (24 September). keymath gives a quotient or exact quotient whose divisor is a constant c the dividend's width less ⌊log2 c⌋ bits, never under 1. The engine's quotient rounds toward zero and the exact quotient does not round: |q| ≤ |v|/c < 2^{w − ⌊log2 c⌋} for a w-bit dividend. The floor toward −∞ belongs to the lifting's composite of an and, a difference and an exact quotient, never to one operation. The exact quotient now works at its numerator's width and checks q · c against the whole numerator. **Proved** (`test/engine/record_divide_test`, 19 checks, 0 failed): 40-bit factors times 3, 12 and 2^32 + 7 divide back exactly, a 64-bit value over 2^32 + 7 equals the library's quotient, and the widths are exactly the rule's.
   - With it, keymath gives a high of 16-bit samples 18 bits and a low 20. Each level adds 4 bits to a low: 16, 20, 24, 28, and 40 at level 6, two limbs. Before it, 7 bits a level: 23, 30, and 58 at level 6. The proved program's file is 12 limbs under either rule.
   - The values grow far less. The low's linear part is (−1, 2, 6, 2, −1)/8 over x_{2i−2} to x_{2i+2}, with Σ|c| = 1.5. Its floors add less than 3/4.
   - Over samples |x| ≤ B: |s| ≤ 1.5B + 1 and |d| ≤ 2B. The edge cases (a line of 2 or 3, either end) repeat a neighbor and keep Σ|c| ≤ 1.5 for a low and 2 for a high.
@@ -251,7 +251,7 @@ Doug's framing (24 September, paraphrased): domain and range are complete and de
 
 - **The heap** of a floor, on one lane: Σ over the floor's registers of the value's magnitude bits, plus 1 for the sign where the value is nonzero.
 - **The ring** of a floor: Σ over the floor's registers of the imprint's widths. It belongs to the program and is the same on every lane.
-- **Measured in a scratch run** (Anchor_sift's `ovoid_measure.cu`, not a committed test). One program: T over 64 signed 16-bit samples at 6 levels, then T⁻¹, with the widths before the constant-divisor narrowing.
+- **Measured in a scratch run** (`ovoid_measure.cu`, not a committed test). One program: T over 64 signed 16-bit samples at 6 levels, then T⁻¹, with the widths before the constant-divisor narrowing.
   - 4,096 lanes in four classes by lane mod 4: a clean ramp, the ramp with noise of ±8, the ramp with noise of ±1,024, and raw noise over the whole 16-bit range.
   - The round trip is exact on 4,096 of 4,096 lanes at 3 and 6 levels, and the device equals the host word for word.
   - The mean heap:
@@ -303,7 +303,7 @@ Doug's framing (24 September, paraphrased): domain and range are complete and de
 
   - Wrapped at the mirror, each inverse floor's ring is the forward floor's plus one bit for each wrapped register. The wrap's signed range needs one bit over the forward register's magnitude width. Floor 0 is exact at 1,024.
   - The narrowing alone leaves 128 samples at 7 levels over the file. The wrap at the mirror brings it to 164 limbs.
-  - **Measured in a scratch run** (Anchor_sift, on the device, 4,096 lanes; the round trip is exact and the device equals the host in every run):
+  - **Measured in a scratch run** (on the device, 4,096 lanes; the round trip is exact and the device equals the host in every run):
     - Narrowed: the ring equals the replica's column floor for floor, in a 130-limb file. The run has 1,955 steps; the replica's 11 more are its own constant 2s. The live bits peak at the last cut, 3,606.
     - Wrapped at the mirror: T⁻¹ 5 to T⁻¹ 1 equal the replica's column, in an 84-limb file of 2,081 steps. The run wrapped the samples to 17 bits, not 16, and its T⁻¹ 0 reads 1,088. The live bits peak at 1,546, at cut 1,023, against 1,010 at the crystal.
     - 128 samples at 7 levels: refused under the narrowing alone, its widest register 65 bits. Wrapped at the mirror, it loads in 164 limbs and 4,193 steps, with the ring 2,048 at the samples, 2,810 at the crystal and 2,176 at the rebuilt samples, and the round trip is exact on every lane.

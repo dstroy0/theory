@@ -5,7 +5,7 @@ Swinnerton-Dyer conjecture, one poke at a time, claiming nothing. **Scope:**
 `examples/0_experimental/exact_congruent_number.py`, `evidence/proofs/posits/proof_group_law.py`, and
 this file.
 
-Kept by the precision measurement specialist. This is a workbook, not a result. It follows the rail the
+This is a workbook, not a result. It follows the rail the
 millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`) and the analytic
 number theory and Navier-Stokes workbooks beside this file already follow:
 

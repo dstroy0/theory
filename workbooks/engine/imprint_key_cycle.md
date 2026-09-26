@@ -1,6 +1,6 @@
 # Imprint, key, cycle
 
-**Purpose:** State why the engine spends a program's serial work once and then only zips it over a set. A later session can then read the imprint, the key and the cycle as one picture and know which parts a proof already holds.
+**Purpose:** State why the engine spends a program's serial work once and then only zips it over a set. A reader can then read the imprint, the key and the cycle as one picture and know which parts a proof already holds.
 **Scope:** `engine/base/keymath/`, `engine/base/key_schedule/`, `engine/base/cycle/`, and the residual program `residual_program` (`engine/base/residual/`) states and `engine_residual` in `engine/engine.cu` imprints.
 
 ## The atom

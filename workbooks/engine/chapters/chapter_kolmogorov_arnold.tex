@@ -33,7 +33,7 @@ It also says where the difficulty went. The one-term form moves the whole of f i
 
 {\footnotesize
 \setlength{\tabcolsep}{6pt}
-\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.2132\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.3487\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.2069\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.2311\linewidth-2\tabcolsep\relax}}
+\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.2016\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.3231\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.1986\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.2767\linewidth-2\tabcolsep\relax}}
 \toprule
 the theorem's element & the engine & exact? & status \\
 \midrule
@@ -46,7 +46,7 @@ KAN's B-spline basis B\_\allowbreak{}i & \textbf{the binomial ladder.} [1 1]\tex
 KAN's grid extension: refine the spline grid without refitting & \textbf{one ladder's rungs.} B\_\allowbreak{}s ∗ B\_\allowbreak{}b = B\_\allowbreak{}\{s+b\}: a finer or coarser B-spline is another rung of the same ladder, and a sweep that keeps its rungs gives every (s, b) in one pass (A1) & yes & theory: the ladder-keeping sweep is not built \\
 a sum node in the network & \textbf{the cycle's fold.} Every term of the imprinted key is summed into each output lane in two's complement, one launch & yes & \textbf{proved} (the key against the passes, above) \\
 a composed network is itself a function to compose again & \textbf{keys of keys.} A composed key is a step in another program (noise\_\allowbreak{}sieve\_\allowbreak{}tower.md §9) & yes & \textbf{proved} for linear keys \\
-a general nonlinear φ on an edge & \textbf{a pointwise step as a table on the lane's alphabet.} Every value a lane can hold is pushed through the step once, and the table is the function (noise\_\allowbreak{}sieve\_\allowbreak{}tower.md §2). On a finite alphabet any one-variable function is exactly a table. No spline is needed and nothing is fitted & yes, by construction & \textbf{proved} as the record machine's table step on x² and |x − 30000| + 100 (M10, A13 of engine\_\allowbreak{}table.md; \texttt{record\_\allowbreak{}table\_\allowbreak{}test}, 4,096 lanes, device and host, 15 checks, 0 failed); on the tower's edges, as a bijection (M20, A14; \texttt{tower\_\allowbreak{}edge\_\allowbreak{}test}, 25 checks, 0 failed) \\
+a general nonlinear φ on an edge & \textbf{a pointwise step as a table on the lane's alphabet.} Every value a lane can hold is pushed through the step once, and the table is the function (noise\_\allowbreak{}sieve\_\allowbreak{}tower.md §2). On a finite alphabet any one-variable function is exactly a table. No spline is needed and nothing is fitted & yes, by construction & \textbf{proved} as the record machine's table step on x² and |x − 30000| + 100 (M10, A13 of \hyperref[chap:engine-table]{engine\_\allowbreak{}table.md}; \texttt{record\_\allowbreak{}table\_\allowbreak{}test}, 4,096 lanes, device and host, 15 checks, 0 failed); on the tower's edges, as a bijection (M20, A14; \texttt{tower\_\allowbreak{}edge\_\allowbreak{}test}, 25 checks, 0 failed) \\
 KAN's SiLU base term, which takes whatever the spline does not & \textbf{the noise, determined and not absorbed}: the medium subtracted exactly, the residue held whole, and the floor measured per voxel and bit (the next section) & yes & \textbf{proved} (the residue lossless) and \textbf{measured} (the floor) \\
 coefficients c\_\allowbreak{}i fitted by gradient descent & nothing is fitted; a scale comes from the data (order = period, M2) or the request & nothing to round & absent, by the engine's rule (no chosen numbers) \\
 \bottomrule
@@ -207,7 +207,7 @@ n & k & least gap, units & tightest pair & α cut at r ≤ k (3.11) \\
 \item It then says the tails Σ\_\allowbreak{}p ε\_\allowbreak{}\{k,p\}A\_\allowbreak{}\{k,p\}, with A\_\allowbreak{}\{k,p\} = ψ(d\_\allowbreak{}p) − ψ(d′\_\allowbreak{}p), are “too small to annihilate” γ\textasciicircum{}−nβ(k). That is true, and it does not keep |μ\_\allowbreak{}k| at or above γ\textasciicircum{}−nβ(k): at k = 1 the tails pull it from 10 units to 9.0999099….
 \item So the lemma's bound fails at k = 1. At every k the proof's last step does not prove it.
 \end{itemize}
-\item \textbf{The repair} (anchor\_\allowbreak{}sift's). Replace the lemma's bound and narrow the ramp.
+\item \textbf{The repair.} Replace the lemma's bound and narrow the ramp.
 
 \begin{itemize}
 \item \textbf{The corrected bound} (\textbf{proved}, given (3.11)). Since ψ ∈ [0, 1], each |A\_\allowbreak{}\{k,p\}| ≤ 1, and |μ\_\allowbreak{}k| ≥ γ\textasciicircum{}−nβ(k) − Σ\_\allowbreak{}\{p≥2\} ε\_\allowbreak{}\{k,p\}, about (γ − 1)u′.
@@ -241,7 +241,7 @@ Until both are built, the engine holds the theorem's inner function and its sepa
 \item D. A. Sprecher, “A numerical implementation of Kolmogorov's superpositions”, Neural Networks 9(5) (1996) 765–772, doi:10.1016/0893-6080(95)00081-X; and “… II”, Neural Networks 10(3) (1997) 447–457, doi:10.1016/S0893-6080(96)00073-1. The ψ that fails (item 1).
 \item M. Köppen, “On the training of a Kolmogorov network”, ICANN 2002, LNCS 2415, 474–479, doi:10.1007/3-540-46084-5\_\allowbreak{}77. The corrected ψ (items 2 and 3).
 \item J. Braun and M. Griebel, “On a constructive proof of Kolmogorov's superposition theorem”, Constructive Approximation 30(3) (2009) 653–675, doi:10.1007/s00365-009-9054-2. The proof of Köppen's ψ by bounds.
-\item J. Actor and M. G. Knepley, “An algorithm for computing Lipschitz inner functions in Kolmogorov's superposition theorem”, arXiv:1712.08286 (2017). anchor\_\allowbreak{}sift's reading, not checked here: they computed in mpmath floats with no precision analysis, and their candidate ψ\textasciicircum{}\{p,q\} = α\_\allowbreak{}p(x + qε) separates at every finite level but loses separation in the limit.
+\item J. Actor and M. G. Knepley, “An algorithm for computing Lipschitz inner functions in Kolmogorov's superposition theorem”, arXiv:1712.08286 (2017). A reading, not checked here: they computed in mpmath floats with no precision analysis, and their candidate ψ\textasciicircum{}\{p,q\} = α\_\allowbreak{}p(x + qε) separates at every finite level but loses separation in the limit.
 \item F. Girosi and T. Poggio, “Representation properties of networks: Kolmogorov's theorem is irrelevant”. The objection that the inner functions are too rough to compute. Neural Computation 1(4) (1989) 465–469, doi:10.1162/neco.1989.1.4.465.
 \item J. Schmidt-Hieber, “The Kolmogorov–Arnold representation theorem revisited”, Neural Networks 137 (2021) 119–126, doi:10.1016/j.neunet.2021.01.020 (arXiv:2007.15884).
 \item A. C. Antoulas, I. V. Gosea and C. Poussot-Vassal, “Variable decoupling and the Kolmogorov superposition theorem for rational functions”, arXiv:2605.07246 (2026).

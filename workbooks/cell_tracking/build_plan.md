@@ -1,6 +1,6 @@
 # The build plan: the cell program
 
-**Purpose:** The order the cell program's wants in [cell_tracking_table.md](cell_tracking_table.md) are built in, and every ruling on them, dated. Every session builds the next item and not whatever looks nearest. Built in order, one item at a time; an item is done when its program runs on the device and its row below says so.
+**Purpose:** The order the cell program's wants in [cell_tracking_table.md](cell_tracking_table.md) are built in, and every ruling on them, dated. Each build takes the next item and not whatever looks nearest. Built in order, one item at a time; an item is done when its program runs on the device and its row below says so.
 **Two tables, two concerns (23 September):** keep the cell table and the engine table separate; each is optimized against the other only through its interface section, never merged.
 **Scope:** every want in the cell table's "wants" column. Each one is a UTM program: a record program swept over the body magnitudes, or a linear key swept over the voxels. Each has its own program module (like `residual_program` and `fingerprint_program`), its own `--run` part, and its own measurement. Ingest stays its own step and is never part of a run. The item numbers are the plan's own, kept from 22 to 24 September. A number missing here is the engine workbook's ([build_plan.md](../engine/build_plan.md)).
 

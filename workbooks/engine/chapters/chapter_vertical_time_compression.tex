@@ -261,7 +261,7 @@ axes D (one level) & samples read & steps & file & the all-low coefficient's der
 \item \textbf{Widths across levels.} Derived.
 
 \begin{itemize}
-\item \textbf{The constant-divisor narrowing} (Anchor\_\allowbreak{}sift, 24 September). keymath gives a quotient or exact quotient whose divisor is a constant c the dividend's width less ⌊log2 c⌋ bits, never under 1. The engine's quotient rounds toward zero and the exact quotient does not round: |q| ≤ |v|/c < 2\textasciicircum{}\{w − ⌊log2 c⌋\} for a w-bit dividend. The floor toward −∞ belongs to the lifting's composite of an and, a difference and an exact quotient, never to one operation. The exact quotient now works at its numerator's width and checks q · c against the whole numerator. \textbf{Proved} (\texttt{test/\allowbreak{}engine/\allowbreak{}record\_\allowbreak{}divide\_\allowbreak{}test}, 19 checks, 0 failed): 40-bit factors times 3, 12 and 2\textasciicircum{}32 + 7 divide back exactly, a 64-bit value over 2\textasciicircum{}32 + 7 equals the library's quotient, and the widths are exactly the rule's.
+\item \textbf{The constant-divisor narrowing} (24 September). keymath gives a quotient or exact quotient whose divisor is a constant c the dividend's width less ⌊log2 c⌋ bits, never under 1. The engine's quotient rounds toward zero and the exact quotient does not round: |q| ≤ |v|/c < 2\textasciicircum{}\{w − ⌊log2 c⌋\} for a w-bit dividend. The floor toward −∞ belongs to the lifting's composite of an and, a difference and an exact quotient, never to one operation. The exact quotient now works at its numerator's width and checks q · c against the whole numerator. \textbf{Proved} (\texttt{test/\allowbreak{}engine/\allowbreak{}record\_\allowbreak{}divide\_\allowbreak{}test}, 19 checks, 0 failed): 40-bit factors times 3, 12 and 2\textasciicircum{}32 + 7 divide back exactly, a 64-bit value over 2\textasciicircum{}32 + 7 equals the library's quotient, and the widths are exactly the rule's.
 \item With it, keymath gives a high of 16-bit samples 18 bits and a low 20. Each level adds 4 bits to a low: 16, 20, 24, 28, and 40 at level 6, two limbs. Before it, 7 bits a level: 23, 30, and 58 at level 6. The proved program's file is 12 limbs under either rule.
 \item The values grow far less. The low's linear part is (−1, 2, 6, 2, −1)/8 over x\_\allowbreak{}\{2i−2\} to x\_\allowbreak{}\{2i+2\}, with Σ|c| = 1.5. Its floors add less than 3/4.
 \item Over samples |x| ≤ B: |s| ≤ 1.5B + 1 and |d| ≤ 2B. The edge cases (a line of 2 or 3, either end) repeat a neighbor and keep Σ|c| ≤ 1.5 for a low and 2 for a high.
@@ -400,7 +400,7 @@ Doug's framing (24 September, paraphrased): domain and range are complete and de
 \begin{itemize}
 \item \textbf{The heap} of a floor, on one lane: Σ over the floor's registers of the value's magnitude bits, plus 1 for the sign where the value is nonzero.
 \item \textbf{The ring} of a floor: Σ over the floor's registers of the imprint's widths. It belongs to the program and is the same on every lane.
-\item \textbf{Measured in a scratch run} (Anchor\_\allowbreak{}sift's \texttt{ovoid\_\allowbreak{}measure.\allowbreak{}cu}, not a committed test). One program: T over 64 signed 16-bit samples at 6 levels, then T⁻¹, with the widths before the constant-divisor narrowing.
+\item \textbf{Measured in a scratch run} (\texttt{ovoid\_\allowbreak{}measure.\allowbreak{}cu}, not a committed test). One program: T over 64 signed 16-bit samples at 6 levels, then T⁻¹, with the widths before the constant-divisor narrowing.
 
 \begin{itemize}
 \item 4,096 lanes in four classes by lane mod 4: a clean ramp, the ramp with noise of ±8, the ramp with noise of ±1,024, and raw noise over the whole 16-bit range.
@@ -477,7 +477,7 @@ steps; widest register; file & 1,966; 82 bits; 171 limbs & 1,966; 58 bits; 130 l
 \begin{itemize}
 \item Wrapped at the mirror, each inverse floor's ring is the forward floor's plus one bit for each wrapped register. The wrap's signed range needs one bit over the forward register's magnitude width. Floor 0 is exact at 1,024.
 \item The narrowing alone leaves 128 samples at 7 levels over the file. The wrap at the mirror brings it to 164 limbs.
-\item \textbf{Measured in a scratch run} (Anchor\_\allowbreak{}sift, on the device, 4,096 lanes; the round trip is exact and the device equals the host in every run):
+\item \textbf{Measured in a scratch run} (on the device, 4,096 lanes; the round trip is exact and the device equals the host in every run):
 
 \begin{itemize}
 \item Narrowed: the ring equals the replica's column floor for floor, in a 130-limb file. The run has 1,955 steps; the replica's 11 more are its own constant 2s. The live bits peak at the last cut, 3,606.

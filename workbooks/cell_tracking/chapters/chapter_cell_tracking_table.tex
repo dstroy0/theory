@@ -55,7 +55,7 @@ The organism physics each stage answers to is the thought experiments' (the harm
 \item[{over}] the whole set, before the scan
 \item[{reads}] \texttt{engine\_\allowbreak{}iapx\_\allowbreak{}load}
 \item[{lives in}] \texttt{cell\_\allowbreak{}tracking/\allowbreak{}src/\allowbreak{}scan/\allowbreak{}} (\texttt{scan\_\allowbreak{}set}, its first pass)
-\item[{status}] built 25 September. \textbf{Measured} on the 25: 10,485,760,000 readings, which makes the contrast 34 bits. Every footing converged in 6 to 16 steps, lo 34 to 699 and hi 330 to 2,099. Every \texttt{.\allowbreak{}points} holds the C rebuilt from the 25 \texttt{.\allowbreak{}readings}, checked by a separate reader on 25 of 25
+\item[{status}] built 25 September. \textbf{Measured} on the 25: 10,485,760,000 readings, which makes the contrast 34 bits. Every footing converged in 6 to 16 steps, lo 34 to 699 and hi 330 to 2,099. Every \texttt{.\allowbreak{}points} holds the C rebuilt from the 25 \texttt{.\allowbreak{}readings}: \texttt{points\_\allowbreak{}check} (\texttt{cell\_\allowbreak{}tracking/\allowbreak{}src/\allowbreak{}check/\allowbreak{}points\_\allowbreak{}check.\allowbreak{}c}, its own reader, apart from the scan's) rebuilds the readings, bits and C from the summed \texttt{.\allowbreak{}readings} and finds them in \texttt{scan.\allowbreak{}set} and in every head, 25 of 25, 0 faults
 \end{description}
 
 \tablerecord{\textbf{S1. Peaks}}
@@ -65,7 +65,7 @@ The organism physics each stage answers to is the thought experiments' (the harm
 \item[{over}] each frame, as it is read
 \item[{reads}] \texttt{engine\_\allowbreak{}residual\_\allowbreak{}planes} (E1): S0's contrast as planes of its width, with the residual's width returned
 \item[{lives in}] \texttt{cell\_\allowbreak{}tracking/\allowbreak{}src/\allowbreak{}peaks/\allowbreak{}}, run by \texttt{cell\_\allowbreak{}tracking/\allowbreak{}src/\allowbreak{}scan/\allowbreak{}}
-\item[{status}] built 25 September; peaks at 1, 9, 10 and 12 limbs \textbf{proved} against an exact host scan (131 checks, 0 failed). \textbf{Measured} on the 25: 6,518,615 points, 1,145 to 6,031 a frame, and 942,418 of them (14.5\%) have a face in their neighborhood. Each level is 10 limbs. The residual takes 20.1 ms a frame and the peaks 0.86 ms. A separate reader of every \texttt{.\allowbreak{}points} finds 0 levels not positive, 0 voxels out of order and 0 outside the frame. The faces are counted, not yet stored per point (O4)
+\item[{status}] built 25 September; peaks at 1, 9, 10 and 12 limbs \textbf{proved} against an exact host scan (131 checks, 0 failed). \textbf{Measured} on the 25: 6,518,615 points, 1,145 to 6,031 a frame, and 942,418 of them (14.5\%) have a face in their neighborhood. Each level is 10 limbs. The residual takes 20.1 ms a frame and the peaks 0.86 ms. \texttt{points\_\allowbreak{}check} reads every \texttt{.\allowbreak{}points} and finds 0 levels not positive, 0 voxels out of order and 0 outside the frame in the 6,518,615 points. \texttt{cell\_\allowbreak{}tracking/\allowbreak{}test/\allowbreak{}check\_\allowbreak{}test.\allowbreak{}sh} shows each of its 16 faults fires. The faces are counted, not yet stored per point (O4)
 \end{description}
 
 \tablerecord{\textbf{S1b. Shape}}
@@ -781,7 +781,7 @@ Each item is algebra on the equation above, exact, \textbf{theory until built}. 
 
 {\small
 \setlength{\tabcolsep}{6pt}
-\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.2580\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.4194\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.3226\linewidth-2\tabcolsep\relax}}
+\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.2074\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.4553\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.3373\linewidth-2\tabcolsep\relax}}
 \toprule
 where & what & in code \\
 \midrule
@@ -805,7 +805,7 @@ The interface through which the two tables optimize against each other.
 
 {\small
 \setlength{\tabcolsep}{6pt}
-\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.3993\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.1688\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.4319\linewidth-2\tabcolsep\relax}}
+\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.3866\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.1663\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.4471\linewidth-2\tabcolsep\relax}}
 \toprule
 the program asks & the engine's row & state \\
 \midrule

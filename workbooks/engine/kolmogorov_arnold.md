@@ -146,7 +146,7 @@ The values are sorted, and the least neighboring gap is found. The sim cuts α_p
    - The proof first bounds (3.11), μ with each α_p cut to its first k terms, α_p − ε_{k,p}. That bound holds: its least gap on every grid tested is the last column, at least the margin, and exactly on it at k = 1.
    - It then says the tails Σ_p ε_{k,p}A_{k,p}, with A_{k,p} = ψ(d_p) − ψ(d′_p), are "too small to annihilate" γ^−nβ(k). That is true, and it does not keep |μ_k| at or above γ^−nβ(k): at k = 1 the tails pull it from 10 units to 9.0999099….
    - So the lemma's bound fails at k = 1. At every k the proof's last step does not prove it.
-3. **The repair** (anchor_sift's). Replace the lemma's bound and narrow the ramp.
+3. **The repair.** Replace the lemma's bound and narrow the ramp.
    - **The corrected bound** (**proved**, given (3.11)). Since ψ ∈ [0, 1], each |A_{k,p}| ≤ 1, and |μ_k| ≥ γ^−nβ(k) − Σ_{p≥2} ε_{k,p}, about (γ − 1)u′.
    - **The images stay apart.** The bound beats the image width (γ − 2)ε_{k,2}Σ_p α_p. The reason: for n = 2 and 3 the exponents (p − 1)β(r) are distinct positive integers. Then Σ_p α_p < γ/(γ − 1), and (γ − 2)γ/(γ − 1) < γ − 1 for every γ.
    - **The supports stay apart with a narrower ramp.** Use ρ = γ^−(β(k+1)+2), γ² narrower than the paper's γ^−β(k+1). The supports are then disjoint whenever γ^−nβ(k) − Σ_{p≥2} ε_{k,p} − (γ − 2)ε_{k,2}Σ_p α_p − 2ρ > 0. Each sum is taken as an upper bound: the series is cut after two terms, plus twice the third, which is valid because the exponents grow by at least 1 a term.
@@ -168,7 +168,7 @@ Until both are built, the engine holds the theorem's inner function and its sepa
 - D. A. Sprecher, "A numerical implementation of Kolmogorov's superpositions", Neural Networks 9(5) (1996) 765–772, doi:10.1016/0893-6080(95)00081-X; and "… II", Neural Networks 10(3) (1997) 447–457, doi:10.1016/S0893-6080(96)00073-1. The ψ that fails (item 1).
 - M. Köppen, "On the training of a Kolmogorov network", ICANN 2002, LNCS 2415, 474–479, doi:10.1007/3-540-46084-5_77. The corrected ψ (items 2 and 3).
 - J. Braun and M. Griebel, "On a constructive proof of Kolmogorov's superposition theorem", Constructive Approximation 30(3) (2009) 653–675, doi:10.1007/s00365-009-9054-2. The proof of Köppen's ψ by bounds.
-- J. Actor and M. G. Knepley, "An algorithm for computing Lipschitz inner functions in Kolmogorov's superposition theorem", arXiv:1712.08286 (2017). anchor_sift's reading, not checked here: they computed in mpmath floats with no precision analysis, and their candidate ψ^{p,q} = α_p(x + qε) separates at every finite level but loses separation in the limit.
+- J. Actor and M. G. Knepley, "An algorithm for computing Lipschitz inner functions in Kolmogorov's superposition theorem", arXiv:1712.08286 (2017). A reading, not checked here: they computed in mpmath floats with no precision analysis, and their candidate ψ^{p,q} = α_p(x + qε) separates at every finite level but loses separation in the limit.
 - F. Girosi and T. Poggio, "Representation properties of networks: Kolmogorov's theorem is irrelevant". The objection that the inner functions are too rough to compute. Neural Computation 1(4) (1989) 465–469, doi:10.1162/neco.1989.1.4.465.
 - J. Schmidt-Hieber, "The Kolmogorov–Arnold representation theorem revisited", Neural Networks 137 (2021) 119–126, doi:10.1016/j.neunet.2021.01.020 (arXiv:2007.15884).
 - A. C. Antoulas, I. V. Gosea and C. Poussot-Vassal, "Variable decoupling and the Kolmogorov superposition theorem for rational functions", arXiv:2605.07246 (2026).

@@ -4,7 +4,7 @@
 theory, one poke at a time, claiming nothing. **Scope:** `examples/0_experimental/exact_zeta_values.py`,
 `evidence/proofs/posits/proof_set_theory.py`, and this file.
 
-Kept by the precision measurement specialist. This is a workbook, not a result. It follows the rail the
+This is a workbook, not a result. It follows the rail the
 millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`), because that
 research paper already refused the exact temptation this one has to refuse:
 

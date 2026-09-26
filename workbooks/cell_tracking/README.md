@@ -1,6 +1,6 @@
 # The workbook is the ledger
 
-**Purpose:** One place where every idea the cell program rests on is written down beside what stands behind it. A later session then knows at a glance which claims are proved, which are measured, which are built but unmeasured, and which are still only theory.
+**Purpose:** One place where every idea the cell program rests on is written down beside what stands behind it. A reader then knows at a glance which claims are proved, which are measured, which are built but unmeasured, and which are still only theory.
 **Scope:** `workbooks/cell_tracking/`. The thought experiment that sets the sieve on the cell program is in `thought_experiments/cell_tracking/`. The machine the program runs on is the engine workbook, `workbooks/engine/`.
 
 ## How an entry is kept

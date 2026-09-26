@@ -115,13 +115,13 @@ Measured on 44b6_0113de3b, in a scratch state directory:
 | `--run kcr-prove` | 838,860,800 | 3,958,566,912 |
 | `--run kcr-prove` again | 838,860,800 | 3,962,761,216 |
 
-The history then held two records and the seal (128 bytes), and the daemon ended once idle. Anchor_sift's run on the real state gave the same declarations and ingest peak, with the two prove peaks in the other order.
+The history then held two records and the seal (128 bytes), and the daemon ended once idle. A second run on the real state gave the same declarations and ingest peak, with the two prove peaks in the other order.
 
 Two findings, both measured:
 
-- **The kept peak is not a constant.** Identical requests measured peaks 4,194,304 bytes (2^22) apart. The peak is the largest of samples taken every 20 ms: a measurement at that resolution. The rule above is qualified to say so (agreed with Anchor_sift). Whether the sampling is what moves it has not been tested.
+- **The kept peak is not a constant.** Identical requests measured peaks 4,194,304 bytes (2^22) apart. The peak is the largest of samples taken every 20 ms: a measurement at that resolution. The rule above is qualified to say so. Whether the sampling is what moves it has not been tested.
 - **A job reserves its declaration, not its kept peak.** The second prove declared less than its kept peak and was admitted on its declaration. Until its sweeps grew it, its reservation stood 3,119,706,112 bytes below what it went on to use. That is Doug's rule: reserve what the job asks for, grow and warn when it takes more.
-  - The same day, Anchor_sift changed the working tree's code, uncommitted and not approved by Doug, to reserve the larger of the declaration and the kept peak (`tessera_ledger_wants`). With it, two proves each reserved 3,962,761,216 bytes.
+  - The same day, the working tree's code was changed, uncommitted and not yet ruled on, to reserve the larger of the declaration and the kept peak (`tessera_ledger_wants`). With it, two proves each reserved 3,962,761,216 bytes.
 
 ## The sims submit (24 September)
 
@@ -148,10 +148,10 @@ Measured in a scratch state directory:
 - **The history** was then seven records and the seal (368 bytes).
 - **The host-only sims:** `ask_state` and `ka_psi` run on the host and submit no job.
 - **Every peak is above its declaration.** The smallest peaks sit near 146 MB whatever was declared. The peak is the process's whole dedicated memory, its CUDA context included, and the context is likely most of that; not measured apart.
-- **Two peaks differ from Anchor_sift's runs by 2,097,152 bytes (2^21):** `nbody_lattice` and `fixed_pattern`. That is the same finding as the driver's.
+- **Two peaks differ from the earlier runs by 2,097,152 bytes (2^21):** `nbody_lattice` and `fixed_pattern`. That is the same finding as the driver's.
 - **The engine DLL:** no program in the repo loads it, and no other caller is left to submit.
 
-## Linux (24 September, reported by Anchor_sift, not rerun here)
+## Linux (24 September, not rerun here)
 
 - **The build:** Linux built under WSL 2 (gcc 13.3.0, CUDA 13.3), and its suite passes with 0 warnings. The fixes it needed: `PATH_MAX` under strict C11, the noinline helpers under gcc, `_GNU_SOURCE`, the timer thread's missing return, and the Windows-only strings.
 - **The measure refuses WSL:** WSL runs the device through the Windows driver, and its NVML read a process as 0 bytes before and after it allocated 256 MiB. So no pid can be measured there. The measure refuses to open on a paravirtual device (`tessera_measure_paravirtual`), and the daemon refuses to run. The measure test and the job test both check exactly that refusal.

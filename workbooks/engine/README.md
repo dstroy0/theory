@@ -1,6 +1,6 @@
 # The workbook is the ledger
 
-**Purpose:** One place where every idea the engine rests on is written down beside what stands behind it. A later session can see at a glance which claims are proved, which are measured, which are built but unmeasured, and which are still only theory.
+**Purpose:** One place where every idea the engine rests on is written down beside what stands behind it. A reader can see at a glance which claims are proved, which are measured, which are built but unmeasured, and which are still only theory.
 **Scope:** `workbooks/engine/`. The thought experiments the engine's theory was carried from are in `thought_experiments/engine/`. The compression floor is its own workbook, `workbooks/compression/`, and the cell program is `workbooks/cell_tracking/`.
 
 ## How an entry is kept
@@ -36,7 +36,7 @@ A claim changes status only when a run changes it, and the run is named. Nothing
 | [ledger.md](ledger.md) | every measurement of the engine, its tests and its sims, dated, in the order it was taken, with its samples and its result |
 | [engine_boundary.md](engine_boundary.md) | two rulings on what the engine may hold, with their dates and what prompted them |
 | [scriptura_blocks.md](scriptura_blocks.md) | the one rule on what scriptura's SWAR memory scans may be handed, and why it settles the over-read question |
-| [peer_sessions.md](peer_sessions.md) | how other sessions that build on the engine take it: a git dependency pinned at a commit |
+| [dependent_projects.md](dependent_projects.md) | how the projects built on the engine take it: a git dependency pinned at a commit |
 | [build_time.md](build_time.md) | what the time a build takes is spent on |
 | [records.md](records.md) | the commit and pull request texts written for the engine, dated, as they were written |
 

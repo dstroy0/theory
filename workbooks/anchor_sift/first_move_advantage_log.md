@@ -1,7 +1,7 @@
 # First-move advantage as a winning-path windicator
 
-**Purpose:** Hold the settled parts of the first-move-advantage work apart from the open ones, for a
-later session to pick up without re-deriving either. **Scope:**
+**Purpose:** Hold the settled parts of the first-move-advantage work apart from the open ones. Work picked
+up later then re-derives neither. **Scope:**
 `examples/game_theory/6_oracle/first_move_advantage.py`, over the game backend in
 `src/engine/python/representation/game/` and the sift in `src/engine/python/sift/`.
 
@@ -116,20 +116,19 @@ mate.
   play from a real starting position, both sides driven by the exact predictor. A win for the rook's
   side is the loss for the bare king, one decisive game read from both ends.
 
-## Fleet cross-checks
+## Cross-checks from the other domains
 
-Every domain asked reported the same discipline for taming an unbounded set, and each added a caution
-that applies here.
+Every domain in this tree applies the same discipline for taming an unbounded set, and each adds a
+caution that applies here.
 
-- **Chemistry theorist**: never fold the set into one magnitude; each part and each pair is a vector
+- **Chemistry**: never fold the set into one magnitude; each part and each pair is a vector
   whose magnitude is read, the set stays a point cloud, and the reported quantity is a departure from
   a size-matched null (shuffle keeping counts). The null must be drawn at the same size as the
   sample; one number off the whole tree bounds nothing about a line cut at depth d. So the windicator
   is per depth, each paired with a null at that depth.
 - **Crystallography**: a norm is irrational and leaves the integers; carry squared magnitudes and
-  compare squares, or read per axis and never form a norm. Names its own bounds honestly
-  (EXACT_TILES, families cap, right-angle slack) as judgment-picked parameters. Open question it
-  raised: whether "collapse to N dimensions" means a norm or a sum of per-axis integer counts; the
+  compare squares, or read per axis and never form a norm. Its own bounds (EXACT_TILES, families
+  cap, right-angle slack) are named as judgment-picked parameters. An open question: whether "collapse to N dimensions" means a norm or a sum of per-axis integer counts; the
   latter stays exact.
 - **Protein structure analysis**: a magnitude is exact for what its symmetry preserves and provably
   blind to what the symmetry flips. Measured on 6VXX (ref a70cbe3): 2915/2915 psi torsions hold the

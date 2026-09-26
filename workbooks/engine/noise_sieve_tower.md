@@ -1,6 +1,6 @@
 # The noise sieve tower
 
-**Purpose:** Carry the transfinite noise sieve and the fluidic architecture (the drafts in `thought_experiments/engine/`) into the ledger, idea by idea, each set beside the part of the engine that is its working form and the status that backs it. The theory and the code are then read as one thing, and a later session knows which ideas already run.
+**Purpose:** Carry the transfinite noise sieve and the fluidic architecture (the drafts in `thought_experiments/engine/`) into the ledger, idea by idea, each set beside the part of the engine that is its working form and the status that backs it. The theory and the code are then read as one thing, and a reader knows which ideas already run.
 **Scope:** every idea in `noise_sieve_*.md`, `fluidic_*.md`, `utm_demon_openqasm.md`, `demon_utm_four_noise_vectors.md`, `hash_boundary_functional_folding.md`, `subtractive_cosmological_framework.md` and `cyclic_field_inversion_seed_crystal.md`. `noise_sieve_5_cell_tracking_harmonics.md` sets the sieve on the cell program. It is in `thought_experiments/cell_tracking/`, and its sections are in the cell workbook ([on_the_engine.md](../cell_tracking/on_the_engine.md)). Where an idea has a working form, the module is named; [cell_tracking_table.md](../cell_tracking/cell_tracking_table.md) says which part of the n-body problem each module solves, and [engine_table.md](engine_table.md) what each machine part computes.
 
 The status column follows the ledger's rules ([README.md](README.md)): proved, measured, built, theory, refuted, not so.
@@ -179,7 +179,7 @@ The 2^n barrier does not go away in a machine. The engine keeps its state exact 
 
 ## 12. The subtractive framework: field speed, cancellation, and the null as field noise
 
-The conversation in `subtractive_cosmological_framework.md` is a cosmology. Its cosmological claims (arrival as a c speed update shell, monitoring daemons on structural lines, black holes as sinks) are outside anything this engine can measure, and the ledger records them as theory and leaves them there. Three of its turns correct or sharpen the sieve drafts, and those carry straight into the engine.
+The draft in `subtractive_cosmological_framework.md` is a cosmology. Its cosmological claims (arrival as a c speed update shell, monitoring daemons on structural lines, black holes as sinks) are outside anything this engine can measure, and the ledger records them as theory and leaves them there. Three of its turns correct or sharpen the sieve drafts, and those carry straight into the engine.
 
 **Rules propagate at field speed, not instantly.** "The ruleset propagates to w at field speed": the new rules spread from where they are applied as a wavefront, bounded by the medium's clock, instead of blinking into existence everywhere. This corrects §1's "transfinite speed". In a machine the rules reach every lane in one launch, and the launch takes time; the ledger's 31 ms a frame is that front, measured.
 
@@ -196,7 +196,7 @@ The conversation in `subtractive_cosmological_framework.md` is a cosmology. Its 
 | a null is the field noise reading, not an empty return | built: the null draws (`--null`) climb toward frames far off in time |
 | signal is what leaves the floor | measured: the low five bit planes at ½ in every 44b6 sample; anchors in bits 6 to 11 |
 
-The conversation's cosmology (arrival shells, network daemons, black hole sinks) lies outside what this engine measures; it is in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).
+The draft's cosmology (arrival shells, network daemons, black hole sinks) lies outside what this engine measures; it is in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).
 
 ## 13. The seed crystal and the needle off zero
 

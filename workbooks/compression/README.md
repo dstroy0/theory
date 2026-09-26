@@ -1,6 +1,6 @@
 # The workbook is the ledger
 
-**Purpose:** One place where every idea the compression floor rests on is written down beside what stands behind it. A later session then knows at a glance which claims are proved, which are measured, which are built but unmeasured, and which are still only theory.
+**Purpose:** One place where every idea the compression floor rests on is written down beside what stands behind it. A reader then knows at a glance which claims are proved, which are measured, which are built but unmeasured, and which are still only theory.
 **Scope:** `workbooks/compression/`. The coder and the seal are machine parts, in the engine workbook, `workbooks/engine/` (M9 and M13 of its engine_table.md).
 
 ## How an entry is kept

@@ -11,7 +11,7 @@
 
 The pull request's text:
 
-This PR follows #5. It brings the record machine's width fix and the theorist's heap/ring/lens theory from dstroy0/cell_tracking main (a5ec78f and 79c259f) into anchor_sift.
+This PR follows #5. It brings the record machine's width fix and the heap/ring/lens theory from dstroy0/cell_tracking main (a5ec78f and 79c259f) into anchor_sift.
 
 #### Engine
 
@@ -48,7 +48,7 @@ The 5/3 lift of 64 samples through 6 levels and back, as one record program. On 
 
 With the mirror wraps, the ring is widest at the crystal and nearly symmetric around it.
 
-#### Theory (the theorist, biohub-cell-tracking-13)
+#### Theory
 
 `vertical_time_compression.md` gains:
 - the replica;
@@ -83,7 +83,7 @@ constant divisor would have refused a correct division.
 test/engine/record_divide_test: 19 checks, 0 failed (4 new). Bitwise
 24/0, table 15/0 and guide 11/0 still pass in this tree.
 
-Theory (the theorist): vertical_time_compression.md gains the replica,
+Theory: vertical_time_compression.md gains the replica,
 the steps and their reduction, the record's length, the lifting as record
 floors, the neighbor gather, the two boundaries, the heap and the ring,
 and the lens; engine_table.md A13 is updated to match.
@@ -134,7 +134,7 @@ breaks modulo 3 (827 of 4096).
 <!-- docs-check: quoting -->
 
 ```text
-two_crystals.md (the theorist): the wrap as the projection onto
+two_crystals.md: the wrap as the projection onto
 Z / 2^w; the coherence theorem and its proof on the machine (393216 of
 393216); what does not factor through the projection, with a witness
 pair for each operation; the exact quotient by an odd divisor as the
@@ -186,7 +186,7 @@ Carried from dstroy0/cell_tracking main (1e39052, 46b8018, de5bdff, 9df40f9).
 
 #### Theory
 
-`theory_bucket/cell_tracking/two_crystals.md` and its chapter, the README row, and the A13 pointer, written by the theorist. Its citations point to `test/engine/`.
+`theory_bucket/cell_tracking/two_crystals.md` and its chapter, the README row, and the A13 pointer. Its citations point to `test/engine/`.
 
 The commit's text:
 
@@ -223,7 +223,7 @@ tower of four levels over 64 samples, measured at its crystal.
 
 Both run here: boundary 41/0, coherence 14/0.
 
-Theory (the theorist): two_crystals.md and its chapter, the README row
+Theory: two_crystals.md and its chapter, the README row
 and the A13 pointer in engine_table.md.
 ```
 
@@ -298,7 +298,7 @@ arrangement alone.
 
 ```text
 two_crystals.md and its chapter, engine_table.md A13, the README row
-and the vertical time compression Open item, written by the theorist.
+and the vertical time compression Open item.
 
 - The fingerprint by null permutation is Proved at 24b2785: the rates,
   and the crystal as a one-to-one ID.
@@ -427,7 +427,7 @@ record_order_test (17 checks, 0 failed).
   and -omega equals +omega. 329 halt and 199 run forever. Of the 496
   open, 391 show a halt and 105 halt past the run.
 
-theory: "The ordered machine" in two_crystals, by the theorist: Doug's
+theory: "The ordered machine" in two_crystals: Doug's
 posits verbatim, the loop rule and its orders, the theorems cited, and
 the test as proved.
 ```
@@ -499,8 +499,6 @@ without walking the turn.
 <!-- docs-check: quoting -->
 
 ```text
-By the theorist.
-
 - two_crystals.md: "Goodstein: omega-towers held as finite objects",
   after "The ordered machine". It covers the objects, the standard
   descent, the theorems (Goodstein, Kirby-Paris, Gentzen), and the sim
@@ -534,7 +532,7 @@ proves and what it measures. The chapter is regenerated.
 <!-- docs-check: quoting -->
 
 ```text
-By the theorist. The new section in two_crystals.md comes after
+The new section in two_crystals.md comes after
 Goodstein.
 
 - Doug's two quotes, verbatim as a posit. The one on tower recursion is
@@ -650,7 +648,7 @@ Measured:
 <!-- docs-check: quoting -->
 
 ```text
-By the theorist, in "pi turning at the boundary" of two_crystals.md, with
+In "pi turning at the boundary" of two_crystals.md, with
 M19 of the engine table.
 
 - The arc: Doug's posits 1 to 9 verbatim. The helix over our disk:
@@ -713,7 +711,7 @@ pi_tower now has 23 checks, 0 failed, at 2^1 to 2^100 and at 2^1000.
 <!-- docs-check: quoting -->
 
 ```text
-By the theorist, in "The arc" of two_crystals.md, with M19 of the engine
+In "The arc" of two_crystals.md, with M19 of the engine
 table.
 
 - (13) and (14) are now Proved by pi_tower c26b6a7 (23 checks, 0
@@ -817,8 +815,8 @@ the count of ones.
   blind blocks and N fresh ones.
 
 Every layout reads like its shuffles. The lowest, the disc_rings chord
-of 26 zeros from bit 519, is 22 of 9,999, about 1 in 10 over the
-session's readings. The rings' radial agreement, 20 of 999 on the bits
+of 26 zeros from bit 519, is 22 of 9,999, about 1 in 10 over these
+readings. The rings' radial agreement, 20 of 999 on the bits
 shown, is chance on the next block. The blind pairs: 6 of 6 in the first
 round (1 in 64 by chance), 2 of 5 in the second before it stopped. The
 funnel readings are ordinary on the six blind blocks and on ten fresh

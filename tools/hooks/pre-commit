@@ -19,8 +19,8 @@
 # This is idemIP's tools/git-hooks/pre-commit at c2ab33a, itself a copy of MMgr's, with its two
 # variable names changed and this paragraph and the one above rewritten for this repository. The
 # copies are kept apart deliberately: each repository has to install without depending on another.
-# The directory is tools/hooks here, where idemIP and MMgr use tools/git-hooks. A worktree-isolated
-# session reads the word "git" twice in a command naming tools/git-hooks and refuses to run it.
+# The directory is tools/hooks here, where idemIP and MMgr use tools/git-hooks. A command naming
+# tools/git-hooks carries the word "git" twice, and a worktree-isolated shell refuses to run it.
 # The shorter name keeps every commit in this repository runnable from a worktree.
 #
 # IT FAILS CLOSED
@@ -32,7 +32,7 @@
 #
 # KNOWN GAP
 #
-# The checker skips `.claude/` along with build and cache output. Notes written for agents are the
+# The checker skips `.claude/` along with build and cache output. Notes kept under `.claude/` are the
 # tracked files likeliest to carry a local path, and they are the one directory this gate does not
 # read. The skip belongs to the checker and not to this hook, and it is recorded here for that reason.
 set -uo pipefail

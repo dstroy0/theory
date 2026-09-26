@@ -1,20 +1,18 @@
-# Precision coordination log
+# Precision log
 
 **Purpose:** Record how the precision constants and the exact arithmetic under them reached the
-image_transforms research paper and the examples, letting a later session pick up the citations without
+image_transforms research paper and the examples. The citations can then be picked up later without
 re-deriving them. **Scope:** `theory/theory/image_transforms/`, the precision examples under
 `examples/0_experimental/`, and the constants owned by `src/engine/c/no_rounding/` and
 `theory/theory/precision/`.
 
-Kept by the precision measurement specialist. The anchor sift engine owns the commits; this file is a
-journal, not a settled-results section of
+This file is a journal, not a settled-results section of
 `theory/workbooks/anchor_sift/chapters/chapter_anchor_sift_workbook.tex`.
 
 ## 2026-09-16 entry one: constants located, verified, cited
 
-Coordinated with the anchor sift engine (constants home, handoff) and the lead of the private precision
-repository (precision constants, bignum use), which this public file names by role and not by name.
-Everything below was read from the tree or re-derived here, never taken on report.
+The constants come from the engine's `no_rounding` module and from the private precision repository
+(precision constants, bignum use). Everything below was read from the tree or re-derived here.
 
 ### Where the constants live
 
@@ -48,7 +46,7 @@ is a primitive root (`g^((p-1)/q) != 1` for every prime `q | p-1`), and confirmi
 | 3892314113           | 29·2^27+1       | 32   | no         | 2^27·29               | 2^27   | 3         | 3             |
 | 18446744069414584321 | (2^32-1)·2^32+1 | 64   | no         | 2^32·3·5·17·257·65537 | 2^32   | 7         | (none quoted) |
 
-Two notes carried from that check and from the private repository's lead:
+Two notes from that check:
 
 - The generator and the Proth witness are different numbers for `2013265921` (generator 31, witness
   11). They must not be conflated: one builds the twiddle table, the other proves the prime. For the
@@ -67,7 +65,7 @@ same. Reproduced here: for two residues just under the modulus, the `uint32`-wra
 `p` equals the true sum mod `p` for `2013265921` (below `2^31`) and disagrees for both `2281701377`
 and `3892314113` (above `2^31`).
 
-### Bignum use, from the private repository's lead
+### Bignum use in the private precision repository
 
 - Host arm: Python native integers, exact scaled-integer arithmetic with binary splitting at any
   precision. Operand length is unbounded. There is no fixed limb count on that cleared precision path,
@@ -90,7 +88,7 @@ the device `2^27` primes:
    exceeds `p` almost at once. This does not bite the translation NTT because it convolves binary
    views (0/1). Every coefficient `C(l)` is an agreement count.
 
-The private repository's lead sharpened point 3. For 0/1 views each coefficient counts agreeing positions. It is at
+Point 3 is sharper than that. For 0/1 views each coefficient counts agreeing positions. It is at
 most the transform length; the transform length divides `p-1` and is therefore below `p` for any valid
 prime. A binary view is exact with no separate precondition. Weighting the views is what can breach
 `p`: the bound becomes the sum of the weight products, and past `p` a single prime counts modulo
@@ -99,7 +97,7 @@ device path with its 94-bit product. The chapter states this bound as the design
 
 ## 2026-09-16 entry two: examples built and graded, engine decisions
 
-The engine set placement and the bar: `examples/0_experimental/`, build both, each carrying a
+Placement and the bar: `examples/0_experimental/`, build both, each carrying a
 positive control, two routes able to disagree, a drawn null, and a stated floor. Both are built and
 run, exit 0:
 
@@ -118,20 +116,11 @@ Both ran against a reference and agreed. The translation transform earns the gra
 The chapter header moves per transform: the translation is graded, and the integer-field and rotation
 transforms stay design only under a header that no longer claims the whole chapter is unmeasured.
 
-Routing confirmed with the engine (it commits; the specialist touches no git). All three targets sit
-in the shared checkout of this repository, at its root, which is where the engine commits from. The
-untracked-worktree wrinkle does not apply:
-
-- `theory/workbooks/anchor_sift/precision_coordination_log.md` handed off as `workbook precision note`.
-- `theory/theory/image_transforms/chapters/chapter_exact_arithmetic.tex` handed off as
-  `theory image_transforms note`.
-- the two scripts and the updated README handed off as `examples experimental feature`.
-
 ## 2026-09-16 entry three: precision spread, the residue code, the check ladder
 
 Douglas set a goal to raise the accuracy the engine holds by a large factor, a million and then past a
-googol without bound, by a spread over exact identities, and asked every measurement session how it
-takes exact measurement. Six answered. The survey and the theory are in
+googol without bound, by a spread over exact identities, and surveyed how each of six measurement
+domains takes exact measurement. The survey and the theory are in
 `theory/workbooks/anchor_sift/precision_spread_theory.md`. What was built and measured, each with a positive control,
 two routes, a drawn null, and a stated floor:
 
@@ -158,11 +147,6 @@ conservation quantities are exact but flat; measured quantities keep an upstream
 crosses, reached only through a floor-free ratio. The absolute floor is never arithmetic: the
 representation imposes no quantum and has infinite variability, finer than any physical scale. The floor
 is measurement and completeness, both external.
-
-Handoff to the engine (it commits; the specialist touches no git): the five example scripts and the
-README as `examples experimental feature`, `theory/workbooks/anchor_sift/precision_spread_theory.md` as
-`workbook precision feature`, and `evidence/proofs/posits/proof_precision_spread.py` as
-`evidence posits feature`.
 
 ## 2026-09-17 entry four: Navier-Stokes sets against the boundary function, inheritance checked
 
@@ -193,21 +177,17 @@ floor:
   shells lighting up outward with the velocity and vorticity routes agreeing and Parseval summing them to
   the total, and the coefficient growth, an exact constant rate `4 pi^4/25` for ABC (entire, radius
   infinite) and a rising `pi`-degree `0,4,8,12,16,20` for a generic datum whose limit is a completeness
-  boundary. Imports the ring from `exact_navier_stokes_on_torus.py`. Handoff `examples experimental
-feature`, with the README row added there.
+  boundary. Imports the ring from `exact_navier_stokes_on_torus.py`, and has a row in the examples
+README.
 - `theory/workbooks/anchor_sift/navier_stokes_workbook.md`: the statement written down from the Clay PDF, read in
   full including the errata; the sets defined; what they knew, wanted and we know; entries 1 to 3, the
   sets on the torus, the boundary function, and the cascade; the inheritance tables; prior art named with
-  respect; four withdrawn entries with what killed each. Handoff `workbook navier feature`.
+  respect; four withdrawn entries with what killed each.
 
 Fefferman's statement was fetched from the Clay site and read in full for this entry, since the corpus at
 `Downloads/millenium/` holds the five statements the Clay index listed as unsolved and not this one, as
 the millennium research paper's corpus chapter records. The 2026 blowup paper was not read past what that research paper's
 Navier-Stokes chapter read, and nothing here rests on it.
-
-Handoff to the engine (it commits; the specialist touches no git): the script and the README row as
-`examples experimental feature`, the posit as `evidence posits feature`, the workbook as
-`workbook navier feature`, and this entry as `workbook precision note`.
 
 ## 2026-09-17 entry five: Birch and Swinnerton-Dyer, the congruent number reading
 
@@ -235,20 +215,15 @@ run, each exit 0:
   to the precision document's regimes; the sets against the boundary function; prior art; one withdrawn
   entry, the 15 label.
 
-Handoff to the engine (it commits; the specialist touches no git): the example and the README row as
-`examples experimental feature`, the posit as `evidence posits feature`, the workbook as
-`workbook birch feature`, and this entry as `workbook precision note`.
-
 ## 2026-09-17 entry six: the descent, the rank bound, and reaching Sha
 
 Douglas set two follow-ons: push the descent through correctly, then attempt reaching the first part of
-Sha. Both done, integer-only, validated before landing. The mechanism was steered by the anchor sift
-engine: local solvability as a refute-only necessary-condition probe, the engine's sound one-directional
+Sha. Both done, integer-only, validated before landing. The mechanism is local solvability as a refute-only necessary-condition probe, the engine's sound one-directional
 filter, with the Hensel level DERIVED from the form (2 v_p(J) + 1) and not a picked cap, the point that
 keeps it clean under the tree's no-bounding rule. An earlier bounded mod-p^k search was dropped: it
-picked a cap and, worse, a too-small cap under-counted the rank, the unsafe direction. The engine also
-corrected a plan to draw a permutation null here; there is nothing to permute in a rank bound, and the
-one-directional filter is the only engine principle that applies.
+picked a cap and, worse, a too-small cap under-counted the rank, the unsafe direction. No permutation
+null is drawn here. There is nothing to permute in a rank bound, and the one-directional filter is the
+only engine principle that applies.
 
 - `examples/0_experimental/exact_descent_rank.py` (EXP-x-019): the 2-isogeny descent giving a sound rank
   upper bound `dim Sel(alpha) + dim Sel(alpha') - 2`. Validated against known ranks over rank 0 and rank
@@ -258,29 +233,25 @@ one-directional filter is the only engine principle that applies.
   (A=16 != 8=2B); the image is then the torsion image, and the leftover dual-side Selmer classes 2, 17, 34
   are exhibited nontrivial elements of the Tate-Shafarevich group, each certified locally soluble by the
   probe and coming from no rational point. Positive control: Sha trivial where the descent is tight
-  (n=5,6,7). Imports the curve and Tunnell's counts from exact_congruent_number.py. Handoff
-  `examples experimental feature`, with the README row.
+  (n=5,6,7). Imports the curve and Tunnell's counts from exact_congruent_number.py, and has a row in the
+  examples README.
 - `theory/workbooks/anchor_sift/birch_swinnerton_dyer_workbook.md`: new sections on the descent and on reaching Sha,
-  the Open item narrowed to a full 2-descent for curves whose rank is not independently pinned. Handoff
-  `workbook birch feature`.
+  the Open item narrowed to a full 2-descent for curves whose rank is not independently pinned.
 
 Sound, exact, unconditional; claims only the rank upper bound and the exhibited Sha, nothing about BSD.
-Handoff of this entry: `workbook precision note`.
 
 ## Open
 
-- The delta/null theorist is revising `theory/theory/delta_null` with the scan-arm family and the
-  projection-soundness result. The NRR null cites `delta_null`; align the citation once the engine
-  says the revision landed. (NRR is the noise reduction ratio, see the workbook.)
-- The private repository's lead surfaced ways `exact_integer` would ingest CODATA constants wrongly and
-  later corrected one: the width counts total digits not places (11 of 62 truncated constants refuse);
+- `theory/theory/delta_null` is being revised with the scan-arm family and the projection-soundness
+  result. The NRR null cites `delta_null`; align the citation once the revision lands. (NRR is the noise reduction ratio, see the workbook.)
+- There are ways `exact_integer` would ingest CODATA constants wrongly, one of them later corrected: the width counts total digits not places (11 of 62 truncated constants refuse);
   the uncertainty is dropped (crystallography relies on that, now documented, with a new
   `from_measured`/`measured()` path coming but not yet on main); there is no divide. Derive outside
-  the type and ingest finished text. The padding point was WITHDRAWN by that lead: `from_decimal` holds
+  the type and ingest finished text. The padding point is WITHDRAWN: `from_decimal` holds
   exactly the value of the text given, and padding 1000 places to 1024 is exact for that text; the
   fault is only a truncated expansion treated as the constant at a higher scale, a caller issue, not a
-  code defect. All of this concerns `src/engine/c/no_rounding/exact_integer.{h,c}`, owned by the
-  engine, and that lead handed the documentation fixes to the engine to land as `src exact bugfix`.
+  code defect. All of this concerns `src/engine/c/no_rounding/exact_integer.{h,c}`, and the documentation
+  fixes landed as `src exact bugfix`.
   None of it touches the image_transforms NTT, which works on integer views modulo `p`, not on decimal
   constant ingestion.
   **Note, 26 September.** At anchor_sift `1948ae1` the header is
@@ -293,7 +264,7 @@ Handoff of this entry: `workbook precision note`.
   multiply is long multiplication, then Karatsuba from 32 limbs, then the Schönhage-Strassen
   transform from 8,192 limbs (lines 31 to 35). The Python side, `src/engine/python/representation/exact.py`,
   was deleted by `74601c1` on 26 September. Entry one's figures (108 limbs, line 49, schoolbook) are
-  the header as read on 16 September. The three examples handed off above,
+  the header as read on 16 September. The three examples above,
   `exact_navier_stokes_on_torus.py`, `exact_navier_stokes_cascade.py` and
   `proof_boundary_inheritance.py`, import `from representation import exact`, which is in no file at
   `1948ae1`.

@@ -109,7 +109,7 @@ Of these operators, only the seal's is not associative: H(H(a ‖ b) ‖ c) ≠ 
 
 ## What the engine shows about the wire and the witness
 
-Doug's nine posits of 24 September on the wire and the witness are kept verbatim, numbered as he gave them, in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md). What the engine shows that bears on them follows (Anchor_sift's a to g, checked). Derived unless marked.
+Doug's nine posits of 24 September on the wire and the witness are kept verbatim, numbered as he gave them, in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md). What the engine shows that bears on them follows (a to g, checked). Derived unless marked.
 
 - **(a) The seal detects and locates a change; it does not restore the value.** Locality is proved ("What it proves"): a mismatch walks down to its row or chunk.
   - Derived: the seal can confirm a guessed repair. With t unknown flips in a segment of m bits, a search tries C(m, t) candidates. The right one proves, and a wrong one passes with probability 2^−256. One flip in a row of 960 lanes (15,360 bits) is 15,360 hashes. That is a search, not a code.

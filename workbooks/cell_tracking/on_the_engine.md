@@ -29,7 +29,7 @@ Every wiring build checked on 44b6_0113de3b: 38/0/12 edges and 0 lanes differ, b
 
 ### M14. The scheduler
 
-`track_driver` submits through it (24 September): `--ingest` is one job and each `--run` part is one; the signum is the part's name and the whole effective request; the declaration is the largest sample's lattice in 16-bit lanes, from the source's description for `--ingest` (`engine_source_lanes`, which reads no voxel) and from the `.iapx` head otherwise; the times are 2 s holding, 20 ms sweep and 5 s idle; a job that is not taken, or is held and lost, fails its part. **Measured** on 44b6_0113de3b, with the driver and the daemon built to `build/verify_driver` (exit 0) and run in a scratch `TESSERA_STATE`. The ingest was granted its declaration of 838,860,800 bytes and peaked at 5,091,037,184 (25,392 ms), sample root ad3d9846…, set root b68d522c…. Two proves in a row were each granted 838,860,800 and peaked at 3,958,566,912 and 3,962,761,216, with the same roots. The history was then 128 bytes, two records and the seal, and the daemon ended once idle. Anchor_sift's run on the real state gave the same declarations and ingest peak, and the two prove peaks in the other order: identical requests measured 4,194,304 bytes (2^22) apart.
+`track_driver` submits through it (24 September): `--ingest` is one job and each `--run` part is one; the signum is the part's name and the whole effective request; the declaration is the largest sample's lattice in 16-bit lanes, from the source's description for `--ingest` (`engine_source_lanes`, which reads no voxel) and from the `.iapx` head otherwise; the times are 2 s holding, 20 ms sweep and 5 s idle; a job that is not taken, or is held and lost, fails its part. **Measured** on 44b6_0113de3b, with the driver and the daemon built to `build/verify_driver` (exit 0) and run in a scratch `TESSERA_STATE`. The ingest was granted its declaration of 838,860,800 bytes and peaked at 5,091,037,184 (25,392 ms), sample root ad3d9846…, set root b68d522c…. Two proves in a row were each granted 838,860,800 and peaked at 3,958,566,912 and 3,962,761,216, with the same roots. The history was then 128 bytes, two records and the seal, and the daemon ended once idle. A second run on the real state gave the same declarations and ingest peak, and the two prove peaks in the other order: identical requests measured 4,194,304 bytes (2^22) apart.
 
 ## From the tessera scheduler: the driver submits (24 September)
 
@@ -49,7 +49,7 @@ Measured on 44b6_0113de3b, in a scratch state directory:
 | `--run iapx-prove` | 838,860,800 | 3,958,566,912 |
 | `--run iapx-prove` again | 838,860,800 | 3,962,761,216 |
 
-The history then held two records and the seal (128 bytes), and the daemon ended once idle. Anchor_sift's run on the real state gave the same declarations and ingest peak, with the two prove peaks in the other order.
+The history then held two records and the seal (128 bytes), and the daemon ended once idle. A second run on the real state gave the same declarations and ingest peak, with the two prove peaks in the other order.
 
 The two findings these runs gave are the scheduler's, in [tessera_scheduler.md](../engine/tessera_scheduler.md).
 

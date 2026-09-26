@@ -197,7 +197,7 @@ Doug's (24 September): two crystals, the finite towers and their limit, with an 
 \item Its part in ℚ, the rationals with odd denominators outside ℤ, is countable: the eventually periodic expansions. The machine reaches their windows through the exact quotient's inverse (1/3, above).
 \item The computable elements of ℤ₂ are countable, and a program can produce any window of one. All but countably many elements are not computable: each has a window at every w, as every element does, yet no program produces its windows for every w.
 \end{itemize}
-\item \textbf{The solenoid.} Derived. The envelope joining the two crystals (Anchor\_\allowbreak{}sift's framing) is the dyadic solenoid (Vietoris 1927; van Dantzig 1930):
+\item \textbf{The solenoid.} Derived. The envelope joining the two crystals is the dyadic solenoid (Vietoris 1927; van Dantzig 1930):
 
 Σ₂ = lim←(S¹, z ↦ z²) = (ℝ × ℤ₂) / ℤ, with ℤ embedded diagonally, n ↦ (n, n)
 
@@ -380,11 +380,11 @@ Derived.
 Doug's definition of the higher-order and negative-order hypercomputer (24 September, points 1 to 4) and his words on the same machine are kept verbatim in posits\_\allowbreak{}24\_\allowbreak{}september.md. The orders in ℤ and ±ω below are this section's derived form of his “all the way to infinity and back”.
 
 \begin{itemize}
-\item \textbf{The loop rule} (Anchor\_\allowbreak{}sift's). Every record program halts, since each has a fixed step count. An Ω for the record machine needs a machine R* that applies a stack of floors again and again until a halt register is set.
+\item \textbf{The loop rule.} Every record program halts, since each has a fixed step count. An Ω for the record machine needs a machine R* that applies a stack of floors again and again until a halt register is set.
 \item \textbf{Order} (the reading Doug confirmed): how many times the loop runs a floor. A negative order counts runs of the floor's inverse.
 \end{itemize}
 
-\textbf{The formalization} (Anchor\_\allowbreak{}sift's).
+\textbf{The formalization.}
 
 \begin{itemize}
 \item State: a crystal, a vector of 2-adic integers, held one window at a time.
@@ -404,12 +404,12 @@ Doug's definition of the higher-order and negative-order hypercomputer (24 Septe
 
 \begin{itemize}
 \item \textbf{Hamkins and Lewis (2000).} An infinite time Turing machine decides the halting problem for ordinary Turing machines. A flag cell is set on halt, and at stage ω it reads 1 exactly when the machine halted. Doug's point 2 holds in this sense: with the completed tower, the forever loop is answered.
-\item \textbf{Hamkins and Lewis (2000).} The halting problem for infinite time Turing machines is not decidable by an infinite time Turing machine: the diagonal moves up a level. In Doug's terms (Anchor\_\allowbreak{}sift's reading), the question about the tower as a whole, asked from inside it, is a question that does not construct.
+\item \textbf{Hamkins and Lewis (2000).} The halting problem for infinite time Turing machines is not decidable by an infinite time Turing machine: the diagonal moves up a level. Read in Doug's terms, the question about the tower as a whole, asked from inside it, is a question that does not construct.
 \item \textbf{Every halt is seen at a finite stage.} The halting set is computably enumerable. Running every program side by side, as \texttt{chaitin\_\allowbreak{}omega} does, sees each halt. Only “never” needs the ω stage.
 \item \textbf{Chaitin (1987).} A formal system, a checker, of description length K determines at most K + c bits of an Ω, with c a constant of the universal machine.
 \end{itemize}
 
-\textbf{Derived}, mine. Anchor\_\allowbreak{}sift checked the three against how \texttt{record\_\allowbreak{}order\_\allowbreak{}test} is built.
+\textbf{Derived}, mine. The three were checked against how \texttt{record\_\allowbreak{}order\_\allowbreak{}test} is built.
 
 \begin{itemize}
 \item \textbf{(i) On a finite window the ω stage takes finitely many steps.} A bijection of a finite set is a permutation, and each state's orbit is a pure cycle, of length at most the set's size (2\textasciicircum{}16 for a 16-bit window). A bit is 1 infinitely often exactly when some state on the cycle has it. Its lim sup is the OR over the cycle, read after one full cycle. The ITTM's reach past ordinary machines needs an infinite state, here ℤ₂, which the machine holds one window at a time.
@@ -533,7 +533,7 @@ Doug's definition of the higher-order and negative-order hypercomputer (24 Septe
 \begin{itemize}
 \item Recorded as the history of the idea. The floors below are the floors of the rotation, and the 5/3 tower's levels are a different object.
 \end{itemize}
-\item \textbf{The reading} (Anchor\_\allowbreak{}sift's). The boundary is the circle of length 1. The turn is x ↦ x + π, which on the circle is the rotation by α = π − 3.
+\item \textbf{The reading.} The boundary is the circle of length 1. The turn is x ↦ x + π, which on the circle is the rotation by α = π − 3.
 \end{itemize}
 
 \textbf{Derived.}
@@ -549,7 +549,7 @@ Doug's definition of the higher-order and negative-order hypercomputer (24 Septe
 
 \textbf{Theory} (cited, not checked by the sim). The first return map of the rotation to the arc under a close return is again a rotation, by the Gauss-map angle \{1/α\}, rescaled: one Euclid step, one floor, one partial quotient (Rauzy 1979; Khinchin).
 
-\textbf{The method} (Anchor\_\allowbreak{}sift's, exact, integers only).
+\textbf{The method} (exact, integers only).
 
 \begin{itemize}
 \item π is bracketed by Machin's formula at 416 bits, 116 terms. floor(π·2\textasciicircum{}384) is one integer at both ends.
@@ -596,7 +596,7 @@ Doug's definition of the higher-order and negative-order hypercomputer (24 Septe
 \begin{itemize}
 \item It sits at 1 − α = 0.858407346410 (2\textasciicircum{}24, 2\textasciicircum{}32, 2\textasciicircum{}38, 2\textasciicircum{}41, 2\textasciicircum{}100, …), at 1 − 2α = 0.716814692820, at 1 − 3α = 0.575222039230, at 1 − 4α = 0.433629385640, or at 1 − 6α = 0.150444078461.
 \item The step is then a few short of a floor's q: q\_\allowbreak{}j − 1 lands at −α.
-\item Anchor\_\allowbreak{}sift's why: the place near −jα is reached only through (q − j)α, with q a close return. The place the turn came from is the last it fills.
+\item Why: the place near −jα is reached only through (q − j)α, with q a close return. The place the turn came from is the last it fills.
 \item It touches the negative orders of “The ordered machine”. Nothing is claimed of it until counted (Open).
 \end{itemize}
 \end{itemize}
@@ -654,7 +654,7 @@ Doug's definition of the higher-order and negative-order hypercomputer (24 Septe
 \item “one must win”
 \end{enumerate}
 
-What the model shows that bears on them (Anchor\_\allowbreak{}sift's bounds, checked). Derived unless marked. The checks for 7 to 9 are proved and measured after (9).
+What the model shows that bears on them (bounds, checked). Derived unless marked. The checks for 7 to 9 are proved and measured after (9).
 
 \begin{itemize}
 \item \textbf{(2) Etched, and etched again.}
@@ -794,7 +794,7 @@ Doug's framing for 9 holds as built: every wall hit strikes one wall, and every 
 \item Shorter at 86, and longer at 1 (2\textasciicircum{}6, by 7).
 \item Every shortfall is a floor combination: a record return at 80 (a full q\_\allowbreak{}j at 52), and c·q\_\allowbreak{}j at the other 6: 20·q\_\allowbreak{}20 at 2\textasciicircum{}33, 6·q\_\allowbreak{}24 at 2\textasciicircum{}42, 2·q\_\allowbreak{}26 at 2\textasciicircum{}47, 28·q\_\allowbreak{}32 at 2\textasciicircum{}60, 4·q\_\allowbreak{}42 at 2\textasciicircum{}80 and 2·q\_\allowbreak{}44 at 2\textasciicircum{}83.
 \item Runs of resolutions share one shortfall: q\_\allowbreak{}20 at 2\textasciicircum{}34 and at 2\textasciicircum{}36 to 2\textasciicircum{}39, and q\_\allowbreak{}32 at 2\textasciicircum{}61 and at 2\textasciicircum{}63 to 2\textasciicircum{}66.
-\item Anchor\_\allowbreak{}sift's reading, derived and not proved: the second run starts at \{Hα\}, a sliver inside cell 0, the offset one return gives. It reaches L one floor-return sooner.
+\item A reading, derived and not proved: the second run starts at \{Hα\}, a sliver inside cell 0, the offset one return gives. It reaches L one floor-return sooner.
 \item “Are they the same period”: the same at 13 of 100, and otherwise apart by a floor combination.
 \end{itemize}
 \end{itemize}
@@ -815,7 +815,7 @@ Doug's framing for 9 holds as built: every wall hit strikes one wall, and every 
 \item Cell 0 is etched again about 1.77·10\textasciicircum{}301 steps after the fill. The second run is not the first's period (0 of 1).
 \end{itemize}
 \end{itemize}
-\item \textbf{(14) The residue} (Anchor\_\allowbreak{}sift's bound, checked).
+\item \textbf{(14) The residue} (a bound, checked).
 
 \begin{itemize}
 \item \textbf{Proved} (check 11, c26b6a7), verbatim: “on every floor with q\_\allowbreak{}j to 2\textasciicircum{}21, pi's first q\_\allowbreak{}j steps have the whole parts of the permutation n -> n p\_\allowbreak{}j mod q\_\allowbreak{}j, and at step q\_\allowbreak{}j it stands its residue off the whole”. This covers floors j = 0 to 11. For n < q\_\allowbreak{}j the 384-bit walk's whole parts equal ⌊n·p\_\allowbreak{}j/q\_\allowbreak{}j⌋. At step q\_\allowbreak{}j the walk stands at whole p\_\allowbreak{}j with place δ\_\allowbreak{}j when δ\_\allowbreak{}j > 0, and at whole p\_\allowbreak{}j − 1 with place 1 − |δ\_\allowbreak{}j| when δ\_\allowbreak{}j < 0. Certainty: q(δ\_\allowbreak{}M + q) < M for δ > 0, and q·|δ\_\allowbreak{}M| < M with |δ\_\allowbreak{}M| ≥ q for δ < 0.
@@ -826,7 +826,7 @@ Doug's framing for 9 holds as built: every wall hit strikes one wall, and every 
 \item For 0 ≤ n < q\_\allowbreak{}j, nα = n·p\_\allowbreak{}j/q\_\allowbreak{}j + n·δ\_\allowbreak{}j/q\_\allowbreak{}j. Each point sits off its lattice point by n·δ\_\allowbreak{}j/q\_\allowbreak{}j (n·δ\_\allowbreak{}j in cell widths), on the side of δ\_\allowbreak{}j's sign, and within one cell since q\_\allowbreak{}j·|δ\_\allowbreak{}j| < 1.
 \item The points \{nα\}, 0 ≤ n < q\_\allowbreak{}j, fall one to each of q\_\allowbreak{}j cells: [k/q\_\allowbreak{}j, (k + 1)/q\_\allowbreak{}j) when δ\_\allowbreak{}j > 0, and (k/q\_\allowbreak{}j, (k + 1)/q\_\allowbreak{}j] when δ\_\allowbreak{}j < 0. With half-open cells [k/q\_\allowbreak{}j, (k + 1)/q\_\allowbreak{}j) and δ\_\allowbreak{}j < 0 the count fails. At q\_\allowbreak{}1 = 7 (δ\_\allowbreak{}1 = 7α − 1 < 0), n = 0 at 0 and n = 1 at 0.1416 both fall in [0, 1/7), and [6/7, 1) holds none.
 \item The residues run Euclid's algorithm: δ\_\allowbreak{}\{j+1\} = δ\_\allowbreak{}\{j−1\} + a\_\allowbreak{}\{j+1\}·δ\_\allowbreak{}j, with a\_\allowbreak{}\{j+1\} = ⌊|δ\_\allowbreak{}\{j−1\}|/|δ\_\allowbreak{}j|⌋. Each floor's residue is the next floor's step, the Gauss-map recursion. It holds by construction here, since the floors come from Euclid on (M, A).
-\item “Null permutation” read as the rational turn p\_\allowbreak{}j/q\_\allowbreak{}j is Anchor\_\allowbreak{}sift's reading of the quote.
+\item “Null permutation” read as the rational turn p\_\allowbreak{}j/q\_\allowbreak{}j is a reading of the quote.
 \end{itemize}
 \end{itemize}
 
@@ -843,7 +843,7 @@ Doug's framing for 9 holds as built: every wall hit strikes one wall, and every 
 \item \textbf{Every tower grows at least at the golden rate.} q\_\allowbreak{}j = a\_\allowbreak{}j·q\_\allowbreak{}\{j−1\} + q\_\allowbreak{}\{j−2\} ≥ q\_\allowbreak{}\{j−1\} + q\_\allowbreak{}\{j−2\}, with q\_\allowbreak{}0 = 1 and q\_\allowbreak{}1 = a\_\allowbreak{}1 ≥ 1. Then q\_\allowbreak{}j ≥ F\_\allowbreak{}\{j+1\}, the Fibonacci numbers, for every irrational. The residues follow: |δ\_\allowbreak{}j| < 1/q\_\allowbreak{}\{j+1\} ≤ 1/F\_\allowbreak{}\{j+2\}. Every tower's residues shrink at least at the golden ratio's rate, which is 15's “contraction” in the precise sense. The golden ratio [1; 1, 1, …] meets the inequality with equality on every floor.
 \item \textbf{The sign flips on every floor.} δ\_\allowbreak{}j has sign (−1)\textasciicircum{}j: from above on even floors and from below on odd ones, a half turn each floor. This is 15's “negative space”.
 \item \textbf{The shrink.} r\_\allowbreak{}j = 1/ξ\_\allowbreak{}\{j+1\}, and by Euclid r\_\allowbreak{}j lies in (1/(a\_\allowbreak{}\{j+1\} + 1), 1/a\_\allowbreak{}\{j+1\}). It stands between 1/2 and 1 exactly on the floors of 1, and below 1/2 (below 1/φ) on every floor of 2 or more. For a\_\allowbreak{}\{j+1\} = 1, r\_\allowbreak{}j = 1/(1 + r\_\allowbreak{}\{j+1\}), and r\_\allowbreak{}j > 1/φ exactly when r\_\allowbreak{}\{j+1\} < 1/φ. The golden ratio's shrink is 1/φ on every floor.
-\item \textbf{The helix} (our reading, Anchor\_\allowbreak{}sift's and mine, of Doug's word). Put floor j at (jπ, ln|δ\_\allowbreak{}j|) on the cylinder S¹ × ℝ, with the angle taken mod 2π. The points lie on a discrete helix, the log spiral (θ, ln r) lifted to the cylinder. The turning is exact: a half turn on every floor, for every irrational. The pitch is the drop ln ξ\_\allowbreak{}\{j+1\}. It is constant only for the golden ratio, at ln φ ≈ 0.481, and it varies for π. Doug's “exactly” holds for the turning and does not hold for the pitch.
+\item \textbf{The helix} (a reading of Doug's word). Put floor j at (jπ, ln|δ\_\allowbreak{}j|) on the cylinder S¹ × ℝ, with the angle taken mod 2π. The points lie on a discrete helix, the log spiral (θ, ln r) lifted to the cylinder. The turning is exact: a half turn on every floor, for every irrational. The pitch is the drop ln ξ\_\allowbreak{}\{j+1\}. It is constant only for the golden ratio, at ln φ ≈ 0.481, and it varies for π. Doug's “exactly” holds for the turning and does not hold for the pitch.
 \end{itemize}
 
 \textbf{Theory} (cited). \textbf{Hurwitz (1891).} Every irrational x has infinitely many p/q with |x − p/q| < 1/(√5·q²). √5 is the largest constant that works for the golden ratio, the worst approximable number.
@@ -1011,7 +1011,7 @@ b & inside & between & sum \\
 \item Derived: both follow from T being a bijection. The crystal is a one-to-one ID of its samples. The heap fingerprint is many-to-one: it reads the arrangement's structure, not the samples.
 \end{itemize}
 \end{itemize}
-\item \textbf{“The knf will be unique, it is the broken edge of the crystal”} and \textbf{“the only time a section of a knf will agree with another is either pure chance, or the knf belongs to more than one subset”} (24 September, relayed by Anchor\_\allowbreak{}sift). Posit, and the next one to test. The .knf is the entropy history (M8, A7 in \hyperref[chap:engine-table]{engine\_\allowbreak{}table.md}), per Anchor\_\allowbreak{}sift; the name appears nowhere in the source.
+\item \textbf{“The knf will be unique, it is the broken edge of the crystal”} and \textbf{“the only time a section of a knf will agree with another is either pure chance, or the knf belongs to more than one subset”} (24 September). Posit, and the next one to test. The .knf is the entropy history (M8, A7 in \hyperref[chap:engine-table]{engine\_\allowbreak{}table.md}); the name appears nowhere in the source.
 
 \begin{itemize}
 \item The measurement, as Doug set it on 25 September: “the null permutation + identity:null permutation is the measurement for knf, put it as the next posit to test for it”. The knf is ranked against its spatial null permutation (\texttt{knf\_\allowbreak{}identity}, below), and its identity is taken by the identity:null permutation, the procedure that identifies the crystal (“We can take an identity of T”, below). “Unique” is then read as that rank and that identity, as for the heap fingerprint.
@@ -1033,7 +1033,7 @@ b & inside & between & sum \\
 
 \begin{itemize}
 \item Measured against it: the two are inverse, with the endpoints exact (inside 0 at b = 1, between 0 at b = 64), and they cross between b = 2 and 4. They are not 1:1: inside plus between dips to 0.590 at b = 4.
-\item The gap 1 − (inside + between) is 0.41 at b = 4. Anchor\_\allowbreak{}sift's reading, not proved: an inside-shuffled pair in a small tile still shares a body, and neither null removes that co-membership. The gap is then the share both nulls keep, shared membership at scale b, the mutual part of the quote.
+\item The gap 1 − (inside + between) is 0.41 at b = 4. A reading, not proved: an inside-shuffled pair in a small tile still shares a body, and neither null removes that co-membership. The gap is then the share both nulls keep, shared membership at scale b, the mutual part of the quote.
 \end{itemize}
 \item \textbf{The bulk and the boundary} (24 September; his words are in posits\_\allowbreak{}24\_\allowbreak{}september.md).
 
@@ -1055,7 +1055,7 @@ b & inside & between & sum \\
 \item \textbf{The fingerprint's counts.} \textbf{Proved} since: \texttt{test/\allowbreak{}engine/\allowbreak{}record\_\allowbreak{}boundary\_\allowbreak{}test} at 24b2785 (Doug's posits, above). The fingerprint per band, not only the total heap, is open.
 \item \textbf{The knf's agreement as a test} (Doug's posits, above). The knf's identity by spatial null is built and run (\texttt{knf\_\allowbreak{}identity}, e4eae72). The pairwise test, one body's departure curve against another's, is not built.
 \item \textbf{The knf's uniqueness by the two nulls} (Doug's posits, above). The next posit to test: the knf ranked against its spatial null permutation, and its identity taken by the identity:null permutation (25 September). Not yet run.
-\item \textbf{The two nulls' gap.} Whether 1 − (inside + between) measures shared membership at scale b (Anchor\_\allowbreak{}sift's reading) is not proved.
+\item \textbf{The two nulls' gap.} Whether 1 − (inside + between) measures shared membership at scale b (a reading) is not proved.
 \item \textbf{\texttt{record\_\allowbreak{}order\_\allowbreak{}test}} (“The ordered machine”). \textbf{Proved} since: 17 checks, 0 failed.
 \item \textbf{Ω for R*.} The loop machine's Ω is not built.
 \item \textbf{The last cell behind the start} (“π turning at the boundary”). How many of the 100 resolutions end at −jα is not counted.
