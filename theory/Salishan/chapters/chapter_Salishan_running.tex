@@ -141,6 +141,8 @@ Matches the sifted output case-sensitively against the pure corpus. A form that 
 
 Written \texttt{A/\allowbreak{}} for \texttt{src/\allowbreak{}engine/\allowbreak{}python/\allowbreak{}instrument/\allowbreak{}} and \texttt{X/\allowbreak{}} for \texttt{maint/\allowbreak{}data/\allowbreak{}salishan/\allowbreak{}anchor\_\allowbreak{}sift\_\allowbreak{}algorithmic\_\allowbreak{}extraction/\allowbreak{}}.
 
+\textbf{Note, 26 September.} Commit \texttt{74601c1} deleted \texttt{src/\allowbreak{}engine/\allowbreak{}python/} on 26 September. At anchor\_sift \texttt{1948ae1} there is no \texttt{A/\allowbreak{}} directory, and the commands below that run a script from it have no file to run. \texttt{corpus\_\allowbreak{}derivation.\allowbreak{}py}, \texttt{X/\allowbreak{}boundary\_\allowbreak{}check.\allowbreak{}py} and \texttt{binary\_\allowbreak{}sound.\allowbreak{}py} are at the pin and import \texttt{anchor\_sift} from \texttt{A/\allowbreak{}}. \texttt{perceived\_\allowbreak{}sound.\allowbreak{}py}, in the table below, was deleted with the rest. Every result in this research paper was produced before the deletion.
+
 \begin{lstlisting}[breaklines=true,breakatwhitespace=false,basicstyle=\ttfamily\small]
 python A/english_sift.py --check
 \end{lstlisting}
