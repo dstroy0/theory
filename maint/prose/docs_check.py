@@ -2238,8 +2238,8 @@ def fix_refusal(path, tier, at=None, regions=None, line=""):
 # prose as checked.
 REPOSITORY = os.path.dirname(os.path.abspath(__file__))
 # Walks up to the repository instead of counting directories to it. Counting broke
-# every path in this tree the last time anything moved. In theory_bucket the repository is the
-# directory holding both workbooks/ and thought_experiments/.
+# every path in this tree the last time anything moved. In the theory repository the repository is
+# the directory holding both workbooks/ and thought_experiments/.
 while (REPOSITORY != os.path.dirname(REPOSITORY)) and not (
     os.path.isdir(os.path.join(REPOSITORY, "workbooks"))
     and os.path.isdir(os.path.join(REPOSITORY, "thought_experiments"))
@@ -2260,7 +2260,7 @@ while (REPOSITORY != os.path.dirname(REPOSITORY)) and not (
 # root that emptied, and the count at the foot is the only thing that shows the difference. The
 # seven moved back under theory/ on 2026-09-25.
 #
-# In theory_bucket the roots are the three Doug named on 2026-09-25: "theory/ workbooks/ and
+# In the theory repository the roots are the three Doug named on 2026-09-25: "theory/ workbooks/ and
 # thought_experiments/ from our repo have a zero tolerance gate, other repo files are ignored."
 DEFAULT_ROOTS = tuple(
     os.path.join(REPOSITORY, one)

@@ -1,5 +1,5 @@
 #!/bin/sh
-# The prose gate for theory_bucket, run by .git/hooks/pre-commit.
+# The prose gate for the theory repository, run by .git/hooks/pre-commit.
 #
 # Doug, 2026-09-25: "theory/ workbooks/ and thought_experiments/ from our repo have a zero tolerance
 # gate, other repo files are ignored. only our concerns are flagged".

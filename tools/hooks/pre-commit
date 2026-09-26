@@ -3,10 +3,9 @@
 #
 # Install once per clone:   git config core.hooksPath tools/hooks
 #
-# theory_bucket shipped no hooks until this file existed, so commits here ran zero gates. The
-# repository is private, and the guard is still owed: what is authored under PUBLIC/ feeds a public
-# repository, a banned word committed here travels with it. The name guard is a tree-wide control
-# and not a per-repository preference. Root CLAUDE.md refuses every commit in a repository whose
+# This repository, dstroy0/theory and theory_bucket before 2026-09-26, shipped no hooks until this
+# file existed, so commits here ran zero gates. It is public, and a banned word committed here is
+# published with it. The name guard is a tree-wide control and not a per-repository preference. Root CLAUDE.md refuses every commit in a repository whose
 # core.hooksPath is unset.
 #
 # WHERE THE CHECKER IS, AND WHY IT IS NOT IN THIS TREE

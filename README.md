@@ -7,16 +7,19 @@ must be changed through their generator.
 
 ## Layout
 
-This repository, theory_bucket, is anchor_sift's `theory/`, held there as a git submodule. The paths
-below are written from anchor_sift's root, where the generator and the build script live. The books
-sit three shelves deep:
+This repository, https://github.com/dstroy0/theory, was named theory_bucket until 2026-09-26. A
+project that writes theory takes it as a git submodule at `theory/` and does not copy the books in.
+anchor_sift holds it that way. It is also a GitHub template repository, and a repository generated
+from the template is a copy with no link back here, so a project that writes theory uses the
+submodule. The paths below are written from anchor_sift's root, where the
+generator and the build script live. The books sit three shelves deep:
 
 - `theory/theory/` holds the finished books.
 - `theory/workbooks/` holds the workbooks, one per program.
 - `theory/thought_experiments/` holds the thought experiments, kept apart from what was measured.
 
-A change to a book is committed here first. anchor_sift then records the new theory_bucket commit
-in its own commit, and a clone of anchor_sift reads the books through
+A change to a book is committed and pushed here first. The project holding the submodule then
+records the new commit in its own commit. A clone of such a project reads the books through
 `git submodule update --init theory`.
 
 ## What is here
