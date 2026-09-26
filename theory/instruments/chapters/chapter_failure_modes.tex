@@ -1,29 +1,3 @@
-% Transcribed from docs/failure-modes.md on 2026-09-11.
-%
-% SIX SENTENCES WERE REPAIRED, AND THE SOURCE HAS SINCE BEEN REPAIRED TOO. Each was ungrammatical in
-% docs/failure-modes.md in the shape a token removal leaves behind: a sweep deleted a banned word and
-% did not re-read the sentence. The prose gate cannot see that class, because a broken sentence still
-% renders and is therefore neither BREAK nor prose.
-%
-% This chapter carried the repairs first. The author has since fixed all six in the source, so the
-% two now agree and this list is the record of what moved rather than a pending divergence.
-%
-%   md:4    "what remains every subtraction is the residual"   -> "what is left after every subtraction"
-%   md:102  "what remains every trial was carried"             -> "what is left after every trial"
-%   md:132  "reads log2 n whatever in fact"                    -> "whatever the true entropy is"
-%   md:186  "since it is the whose arithmetic"                 -> "since it is the arm whose arithmetic"
-%   md:317  "is the to take seriously"                         -> "deserves the most weight"
-%   md:320  "around, the cheapest detector ... and is not yet" -> ", and still not a habit"
-%
-% Two were reconstructed here and then corrected by the author. 132's object is the entropy and not
-% the distribution: the plug-in saturates at log2 n whenever every observed value is a singleton, so
-% it reads log2 n whatever the true entropy is. 320's lost words were "the one that". Both carry the
-% author's reading. At 4 and 102 the author chose "what is left" where this chapter had written "what
-% remains", and this chapter now follows the source.
-%
-% md:317 is the mechanism in one line. The author wrote "is the one to take seriously", the standard
-% bans "the one", a sweep removed the word, and the sentence broke. Restoring the original would
-% reintroduce the ban, so the repair had to be a rewrite in both places.
 \chapter{Failure modes, and the subtraction that removes each one}
 
 \textbf{Purpose:} Hold the apparatus to the same subtraction the data is held to, because every fault this tree has found made a result look better than the truth and none made it look worse. \textbf{Scope:} fifteen modes, each from an instance caught here, with the detector that removes it and the detector's status.
