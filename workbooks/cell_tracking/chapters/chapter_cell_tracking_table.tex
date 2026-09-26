@@ -5,11 +5,11 @@
 
 \textbf{Purpose:} The micro n-body problem cell\_\allowbreak{}tracking exists to solve, part by part. For each part: the physics we hold it to, what the program does about it today, what it wants to do, every hypothesis tried there with its result, and the next move.
 
-\textbf{Scope:} the program: \texttt{cell\_\allowbreak{}tracking/\allowbreak{}src/\allowbreak{}}, the rules in \texttt{cell\_\allowbreak{}tracking/\allowbreak{}base.\allowbreak{}cfg}, the cell-specific modules still under \texttt{engine/\allowbreak{}} until they move (\texttt{bodies}, \texttt{score\_\allowbreak{}sample}, \texttt{answer\_\allowbreak{}key}, \texttt{measure/\allowbreak{}*}, \texttt{group\_\allowbreak{}objects}, \texttt{link\_\allowbreak{}objects}, \texttt{relate\_\allowbreak{}frames}), the physics in the thought experiments (the harmonics source above all, \texttt{noise\_\allowbreak{}sieve\_\allowbreak{}5\_\allowbreak{}cell\_\allowbreak{}tracking\_\allowbreak{}harmonics.\allowbreak{}pdf}, in \texttt{thought\_\allowbreak{}experiments/\allowbreak{}cell\_\allowbreak{}tracking/\allowbreak{}}; the rest are in \texttt{thought\_\allowbreak{}experiments/\allowbreak{}engine/\allowbreak{}}), and the numbers in \hyperref[chap:ledger]{ledger.md}. The machine the program runs on is a separate concern with its own table, engine\_\allowbreak{}table.md; a row here names the machine rows (M1 to M12) it reads. Statuses follow \hyperref[chap:readme]{README.md}. A hypothesis with no run in the ledger says so.
+\textbf{Scope:} the program: \texttt{cell\_\allowbreak{}tracking/\allowbreak{}src/\allowbreak{}}, the rules in \texttt{cell\_\allowbreak{}tracking/\allowbreak{}base.\allowbreak{}cfg}, the cell-specific modules still under \texttt{engine/\allowbreak{}} until they move (\texttt{bodies}, \texttt{score\_\allowbreak{}sample}, \texttt{answer\_\allowbreak{}key}, \texttt{measure/\allowbreak{}*}, \texttt{group\_\allowbreak{}objects}, \texttt{link\_\allowbreak{}objects}, \texttt{relate\_\allowbreak{}frames}), the physics in the thought experiments (the harmonics source above all, \texttt{noise\_\allowbreak{}sieve\_\allowbreak{}5\_\allowbreak{}cell\_\allowbreak{}tracking\_\allowbreak{}harmonics.\allowbreak{}md}, in \texttt{thought\_\allowbreak{}experiments/\allowbreak{}cell\_\allowbreak{}tracking/\allowbreak{}}; the rest are in \texttt{thought\_\allowbreak{}experiments/\allowbreak{}engine/\allowbreak{}}), and the numbers in \hyperref[chap:ledger]{ledger.md}. The machine the program runs on is a separate concern with its own table, engine\_\allowbreak{}table.md; a row here names the machine rows (M1 to M12) it reads. Statuses follow \hyperref[chap:readme]{README.md}. A hypothesis with no run in the ledger says so.
 
 \section{\texorpdfstring{Two tables, two concerns}{Two tables, two concerns}}
 
-The engine is the machine: exact arithmetic, the residual operator, the component tree, the moments, the one correlation operator, the marginal, the record machine, the files. The program is cell tracking: what a cell is, which body it is next frame, when it divides or dies. Each table is optimized on its own terms. They are optimized against each other only through the interface at the end of each table (what this program asks of the engine, what the engine offers). Merged, neither can be optimized on its own (Doug, 23 September). A second program, RSNA knee MRI, now runs on the same engine, which is why the machine must stay free of cells.
+The engine is the machine: exact arithmetic, the residual operator, the component tree, the moments, the one correlation operator, the marginal, the record machine, the files. The program is cell tracking: what a cell is, which body it is next frame, when it divides or dies. Each table is optimized on its own terms. They are optimized against each other only through the interface at the end of each table (what this program asks of the engine, what the engine offers). Merged, neither can be optimized on its own (23 September). A second program, RSNA knee MRI, now runs on the same engine, which is why the machine must stay free of cells.
 
 \section{\texorpdfstring{The problem}{The problem}}
 
@@ -19,11 +19,11 @@ The score pays for three things: nodes matched to key nodes within 7 µm, edges 
 
 \section{\texorpdfstring{The driver: scan everything, sort at the end}{The driver: scan everything, sort at the end}}
 
-Doug, 25 September: “you scan everything and then you sort stuff. You don't need to sort it before you scan in all of the samples.” Today's driver partitions every frame as it reads it: the cut at ℓ* (row 1) fixes each voxel's body from one frame before the sample's other 99 frames are seen. That is the moment deciding membership, which row 1's and row 9's physics forbid. The score reads only node positions (within 7 µm) and edges, never regions. So the new driver first scans every frame of every sample into points and fields that bound nothing. Only then does it sort: link, keep, divide, and grade.
+25 September: “you scan everything and then you sort stuff. You don't need to sort it before you scan in all of the samples.” Today's driver partitions every frame as it reads it: the cut at ℓ* (row 1) fixes each voxel's body from one frame before the sample's other 99 frames are seen. That is the moment deciding membership, which row 1's and row 9's physics forbid. The score reads only node positions (within 7 µm) and edges, never regions. So the new driver first scans every frame of every sample into points and fields that bound nothing. Only then does it sort: link, keep, divide, and grade.
 
 A peak here is a point: a positive voxel of the residual that no one of its 26 neighbours exceeds. Nothing is assigned to it. The regions around peaks (the watershed's catchment regions, found by tobogganing, each voxel following its steepest neighbour) bound the set, and the driver does not form them. A body's shape is read from the field at its peak, not from a region: the residual's exact second differences there are the ℓ = 2 of its local field, with its long axis and aspect. Everything in this table is tracking and lives in \texttt{cell\_\allowbreak{}tracking/\allowbreak{}}. The engine is called only for math: the residual, the drift, the entropy history, and one-to-one matching. Every run and every test is a job on the tessera schedule; nothing touches the device outside it.
 
-Doug, 25 September: “The whole point of the tracker is to track cells. If you can't walk back something you did you built it wrong.” Every stage keeps what it came from, and every decision keeps what it replaced:
+25 September: “The whole point of the tracker is to track cells. If you can't walk back something you did you built it wrong.” Every stage keeps what it came from, and every decision keeps what it replaced:
 
 \begin{itemize}
 \item a point keeps its frame, voxel and exact level;
@@ -34,7 +34,7 @@ Doug, 25 September: “The whole point of the tracker is to track cells. If you 
 
 Nothing is deleted. What the sort does not keep is marked, and every mark can be walked back to the readings. A map that sends two readings to one (a clip, a rounding, a bin) cannot be walked back and is not built.
 
-The organism physics each stage answers to is the thought experiments' (the harmonics source, \texttt{noise\_\allowbreak{}sieve\_\allowbreak{}5\_\allowbreak{}cell\_\allowbreak{}tracking\_\allowbreak{}harmonics.\allowbreak{}pdf}, and the two fluidic ones), row by row in the table below:
+The organism physics each stage answers to is the thought experiments' (the harmonics source, \texttt{noise\_\allowbreak{}sieve\_\allowbreak{}5\_\allowbreak{}cell\_\allowbreak{}tracking\_\allowbreak{}harmonics.\allowbreak{}md}, and the two fluidic ones), row by row in the table below:
 
 \begin{itemize}
 \item the gradients define themselves, and nothing is tuned;
@@ -210,7 +210,7 @@ Each technique is listed with its chosen numbers, then our form of it: exact, no
 \begin{description}
 \item[{OrganoidTracker (where)}] \texttt{position\_\allowbreak{}predictor.\allowbreak{}\_\allowbreak{}split\_\allowbreak{}into\_\allowbreak{}patches} (the division and link predictors do the same)
 \item[{what it does there}] Per frame, the readings are mapped onto [0, 1] between the 1\% and 99\% quantiles taken over the network's time window, then clipped. An optional top-hat (a Gaussian blur, then a minimum and a maximum filter of \texttt{tophat\_\allowbreak{}mask}) is subtracted.
-\item[{ours: exact, nothing chosen}] Taken (Doug, 25 September), for contrast, once the set is ingested. Every sample is read once, and the set's readings are counted into one exact histogram, one count per 16-bit value. The bounds lo and hi are its quantiles: each is the least value whose cumulative count reaches its share of the set, exactly. Their clip is not built, because it cannot be walked back: every reading past a bound becomes the bound. What is built comes in two parts, both walked back exactly. (a) \textbf{The footing:} each sample's own affine map, (reading − lo) over (hi − lo), is held as that pair and never divided. E1 is linear and cancels a constant, so this map moves no peak. What it does is put samples of different brightness on one footing for the set's readings (S4). One pair for the whole set would change nothing, since every sample already shares the raw scale, so the pairs are per sample. They are read once the set is ingested. (b) \textbf{The contrast:} the set's cumulative count, v ↦ \#\{readings of the set ≤ v\}, is exact histogram equalization. It rises strictly on every value the set holds, so its inverse is the table of those values. It needs no levels, and it changes the scan's peaks the way the clip meant to. It carries the contrast (Doug, 25 September: “cumulative count sound like more information”). For (a), the levels are not written in (Doug, 25 September: “we can let the numbers converge on them”). They start at theirs, 1\% and 99\%, and iterate to a fixed point on the set. The rule (built 25 September; 6 to 16 steps on the 25) is that each bound is the two-means split of its half of the set: the readings below the median for lo, and those above it for hi. Each is iterated from its seed until it stops moving. The class sums and counts are exact integers, a reading is compared against the midpoint by cross-multiplying, and a one-dimensional two-means stops in finitely many steps. The top-hat is not taken: the residual subtracts the medium (E1).
+\item[{ours: exact, nothing chosen}] Taken (25 September), for contrast, once the set is ingested. Every sample is read once, and the set's readings are counted into one exact histogram, one count per 16-bit value. The bounds lo and hi are its quantiles: each is the least value whose cumulative count reaches its share of the set, exactly. Their clip is not built, because it cannot be walked back: every reading past a bound becomes the bound. What is built comes in two parts, both walked back exactly. (a) \textbf{The footing:} each sample's own affine map, (reading − lo) over (hi − lo), is held as that pair and never divided. E1 is linear and cancels a constant, so this map moves no peak. What it does is put samples of different brightness on one footing for the set's readings (S4). One pair for the whole set would change nothing, since every sample already shares the raw scale, so the pairs are per sample. They are read once the set is ingested. (b) \textbf{The contrast:} the set's cumulative count, v ↦ \#\{readings of the set ≤ v\}, is exact histogram equalization. It rises strictly on every value the set holds, so its inverse is the table of those values. It needs no levels, and it changes the scan's peaks the way the clip meant to. It carries the contrast (25 September: “cumulative count sound like more information”). For (a), the levels are not written in (25 September: “we can let the numbers converge on them”). They start at theirs, 1\% and 99\%, and iterate to a fixed point on the set. The rule (built 25 September; 6 to 16 steps on the 25) is that each bound is the two-means split of its half of the set: the readings below the median for lo, and those above it for hi. Each is iterated from its seed until it stops moving. The class sums and counts are exact integers, a reading is compared against the midpoint by cross-multiplying, and a one-dimensional two-means stops in finitely many steps. The top-hat is not taken: the residual subtracts the medium (E1).
 \item[{stage}] S0
 \item[{status}] built
 \end{description}
@@ -565,15 +565,15 @@ What it gives the tracker is physics, with none of its numbers written in:
 \item[{wants}] Every boundary voxel scrubbed under the sweep, so a body's edge and mass are its own and not one frame's cut.
 \item[{tried, and what it gave}] The core per width on 44b6\_\allowbreak{}0113de3b, \textbf{measured}. Proof: the width-0 core mass equals C at the climbed lag on 35,755 of 35,755 forward climbers. Of 161,708 climbers (both sides, adjacent frames), 72,186 reach width 0, 33,827 width 1, 22,884 width 2, 10,230 width 3, 606 width 4 and 2 width 5. Core mass is 90,205,526 / 36,098,925 / 6,542,528 / 307,434 / 4,956 / 2. Which axis ends each core is not yet measured. Mutual pairs whose core displacement lies within half a voxel of the climbed lag on every axis: 10,003 of 16,176 at w=0, 4,409/10,410 at w=1, 2,578/8,727 at w=2, 456/3,413 at w=3, 15/117 at w=4. The deeper the core, the less its motion is the lag's. 49.6 s, with D3 sharing the GPU.
 \item[{status}] core built and measured
-\item[{next}] Build plan C1 (Doug, 22 September: every width, kept per width, between frames): a voxel of a body stays at width w when every offset in the box of half-width w around the climbed lag lands it inside the match. Mass, sums and moments re-summed per width, so the print is summed over the edge that stays.
+\item[{next}] Build plan C1 (22 September: every width, kept per width, between frames): a voxel of a body stays at width w when every offset in the box of half-width w around the climbed lag lands it inside the match. Mass, sums and moments re-summed per width, so the print is summed over the edge that stays.
 \end{description}
 
 \tablerecord{\textbf{14. Size: growth and division by ratio}}
 \begin{description}
 \item[{the physics we hold it to}] Sizes spread on a golden ladder, since growth and division scale by ratios.
-\item[{does today}] The machine's golden ladder (M11, \texttt{band\_\allowbreak{}of}), read by \texttt{damp}, by \texttt{group\_\allowbreak{}objects}, by the residual survey, by the print and by \texttt{division} (mass conserved is β(m\_\allowbreak{}c + m\_\allowbreak{}s) = β(m\_\allowbreak{}p)). \texttt{-\allowbreak{}-\allowbreak{}mass-\allowbreak{}band} (\texttt{band\_\allowbreak{}or\_\allowbreak{}count}) compares the bands instead of the counts wherever two sizes are compared: \texttt{group\_\allowbreak{}objects}, \texttt{arm\_\allowbreak{}landing}, \texttt{focus\_\allowbreak{}links}, \texttt{assign\_\allowbreak{}bodies} and \texttt{track\_\allowbreak{}bend}. Exact sums stay counts, since a band there would round (Doug, 22 September).
+\item[{does today}] The machine's golden ladder (M11, \texttt{band\_\allowbreak{}of}), read by \texttt{damp}, by \texttt{group\_\allowbreak{}objects}, by the residual survey, by the print and by \texttt{division} (mass conserved is β(m\_\allowbreak{}c + m\_\allowbreak{}s) = β(m\_\allowbreak{}p)). \texttt{-\allowbreak{}-\allowbreak{}mass-\allowbreak{}band} (\texttt{band\_\allowbreak{}or\_\allowbreak{}count}) compares the bands instead of the counts wherever two sizes are compared: \texttt{group\_\allowbreak{}objects}, \texttt{arm\_\allowbreak{}landing}, \texttt{focus\_\allowbreak{}links}, \texttt{assign\_\allowbreak{}bodies} and \texttt{track\_\allowbreak{}bend}. Exact sums stay counts, since a band there would round (22 September).
 \item[{wants}] A size read on the ladder instead of any count.
-\item[{tried, and what it gave}] \texttt{damp}: no run in the ledger. \texttt{-\allowbreak{}-\allowbreak{}mass-\allowbreak{}band}, D3 on the first 25 (23 September): identical to counts on every one of the 24 that ran both sides, with 6,134 edges and 5,176 correct / 227 wrong / 2 none / 729 missed. It is identical by construction: on the scored path every reader is gated off. \texttt{track\_\allowbreak{}bend}, \texttt{arm\_\allowbreak{}landing} and the scorer's member choice compare within one object's members, and every object is one leaf. \texttt{group\_\allowbreak{}objects} needs joined pairs, and there are 0. \texttt{focus\_\allowbreak{}links} needs \texttt{-\allowbreak{}-\allowbreak{}focus}; \texttt{assign\_\allowbreak{}bodies} needs nodes output. The 25th, 44b6\_\allowbreak{}551a5dba, loaded in the counts run and then failed its .kcr CRC in the bands run and on every read since, with the file's mtime unchanged (for Doug).
+\item[{tried, and what it gave}] \texttt{damp}: no run in the ledger. \texttt{-\allowbreak{}-\allowbreak{}mass-\allowbreak{}band}, D3 on the first 25 (23 September): identical to counts on every one of the 24 that ran both sides, with 6,134 edges and 5,176 correct / 227 wrong / 2 none / 729 missed. It is identical by construction: on the scored path every reader is gated off. \texttt{track\_\allowbreak{}bend}, \texttt{arm\_\allowbreak{}landing} and the scorer's member choice compare within one object's members, and every object is one leaf. \texttt{group\_\allowbreak{}objects} needs joined pairs, and there are 0. \texttt{focus\_\allowbreak{}links} needs \texttt{-\allowbreak{}-\allowbreak{}focus}; \texttt{assign\_\allowbreak{}bodies} needs nodes output. The 25th, 44b6\_\allowbreak{}551a5dba, loaded in the counts run and then failed its .iapx CRC in the bands run and on every read since, with the file's mtime unchanged (for Doug).
 \item[{status}] built, inert
 \item[{next}] Live only once objects hold more than one leaf, or once bodies touch (row 6).
 \end{description}
@@ -723,13 +723,13 @@ This reads from the inside out:
 
 The records (print, velocity, division, marginal) are functions of the same B, v* and T. How they enter W and K is Doug's to set (Waiting on Doug, item 3, in the build plan).
 
-\subsection{\texorpdfstring{The tracker's stages as reads of the machine's one operator (Doug, 23 September: “we are repeating the same operation close to 10 times”)}{The tracker's stages as reads of the machine's one operator (Doug, 23 September: "we are repeating the same operation close to 10 times")}}
+\subsection{\texorpdfstring{The tracker's stages as reads of the machine's one operator (23 September: “we are repeating the same operation close to 10 times”)}{The tracker's stages as reads of the machine's one operator (23 September: "we are repeating the same operation close to 10 times")}}
 
 Almost every stage above is the machine's correlation C (A4) followed by a different reduction:
 
 {\small
 \setlength{\tabcolsep}{6pt}
-\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.3570\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.6430\linewidth-2\tabcolsep\relax}}
+\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.3560\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.6440\linewidth-2\tabcolsep\relax}}
 \toprule
 stage & the read of C \\
 \midrule
@@ -737,13 +737,13 @@ stage & the read of C \\
 E2 moments m, S, M & \texttt{C\_\allowbreak{}\{t,t\}[a, a](0)} weighted by 1, x, x xᵀ \\
 E3 drift d & argmax\_\allowbreak{}v Σ\_\allowbreak{}\{a,b\} \texttt{C\_\allowbreak{}\{t,t+1\}[a, b](v)} \\
 E4 climb A\_\allowbreak{}b(v) & Σ\_\allowbreak{}\{b′ ∪ ∅\} \texttt{C\_\allowbreak{}\{t,t+1\}[b, b′](v)}, climbed to a local maximum v*\_\allowbreak{}b from d \\
-E4 landing by mass & argmax\_\allowbreak{}\{b′\} C\_\allowbreak{}\{t,t+1\}b, b′ \\
+E4 landing by mass & argmax\_\allowbreak{}\{b′\} \texttt{C\_\allowbreak{}\{t,t+1\}[b, b′](v*\_\allowbreak{}b)} \\
 the backward climb & the same box transposed: \texttt{C\_\allowbreak{}\{t+1,t\}[b′, b](−v)} = \texttt{C\_\allowbreak{}\{t,t+1\}[b, b′](v)} \\
-E5 null h⁰ & Σ\_\allowbreak{}\{b′ ∪ ∅\} C\_\allowbreak{}\{t,t\_\allowbreak{}k\}b, b′, in a null frame \\
+E5 null h⁰ & Σ\_\allowbreak{}\{b′ ∪ ∅\} \texttt{C\_\allowbreak{}\{t,t\_\allowbreak{}k\}[b, b′](v*)}, in a null frame \\
 E6 overlap T & \texttt{C\_\allowbreak{}\{t,t+1\}[b, b′](d)} \\
-the transform T* & C\_\allowbreak{}\{t,t+1\}b, b′, so Σ\_\allowbreak{}\{b′\} T* + T*(b, ∅) = h(b) \\
+the transform T* & \texttt{C\_\allowbreak{}\{t,t+1\}[b, b′](v*\_\allowbreak{}b)}, so Σ\_\allowbreak{}\{b′\} T* + T*(b, ∅) = h(b) \\
 E8 link weight W & Σ over each object's members of T \\
-C1 jitter core, every width & S\_\allowbreak{}w[b, b′] = Σ\_\allowbreak{}\{‖u‖∞ ≤ w\} C\_\allowbreak{}\{t,t+1\}[b, b′](v*\_\allowbreak{}b + u): nested boxes around v*\_\allowbreak{}b \\
+C1 jitter core, every width & S\_\allowbreak{}w[b, b′] = Σ\_\allowbreak{}\{‖u‖∞ ≤ w\} \texttt{C\_\allowbreak{}\{t,t+1\}[b, b′](v*\_\allowbreak{}b + u)}: nested boxes around v*\_\allowbreak{}b \\
 contact κ\_\allowbreak{}w (row 6) & Σ\_\allowbreak{}v (B\_\allowbreak{}w ⋆ B\_\allowbreak{}w)(v) · \texttt{C\_\allowbreak{}\{t,t\}[A, B](v)}: the box's autocorrelation, a tent, over the frame's own box \\
 the slide and the census (row 1) & C at pairs of levels, a rectangle sum of the own-node table (A2) \\
 velocity, division, print & the moments above, read in pairs and triples \\
@@ -783,12 +783,12 @@ Each item is algebra on the equation above, exact, \textbf{theory until built}. 
 
 {\small
 \setlength{\tabcolsep}{6pt}
-\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.2578\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.4199\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.3223\linewidth-2\tabcolsep\relax}}
+\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.2579\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.4196\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.3224\linewidth-2\tabcolsep\relax}}
 \toprule
 where & what & in code \\
 \midrule
 \endhead
-the residual's orders & \{2, 34, 34\} and \{6, 96, 96\} come from two chosen scales (6/5 µm, 2 µm) and n = 4(σ/v)² \textbf{rounded to even}. Doug, 23 September: no rounding, anywhere; order = period from the per-axis coherence reading, per sample & \texttt{SMOOTH\_\allowbreak{}ORDERS}, \texttt{BACKGROUND\_\allowbreak{}ORDERS}, track.h; \texttt{exact\_\allowbreak{}track.\allowbreak{}py} \\
+the residual's orders & \{2, 34, 34\} and \{6, 96, 96\} come from two chosen scales (6/5 µm, 2 µm) and n = 4(σ/v)² \textbf{rounded to even}. 23 September: no rounding, anywhere; order = period from the per-axis coherence reading, per sample & \texttt{SMOOTH\_\allowbreak{}ORDERS}, \texttt{BACKGROUND\_\allowbreak{}ORDERS}, track.h; \texttt{exact\_\allowbreak{}track.\allowbreak{}py} \\
 w = (16, 1, 1) & equals σ∘σ with σ = voxel\_\allowbreak{}pm / gcd(voxel\_\allowbreak{}pm) = (4, 1, 1) exactly, but it is written in as a constant, not derived from \texttt{voxel\_\allowbreak{}pm} & \texttt{AXIS\_\allowbreak{}WEIGHTS}, track.h \\
 κ's lead & (mine ± behind/2) / behind rounds by truncating division when frames are more than one apart; it is exact on consecutive frames (behind = 1), which is every frame today & \texttt{leaf\_\allowbreak{}disagreement}, relate\_\allowbreak{}frames.cu \\
 κ's magnitude & kept mod 2⁴⁰, so it wraps silently above 2⁴⁰ & \texttt{LINK\_\allowbreak{}MAGNITUDE\_\allowbreak{}BITS} 40 \\
@@ -808,20 +808,20 @@ The interface through which the two tables optimize against each other.
 
 {\small
 \setlength{\tabcolsep}{6pt}
-\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.4115\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.1710\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.4175\linewidth-2\tabcolsep\relax}}
+\begin{longtable}{>{\RaggedRight\arraybackslash}p{\dimexpr0.3993\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.1688\linewidth-2\tabcolsep\relax}>{\RaggedRight\arraybackslash}p{\dimexpr0.4319\linewidth-2\tabcolsep\relax}}
 \toprule
 the program asks & the engine's row & state \\
 \midrule
 \endhead
 probes and probe links, not key cells: the slide's partitions and the overlap's census & M3 & built (engine side); \texttt{slide\_\allowbreak{}score.\allowbreak{}cu} not hooked \\
-the component tree's LCA levels and DFS order, to replace bisection (low fruit 4, 6) & M3 & theory \\
-one own-node pair table at the drift, summed over DFS ranges (low fruit 5) & M3, M5 & theory \\
+the component tree's LCA levels and DFS order, to replace bisection (low fruit 4, 6) & M3 & built (engine side); the tracker not hooked \\
+one own-node pair table at the drift, summed over DFS ranges (low fruit 5) & M3, M5 & built (engine side, M3); the drift's lag not yet fed in by the driver; M5 not built \\
 a per-axis coherence reading that returns an exact integer period (order = period) & M2 & theory \\
 a smooth and background pair per sample in flatten & M9 & ruled, not built \\
 the permanent over a whole support component, and its size & M6 & theory \\
 exact spacings from decimal strings, for σ & M1 & built (\texttt{decimal\_\allowbreak{}double}) \\
 a file for the bodies and their prints & M9 & theory \\
-the residual over readings of any width (S0's contrast is the set's cumulative count, up to the set's reading count, far past 2¹⁶). The engine's integers are exact, bit-packed and of any width (Doug, 25 September). The request names the input's bits. The output's width is derived as input bits + Σ smooth orders + Σ background orders + 1 and returned, and peaks read that width & M2 & built 25 September. \texttt{unit\_\allowbreak{}sweep} takes limb planes of a declared width and refuses a value past it. \texttt{engine\_\allowbreak{}residual\_\allowbreak{}planes} returns the residual with its limbs, and \texttt{peaks\_\allowbreak{}find} takes the limbs. \textbf{Proved}: the planes against the 16-bit path, 336 checks, 0 failed (engine table, M2), and the peaks at four widths, 131 checks, 0 failed. The scan runs it at 34 bits in and 10 limbs out \\
+the residual over readings of any width (S0's contrast is the set's cumulative count, up to the set's reading count, far past 2¹⁶). The engine's integers are exact, bit-packed and of any width (25 September). The request names the input's bits. The output's width is derived as input bits + Σ smooth orders + Σ background orders + 1 and returned, and peaks read that width & M2 & built 25 September. \texttt{unit\_\allowbreak{}sweep} takes limb planes of a declared width and refuses a value past it. \texttt{engine\_\allowbreak{}residual\_\allowbreak{}planes} returns the residual with its limbs, and \texttt{peaks\_\allowbreak{}find} takes the limbs. \textbf{Proved}: the planes against the 16-bit path, 336 checks, 0 failed (engine table, M2), and the peaks at four widths, 131 checks, 0 failed. The scan runs it at 34 bits in and 10 limbs out \\
 \bottomrule
 \end{longtable}
 }

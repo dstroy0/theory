@@ -5,7 +5,7 @@
 
 \textbf{Purpose:} The order the cell program's wants in \hyperref[chap:cell-tracking-table]{cell\_\allowbreak{}tracking\_\allowbreak{}table.md} are built in, and every ruling on them, dated, so every session builds the next item and not whatever looks nearest. Built in order, one item at a time; an item is done when its program runs on the device and its row below says so.
 
-\textbf{Two tables, two concerns (Doug, 23 September):} keep the cell table and the engine table separate; each is optimized against the other only through its interface section, never merged.
+\textbf{Two tables, two concerns (23 September):} keep the cell table and the engine table separate; each is optimized against the other only through its interface section, never merged.
 
 \textbf{Scope:} every want in the cell table's “wants” column. Each one is a UTM program: a record program swept over the body magnitudes, or a linear key swept over the voxels. Each has its own program module (like \texttt{residual\_\allowbreak{}program} and \texttt{fingerprint\_\allowbreak{}program}), its own \texttt{-\allowbreak{}-\allowbreak{}run} part, and its own measurement. Ingest stays its own step and is never part of a run. The item numbers are the plan's own, kept from 22 to 24 September, so a number missing here is the engine book's (build\_\allowbreak{}plan.md).
 
@@ -28,7 +28,7 @@ rows 2, 15: the print & \texttt{fingerprint\_\allowbreak{}program}, 52 steps: th
 \end{longtable}
 }
 
-The whole tracker is written out as one equation, stage by stage, in the engine table's “The whole equation” (Doug, 22 September: the aim is the entire equation, so algebra can improve the whole). Every item below that changes a stage updates that section too.
+The whole tracker is written out as one equation, stage by stage, in the engine table's “The whole equation” (22 September: the aim is the entire equation, so algebra can improve the whole). Every item below that changes a stage updates that section too.
 
 \section{\texorpdfstring{Phase B: wants over the body magnitudes (record programs)}{Phase B: wants over the body magnitudes (record programs)}}
 
@@ -49,7 +49,7 @@ The whole tracker is written out as one equation, stage by stage, in the engine 
 \tablerecord{B3}
 \begin{description}
 \item[{row}] 6
-\item[{what it is}] Doug, 22 September: the membrane (4 nm) is a boundary that deforms, so a body and its match overlap only in part, and by how much is what to calculate. What stays inside the match under every jitter between the frames is the body's internal constituents; their shift is the body's velocity and vector; what falls out is the membrane deforming. Built with C1, which is the same measurement. And (Doug, 22 September) two membranes cannot pass through one another: for every touching pair A, B at t and their matches A′, B′ at t+1, the centroid difference keeps its side, (c\_\allowbreak{}A − c\_\allowbreak{}B)·(c\_\allowbreak{}A′ − c\_\allowbreak{}B′) > 0. Every mass denominator is positive, so the sign is exact from the cross-multiplied numerators: one pass writes each pair's difference as a record, and a second pass reads the two records and writes the truthy verdict. It is cheap here and needs no model
+\item[{what it is}] 22 September: the membrane (4 nm) is a boundary that deforms, so a body and its match overlap only in part, and by how much is what to calculate. What stays inside the match under every jitter between the frames is the body's internal constituents; their shift is the body's velocity and vector; what falls out is the membrane deforming. Built with C1, which is the same measurement. And (22 September) two membranes cannot pass through one another: for every touching pair A, B at t and their matches A′, B′ at t+1, the centroid difference keeps its side, (c\_\allowbreak{}A − c\_\allowbreak{}B)·(c\_\allowbreak{}A′ − c\_\allowbreak{}B′) > 0. Every mass denominator is positive, so the sign is exact from the cross-multiplied numerators: one pass writes each pair's difference as a record, and a second pass reads the two records and writes the truthy verdict. It is cheap here and needs no model
 \item[{status}] the deformation folded into C1. The no-crossing pair is built (\texttt{-\allowbreak{}-\allowbreak{}contact-\allowbreak{}side}, \texttt{contact\_\allowbreak{}side}). Pass 1, 23 steps, two bodies: N = σ∘(S\_\allowbreak{}A m\_\allowbreak{}B − S\_\allowbreak{}B m\_\allowbreak{}A), σ = voxel\_\allowbreak{}pm over its common unit. Pass 2, 18 steps, reads two pass-1 records: dot = N·N′, c = COMPARE(dot + 1, 1), kept = c(c + 1), crossed = c(c − 1). The lanes are every touching leaf pair (\texttt{joined}) whose forwards both exist. Each pass is proved against the host. Ran on 44b6\_\allowbreak{}0113de3b and three 6bba: 0 touching pairs on every sample. Today's bodies are separate components of the cut, so none share a face and \texttt{grow\_\allowbreak{}leaves} writes \texttt{joined\_\allowbreak{}count} = 0; E7 (\texttt{group\_\allowbreak{}objects}) is inert too. What “touching” means for components of a cut is waiting on Doug (item 6)
 \end{description}
 
@@ -63,14 +63,14 @@ The whole tracker is written out as one equation, stage by stage, in the engine 
 \tablerecord{B5}
 \begin{description}
 \item[{row}] 14
-\item[{what it is}] wherever two sizes are compared, the mass band is compared instead (Doug, 22 September: size comparisons only; exact sums stay counts, since a band there would round)
+\item[{what it is}] wherever two sizes are compared, the mass band is compared instead (22 September: size comparisons only; exact sums stay counts, since a band there would round)
 \item[{status}] built (\texttt{-\allowbreak{}-\allowbreak{}mass-\allowbreak{}band}, \texttt{band\_\allowbreak{}or\_\allowbreak{}count} in golden\_\allowbreak{}bands): \texttt{group\_\allowbreak{}objects} (left/right bigger, leans), \texttt{arm\_\allowbreak{}landing}, \texttt{focus\_\allowbreak{}links}, \texttt{assign\_\allowbreak{}bodies} (heaviest) and \texttt{track\_\allowbreak{}bend} (both widest loops) compare bands when the flag is on and counts when it is off. Built clean; A/B not run yet
 \end{description}
 
 \tablerecord{B6}
 \begin{description}
 \item[{row}] 7, 8
-\item[{what it is}] OrganoidTracker 2.0's estimation made exact: each link's context-aware probability P(A|G) = Z\_\allowbreak{}A / Z, the sum over every flow-conserving arrangement of the local subgraph (three steps out, divisions allowed) of the product of its weights, with and without link A. Theirs is exp(−E/T) of calibrated network energies. Ours (Doug, 22 September: yes): a link weighs the fraction of the body that lands on the candidate, and “no link” the null draw's fraction; each body takes one outcome in every arrangement, so the mass denominators cancel, and Z\_\allowbreak{}A and Z are exact integers, compared by cross-multiplying, with no temperature and no calibration
+\item[{what it is}] OrganoidTracker 2.0's estimation made exact: each link's context-aware probability P(A|G) = Z\_\allowbreak{}A / Z, the sum over every flow-conserving arrangement of the local subgraph (three steps out, divisions allowed) of the product of its weights, with and without link A. Theirs is exp(−E/T) of calibrated network energies. Ours (22 September: yes): a link weighs the fraction of the body that lands on the candidate, and “no link” the null draw's fraction; each body takes one outcome in every arrangement, so the mass denominators cancel, and Z\_\allowbreak{}A and Z are exact integers, compared by cross-multiplying, with no temperature and no calibration
 \item[{status}] built (\texttt{-\allowbreak{}-\allowbreak{}marginal}, needs the null: \texttt{-\allowbreak{}-\allowbreak{}null} with a floor; \texttt{marginal} module, device kernel one thread a body, host proof on anchor\_\allowbreak{}sift's exact integer, 16 limbs). The local set G is the body, every source that shares one of its candidates, and their candidates, at one frame step. Each source takes one outcome and no two sources take the same target. A body whose set is too wide (more than 15 sources, 64 targets or 2¹⁶ arrangements) is asked alone. \textbf{Differs from the text above:} one step, not three, and no division arrangements (a source to two targets). Those are Doug's to decide. The tally compares the most probable in context, the heaviest candidate alone, and the climb's forward against the key edges. Measured on 44b6\_\allowbreak{}0113de3b: 34,297 bodies asked in 50 ms (30,444 in context, 3,853 alone, 8 too wide), 123,538 options, device equal to the host. Of 49 key edges, the most probable in context is the truth for 16 and “no link” for 27. The heaviest candidate alone gets 38 and the climb's forward 35. The null's weight (the climbed null count) dominates T (counted at the drift); putting them on one footing is waiting on Doug (item 7)
 \end{description}
 
@@ -79,7 +79,7 @@ The whole tracker is written out as one equation, stage by stage, in the engine 
 \tablerecord{C1}
 \begin{description}
 \item[{row}] 13, 6
-\item[{what it is}] the jitter scrub, with B3 (Doug, 22 September: every width, kept per width, and the jitter between frames). For each body and its match at the climbed lag, a voxel stays at width w when every offset in the box of half-width w around the lag lands it inside the match. That is the match's Chebyshev distance from its own boundary, one exact integer per voxel, so one pass buckets every voxel by the widest box it survives. Mass, sums and moments are re-summed per width: the core that stays is the internal constituents, its shift is the velocity, and what falls out at each width is the membrane deforming
+\item[{what it is}] the jitter scrub, with B3 (22 September: every width, kept per width, and the jitter between frames). For each body and its match at the climbed lag, a voxel stays at width w when every offset in the box of half-width w around the lag lands it inside the match. That is the match's Chebyshev distance from its own boundary, one exact integer per voxel, so one pass buckets every voxel by the widest box it survives. Mass, sums and moments are re-summed per width: the core that stays is the internal constituents, its shift is the velocity, and what falls out at each width is the membrane deforming
 \item[{status}] built 23 September (\texttt{climb\_\allowbreak{}machine\_\allowbreak{}core}, \texttt{-\allowbreak{}-\allowbreak{}core}), proved on 44b6\_\allowbreak{}0113de3b: the width-0 core mass is C at the climbed lag on 35,755 of 35,755 forward climbers. Widths reach 5, and the per-width counts, masses and displacements are in row 13. The deeper the core, the less often its displacement lies within half a voxel of the climbed lag (62\% at w=0, 42\%, 30\%, 13\%, 13\%). Still open: the core velocity feeding a link or the print, and contact κ\_\allowbreak{}w (item 6) built on the same D
 \end{description}
 
@@ -162,7 +162,7 @@ D1 and D2 are the engine's (the engine book's build plan).
 \item \textbf{Next is Doug's:} the rule that replaces the most-components cut (for example, the r that maximizes mutual one-to-one, the product of the two verdicts), and whether r is swept over every value or over a data-driven sample.
 \end{itemize}
 
-9d. Direction, 23 September (Doug): “make our cell tracker do all the cool stuff organoidtracker does”. OrganoidTracker (vendored at \texttt{vendor\_\allowbreak{}for\_\allowbreak{}ref/\allowbreak{}Organoid\allowbreak{}Tracker}) is the feature list; each feature is rebuilt in our terms: exact integers, verdicts as fields, no weights or cutoffs. The mapping, with nothing built yet:
+9d. Direction, 23 September: “make our cell tracker do all the cool stuff organoidtracker does”. OrganoidTracker (vendored at \texttt{vendor\_\allowbreak{}for\_\allowbreak{}ref/\allowbreak{}Organoid\allowbreak{}Tracker}) is the feature list; each feature is rebuilt in our terms: exact integers, verdicts as fields, no weights or cutoffs. The mapping, with nothing built yet:
 
 \begin{itemize}
 \item \textbf{Detection.} Theirs: a U-Net predicts centres, then peak calling. Ours: max-tree bodies at the r the overlap picks (items 9, 9c).
@@ -173,7 +173,7 @@ D1 and D2 are the engine's (the engine book's build plan).
 \item \textbf{Gap bridging.} Theirs: \texttt{bridge\_\allowbreak{}gaps}. Ours: the overlap across t→t+2 at the summed drift, for a 1→0 followed by a 0→1.
 \item \textbf{Error probabilities.} Theirs: local marginalization, which enumerates microstates in a 3-step neighbourhood and weights them with Boltzmann factors at temperature 1.5. Ours: the same enumeration with exact counts; a link's field is (valid local solutions that contain it) / (all valid local solutions), kept as an exact pair.
 \item \textbf{Manual correction GUI and retraining loop.} Out of scope for the competition.
-\item \textbf{I/O, added by Doug: “Ctc geff api queries etc”.}
+\item \textbf{I/O, added: “Ctc geff api queries etc”.}
 
 \begin{itemize}
 \item Theirs: \texttt{imaging/\allowbreak{}geff\_\allowbreak{}io.\allowbreak{}py} (\texttt{load\_\allowbreak{}data\_\allowbreak{}file} and \texttt{save\_\allowbreak{}data\_\allowbreak{}file}, with node and edge props), and \texttt{imaging/\allowbreak{}ctc\_\allowbreak{}io.\allowbreak{}py} (reads and writes CTC: the man\_\allowbreak{}track lineage file plus label images).
@@ -244,7 +244,7 @@ D1 and D2 are the engine's (the engine book's build plan).
 
 \begin{enumerate}
 \item Ruled 23 September (“split it, go”): the slide and the overlap went back into the engine as engine math (the engine book's build plan, item 24). Key cells, divisions and their grading (present, apart, parted, caught) are still to be rebuilt in cell\_\allowbreak{}tracking/src/slide/slide\_\allowbreak{}score.cu from probes and links; that file still holds the old API. They cannot run until score\_\allowbreak{}sample (engine/base/oracle) moves to cell\_\allowbreak{}tracking, since score\_\allowbreak{}sample's frame loop is where they hook in.
-\item The driver through tessera, 24 September. Doug: “The engines own runs need to go through tessera”. Done 24 September:
+\item The driver through tessera, 24 September. “The engines own runs need to go through tessera”. Done 24 September:
 
 \begin{itemize}
 \item track\_\allowbreak{}driver submits \texttt{-\allowbreak{}-\allowbreak{}ingest} and each \texttt{-\allowbreak{}-\allowbreak{}run} part as one job. The signum is BLAKE3(part name, 0, effective cfg). The declaration is the largest sample's lanes × 2: \texttt{engine\_\allowbreak{}source\_\allowbreak{}lanes} (new, shape only) for ingest, the iapx head otherwise.
@@ -253,7 +253,7 @@ D1 and D2 are the engine's (the engine book's build plan).
 \item Run on a scratch set: ingest declared 838,860,800 with a peak of 5,091,037,184; prove had peaks of 3,962,761,216 and 3,958,566,912. The history is 128 bytes.
 \item Finding, not changed (A11 is Doug's rule): a job is reserved at its declaration even when its kept peak is larger. Reserving max(declared, kept peak) is the fix.
 \end{itemize}
-\item \textbf{The score, 24 September.} Tessera and portability stop here (Doug: “stop getting bogged down in portability”).
+\item \textbf{The score, 24 September.} Tessera and portability stop here (“stop getting bogged down in portability”).
 
 \begin{itemize}
 \item The real metric is \texttt{maint/\allowbreak{}score\_\allowbreak{}submission.\allowbreak{}py} (edge Jaccard × node count factor). The tracker's own tally (83.1\%) is leaf-to-leaf and is not the score.

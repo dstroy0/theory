@@ -1,7 +1,7 @@
 # The compression table
 
 **Purpose:** Track, set by set, the size the crystal reaches against the floor the data allows, so the gap between the two is always a number and every change to the coder is judged against that gap.
-**Scope:** The `.kcr` (the Kolmogorov information crystal, Doug, 23 September) and what it holds: the tower's coefficients, the stream, the deflated side bytes, and the seal. The coder is M9 of [engine_table.md](../engine/engine_table.md), and the seal is M13. Measurements come from [ledger.md](ledger.md), plus the RSNA session's own runs where they are named. Statuses follow [README.md](README.md).
+**Scope:** The `.kcr` (the Kolmogorov information crystal, 23 September) and what it holds: the tower's coefficients, the stream, the deflated side bytes, and the seal. The coder is M9 of [engine_table.md](../engine/engine_table.md), and the seal is M13. Measurements come from [ledger.md](ledger.md), plus the RSNA session's own runs where they are named. Statuses follow [README.md](README.md).
 
 ## What "the floor" means here
 
@@ -14,8 +14,8 @@ The true floor is the Kolmogorov complexity K(x) of a set: the length of the sho
 | **F2. Coefficients, order 0, per floor** | Σ_f ⌈log₂(n_f! / Π_v c_{f,v}!)⌉ over the tower's floors f, plus each floor's counts | C0 | a coder that sees the tower's lifted coefficients floor by floor, each floor memoryless. This is the class the Rice coder belongs to, so F2 is the bound it is judged against | theory |
 | **F3. Coefficients in context** | the same count, taken per context: a coefficient's value given its neighbours already coded (the parent floor, the same place one frame back, the row before) | C0 | context coders: a coefficient coded given its neighbours | theory |
 | **F3′. A two-part code** | the size of an exact representation of the set (its tables and sums, [kolmogorov_arnold.md](../engine/kolmogorov_arnold.md)) plus F2 of what that representation leaves | C2 | a coder that stores a model and then the residue the model does not predict; its length is an upper bound on K(x) | theory |
-| **F4. The noise floor** | Σ over voxels of the entropy of that voxel's noise given everything else known: the set's deterministic terms, local coherence, and the level the voxel sits at. For noise of spread σ that is about log₂(σ·√(2πe)) bits a voxel, however many low bit planes look like coin flips | C1, read through C3 to C8; bounded by C10 and C11 | every coder: what is left of one frame after all structure is taken, the set's model paid once and so costing nothing per frame in the limit | measured on the 25: 6.229 bits a voxel, 38.9% of raw (31.8% to 43.6% by sample), from the photon transfer curve with structure removed by local coherence (sections below) |
-| **F5. The integrated noise functionals** | Σ over voxels of the code length of each voxel's residue under the noise the category functionals describe there (next section): the source's own entropy once the functionals are the real categories | C0, C13 | a coder driven by the functionals' exact counts: exact arithmetic coding comes within 2 bits of this length over a whole stream, and enumerative coding in exact integers hits it exactly | theory: the plan below (Doug, 23 September) |
+| **F4. The noise floor** | Σ over voxels of the entropy of that voxel's noise given everything else known: the set's deterministic terms, local coherence, and the level the voxel sits at. For noise of spread σ that is about log₂(σ·√(2πe)) bits a voxel, however many low bit planes look like coin flips | C1, read through C3 to C8 and C14 to C20; bounded by C10 and C11 | every coder: what is left of one frame after all structure is taken, the set's model paid once and so costing nothing per frame in the limit | measured on the 25: 6.229 bits a voxel, 38.9% of raw (31.8% to 43.6% by sample), from the photon transfer curve with structure removed by local coherence (sections below) |
+| **F5. The integrated noise functionals** | Σ over voxels of the code length of each voxel's residue under the noise the category functionals describe there (next section): the source's own entropy once the functionals are the real categories | C0, C13 | a coder driven by the functionals' exact counts: exact arithmetic coding comes within 2 bits of this length over a whole stream, and enumerative coding in exact integers hits it exactly | theory: the plan below (23 September) |
 
 Each bound is an integer count of bits, and each is a bit length of an exact integer (a multinomial coefficient), so no logarithm or float is needed to state it. The cost is size: at 419,430,400 voxels a sample, the multinomial runs to billions of bits. Computing F1 to F3 exactly at that size is open: the tool is not built, and neither is its method.
 
@@ -23,7 +23,7 @@ Each bound is an integer count of bits, and each is a bit length of an exact int
 
 ## The table's algebra
 
-Every rung and every accepted reading holds to one of these identities, as each engine member holds to its A-number in [engine_table.md](../engine/engine_table.md). A reading that cites none is not accepted. Write a voxel's value in frame t as I_t = P + S_t + n_t: P its fixed pattern, S_t the structure (the bodies and whatever the tracks carry), and n_t the noise, independent between frames and between voxels, mean 0, variance σ²(L) at level L.
+Every rung and every accepted reading holds to one of these identities, as each engine member holds to its A-number in [engine_table.md](../engine/engine_table.md). A reading that cites none is not accepted. Write a voxel's value in frame t as I_t = P + S_t + n_t: P its fixed pattern, S_t the structure (the bodies and whatever the tracks carry), and n_t the noise, independent between frames and between voxels, mean 0, variance σ²(L) at level L. In C14 to C20, a row is a row of [the noise vector integration table](../engine/noise_vector_integration_table.md).
 
 ### C0. Exact counts (F1, F2, F3, F5)
 
@@ -84,6 +84,73 @@ A random sequence of n bits has linear complexity L near n/2, and L ≤ n/2 − 
 ### C13. The coder against the count (F5)
 
 Exact arithmetic coding spends at most ⌈Σ −log₂ p⌉ + 1 bits over a whole stream, within 2 bits of the model's length. Enumerative coding (C0) spends exactly the count. A fixed-width range coder rounds each interval, so it loses a sliver per symbol.
+
+### C14. Charge before the gain sits on the shot line (F4; rows 2 to 6)
+
+Let a voxel collect, each frame, μ photoelectrons, D·Δt dark electrons and ε spurious ones, each a Poisson count and all before the gain. Let the offset O be added after the gain, with the level-free terms after the draw (read R², thermal σ²_J, reset σ²_kTC) independent and of mean 0. With one gain g for every electron,
+
+  L̄ = O + g·(μ + D·Δt + ε),  σ² = g²·(μ + D·Δt + ε) + R² + σ²_J + σ²_kTC,
+
+so σ² = g·(L̄ − O) + R² + σ²_J + σ²_kTC exactly. Charge that enters as whole electrons before the gain moves a voxel along the transfer line and never off it. At one exposure, the dark level, the dark shot and spurious charge are read as light, and the line's intercept (C7), c = R² + σ²_J + σ²_kTC − g·O, holds none of them. Dark current is read only where the light is known to be zero. A bias frame (no light, no exposure) gives O as its mean and the level-free sum as its variance. A dark frame at Δt adds g·D·Δt to the mean and g²·D·Δt to the variance, and their ratio is g. No frame at one temperature splits R², σ²_J and σ²_kTC from each other.
+
+### C15. The cumulant ladder of a gained count (F4, F5; rows 1, 12 and 15)
+
+Let each electron give an independent output X in lane units, of one law for every electron, and let the count of electrons be Poisson with mean n̄. The output is a compound Poisson sum, whose cumulants are κ_r = n̄·E[X^r] for every r ≥ 1. Level-free terms added after the draw (C14) change no slope, and symmetric ones add 0 to every odd cumulant. Against the level, each cumulant is a line of slope
+
+  s_r = E[X^r] / E[X],
+
+so s₁ = 1 and s₂ = g·F², with g = E[X] the gain and F² = E[X²] / E[X]² the excess factor (row 12). The transfer curve's slope (C7) is g·F², not g. One output for every electron (X = g) gives s_r = g^(r−1): F² = 1, and the rungs g, g², g³ the moment ladder is graded against (row 1). An electron-multiplying register's output for one electron is near exponential, with E[X^r] = r!·g^r. Then F² = 2, s₂ = 2g, s₃ = 6g² and s₃ = 3g·s₂.
+
+The ladder is log-convex. For X ≥ 0, Cauchy–Schwarz gives E[X²]² ≤ E[X]·E[X³] and E[X³]² ≤ E[X²]·E[X⁴], so
+
+  s₃ ≥ s₂²,  s₂·s₄ ≥ s₃²,
+
+each an equality only where every electron gives the same X. Both are cross-multiplied comparisons of fitted slopes, with no root or quotient formed. A ladder that breaks either is not one gained Poisson count plus symmetric level-free noise. The slope s₂ alone never splits g from F²; s₂ and s₃ together split them only once the single electron's law is named.
+
+### C16. Thinning keeps a Poisson count Poisson (rows 13, 14 and 16)
+
+If N is Poisson with mean λ and each of its events is kept independently with probability q, the kept count is Poisson with mean q·λ, and the kept and lost counts are independent: the generating function exp(λ·(z − 1)), taken at 1 − q + q·z, is exp(q·λ·(z − 1)). Quantum efficiency (row 14) and partition (row 13) thin the light. On Poisson light they only rescale its mean, and no reading of the frames names Q_e or a partition apart from the light's own rate. For any count with Fano factor f = var(N) / E[N], the thinned count's is
+
+  f′ = 1 + q·(f − 1),
+
+A thinning moves a count toward Poisson and never away, and partition is read only on a light whose f ≠ 1. The same identity splits a Poisson count among places. Photons scattered into the neighboring pixels before the draw (optical crosstalk, row 16) leave each pixel's count an independent Poisson count at its own blurred rate.
+
+### C17. The structure function over lags (rows 7 and 10)
+
+For noise stationary in t with autocovariance γ(k) at lag k, the structure function D(k) = E[(n_{t+k} − n_t)²] is 2·(γ(0) − γ(k)). White noise holds D(k) = D(1) = 2σ² at every lag k ≥ 1, and a random walk of step variance q holds D(k) = k·q. An octave held for 2^o frames, redrawn at every multiple of 2^o with variance v, adds 2v·min(k, 2^o) / 2^o, averaged over the frame's phase: it grows linearly to lag 2^o and holds there.
+
+Taken less the x neighbor's difference, D_x(k) = E[(d_k − d_{k,x})²] with d_k = I_{t+k} − I_t. A term both voxels share additively cancels exactly, and each voxel's own terms add: for independent noise of one law, D_x(k) = 2·D(k). A scale a_t shared by the light (row 10) does not cancel. It adds (L − L_x)²·D_a(k), with D_a the scale's own structure function, which is zero only where the two levels are equal.
+
+### C18. The row and column sums (rows 8, 9 and 10)
+
+Take one frame pair's differences d over a set of voxels (the static ones). Let each be d = r + c + p + e, with r shared by the voxel's row, c by its column, p by its whole plane and e its own, all independent and of mean 0, with variances σ²_r, σ²_c, σ²_p and s. For two distinct voxels, E[d·d′] is σ²_r + σ²_p on the same row, σ²_c + σ²_p on the same column, and σ²_p otherwise. Write T = Σ d² over the M voxels. A squared sum less its own squares is the sum of its ordered pairs' products. Take A_row = Σ over rows of (Σ d)², less T; A_column likewise; A_plane = Σ over planes of (Σ d)², less T; and K_row, K_column and K_plane the ordered pairs each holds. Then
+
+  E[A_row] = K_row·(σ²_r + σ²_p),  E[A_column] = K_column·(σ²_c + σ²_p),
+  E[A_plane − A_row − A_column] = (K_plane − K_row − K_column)·σ²_p,  E[T] = M·(σ²_r + σ²_c + σ²_p + s),
+
+for any count of voxels on any row or column, balanced or not. Each is a sum of integer products, and each variance follows by cross-multiplying over the common denominator M·K_row·K_column·(K_plane − K_row − K_column), as `noise_static_readings` does. The same three lines are E16's patterns ROWS, COLUMNS and PLANES in [engine_table.md](../engine/engine_table.md).
+
+### C19. The single-electron tail (row 11)
+
+Charge that enters as whole electrons before the gain joins the light's count (C14) and sits on every cumulant's line through the offset. With the level-free noise symmetric, every odd cumulant is then zero at the offset:
+
+  κ₃ = s₃·(L̄ − O),  κ₂ = s₂·(L̄ − O) + R²,
+
+with R² the whole level-free sum of C14. The two lines' intercepts c₂ and c₃ give O·s₃ = −c₃ and R²·s₃ = c₂·s₃ − c₃·s₂, cross-multiplied: the offset and the level-free sum apart, from frames at one exposure. A charge that does not enter as a whole electron before the gain (one made partway through the gain, which sees less of it) has its own output law X′ and rate ε′, both level-free. It adds ε′·E[X′] to the level and ε′·E[X′^r] to every cumulant. The offset κ₃ reads is O + ε′·(E[X′] − E[X′³] / s₃).
+
+Spikes against dips read the same odd part. Where the joint law of the three frames around one is unchanged by the reflection x ↦ 2c − x, the reflection maps each spike at threshold h to a dip at h, and the expected counts are equal. The shot's own skew (s₃ > 0), a sparse tail and a body passing in one frame can each break that, and the two counts alone don't say which: row 11 is not separable here.
+
+### C20. Crosstalk in the neighbor correlation (rows 16 and 17)
+
+Electrical crosstalk shares a fraction α of each voxel's draw with its two neighbors along one axis after the draw: d′(v) = d(v) + α·(d(v − δ) + d(v + δ)). For d independent between voxels, with variance V,
+
+  var(d′) = (1 + 2α²)·V,  cov(d′(v), d′(v + δ)) = 2α·V,  cov(d′(v), d′(v + 2δ)) = α²·V,
+
+and 0 past two steps. The correlation is 2α / (1 + 2α²) at one step and α² / (1 + 2α²) at two, the same at every level, since it is a fixed fraction of whatever was drawn. With the crosstalk along x and V = 2σ², the neighbor route (C5) reads
+
+  E[(d′ − d′_x)²] / 4 = σ²·(1 − 2α + 2α²),
+
+where the raw route E[d′²] / 2 reads σ²·(1 + 2α²). A positive α lowers the neighbor route's slope and intercept by the same factor. Optical crosstalk scatters light before the draw, and by C16 the pixels' counts stay independent. It adds no correlation at any reach and shows only in the signal's edge spread (row 16). A correlation of the noise between neighbors (row 17) is sharing after the draw, and one that holds past the second step is not crosstalk of this form.
 
 ## The floor on 44b6_0113de3b (23 September)
 
@@ -201,7 +268,7 @@ The same coherence pass on each of the 25 (10 frame pairs of whole frames a samp
 - **A spatially correlated category.** On most samples the dim differences are nearly white (corr x at level 40 below 0.11 on 21 of the 25). 44b6_267148e4 (0.761), 668e0cc7 (0.354) and 5740d24b (0.150) are not: something moves whole neighbourhoods together at the dimmest levels, frame to frame. It is a category the functionals must write (the spatially correlated row of the plan), and it is not yet identified.
 - **Two fits to check.** 44b6_12dfb391 fits a negative intercept (−11.74), and 53f95252 an intercept of 21.08 with the lowest gain (0.821). Both lines bend inside 40 to 200, so a straight line is not quite their law.
 
-## The plan: noise departure by functionals (Doug, 23 September)
+## The plan: noise departure by functionals (23 September)
 
 There is much more room to claim, by refining the spatial noise terms and the search. The algorithm can reach the theoretical floor universally if noise departure is treated carefully, with functionals. Once the real categories of noise are known, each gets its functional, and all of them are integrated.
 
@@ -241,8 +308,8 @@ It replaces the Rice coder's fixed block, k and escape (the audit's debts) with 
 
 | set | samples | raw (F0) | crystal | of raw | seal's share | floor | gap | status | next |
 |---|---|---|---|---|---|---|---|---|---|
-| **Cell tracking, 44b6** | the 25 (first 25 44b6 training samples by name), 100 × 64 × 256 × 256 u16 each | 20,971,520,000 bytes | 8,809,343,524 bytes as `.kcr` (21 September, CRC era, before the seal) | 42.0% | not in these (CRC-64, 8 bytes a sample) | F4 38.9% (6.229 bits a voxel), the mean of the 25 measured one by one (above); F1 to F3 not measured | 3.1 points of raw: 0.492 bits a voxel, about 645 MB (C9) | measured, proved lossless (25 of 25 rebuilt, set CRC `091daa41e1aceb7e`) | Re-ingest the 25 as `.kcr` and take the size with the seal. Measure F2 per floor on 44b6_0113de3b first. |
-| **Cell tracking, 44b6_0113de3b alone** | 1 | 838,860,800 bytes | stream 340,189,016 bytes as the `.kcr` wrote it (21 September) | 40.6% for the stream alone (6.49 bits a voxel) | none | F4 5.902 bits a voxel, 36.9% (shot line 1.162 × level + 2.46, structure removed by local coherence); bits 0 to 5 carry no linear generator (measured) | 3.7 points of raw: 0.59 bits a voxel, about 310 KB a frame, 30.9 MB over the sample | measured | F2 on the stream, so the Rice coder's share of the 0.59 is known. Then the stream variants in the next table. |
+| **Cell tracking, 44b6** | the 25 (first 25 44b6 training samples by name), 100 × 64 × 256 × 256 u16 each | 20,971,520,000 bytes | 8,809,343,524 bytes as `.iapx` (21 September, CRC era, before the seal) | 42.0% | not in these (CRC-64, 8 bytes a sample) | F4 38.9% (6.229 bits a voxel), the mean of the 25 measured one by one (above); F1 to F3 not measured | 3.1 points of raw: 0.492 bits a voxel, about 645 MB (C9) | measured, proved lossless (25 of 25 rebuilt, set CRC `091daa41e1aceb7e`) | Re-ingest the 25 as `.kcr` and take the size with the seal. Measure F2 per floor on 44b6_0113de3b first. |
+| **Cell tracking, 44b6_0113de3b alone** | 1 | 838,860,800 bytes | stream 340,189,016 bytes as the `.iapx` wrote it (21 September) | 40.6% for the stream alone (6.49 bits a voxel) | none | F4 5.902 bits a voxel, 36.9% (shot line 1.162 × level + 2.46, structure removed by local coherence); bits 0 to 5 carry no linear generator (measured) | 3.7 points of raw: 0.59 bits a voxel, about 310 KB a frame, 30.9 MB over the sample | measured | F2 on the stream, so the Rice coder's share of the 0.59 is known. Then the stream variants in the next table. |
 | **RSNA knee, one series, unsigned** | 1 × 34 × 960 × 960 | 62,668,800 bytes | 25,218,496 bytes, sealed `7ac2cb89…12eb2a` | 40.2% | 5.4% of the crystal; 2.1% of raw at 960 columns | not measured | none | proved (rebuilt voxel for voxel, pixel for pixel, node for node) | F2 on it. |
 | **RSNA knee, one series, signed** | 1 × 24 × 640 × 640 | 19,660,800 bytes | 11,319,416 bytes, sealed `3e70b8cb…8d9966` | 57.6% (the engine table rounded it to 57.5%) | in the crystal | not measured | none | proved | Why signed runs 17 points above unsigned: the lift by 2^15 into the u16 lane, or the data itself. Compare F1 on both. |
 | **RSNA knee, test_series** | 15 series, 557 slices (the RSNA session, 23 September) | 599,191,552 bytes | 192,020,272 bytes | 32.0% | in the crystals | not measured | none | measured by the RSNA session: 15 of 15 held; the prove (696 ms) held every seal node; set root `98b25a42…d7af979` | Their train set, 24,371 series, is ingesting now to `E:\rk\train`. Enter its total when it lands. |
