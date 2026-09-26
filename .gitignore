@@ -1,0 +1,21 @@
+# What a LaTeX run leaves beside the source when it is not given an output directory.
+#
+# anchor_sift's maint/texbuild/build_theory.sh compiles with -output-directory and leaves none of
+# this. TeXworks and TeXShop compile in place, and a book opened in one of them comes back with a
+# .pdf, a .log, a .toc, a .aux per included chapter and a synctex index. This repository is
+# anchor_sift's theory/ as a submodule, and anchor_sift's own ignore rules do not reach inside it.
+#
+# main.pdf is named instead of *.pdf on purpose. The corpus derivation chapter includes a
+# matplotlib figure that is a PDF and belongs to the source.
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.synctex
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*/*/main.pdf
+*/*/*/main.pdf
