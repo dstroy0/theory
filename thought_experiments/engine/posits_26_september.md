@@ -1,7 +1,7 @@
 # The posits of 26 September
 
 **Purpose:** Doug's posits of 26 September, kept verbatim with only the spelling corrected, each with its check under it. The checks say what is derived, what is measured, what is a reading, and what no run has tested.
-**Scope:** the three truths, the tower, the projection, dwell as the bulk, dwell and entropy, and the dwell bench. Everything here has the status theory, as the engine workbook's README defines it, unless a line says otherwise. Code is cited at anchor_sift `d09b489`.
+**Scope:** the three truths, the tower, the projection, dwell as the bulk, dwell and entropy, the dwell bench, and the compiled program. Everything here has the status theory, as the engine workbook's README defines it, unless a line says otherwise. Code is cited at anchor_sift `d09b489`, and in the section on the compiled program at `ddeccb3`.
 
 ## The three truths and the tower
 
@@ -83,3 +83,33 @@ On one set of bits:
 3. If the two agree within their error bars, the engine has measured the claim. If they differ, the runs are not independent and the process is not renewal, which is a measurement too.
 
 A bit that never flips has no completed run and gives no dwell law.
+
+## The compiled program
+
+26 September, verbatim, in order, kept as typed.
+
+<!-- docs-check: quoting -->
+1. "the compile times are ok for now, but there is a way to describe the loop unroll in their asm using our code so we can fill the loop unrolled block for them instead of them needing a pragma unroll command theyre fuckin bad at"
+2. "this is an exceedingly simple problem for us, their ruleset is the kcs for the program crystal"
+3. "we need a transform that allows for vertical growth, more than one program can occupy a register vertically, never horizontally, those asking and answering the same questions are subsets of the same superset"
+4. "if we treat the gpu as an open superset, we innately know all of its subsets, it knows all of its subsets natively, so we structure it in a way that is aware"
+5. "it has operators, and holds automata like cells"
+6. "the things it knows are emergent properties of itself"
+7. "it is able to exchange information through its boundary, cells enter, live and die"
+8. "a malformed question == destroyed dna conceptually"
+9. "the encoding itself is what lets the cell proliferate, it grows to be as complex as its program, that is so beautiful"
+10. "and it can evolve, by interacting with other cells and incorporating that information into its reincarnation"
+11. "the system itself evolves over time to recognize malformed questions that destabalize it before they fully unfurl, protecting itself"
+<!-- docs-check: end quoting -->
+
+No posit here is derived. The lines below say what the engine holds at the pin that a posit names, as a cross-reference and not as a proof.
+
+**Posits 1 and 2, a reading. Status: not built.** The program crystal is the imprinted program, every step's operation, place and limb width known before any compile. The ruleset is PTX's instruction forms (`add.cc`, `addc.cc`, `addc`, `sub.cc`, `subc`, `mad.lo.cc`, `madc.hi.cc`, `selp`), and a construction set writes each step out as its rule per limb, the way `tower_record_lift` (`tower.cu:937`) writes a lifting ruleset out over an extent. Emitted that way, the program is PTX with no loops, and nvJitLink takes it to ptxas with no pass through cicc. The baseline is engine_table.md item 9: cicc's compile grows with about the square of the steps, and on the 381-step program ptxas took 0.6 s against cicc's 7.5 s.
+
+**Posit 3. Status: not built, no design ruled.**
+
+**Posits 4 to 7, cross-reference.** The operators are the operator block, every record operation compiled once per device (engine_table.md item 9). The automata are the resident programs, each reporting to its own `EngineProgramBlock` (`engine_config.h:628`, engine_table.md item 10). A program enters when it is loaded (`cycle_record_load`, `cycle.cu:3011`), lives resident, yielding and resuming through its block, and dies when released (`cycle_record_release`, `cycle.cu:3141`), where the last release of a program unloads it (`cycle.cu:3152-3153`). Information crosses the boundary only through the blocks, which the host reads back and checks between launches (engine_table.md item 10, "The block in device memory").
+
+**Posits 8 and 11, cross-reference.** The exits are true, false, malformed (no lattice was built) and answered (engine_table.md item 10). The imprint refuses a malformed program before anything is laid or run: a step that reads itself or a later step (`keymath.cu:413-418`), or a field past its record (`keymath.cu:420-426`). A refused program never loads (`engine.cu:179`, `:219`). A launch that fails leaves its block at `ENGINE_PROGRAM_FAULT` (`cycle.cu:3269`). The answer table, which would hold a malformed exit keyed by the program's signum and know it without a second run, is item 10's stage 3. Status: not built.
+
+**Posits 9 and 10, cross-reference.** A compiled program's size follows its steps (engine_table.md item 9, the compile table). The refinement loop, where a generator recompiles against a critic's verdicts (engine_table.md M23), is not built.
