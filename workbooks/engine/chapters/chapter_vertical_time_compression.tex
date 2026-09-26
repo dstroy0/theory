@@ -444,7 +444,9 @@ T⁻¹ 0 & 857 & 851 & 856 & 960 & 5,059 \\
 
 \begin{itemize}
 \item The constant-divisor narrowing (built and proved, above).
-\item The wrap at the mirror (derived, not built). The inverse floor k holds the forward floor k's values, each within its forward register's width b. WRAP(v, b + 1) on each rebuilt register passes its value through unchanged, and WRAP(v, 16) on the rebuilt samples is exact on 16-bit input. The bound comes from the mirror, not from the values. It needs T⁻¹ ∘ T = id: with an operation between the towers the mirror breaks, and a wrap placed by it is silently wrong.
+\item The wrap at the mirror (derived, built). The inverse floor k holds the forward floor k's values, each within its forward register's width b. WRAP(v, b + 1) on each rebuilt register passes its value through unchanged, and WRAP(v, 16) on the rebuilt samples is exact on 16-bit input. The bound comes from the mirror, not from the values. It needs T⁻¹ ∘ T = id: with an operation between the towers the mirror breaks, and a wrap placed by it is silently wrong.
+
+\textbf{Note, 26 September.} Built at anchor\_sift \texttt{d45794d}, inside the pin \texttt{ddeccb3}. \texttt{boundary\_mirror} (\texttt{test/\allowbreak{}engine/\allowbreak{}record\_boundary\_test.cu:232-240}) emits WRAP(v, b + 1) on every rebuilt register, b its forward twin's width, after the forward tower is imprinted alone for those widths (:1125-1139). The rebuilt samples take the same wrap. Their twins are the 24-bit signed fields (\texttt{BOUNDARY\_TEST\_FIELD\_BITS}, :43), and the wrap there is WRAP(v, 25). The checks are at :1155, :1293 and :1296. WRAP(v, 16) at the samples' own width on 16-bit input is not exercised.
 \end{itemize}
 \item \textbf{The ring under the three rules.} Derived (replica). The first column reproduces the scratch run's ring exactly.
 

@@ -16,3 +16,4 @@
 | `demon_utm_four_noise_vectors.md` | the demon and a non-halting UTM treating video noise as deterministic: the residual tensor F − I split into four vector magnitudes (shot, thermal/read, fixed pattern, quantization) integrated over n frames |
 | `utm_demon_openqasm.md` | a UTM paired with Laplace's demon running an OpenQASM circuit: the 2^n state vector, unitaries, and measurement without dice |
 | `posits_24_september.md` | the untested posits, moved out of the engine workbook: Doug's on the wire and the witness, and the drafts' claims past the engine |
+| `posits_26_september.md` | Doug's posits of 26 September, each with its check: the three truths and the tower, the projection, dwell as the bulk, dwell and entropy, and the dwell bench, not built |
