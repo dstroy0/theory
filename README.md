@@ -36,6 +36,10 @@ Citations are held here as well, as separate .tsv files because there are many.
 
 ## Building
 
+The build script belongs to anchor_sift (https://github.com/dstroy0/anchor_sift), which holds this
+repository at `theory/`, and not to this repository. Run it from the root of an anchor_sift clone with
+the submodule initialized. It compiles with xelatex.
+
 ```sh
 sh maint/texbuild/build_theory.sh [<research_paper> ...]
 ```
