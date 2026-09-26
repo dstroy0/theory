@@ -17,7 +17,7 @@
 | what | result | settles |
 |---|---|---|
 | the tower undone in the spiral and ratio runs | 180, then 80 voxels differ, each one bit (0x0100, 0x0400) | the code was cleared first: a rerun holding the coefficients found 0 moved |
-| 44b6_0b24845f and 44b6_341df25f, re-proved from their .iapx | one voxel each wrong in the file; the disk, read past the cache, holds the right value | the machine flips single bits in memory under load; both files had been written from a bad cached copy |
+| 44b6_0b24845f and 44b6_341df25f, re-proved from their .kcr | one voxel each wrong in the file; the disk, read past the cache, holds the right value | the machine flips single bits in memory under load; both files had been written from a bad cached copy |
 | fix | every .stack read for ingestion and proof now bypasses the file cache; both samples re-ingested and proved | a cached copy can no longer vouch for itself |
 
 ### The CRC-64 fold
@@ -29,7 +29,7 @@
 
 ### The anchor bits
 
-Per voxel and per bit, the frames of the 100 that carry the bit; the counts were written as .oapx and read back equal.
+Per voxel and per bit, the frames of the 100 that carry the bit; the counts were written as .knf and read back equal.
 
 | what | result | settles |
 |---|---|---|
@@ -43,14 +43,14 @@ Per voxel and per bit, the frames of the 100 that carry the bit; the counts were
 
 | what | samples | result | settles |
 |---|---|---|---|
-| compression split out of the tower: 44b6_0113de3b re-encoded | 44b6_0113de3b | the .iapx byte identical to the one before the split | the coder moved unchanged (proved) |
-| every .iapx decoded by the split coder, from the file alone | the 25 | 25 of 25 hold; set CRC 091daa41e1aceb7e | the decoder moved unchanged (proved) |
-| keymath and key_schedule split out of the cycle: the tracker run | 44b6_0113de3b, 44b6_0b24845f | edges identical; object files identical but for the embedded .cfg | the imprint and the layout moved unchanged (proved) |
+| compression split out of the tower: 44b6_0113de3b re-encoded | 44b6_0113de3b | the .kcr byte identical to the one before the split | the coder moved unchanged (proved) |
+| every .kcr decoded by the split coder, from the file alone | the 25 | 25 of 25 hold; set CRC 091daa41e1aceb7e | the decoder moved unchanged (proved) |
+| keymath and key_schedule split out of the cycle: the tracker run | 44b6_0113de3b, 44b6_0b24845f | edges identical; .vbo/.ibo files identical but for the embedded .cfg | the imprint and the layout moved unchanged (proved) |
 | the residual's key, sized | | weights 1,130 words, 4,520 bytes, plus a 256 byte term table, standing for 268 unit steps a voxel: 112,407,347,200 step applications a sample | a key's size is the program's reach, not its use |
 
 ### The entropy history
 
-Per voxel and per bit, the flips in each window of 11 transitions (9 windows over 100 frames), read from each sample's .iapx; one .oapx a sample, 288 MiB, each read back whole against its CRC-64. Tables in `cell_tracking/logs/entropy/44b6_25.txt`, summarized by `maint/entropy_summary.py`.
+Per voxel and per bit, the flips in each window of 11 transitions (9 windows over 100 frames), read from each sample's .kcr; one .knf a sample, 288 MiB, each read back whole against its CRC-64. Tables in `cell_tracking/logs/entropy/44b6_25.txt`, summarized by `maint/entropy_summary.py`.
 
 | what | samples | result | settles |
 |---|---|---|---|
@@ -122,7 +122,7 @@ The check that failed before is the unplanted axes' false periods within 5σ of 
 
 ### The scheduler's steps and the lookup table
 
-Doug's "increase the scheduler steps to n" and "implement the lut", built into the record machine (M10 and A13 of [engine_table.md](engine_table.md)) and graded by `test/record_table_test.cu` through `test/record_table_test.sh`, run as `build/20260923_204007_record_table_test`. The alphabet is the 16-bit one, and every case runs 4,096 random lanes.
+Doug's "increase the scheduler steps to n" and "implement the lut", built into the record machine (M10 and A13 of [engine_table.md](engine_table.md)) and graded by `test/engine/record_table_test.cu` through `test/engine/record_table_test.sh`, run as `build/20260923_204007_record_table_test`. The alphabet is the 16-bit one, and every case runs 4,096 random lanes.
 
 | what | samples | result | settles |
 |---|---|---|---|
@@ -202,7 +202,7 @@ This tree's exact integer (`engine/base/no_rounding/exact_integer.{c,h}`, M1 of 
 | exact division: the odd part's inverse by Newton's step x(2 − dx), a multiply and a mask | 20,000 products of drawn quotients and divisors up to 64 limbs, half the divisors with at least eight twos | the quotient returned on every product; one past each product refused as `ANCHOR_EXACT_NOT_EXACT` | (proved on the trials) |
 | Lehmer's gcd (Knuth's algorithm L), which replaced Stein's binary gcd after its bit-at-a-time shifts stalled the 4,194,304-bit test | 4,000 pairs with a drawn shared factor, each part up to 32 limbs; 4,000 more against Euclid's gcd run on the long division | the gcd divides both, the shared factor divides it, and the cofactors' gcd is 1; it equals Euclid's on every pair; gcd(0, x) = \|x\| and gcd(0, 0) = 0 | (proved on the trials) |
 | a zero divisor | both divisions | refused as `ANCHOR_EXACT_BY_ZERO` | (proved) |
-| the record operations: quotient, remainder, gcd, exact quotient (ops 11 to 14) | `test/record_divide_test` (`build/20260923_234739_record_divide_test`, 15 checks, 0 failed, 58 s): 4,096 lanes of signed 160-bit numerators in the 64-limb register file, 512 lanes of 2,048-bit numerators in the 256-limb file | the device equals the host word for word; the division identities, the gcd and the exact quotient hold on every lane; a zero divisor and an inexact division refuse the lane on both; 3^40 divides exactly by 3^20 to 3^20; a quotient reading a later step is refused at imprint | the key machine divides exactly, on the device (proved on the lanes) |
+| the record operations: quotient, remainder, gcd, exact quotient (ops 11 to 14) | `test/engine/record_divide_test` (`build/20260923_234739_record_divide_test`, 15 checks, 0 failed, 58 s): 4,096 lanes of signed 160-bit numerators in the 64-limb register file, 512 lanes of 2,048-bit numerators in the 256-limb file | the device equals the host word for word; the division identities, the gcd and the exact quotient hold on every lane; a zero divisor and an inexact division refuse the lane on both; 3^40 divides exactly by 3^20 to 3^20; a quotient reading a later step is refused at imprint | the key machine divides exactly, on the device (proved on the lanes) |
 | the sims on lowest terms | `sim_rational.h` reduced at every width by the gcd and exact division; `ka_psi` (`build/20260923_235412_sim_ka_psi`) and `ask_state` (`build/20260923_235440_sim_ask_state`) | 152 of 152 and 33 of 33, unchanged; `ka_psi` prints its values as fractions, 2207/4000 and 11/20 | the verdicts do not depend on the reduction (measured) |
 
 The rungs' timings at 4,194,304 bits, seconds per call on balanced operands, on this host (x86-64, MSVC -O2), one reading each (**measured**). "A" is `build/20260923_235121_exact_transform_test`, with the transform held off the ladder so the ladder is Karatsuba alone. "B" is `build/20260923_235548_exact_transform_test`, with the transform and Newton both held off. At this width a call on small operands costs about 1e-4 s for a product and 4e-4 s for a division, because each call touches the whole width.
