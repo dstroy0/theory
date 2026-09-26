@@ -10,6 +10,13 @@ later session to pick up without re-deriving either. **Scope:**
 Numbers here are exact rationals from the game backend enumeration, reproduced by the example named
 above. Where a figure is sampled it carries its trial count and seed.
 
+**Note, 26 September.** Commit `74601c1` deleted `src/engine/python/` on 26 September, with the game
+backend (`representation/game/chess.py`, `rules.py`) and the sift (`sift/anchors.py`) cited below; none
+is in a file at anchor_sift `1948ae1`. `examples/game_theory/6_oracle/first_move_advantage.py:50`
+still imports `from representation.game import chess, rules`, and `kpk_value_of_move.py` and
+`krk_both_sides.py` beside it also import from that tree. Every figure in this log was read before
+the deletion.
+
 ## The question
 
 Does the side that moves first have an advantage? The move-sequence tree is the wrong place to read

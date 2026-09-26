@@ -5,6 +5,12 @@ Navier-Stokes statement names, one poke at a time, claiming nothing. **Scope:**
 `examples/0_experimental/exact_navier_stokes_on_torus.py`,
 `evidence/proofs/posits/proof_boundary_inheritance.py`, and this file.
 
+**Note, 26 September.** All three examples this workbook runs
+(`exact_navier_stokes_on_torus.py`, `exact_navier_stokes_cascade.py`,
+`proof_boundary_inheritance.py`) import `from representation import exact`, which lived in
+`src/engine/python/` and was deleted with it by `74601c1` on 26 September; it is in no file at
+anchor_sift `1948ae1`. Every run recorded below was made before the deletion.
+
 Kept by the precision measurement specialist. This is a workbook, not a result. It follows the rail the
 millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`) and the analytic
 number theory workbook beside this file already follows:

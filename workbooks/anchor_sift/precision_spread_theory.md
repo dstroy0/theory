@@ -8,7 +8,8 @@ runs the mathematical case.
 
 Written by the precision measurement specialist. Names are chosen to avoid meanings already in use, on
 the anchor sift theorist's record: `closure` is taken for the transitive closure of the equality oracle
-(`src/engine/c/engine/anchor_sift.h:443-453`), `coherence` for lag-agreement structure
+(`src/engine/nbody/anchor_sift/anchor_sift.h:443-453` at anchor_sift `1948ae1`, moved from
+`src/engine/c/engine/` by `bdaed61` on 24 September), `coherence` for lag-agreement structure
 (`theory/workbooks/anchor_sift/chapters/chapter_anchor_sift_workbook.tex:294` and `bench_coherence.c`), `topology`
 for the induced `tau_Sigma` on the symbol carrier (`theory/theory/delta_null`, chapter terms), `span`
 for a length scale (delta null's block-span sweep and the engine workbook's span table), and the
@@ -78,7 +79,9 @@ places holds the loss, and `gen(S)` is known to `N` places.
 **Argument.** Induction on derivation depth. A seed holds at `N + g` places. Each exact operation on
 scaled integers (add, subtract, multiply with a rescale, divide) floors, losing under one unit in the
 last worked place; this is the same floor `representation.exact` and `src/engine/c/no_rounding/`
-carry. A chain of `d` such steps loses under `d` units, and a value reached in `d` steps holds to
+carry. (Note, 26 September: at anchor_sift `1948ae1` the C side is `src/engine/base/no_rounding/`,
+moved by `bdaed61` on 24 September, and `representation.exact` was deleted by `74601c1` on 26
+September.) A chain of `d` such steps loses under `d` units, and a value reached in `d` steps holds to
 `N + g - d` places. The guard absorbs `d` while `10^g > d`.
 
 The prototype measures this directly. Over the seven root derivations it checks, the worst gap between
@@ -120,7 +123,8 @@ physics reports one hub, the Rydberg energy `R_inf`, from which every hydrogen-l
 hub. Game theory reports minimum Shannon entropy decided with no logs by `prod p_i^{p_i} = 2^{-H}`,
 cleared to integers through the least common multiple of the share denominators, and an entropy order
 becomes an exact rational comparison (`src/engine/python/representation/game/rules.py`, `measure/outcome_entropy.py`,
-as reported). Removable uncertainty in this regime is zero.
+as reported; note, 26 September: both were deleted with `src/engine/python/` by `74601c1` on 26
+September and are in no file at anchor_sift `1948ae1`). Removable uncertainty in this regime is zero.
 
 **Regime B, counting.** Quantities are exact integers or rationals by their nature, and identities
 propagate exactly with nothing to raise: the multiplier is one. Chemistry reports the
@@ -142,7 +146,9 @@ does not stay in exact integers or rationals (`crystal.py:240`, as reported). Th
 completeness floor of its own, separate from the deposit: a right-angle gate, `RIGHT_ANGLE_SLACK = 0.01`
 at `crystal.py:112`, admits a cell to the exact path only where every angle is within `0.01` of 90, and
 a census over 8885 COD entries refused 4411 of them, family-dependent (garnet 97.5 percent admitted,
-feldspar 2.9 percent), reported from `maint/analysis/survey/crystal_gate_census.py`. Two further
+feldspar 2.9 percent), reported from `maint/analysis/survey/crystal_gate_census.py` (note, 26 September: `crystal.py` was
+`src/engine/python/representation/structure/crystal.py`, deleted by `74601c1` on 26 September, and
+the census script imports from that tree). Two further
 judgment-picked parameters, `EXACT_TILES = 4` and a harmonic-family cap of 2, sit in the period reader
 and can decide which period is reported; the crystallography session notes their effect is unmeasured,
 and the reader is not parameter-free. Chemistry reports bond lengths,

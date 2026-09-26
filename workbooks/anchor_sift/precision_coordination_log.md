@@ -283,3 +283,17 @@ Handoff of this entry: `workbook precision note`.
   engine, and that lead handed the documentation fixes to the engine to land as `src exact bugfix`.
   None of it touches the image_transforms NTT, which works on integer views modulo `p`, not on decimal
   constant ingestion.
+  **Note, 26 September.** At anchor_sift `1948ae1` the header is
+  `src/engine/base/no_rounding/exact_integer.{h,c}`; commit `bdaed61` moved it from
+  `src/engine/c/no_rounding/` on 24 September. `anchor_exact_from_measured` is on main (line 482),
+  landed by `656be3e` "src exact bugfix" on 16 September; it is called in `bench/bench_exact.c` and in
+  no test. The type now divides: `anchor_exact_divide` (line 357), `anchor_exact_divide_newton` (line
+  372) and `anchor_exact_divide_exact` (line 392), with `test/exact_divide_test` passing 9/0
+  (`workbooks/engine/build_plan.md:216`). `ANCHOR_EXACT_LIMBS` is 128 by default (line 81), and the
+  multiply is long multiplication, then Karatsuba from 32 limbs, then the Schönhage-Strassen
+  transform from 8,192 limbs (lines 31 to 35). The Python side, `src/engine/python/representation/exact.py`,
+  was deleted by `74601c1` on 26 September. Entry one's figures (108 limbs, line 49, schoolbook) are
+  the header as read on 16 September. The three examples handed off above,
+  `exact_navier_stokes_on_torus.py`, `exact_navier_stokes_cascade.py` and
+  `proof_boundary_inheritance.py`, import `from representation import exact`, which is in no file at
+  `1948ae1`.
