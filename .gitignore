@@ -5,7 +5,7 @@
 # .pdf, a .log, a .toc, a .aux per included chapter and a synctex index. This repository is
 # anchor_sift's theory/ as a submodule, and anchor_sift's own ignore rules do not reach inside it.
 #
-# main.pdf is named instead of *.pdf on purpose. The corpus derivation chapter includes a
+# main.pdf is named instead of *.pdf deliberately. The corpus derivation chapter includes a
 # matplotlib figure that is a PDF and belongs to the source.
 *.aux
 *.log
@@ -19,3 +19,9 @@
 *.fdb_latexmk
 */*/main.pdf
 */*/*/main.pdf
+
+# What Python writes beside a script it imports. Each file is compiled for one interpreter and
+# rewritten whenever that interpreter imports or compiles the source, and a tracked copy changes in
+# the working tree every time a gate runs.
+__pycache__/
+*.pyc
