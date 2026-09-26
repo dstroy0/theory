@@ -439,6 +439,9 @@ Theorem 5 is a well-founded recursion on a natural number measure, which both as
 directly, and it is the statement that lets the depth constant be presented as a budget instead of as
 a proof obligation.
 
+**Note, 26 September:** this section treats the six statements the document first gave, Theorems 1 to
+6. Theorems 7 to 9 came later, and this section does not yet say how each would be checked.
+
 ## Prior art, and what is original here
 
 None of the machinery below is new. The theorems are elementary once the setting is written down, and
