@@ -1,22 +1,24 @@
 # The theory research papers
 
-**Purpose:** Find a research paper of the research, build it, and know which of its chapters are generated and
-must be changed through their generator.
-**Scope:** every research paper under `theory/`, `maint/texbuild/build_theory.sh`, which builds them, and
-`maint/texbuild/theory_tex.py`, which generates the markdown research papers' chapters.
+**Purpose:** Move all research to one place
+**Scope:** every research paper
+
+All of these are licensed under AGPLv3 OR later. All papers require CCBy 4.0 for citation and your codebases must remain open under the AGPLv3 or later unless you work out specific commercial or educational licensing terms.
+
+The precision measurement specifically, IS detectable in ANY form, because it works fundamentally the same way regardless of approach, the cascade is unique and is itself a fingerprint. Obfuscation and fragmentation of the operations identity do not destroy the identity of the operation itself and it can detect this. Basically, because the things this work does were synthesized first, anything that follows that uses the same processing signature is detectable, and will be pursued under the terms of the AGPLv3. 
+
+It is detectable in encrypted compiled binaries, if you are a large company trying to steal my research, thanks for the easy win, and the free money. I will make sure it is more than you would have paid in the royalty ladder by several orders of magnitude. 
+
+You have no choice but to comply with the licensing terms, or, be left in the dust by the exactness.
 
 ## Layout
 
-This repository, https://github.com/dstroy0/theory, was named theory_bucket until 2026-09-26. A
-project that writes theory takes it as a git submodule at `theory/` and does not copy the research papers in.
-anchor_sift holds it that way. It is also a GitHub template repository, and a repository generated
-from the template is a copy with no link back here. A project that writes theory uses the
-submodule. The paths below are written from anchor_sift's root, where the
-generator and the build script live. The research papers sit three shelves deep:
+This repository, https://github.com/dstroy0/theory
+A project that writes theory takes it as a git submodule at `theory/` and does not copy the research papers in one at a time, this keeps everything updated, many projects use interrelated theory for synthesis.
 
-- `theory/theory/` holds the finished research papers.
+- `theory/theory/` holds the research papers, some are complete, most are preprint status.
 - `theory/workbooks/` holds the workbooks, one per program.
-- `theory/thought_experiments/` holds the thought experiments, kept apart from what was measured.
+- `theory/thought_experiments/` holds the thought experiments, kept apart from what was measured, some are wacky, classified as wacky, and remain wacky until I devise hypotheses to test them.
 
 A change to a research paper is committed and pushed here first. The project holding the submodule then
 records the new commit in its own commit. A clone of such a project reads the research papers through
@@ -26,46 +28,11 @@ records the new commit in its own commit. A clone of such a project reads the re
 
 Each research paper's subtitle is the line from its title page.
 
-| research paper                      | subtitle                                                                      |
-| ----------------------------------- | ----------------------------------------------------------------------------- |
-| `theory/Salishan`                   | Whose words these are, and how wrong the corpus could be                      |
-| `theory/apparatus`                  | The constants, the unit, and the instrument that draws the result             |
-| `theory/boundary`                   | What a surface holds, the alphabet that reads it, and where the reading stops |
-| `theory/chemistry`                  | The atom as a part, valence as the rule, the bond length as a fact            |
-| `theory/cryptography/sha256`        | Where the structure is, where it stops, and how each null was measured        |
-| `theory/crystallography`            | A published cell edge read back off a voxel grid, and whose result that is    |
-| `theory/delta_null`                 | Precision Measurement                                                         |
-| `theory/game_theory`                | A domain that supplies its own answers, and the reading it corrected          |
-| `theory/image_transforms`           | How a view moves, how what it watches moves, and how to tell them apart       |
-| `theory/instruments`                | What a measurement can see, what it cannot, and how each null was drawn       |
-| `theory/millennium`                 | Reconnaissance                                                                |
-| `theory/particle_physics`           | Exactness, discrimination, and the accumulation of matter                     |
-| `theory/precision`                  | Certificates instead of tables, and the constants nobody checks               |
-| `workbooks/anchor_sift`             | Every claim, what killed it, and what still stands                            |
-| `workbooks/cell_tracking`           | The cell program                                                              |
-| `workbooks/compression`             | The floor the coder answers to                                                |
-| `workbooks/engine`                  | The engine in math and in the machine                                         |
-| `thought_experiments/anchor_sift`   | The weird end, kept apart from what was measured                              |
-| `thought_experiments/cell_tracking` | The noise sieve, the fluidic tower and the demon                              |
-| `thought_experiments/engine`        | The noise sieve, the fluidic tower and the demon                              |
-
-`theory/theory/twiddle_constants_article.tex` is a standalone article, and
-`theory/theory/twiddle_group_in_field.png` is its figure.
-
 ## Generated chapters
 
 Change these through their generator. An edit to the chapter is lost the next time it is generated.
 
-- `theory/Salishan/chapters/chapter_Salishan_pure_corpus_README.tex`, from
-  `maint/data/salishan/hand_extraction/pure_corpus_index.py`.
-- `theory/Salishan/chapters/chapter_Salishan_corpus_derivation.tex`, from
-  `maint/data/salishan/corpus_derivation.py`.
-- `theory/cryptography/sha256/chapters/chapter_sources.tex`, from `maint/texbuild/build_bibliography.py`
-  and the citations registry, as its first line records. That tool is not in this tree.
-- In each research paper under `workbooks/` or `thought_experiments/` that holds a `README.md`, every chapter
-  whose first line reads `Generated by maint/texbuild/theory_tex.py`, from the markdown file that
-  line names. `chapters/order.tex` lists them with the README first and the rest in the order the
-  research paper's README names them.
+Citations are held here as well, as separate .tsv files because there are many.
 
 ## Building
 
@@ -79,4 +46,4 @@ source. A figure a chapter includes from `build/theory/figures/` is reached by a
 the research paper's directory, and that path counts the research paper's depth below the repository root.
 
 **Author:** dstroy0 (Douglas Quigg) <dquigg123@gmail.com>
-**Date:** 2026-09-25
+**Date:** 2026-09-26
