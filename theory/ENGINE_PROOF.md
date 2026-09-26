@@ -137,6 +137,12 @@ levels and terminates. No depth bound is required for this.**
 current one, which gives `V(i+1) < V(i)`. A strictly decreasing sequence of non-negative integers is finite,
 and its length is at most `V(0) = |A|`. ∎
 
+**Derived, 26 September.** The bound tightens to `|A| - N` levels. By Lemma 2, `Occ` is contained
+in `Surv(S_i)` at every level, which gives `V(i) >= N` throughout. A strictly decreasing sequence of
+integers that starts at `V(0) = |A|` and never falls below `N` takes at most `|A| - N` steps. The same
+tightening applies wherever this document bounds productive levels by `|A|`, under Theorems 7 and 9
+and in the section on what is not claimed.
+
 **The depth constant is a resource limit and not the termination argument.**
 `ANCHOR_STEER_ANCHORS` bounds the work and the register footprint. Theorem 5 shows the recursion is
 well founded on a measure the field supplies. Removing the constant leaves a terminating descent.
@@ -216,6 +222,28 @@ a necessary condition of an occurrence. Re-encode the alphabet under a bijection
 nothing and is the null. Each is a class in the chain, and the ascent through them is the engine
 asking better questions about an object it is not allowed to get wrong.
 
+**Derived, 26 September. Theorem 1′.** The setting defines a probe as a comparison of corpus against
+needle at offsets inside `[0, m)`. A probe whose second end sits in the corpus falls outside that
+definition, and Theorem 1 as stated does not cover it. The statement this section needs is wider.
+
+**For any predicate `Q` on alignments that every occurrence satisfies, the alignments satisfying `Q`,
+filtered by the full compare, number `N`.**
+
+*Proof.* Lemma 1 is the case `Q = P_p`, and its proof uses nothing beyond `Q(t)` holding at every
+occurrence `t`. With that as the hypothesis, `Occ` is contained in `{ t in A : Q(t) }`, and the full
+compare admits exactly `Occ` from it, as in the proof of Theorem 1. A conjunction of such predicates
+is again such a predicate. ∎
+
+A corpus-to-corpus equality `c[t + o1] = c[t + o2]` meets the hypothesis when `w[o1] = w[o2]`, and
+only then. The offset pairs of such a probe are chosen from the needle's own equalities.
+
+**Derived, 26 September. The ascent is finite unless it repeats.** Per needle, the probes the setting
+defines are the subsets of `[0, m)`, at most `2^m` of them. A strictly ascending chain of classes of
+those probes has at most `2^m + 1` members, and an infinite outer loop over them holds one class
+fixed from some point on. For the wider predicates of Theorem 1′ the same count applies to their
+effect: a predicate acts on the run through the set of alignments it refutes, and there are at most
+`2^|A|` such sets. The run may still be infinite. Its sequence of distinct questions is finite.
+
 ## Theorem 8, the descent is within a constant factor of the best probe set
 
 Theorems 1 through 7 say correctness is free and termination is guaranteed. No theorem yet says the
@@ -256,6 +284,27 @@ refuted alignment costs reads up to the position of its refuting probe in the ev
 coverage bound governs refutation and transfers to reads only with an accounting of the order.
 Theorem 2 says the order does not affect the answer. It does affect the cost, and that is the next
 thing to prove instead of a thing proved here.
+
+**Derived, 26 September. Three limits on the bound.**
+
+*(a) The candidates must be arms.* A plan's survivors depend only on the union of its probes'
+offsets: `Surv(S)` is the set of alignments agreeing with the needle at every offset in that union.
+Over arbitrary probes the comparison says nothing useful, because the single probe with
+`O_p = [0, m)` is the full compare and attains the optimum at `k = 1`. The bound has content
+because each candidate the descent places is one offset, an arm. At anchor_sift `d09b489`,
+`anchor_sift.c:1089` makes every position in the needle a candidate, and one is placed per level
+(`anchor_sift.c:988-991`).
+
+*(b) The descent samples.* At anchor_sift `d09b489`, `anchor_sift.c:964` sets the stride the
+survivor counts are taken at from `sample_stride`, with zero read as one. At a stride above one the
+descent is greedy on the sampled coverage function. The `1 - 1/e` bound holds of that function, and
+its transfer to the full field carries the sampling qualification of Theorem 6's scope note.
+
+*(c) One ground set.* The guarantee of Nemhauser, Wolsey and Fisher compares greedy against the best
+`k` elements of one fixed ground set. Within one class of Theorem 7 that holds. Across a change of
+class the ground set changes, and the comparison is against the best `k` probes of the class in hand.
+Feige's hardness is for coverage functions in general. It is not shown here for the coverage
+functions that arms induce on a string.
 
 ## Theorem 9, a Turing complete generator inside a compartment that cannot reach the answer
 
@@ -314,10 +363,59 @@ bears on it. Theorem 4 says the system's correctness does not depend on any halt
 is a statement about this system. A reader who takes it as a statement about computability has taken
 the wrong one.
 
+**Note, 26 September. The halting problem does not arise in this system.**
+
+From Doug, 2026-09-26: "the base answer is 3 truths: 1. we know if we have answered the question 2.
+the tower doesn't build if the question is malformed 3. nothing is bound, information space is
+constrained by n*n^n^n, infinite."
+
+From Doug, 2026-09-26: "n*n^n^n is the base Atom storage class of the engine, it is the problem's
+space, it is infinite, n grows to n grows to n grows to n ad infinitum"
+
+Turing's theorem holds for arbitrary programs and stays true, and the paragraph above stands. This
+system never lets such a program reach the answer. The answer path is total, a malformed question is
+refused before it runs, and each question lives in a space that is finite for its `n`, where halting
+is decidable. The generator `G` of Theorem 9 may run forever, and the answer never waits on it.
+
+*Truth 1, checked.* The answer path is total. The sweep is a bounded loop over `A`, the descent
+terminates (Theorem 5), and the count is exact at every instant (Theorem 3). Whether the engine has
+answered is therefore always decidable. Prior art: D. A. Turner, *Total Functional Programming*,
+Journal of Universal Computer Science 10(7), 2004, and the LOOP programs of Albert R. Meyer and
+Dennis M. Ritchie, 1967, a language in which every program halts.
+
+*Truth 2, checked.* At anchor_sift `d09b489`, `steer_descend` refuses malformed input before any
+work. `anchor_sift.c:938-962` holds the input guards, and the survivors-length refusal is marked
+FAILS CLOSED at `anchor_sift.c:959-960`. `anchor_steer_probe_fits` (`anchor_sift.c:1096`) is a total
+admission check. Prior art: Robin Milner, *A Theory of Type Polymorphism in Programming*, Journal of
+Computer and System Sciences 17, 1978, for "well-typed programs cannot go wrong".
+
+*Truth 3, the reading.* "Finite for its `n`" above is the reading of truth 3, pending Doug's
+confirmation. A run on a finite configuration space either stops or repeats a configuration, and
+halting is decidable there. The textbook form is the linear bounded automaton: `q` states and `g`
+symbols on `n` cells give `q n g^n` configurations, and acceptance for such automata is decidable
+(Michael Sipser, *Introduction to the Theory of Computation*, cited from knowledge).
+
+At anchor_sift `d09b489`, `src/engine/engine_config.h:262-268` defines `Atom` as
+`{ const unsigned short *lanes; unsigned long long depth; unsigned long long height; unsigned long long width; }`.
+Beside "nothing is bound": at anchor_sift `d09b489` the steer depth is capped at
+`ANCHOR_STEER_ANCHORS`, which is 4 (`anchor_sift.c:951-954` and `anchor_sift.c:988-991`).
+
+*The tower, a reading, not Doug's derivation.* "n grows to n grows to n" reads as a power tower
+grouped from the top, `n^(n^(n^...))`: tetration, written `n↑↑k` in the notation of Donald E. Knuth,
+*Mathematics and Computer Science: Coping with Finiteness*, Science 194, 1976. Every finite height is
+a finite number, and the height has no bound. For every integer `n` of at least 2 the infinite tower
+diverges, since `x^x^x...` converges only for `e^-e <= x <= e^(1/e)` (Euler, 1783, cited from
+knowledge). Tetration at any fixed height is primitive recursive, consistent with the paragraph on
+Turing completeness above. The ordinal counterpart of the tower, `ω^ω^ω...`, is `ε0` (Gerhard
+Gentzen, 1936; Reuben Goodstein, 1944; Laurie Kirby and Jeff Paris, 1982, cited from knowledge).
+That correspondence is a reading only, and no ordering of the engine's storage by `ε0` is claimed.
+
 **Liveness is not guaranteed.** If a planner diverges and nothing interrupts it, no answer is
 produced. Theorem 5 rules this out for the descent as built, and Theorem 4 permits a planner for which
 it is not ruled out. **The system can fail to answer. It cannot answer wrongly.** That is the honest
-summary of all six theorems and the sentence to quote if only one is quoted.
+summary of all nine theorems and the sentence to quote if only one is quoted.
+
+**Note, 26 September:** the paragraph above first said "all six theorems". The document states nine.
 
 **Theorem 1 says nothing about speed.** Every plan is correct and plans differ enormously in cost. The
 empty plan is correct and sends every alignment to the full compare. Correctness is not a currency the
@@ -407,6 +505,30 @@ matching, where two strings match if one is obtained from the other by a bijecti
 parameters, introduced for finding duplicated source code. Theorem 7's second exit reaches that
 problem class by moving a probe's second end into the corpus, and Baker's is the prior formulation of
 the target.
+
+**Added 26 September.** Read state for the five entries below: cited from knowledge, with no paper
+read in full.
+
+**Gonzalo Navarro**, *A Guided Tour to Approximate String Matching*, ACM Computing Surveys 33(1),
+2001. The filter-and-verify family: a cheap necessary condition discards alignments and an exact
+check confirms the survivors. Theorem 1 is the soundness of that family for this probe set.
+
+**Esko Ukkonen**, *Approximate String-Matching with q-grams and Maximal Matches*, Theoretical
+Computer Science 92, 1992. The q-gram lemma, a necessary condition of an occurrence used as a filter.
+
+**Bin Ma, John Tromp and Ming Li**, *PatternHunter: Faster and More Sensitive Homology Search*,
+Bioinformatics 18(3), 2002. Spaced seeds: a filter whose offsets are chosen instead of contiguous.
+An arm set placed by the descent is a spaced seed chosen per field.
+
+**Daniel M. Sunday**, *A Very Fast Substring Search Algorithm*, Communications of the ACM 33(8),
+1990. Its Optimal Mismatch variant compares pattern positions in order of rising symbol frequency,
+a fixed probe order chosen from symbol statistics. The descent chooses its order from survivor
+counts on the field.
+
+**Samir Khuller, Anna Moss and Joseph Naor**, *The Budgeted Maximum Coverage Problem*, Information
+Processing Letters 70(1), 1999. Coverage under a cost budget in place of a cardinality constraint,
+with a `1 - 1/e` algorithm built on greedy. Prior art for charging probes unequal costs, the
+direction the honest gap under Theorem 8 points.
 
 **What this document contributes**, stated narrowly so it can be checked. The identification of the
 survivor count as a Floyd variant for this descent, which makes the depth constant a budget instead

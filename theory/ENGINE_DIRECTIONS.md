@@ -3,6 +3,7 @@
 **Purpose:** Collect the capabilities that follow from what the engine has already proved, and the Laplacian construction that replaces its planning cost with a determinant.
 **Scope:** `src/engine/nbody/anchor_sift/anchor_sift.{h,c}`, `docs/steering.md`
 **Note, 26 September:** this scope first named `src/engine/c/portable/anchor_steer.{h,c}` and `src/engine/c/portable/anchor_sift.h`. Commit `510577b` (16 September) folded the steer files into `anchor_sift.{h,c}`, `0954259` (16 September) renamed `src/engine/c/portable/` to `src/engine/c/engine/`, and `bdaed61` (24 September) moved those to `src/engine/nbody/anchor_sift/`, where they are at anchor_sift `1948ae1`.
+**Note, 26 September:** the README citations below first read `README.md:97`, `README.md:99` and `README.md:105`. At anchor_sift `d09b489` those lines are `README.md:138`, `README.md:140` and `README.md:150`, and the citations now give those.
 
 ## Contents
 
@@ -26,7 +27,7 @@ Every probe is a necessary condition of an occurrence, any conjunction of probes
 occurrence and the full compare removes the false survivors. The count is exact for any probe set.
 
 The sift is therefore a sound filter and its errors are one directional. A discrepancy is always an
-over-count and is detectable without knowing the answer (`README.md:97`).
+over-count and is detectable without knowing the answer (`README.md:138`).
 
 A probe's agreement at shift `d` from a true occurrence is exactly a lag `d` self-agreement event in
 the corpus. Writing `A(d)` for the fraction of positions where the corpus agrees with itself at lag
@@ -44,7 +45,7 @@ before, every survivor set is identical, and the count is unchanged. Take `f` to
 pseudorandom permutation and the engine counts occurrences in a corpus nobody running it can read,
 for a needle nobody running it can read.
 
-This is a capability the alphabet claim already bought. `README.md:99` states that nothing is
+This is a capability the alphabet claim already bought. `README.md:140` states that nothing is
 indexed and no table is built over the alphabet, and that a real-valued or unenumerable alphabet
 costs nothing. An engine that never enumerates symbols cannot notice that the symbols were replaced.
 
@@ -53,6 +54,16 @@ byte still carry the same byte after `f`. The encoding hides values and preserve
 pattern, an observer learns the partition of positions into equal classes and nothing finer. That
 partition is the quantity `A(d)` measures. The leak of this construction is the statistic section 5
 uses as a signal, and the engine can compute and report its own exposure.
+
+**Derived, 26 September. What the leak allows.** A keyed permutation applied byte by byte is a
+monoalphabetic substitution. The equality partition it leaves visible carries every symbol's
+frequency, and on natural data frequency analysis recovers the text from that alone, as al-Kindi
+described in the ninth century. Deterministic encryption and the attacks on it are the modern form:
+Mihir Bellare, Alexandra Boldyreva and Adam O'Neill, *Deterministic and Efficiently Searchable
+Encryption*, CRYPTO 2007, and Muhammad Naveed, Seny Kamara and Charles V. Wright, *Inference Attacks
+on Property-Preserving Encrypted Databases*, CCS 2015. The engine counts without being given the
+plaintext. Whether an observer can read the corpus depends on the data, and "cannot read" holds only
+where the equality pattern does not give the values away. Cited from knowledge.
 
 ## It can search for a pattern nobody wrote down
 
@@ -74,6 +85,14 @@ renamed, tandem repeats in a sequence, the internal structure of a cipher's outp
 changes, since a full compare against a needle is the wrong final test when there is no needle, and
 the replacement is a direct check of the partition on the surviving windows.
 
+**Derived, 26 September. The verifier must check inequalities.** Equality probes test only which
+positions agree. A window whose partition is coarser passes them too: `aaaaaa` satisfies every probe
+that `abcabc` implies. Baker's parameterized match requires a bijective renaming, and the partition
+check on the survivors has to confirm that positions in different classes differ, as well as that
+positions in one class agree. With that check the count is exact for the parameterized match. Prior
+art: Brenda S. Baker, *A Theory of Parameterized Pattern Matching: Algorithms and Applications*, STOC
+1993, cited from knowledge.
+
 ## It is correct on hardware that computes wrong
 
 Any probe may be replaced by a weaker necessary condition without endangering the count. The weakest
@@ -91,9 +110,15 @@ the single failure this engine does not otherwise have. The design rule follows:
 probe must be auditable for the DIRECTION of its errors, and the sound filter argument survives
 unreliability in that one direction alone.
 
+**Derived, 26 September. The argument covers the probes.** A probe error toward agreement costs a
+full compare. The full compare itself has to be exact: a verifier that errs toward agreement admits
+false survivors, and the count runs high. A filter with one-sided error and an exact check behind it
+is the arrangement of Burton H. Bloom, *Space/Time Trade-offs in Hash Coding with Allowable Errors*,
+Communications of the ACM 13(7), 1970, cited from knowledge.
+
 ## Its own cost is the arrangement measurement
 
-`README.md:105` records an open problem. Collision entropy is permutation invariant and cannot see an
+`README.md:150` records an open problem. Collision entropy is permutation invariant and cannot see an
 arrangement, and a period-16 counter therefore reads 4.0 bits while the dispatcher calls a perfectly structured
 corpus memoryless. The note states that fixing it needs a quantity that reads arrangement and that no
 threshold on collision entropy reaches it.
@@ -111,9 +136,36 @@ histogram is permutation invariant and the measurement is not, because the measu
 of `A(d)` over the shifts the search actually visits.
 
 **The gap between predicted `q` and measured `q` is arrangement information, and it is the quantity
-`README.md:105` says is needed.** A permuted corpus has an identical histogram and a different
+`README.md:150` says is needed.** A permuted corpus has an identical histogram and a different
 measured `q`. The period-16 counter reads `2^-4` predicted and close to 1 measured, the largest gap
 the statistic can show.
+
+**Derived, 26 September. The period-16 counter under both readings.** A period-16 counter agrees
+with itself at lag `d` exactly when 16 divides `d`. For a needle taken from the corpus, an alignment at a
+multiple of 16 from an occurrence is itself an occurrence, and every other alignment is refuted by
+its first probe.
+
+*Reading one, the inverted formula.* Take `k = 4` and count probe reads only. Fifteen alignments in
+sixteen read 1 byte and one in sixteen reads 4, for `19/16` reads per alignment. Solving
+`1 + q + q^2 + q^3 = 19/16` gives `q ≈ 0.158`. Over wrong alignments alone the measured `q` is 0.
+
+*Reading two, the conditional rate.* Once one probe agrees, every later probe agrees, and the rate
+after one agreement is 1.
+
+The section defines measured `q` as the value the inverted formula returns, and the sentence can
+mean only reading one. "Close to 1" matches reading two alone, and the reads column does not return
+reading two. "The largest gap the statistic can show" fails under either. Under reading one the
+measured value is 0.158, or 0 on wrong alignments, against a range that reaches 1. Under reading two
+a period-256 counter shows 1 against `2^-8`, a wider gap than 1 against `2^-4`. The section's
+broader claim holds in the other direction: this arrangement refutes wrong alignments faster than
+the histogram predicts, and predicted and measured `q` differ.
+
+Two conditions on reading one. The descent as built would place one probe on this corpus: after the
+first probe the survivors are exactly the occurrences, no further probe prunes, and the destroy rule
+fires. With `k = 1` the formula gives 1 read per alignment for every `q` and returns no value. And if
+the reads column also counts the full compare, `m` bytes on each occurrence, reads per alignment are
+`(19 + m)/16`, and the inverted value reaches 1 at `m = 45`. A value near 1 then measures
+verification, the failure section 10 names.
 
 It costs nothing. Both numbers are already collected, and the second one is the reads column of a
 table that is currently read as a performance result.
@@ -138,6 +190,23 @@ semidefinite. It is a Gram matrix, and its entries are counts over a shared deno
 Write `C` for the same matrix before dividing. `C_ij` counts the positions where the corpus agrees
 with itself at lag `o_i - o_j`. `C` is an integer matrix.
 
+**Derived, 26 September. The convention decides whether `C` can be singular.** `C_ij` as defined
+counts over the overlap of the corpus with its own shift, with no wraparound. Write `v_o` for the
+one-hot sequence shifted by `o` and padded with zeros. `C_ij` is the inner product of `v_{o_i}` and
+`v_{o_j}`. Take distinct offsets in rising order. At position `o_j`, the vector `v_{o_j}` carries
+`x_0`, which is nonzero, and every vector with a larger offset is zero there. Each coefficient of a
+vanishing combination is zero in turn, the vectors are independent, and `C_S` is positive definite.
+An integer positive definite matrix has determinant at least 1. Under this convention `det(C_S)` is
+never 0 for distinct offsets. Under a cyclic convention it can be: in a period-16 counter whose
+length is a multiple of 16, the shifts by 0 and by 16 are the same vector, and a needle longer than
+16 admits both offsets.
+
+The discrete form of Bochner's theorem is Herglotz's (Gustav Herglotz, 1911): a sequence is positive
+semidefinite exactly when it is the sequence of Fourier coefficients of a positive measure on the
+circle. For the sample autocovariance with the shared denominator `n`, positive semidefiniteness is
+a standard property in Peter J. Brockwell and Richard A. Davis, *Time Series: Theory and Methods*,
+1991. Cited from knowledge.
+
 ## Probe selection is a determinantal point process
 
 A determinantal point process assigns a subset `S` probability proportional to `det(M_S)`, and it is
@@ -159,6 +228,37 @@ resistance is exactly how spectral sparsification builds a small subgraph preser
 original within a factor, and every undirected graph admits such a sparsifier with a near-linear
 number of edges. A greedy descent that scores candidates by determinant is running the sparsification
 rule, and the approximation guarantees of that literature attach to it.
+
+**Derived, 26 September. What the marginal is, and what does not attach.** The ratio
+`det(C_{S+p}) / det(C_S)` is the Schur complement `C_pp - C_pS C_S^-1 C_Sp`. In the Gram picture it
+is the squared distance from `v_p` to the span of the vectors in `S`, and for a Gaussian with
+covariance `C` it is the variance of `p` conditioned on `S`. It is not the statistics score the
+paragraph above names. That score is a diagonal entry of the hat matrix `X (X^T X)^-1 X^T`, lies
+between 0 and 1, and measures a row against the whole design, where the Schur complement measures a
+residual against a chosen subset.
+
+`C` is not a Laplacian. A Laplacian has nonpositive entries off the diagonal, rows summing to zero,
+and a zero eigenvalue. `C` has nonnegative counts off the diagonal, and under the convention of
+section 6 every `C_S` is positive definite. Effective resistance belongs to a Laplacian: the Schur
+complement of a graph Laplacian onto two nodes `u` and `v` is the Laplacian of a single edge, and the
+effective resistance between `u` and `v` is the reciprocal of that edge's weight. The word
+"Laplacian" in the purpose line and in section 10 takes the same correction.
+
+Sparsification by effective resistance samples edges at random with probability proportional to
+weight times resistance, reweights the edges it keeps, and guarantees with high probability that the
+quadratic form of the sparse graph stays within a factor of the original. The construction of Batson,
+Spielman and Srivastava is deterministic and chooses and reweights edges by a barrier potential.
+Neither selects `k` items to maximize a determinant, and their guarantees bound the spectrum of a
+reweighted sum, not the volume of a chosen subset. A descent that scores by determinant is greedy
+volume maximization, and its guarantee is its own: greedy selection reaches at least `1/k!` of the
+largest volume, volume being the square root of `det(C_S)` (Ali Çivril and Malik Magdon-Ismail,
+Theoretical Computer Science 410, 2009). Choosing `k` indices to maximize `det(C_S)` is the maximum
+entropy sampling problem (Michael C. Shewry and Henry P. Wynn, Journal of Applied Statistics 14,
+1987), and it is NP-hard (Chun-Wa Ko, Jon Lee and Maurice Queyranne, Operations Research 43, 1995).
+The mode reading holds and has its own references: Alex Kulesza and Ben Taskar, *Determinantal Point
+Processes for Machine Learning*, Foundations and Trends in Machine Learning 5, 2012, and Jennifer
+Gillenwater, Alex Kulesza and Ben Taskar, *Near-Optimal MAP Inference for Determinantal Point
+Processes*, NIPS 2012. Cited from knowledge.
 
 **And the arithmetic is integer.** `C` is a matrix of counts. Its determinant is an integer, computed
 exactly by fraction-free Gaussian elimination in the tree's own limb arithmetic, with no float
@@ -187,6 +287,20 @@ surrogate, it is computable in closed form, and the destroy rule remains the exa
 That is the right division of labor. The determinant predicts redundancy before paying for it, the
 destroy rule catches what the prediction missed, and the gap between them is measurable.
 
+**Derived, 26 September. The heading and the section disagree.** The second paragraph is correct,
+and the heading does not follow from it. Under the convention of section 6, `det(C_S)` is at least 1
+for distinct offsets, every marginal is positive, and the rank never drops. A rank test on `C` never
+fires. The period-16 counter of section 5 shows the distance between the two. Take offsets 0 and 1.
+The corpus agrees with itself at lag 1 nowhere, `C_S` is diagonal, and the marginal of the second
+probe is `n`, the largest it can be. After the first probe the survivors are the occurrences, the
+second probe prunes nothing, and the destroy rule fires.
+
+The two tests also read different inputs. `C` is built from the corpus and the offsets and does not
+read the needle. The destroy rule reads the survivors, and the survivors depend on the needle bytes at
+the probes. On the same counter, a needle of all zeros survives offset 0 only where 16 divides the
+alignment and offset 1 only where it leaves remainder 15, the second probe prunes every survivor, and
+the rule keeps it. `C` is the same for both needles.
+
 ## Planning without touching the corpus
 
 The guide records that planning cost is stated and unmeasured, and that `anchor_steer_sweep_probes`
@@ -213,6 +327,21 @@ more, then the linear relaxation is losing what the Boolean test keeps, and the 
 survivor scoring carries information the Gram matrix does not. That outcome is worth as much as the
 other one and costs one bench.
 
+**Derived, 26 September. The census is not one scan.** The candidates are every needle position
+(`anchor_sift.c:1089` at `d09b489`), and the lags between candidates cover every value in `(-m, m)`.
+`A` is symmetric, and the census needs `A(d)` for `d` in `[0, m)`. Collected position by position,
+that is one pass making about `n * m` byte comparisons, `m` times the comparisons of a single scan.
+The per-candidate column of the table holds. The sentence placing the census at the order of a
+single scan does not.
+
+Because `C` does not read the needle (the note under section 8), determinant scoring picks the same
+offsets for every needle of a given length. *A reading, not proved.* A Gram matrix of agreement
+indicators, one vector per candidate offset `o` with entry 1 at alignment `s` when
+`needle[o] == corpus[s + o]`, is positive semidefinite and reads the needle. Its entries count the
+alignments where two probes agree together, the joint event the destroy rule tests. Building it costs
+`m` comparisons per alignment for each needle, the order of one round of survivor scoring over every
+candidate.
+
 ## What each of these would cost to be wrong
 
 No section above changes the count, because no section alters what a probe is. The
@@ -227,6 +356,11 @@ asserts that the gap between predicted and measured agreement reads arrangement,
 measured reads column is dominated by something other than agreement probability. Section 9 asserts
 the determinant is a useful surrogate, which fails if the relaxation discards what the planner needs.
 Both are one bench each, and both were written to be checkable instead of agreeable.
+
+**Derived, 26 September. Three more fail as claims.** Section 5's sentence on the period-16 counter,
+section 7's statement that the sparsification guarantees attach to a determinant-scored descent, and
+section 8's heading. The notes under those sections give each. None touches the count: every probe
+set is still a set of necessary conditions, and the full compare still removes the false survivors.
 
 ## Sources
 
@@ -250,11 +384,22 @@ afterwards.
 matrices. Every undirected graph admits a sparsifier preserving every cut within a multiplicative
 factor, with a near-linear number of edges. The greedy determinant scoring of section 9 is that
 sampling rule, and their guarantees are what a scored descent would inherit.
-<https://arxiv.org/pdf/0808.4134>, <https://arxiv.org/pdf/1107.0088>
+<https://arxiv.org/pdf/0803.0929>, <https://arxiv.org/pdf/0808.0163>
+
+**Correction, 26 September.** The links above first read `arXiv:0808.4134` and `arXiv:1107.0088`.
+Checked on arXiv on 26 September: `0808.4134` is Daniel A. Spielman and Shang-Hua Teng, *Spectral
+Sparsification of Graphs*, and `1107.0088` is Marcel K. de Carli Silva, Nicholas J. A. Harvey and
+Cristiane M. Sato, *Sparse Sums of Positive Semidefinite Matrices*. The papers the entry names are
+`0803.0929`, Spielman and Srivastava, *Graph Sparsification by Effective Resistances*, and
+`0808.0163`, Batson, Spielman and Srivastava, *Twice-Ramanujan Sparsifiers*, both checked on arXiv on
+26 September, and the links now give those. The entry's last two sentences do not hold: by the note
+under section 7, determinant scoring is not that sampling rule, and those guarantees do not attach.
 
 **Salomon Bochner**, for the theorem that a positive definite function is the transform of a positive
 measure. That is the general form of the fact section 6 establishes directly: an autocorrelation is
 positive semidefinite, and the census matrix is therefore a Gram matrix.
+**Note, 26 September:** for sequences on the integers the form is Herglotz's theorem, 1911 (the note
+under section 6).
 
 **Simon Sidon**, 1932, and **Paul Erdős and Pál Turán**, 1941, for `B2` sets, whose pairwise
 differences are all distinct. **James Singer**, 1938, for perfect difference sets. These are the
@@ -266,12 +411,44 @@ pages 620 to 630, and the sequel at 108(2), 1957. The maximum entropy principle 
 built on, and the reason a determinantal process is the right object: it is the maximum entropy
 distribution carrying prescribed marginals with negative correlation.
 
+**Correction, 26 September.** The entry gives no source for its last claim, that a determinantal
+process is the maximum entropy distribution carrying prescribed marginals with negative correlation,
+and the claim stands unsupported. The link between determinants and entropy that holds is Gaussian:
+a Gaussian with covariance `Σ` has differential entropy `(1/2) log det(2πeΣ)`, and choosing the
+subset `S` that maximizes `det(C_S)` is choosing the most entropic Gaussian marginal, the maximum
+entropy sampling problem of Shewry and Wynn (the note under section 7).
+
 **Robert S. Boyer and J Strother Moore**, 1977, and **R. Nigel Horspool**, 1980, for the shift rules
 that skip alignments without reading them. That is the prior art the companion document measures the
 engine against.
 
 Further reading used for the determinantal material:
 <https://arxiv.org/pdf/2204.02570>, <https://arxiv.org/html/math/0204325v1>
+
+**Added 26 September.** The dated notes above cite these, each from knowledge, with no paper read in
+full.
+
+- al-Kindi, ninth century, on frequency analysis of substitution ciphers.
+- Mihir Bellare, Alexandra Boldyreva and Adam O'Neill, *Deterministic and Efficiently Searchable
+  Encryption*, CRYPTO 2007.
+- Muhammad Naveed, Seny Kamara and Charles V. Wright, *Inference Attacks on Property-Preserving
+  Encrypted Databases*, CCS 2015.
+- Brenda S. Baker, *A Theory of Parameterized Pattern Matching: Algorithms and Applications*, STOC
+  1993.
+- Burton H. Bloom, *Space/Time Trade-offs in Hash Coding with Allowable Errors*, Communications of the
+  ACM 13(7), 1970.
+- Gustav Herglotz, 1911, on positive definite sequences and positive measures on the circle.
+- Peter J. Brockwell and Richard A. Davis, *Time Series: Theory and Methods*, 1991.
+- Ali Çivril and Malik Magdon-Ismail, on greedy selection of a maximum volume submatrix, Theoretical
+  Computer Science 410, 2009.
+- Michael C. Shewry and Henry P. Wynn, *Maximum Entropy Sampling*, Journal of Applied Statistics 14,
+  1987.
+- Chun-Wa Ko, Jon Lee and Maurice Queyranne, *An Exact Algorithm for Maximum Entropy Sampling*,
+  Operations Research 43, 1995.
+- Alex Kulesza and Ben Taskar, *Determinantal Point Processes for Machine Learning*, Foundations and
+  Trends in Machine Learning 5, 2012.
+- Jennifer Gillenwater, Alex Kulesza and Ben Taskar, *Near-Optimal MAP Inference for Determinantal
+  Point Processes*, NIPS 2012.
 
 **Author:** dstroy0 (Douglas Quigg) <dquigg123@gmail.com>
 **Date:** 2026-09-16
