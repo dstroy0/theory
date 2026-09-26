@@ -297,3 +297,9 @@ Handoff of this entry: `workbook precision note`.
   `exact_navier_stokes_on_torus.py`, `exact_navier_stokes_cascade.py` and
   `proof_boundary_inheritance.py`, import `from representation import exact`, which is in no file at
   `1948ae1`.
+  **Later, 26 September.** Commit `d09b489` (anchor_sift PR 12) put back the 126 files `74601c1`
+  deleted, each byte-identical to its state before the deletion, and biohub pins anchor_sift at
+  `d09b489`. `src/engine/python/representation/exact.py` is at the pin again. Between `1948ae1` and
+  `d09b489`, `src/engine/` gains those 126 files and loses four Python files under
+  `src/engine/base/qasm/`, and no other file in it changes: the header lines cited above hold at
+  `d09b489`.

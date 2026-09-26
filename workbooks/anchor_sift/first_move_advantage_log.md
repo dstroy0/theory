@@ -17,6 +17,11 @@ still imports `from representation.game import chess, rules`, and `kpk_value_of_
 `krk_both_sides.py` beside it also import from that tree. Every figure in this log was read before
 the deletion.
 
+**Later, 26 September.** Commit `d09b489` (anchor_sift PR 12) put back the 126 files `74601c1`
+deleted, each byte-identical to its state before the deletion, and biohub pins anchor_sift at
+`d09b489`. The game backend and the sift named above are at the pin again; nothing in this log was
+rerun against them.
+
 ## The question
 
 Does the side that moves first have an advantage? The move-sequence tree is the wrong place to read

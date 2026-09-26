@@ -62,6 +62,10 @@ A line number cited at \texttt{1044ca6} is not checked against those files. Comm
 imports \texttt{src/\allowbreak{}engine/\allowbreak{}python/}, which \texttt{74601c1} deleted.
 \texttt{evidence/\allowbreak{}proofs/\allowbreak{}posits/\allowbreak{}recover\_\allowbreak{}indoeuropean\_\allowbreak{}art.\allowbreak{}py}
 is in no anchor\_sift commit.
+\textbf{Later, 26 September.} Commit \texttt{d09b489} (anchor\_sift PR 12) put back the 126 files
+\texttt{74601c1} deleted, each byte-identical to its state before the deletion, and biohub pins
+anchor\_sift at \texttt{d09b489}. Every file named here that \texttt{74601c1} deleted is at the pin
+again; nothing here was rerun against them.
 
 The digest implementation in \texttt{test/\allowbreak{}support} appears here as an instrument. It generates the uniform control corpus and serves as the test oracle. The strength of that control is the strength of its vectors. Appendix A covers it.
 

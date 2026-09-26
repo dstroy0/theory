@@ -81,7 +81,8 @@ scaled integers (add, subtract, multiply with a rescale, divide) floors, losing 
 last worked place; this is the same floor `representation.exact` and `src/engine/c/no_rounding/`
 carry. (Note, 26 September: at anchor_sift `1948ae1` the C side is `src/engine/base/no_rounding/`,
 moved by `bdaed61` on 24 September, and `representation.exact` was deleted by `74601c1` on 26
-September.) A chain of `d` such steps loses under `d` units, and a value reached in `d` steps holds to
+September. Later, 26 September: `d09b489`, anchor_sift PR 12, put it back byte-identical, and biohub
+pins `d09b489`.) A chain of `d` such steps loses under `d` units, and a value reached in `d` steps holds to
 `N + g - d` places. The guard absorbs `d` while `10^g > d`.
 
 The prototype measures this directly. Over the seven root derivations it checks, the worst gap between
@@ -124,7 +125,8 @@ hub. Game theory reports minimum Shannon entropy decided with no logs by `prod p
 cleared to integers through the least common multiple of the share denominators, and an entropy order
 becomes an exact rational comparison (`src/engine/python/representation/game/rules.py`, `measure/outcome_entropy.py`,
 as reported; note, 26 September: both were deleted with `src/engine/python/` by `74601c1` on 26
-September and are in no file at anchor_sift `1948ae1`). Removable uncertainty in this regime is zero.
+September and are in no file at anchor_sift `1948ae1`; later, 26 September: `d09b489`, anchor_sift
+PR 12, put both back byte-identical, and biohub pins `d09b489`). Removable uncertainty in this regime is zero.
 
 **Regime B, counting.** Quantities are exact integers or rationals by their nature, and identities
 propagate exactly with nothing to raise: the multiplier is one. Chemistry reports the
@@ -148,7 +150,8 @@ at `crystal.py:112`, admits a cell to the exact path only where every angle is w
 a census over 8885 COD entries refused 4411 of them, family-dependent (garnet 97.5 percent admitted,
 feldspar 2.9 percent), reported from `maint/analysis/survey/crystal_gate_census.py` (note, 26 September: `crystal.py` was
 `src/engine/python/representation/structure/crystal.py`, deleted by `74601c1` on 26 September, and
-the census script imports from that tree). Two further
+the census script imports from that tree; later, 26 September: `d09b489`, anchor_sift PR 12, put it
+back byte-identical, and biohub pins `d09b489`). Two further
 judgment-picked parameters, `EXACT_TILES = 4` and a harmonic-family cap of 2, sit in the period reader
 and can decide which period is reported; the crystallography session notes their effect is unmeasured,
 and the reader is not parameter-free. Chemistry reports bond lengths,

@@ -10,6 +10,12 @@ equal states are equal to the bit, and an inverse circuit returns to the start s
 
 Everything below is output the two engines actually produced, not a claim written ahead of them.
 
+**Note, 26 September.** `mps_qubits.py` and `symbolic_qubits.py`, whose output is quoted below, were
+in anchor_sift's `src/engine/base/qasm/` with `boundary_lens.py` and `exact_qubits.py` at `1948ae1`.
+Commit `c2fcda0` ("housekeeping", 26 September) deleted all four, and none is at `d09b489`, the pin
+biohub now holds. The C port of them (`qasm_chain.c`, `qasm_symbolic.c` and the rest, with
+`test/run.sh`) is at the pin. The output below was printed before the deletion.
+
 ## The field
 
 The standard gate set `{X, Y, Z, S, H, CNOT, CZ, controlled-T}` needs only a short list of numbers:
