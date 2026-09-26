@@ -4,6 +4,8 @@
 
 \textbf{Purpose:} Run the byte-pair distribution pipeline: squash text to a flat distribution, measure distance, establish validity by split-half, correct for support, cluster, and control for family. \textbf{Scope:} \texttt{examples/\allowbreak{}language/\allowbreak{}4\_\allowbreak{}measure/\allowbreak{}byte\_\allowbreak{}signature.\allowbreak{}py}, \texttt{maint/\allowbreak{}data/\allowbreak{}salishan/\allowbreak{}corpus\_\allowbreak{}script\_\allowbreak{}extraction/\allowbreak{}salish\_\allowbreak{}purity.\allowbreak{}py}, \texttt{src/\allowbreak{}engine/\allowbreak{}python/\allowbreak{}instrument/\allowbreak{}corpus\_\allowbreak{}gate.\allowbreak{}py}, \texttt{examples/\allowbreak{}language/\allowbreak{}4\_\allowbreak{}measure/\allowbreak{}case\_\allowbreak{}or\_\allowbreak{}splitting.\allowbreak{}py}, \texttt{examples/\allowbreak{}language/\allowbreak{}4\_\allowbreak{}measure/\allowbreak{}cluster\_\allowbreak{}profiles.\allowbreak{}py}, \texttt{examples/\allowbreak{}language/\allowbreak{}4\_\allowbreak{}measure/\allowbreak{}evidential\_\allowbreak{}pressure.\allowbreak{}py}
 
+\textbf{Note, 26 September.} \texttt{corpus\_\allowbreak{}gate.\allowbreak{}py} was deleted with \texttt{src/\allowbreak{}engine/\allowbreak{}python/} by commit \texttt{74601c1} on 26 September and is in no file at anchor\_sift \texttt{1948ae1}. \texttt{case\_\allowbreak{}or\_\allowbreak{}splitting.\allowbreak{}py} and \texttt{cluster\_\allowbreak{}profiles.\allowbreak{}py} import from that tree; the line numbers and figures below are from before the deletion.
+
 \subsection{1. Pair Encoding}
 
 Text \(T\), whitespace stripped, encoded UTF-8 to bytes \(b_0 \dots b_{m-1}\). Every adjacent pair maps to one index:

@@ -48,6 +48,21 @@ A line cited in one of them is a line of \texttt{bench/\allowbreak{}driver/\allo
 \texttt{bench\_\allowbreak{}\{sift,\allowbreak{}lattice,\allowbreak{}entropy,\allowbreak{}ab\}.\allowbreak{}c}.
 This chapter records no run of the moved files.
 
+\textbf{Note, 26 September.} At anchor\_sift \texttt{1948ae1} none of these paths is where it was:
+commit \texttt{bdaed61} (24 September) deleted \texttt{src/\allowbreak{}engine/\allowbreak{}c/}, and
+the engine is \texttt{src/\allowbreak{}engine/\allowbreak{}nbody/\allowbreak{}anchor\_sift/},
+with the \texttt{scan\_*} files beside it, the exact integer and the \texttt{arm\_*} files are in
+\texttt{src/\allowbreak{}engine/\allowbreak{}base/\allowbreak{}no\_rounding/}, and the four benches
+are \texttt{bench/\allowbreak{}bench\_\allowbreak{}\{sift,\allowbreak{}lattice,\allowbreak{}entropy,\allowbreak{}ab\}.\allowbreak{}c}.
+A line number cited at \texttt{1044ca6} is not checked against those files. Commit \texttt{74601c1}
+(26 September) deleted \texttt{src/\allowbreak{}engine/\allowbreak{}r/}, with
+\texttt{language\_\allowbreak{}variance.\allowbreak{}R}. Section 4's
+\texttt{classify\_\allowbreak{}reject\_\allowbreak{}recover.\allowbreak{}py} is not in
+\texttt{1044ca6}; commit \texttt{cde6011} added it later on 16 September, and at \texttt{1948ae1} it
+imports \texttt{src/\allowbreak{}engine/\allowbreak{}python/}, which \texttt{74601c1} deleted.
+\texttt{evidence/\allowbreak{}proofs/\allowbreak{}posits/\allowbreak{}recover\_\allowbreak{}indoeuropean\_\allowbreak{}art.\allowbreak{}py}
+is in no anchor\_sift commit.
+
 The digest implementation in \texttt{test/\allowbreak{}support} appears here as an instrument. It generates the uniform control corpus and serves as the test oracle. The strength of that control is the strength of its vectors. Appendix A covers it.
 
 \subsection{2. Mathematical Framework}
