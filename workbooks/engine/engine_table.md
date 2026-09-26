@@ -734,7 +734,36 @@ As of 23 September (the build plan, [build_plan.md](build_plan.md)):
      | one limb inlined | 462.3 s, 14.782 ms (402.223 ms) | 44.1 s, 17.719 ms (462.862 ms) | 23.8 s, 40.696 ms (156.173 ms) |
 
    - **The compile grows with about the square of the steps** (26 September). The 1,012-step program cut to its first 128, 256, 512, 768 and 1,012 steps, each step's value kept live by one xor: cicc, NVRTC's front end and optimizer, took 2.2, 4.3, 18.1, 40.2 and 97.2 s, and 1.7, 3.2, 10.2, 20.5 and 52.4 s with its optimizer off. On the 381-step program ptxas took 0.6 s against cicc's 7.5 s. The cost follows the kernel's length, with or without the optimizer, and the loop below answers it where no flag does.
-   - **Not compiled yet.** Programs past 1,024 steps: 99 of the tower test's programs, from 1,054 to 6,510 steps, whose floors repeat and could be emitted as a loop. Until those compile, the interpreter runs them and the stack return stays for it.
+   - **No step cap** (26 September). A program of any length compiles. The interpreter runs a program only where one of its steps is not held by the compiler, where NVRTC or nvJitLink cannot be loaded, or under `CYCLE_RECORD_INTERPRET=1`.
+   - **The operator block** (26 September; Doug: "every program needs operators, splitting them into one file and having all programs access it should be faster and smaller"). Every record operation is one function in one module: the interpreter's own arithmetic, with its widths taken as arguments. NVRTC compiles the module once for the device as relocatable code, and the cache keeps it (1.4 s, 164,864 bytes of cubin). A program's source is its steps alone, each one call into the block with its places and widths as constants. NVRTC compiles that as relocatable code, and nvJitLink links it against the block (loaded at run time, `nvJitLink_130_0.dll`, `libnvJitLink.so.13`). The register file and the signs lie in the program's local frame, and each operator reads its operands and writes its register there by address. The divisions and the ladder share one scratch, laid at the program's widest division.
+   - **The compile, before and after the block** (26 September, one program each):
+
+     | build | program | compile | link | cubin |
+     |---|---|---|---|---|
+     | stage 1, the file in registers | tower, 761 steps | 37.9 s | none | 133,288 bytes |
+     | stage 1, the file in registers | tower, 1,012 steps | 96.4 s | none | 231,976 bytes |
+     | stage 1, loops rolled | tower, 2,094 steps | 778.7 s | none | 1,450,024 bytes |
+     | the operator block | coherence, 164 steps | 0.17 to 0.22 s | 0.7 to 1.3 ms | 91,360 to 96,480 bytes |
+     | the operator block | boundary, 968 steps | 1.29 s | 2.7 ms | 366,560 bytes |
+     | the operator block | boundary, 1,992 steps | 5.11 s | 4.1 ms | 731,744 bytes |
+     | the operator block | bitwise, 4,204 steps | 9.67 s | 5.4 ms | 1,201,888 bytes |
+     | the operator block | order, 12,293 steps | 217.5 s | 27.1 ms | 4,592,480 bytes |
+     | the operator block | order, 16,379 steps | 209.5 s | 24.9 ms | 4,747,616 bytes |
+
+     The bitwise stack of 4,204 steps held NVRTC past 1.2 GB on 25 September, and the order test's 12,293 steps past 13 GB, before each was stopped. Both compile now. Past about 4,000 steps the compile still grows faster than the steps, and why is not yet measured.
+   - **Proved on the block** (26 September). Each test run compiled, then checked against the interpreter, then on the interpreter. Every checked launch had the same records and refusals on both machines. The kernels' time summed over each test's checked launches, beside the interpreter's on the same run:
+
+     | test | checks | checked launches | compiled | interpreted |
+     |---|---|---|---|---|
+     | bitwise | 25 | 6 | 8.566 ms | 21.748 ms |
+     | boundary | 49 | 16 | 94.854 ms | 438.492 ms |
+     | coherence | 15 | 37 | 14.459 ms | 143.879 ms |
+     | divide | 20 | 8 | 42.628 ms | 169.002 ms |
+     | gaussian | 11 | 1 | 0.264 ms | 2.138 ms |
+     | guide | 12 | 1 | 0.330 ms | 2.357 ms |
+     | order | 18 | 2 | 19.827 ms | 87.672 ms |
+
+     The cost is the call. The register file lies in memory and the operators read it by address. The boundary's kernels ran 4.6 times the interpreter's speed, against 26 times when the file was in registers (17.719 ms against 462.862 ms, the one-limb-inlined build above). The speed, table and tower tests, and the block built as LTO-IR and linked with link-time optimization (`CYCLE_RECORD_LTO=1`), are running.
 10. **Resident programs** (added 26 September; Doug's design). Automata that run on the device on their own. Each reports its status to its own block and loops, talks to other programs through their blocks, and can be chained to another program or pointed at one. Built from these, a solution is small autonomous kernels composed on the GPU, with the host out of the loop.
    - **The block** (`EngineProgramBlock`, `engine_config.h`). Doug named its core: the offset (the execaddr, where the program resumes), the step (the evacaddr, where it left), the span (the register map), and the time to live, the watchdog, the launch time, the run time and the exec time. Beside those it holds:
      - the program's signum, the run's generation, and the launch that owns it;
@@ -760,3 +789,6 @@ As of 23 September (the build plan, [build_plan.md](build_plan.md)):
      2. Resident programs as one cooperative launch, chained through their blocks.
      3. The exits and the answer table.
      4. Tessera admits with the compiled grant and reads the blocks from host memory.
+   - **Stage 1, built** (26 September, `engine/base/cycle/cycle.cu`). The block, yield and resume, and the register file in registers: every place a constant in the source, so file_limbs registers hold the file. The thread blocks take lanes a round at a time from one counter and leave past the time to live (500 ms unless `CYCLE_RECORD_TTL` names one). The block's command can also send them out. The thread block that opens a launch always runs one round, so every launch moves the program on. The last one out writes the offset, the times and the state, and the host launches again while the state is yielded. On the tower test the programs held 128 to 255 registers a thread with local frames of 0 to 752 bytes. Each ran in one launch and two check-ins. The 761-step program held 183 registers, a 0-byte frame, and 0.442 ms for 256 lanes. The run was stopped for the operator block (item 9), because its compiles took 10.2 to 778.7 s a program.
+   - **The block in device memory** (26 September). Check-ins stay on the device. The host lays the block, seals it and sends it before the first launch. It reads the block back once a launch has ended, checks the seal before the next launch, and seals and sends it again. A fault is left sealed on the host's copy.
+   - **Still owed for stage 1:** a forced yield, `CYCLE_RECORD_TTL=1` on the ten record tests, matching the interpreter.
