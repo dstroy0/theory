@@ -1,7 +1,7 @@
 # The noise sieve tower
 
 **Purpose:** Carry the transfinite noise sieve and the fluidic architecture (the drafts in `thought_experiments/engine/`) into the ledger, idea by idea, each set beside the part of the engine that is its working form and the status that backs it. The theory and the code are then read as one thing, and a later session knows which ideas already run.
-**Scope:** every idea in `noise_sieve_*.md`, `fluidic_*.md`, `utm_demon_openqasm.md`, `demon_utm_four_noise_vectors.md`, `hash_boundary_functional_folding.md`, `subtractive_cosmological_framework.md` and `cyclic_field_inversion_seed_crystal.md`. `noise_sieve_5_cell_tracking_harmonics.md` sets the sieve on the cell program. It is in `thought_experiments/cell_tracking/`, and its sections are in the cell book ([on_the_engine.md](../cell_tracking/on_the_engine.md)). Where an idea has a working form, the module is named; [cell_tracking_table.md](../cell_tracking/cell_tracking_table.md) says which part of the n-body problem each module solves, and [engine_table.md](engine_table.md) what each machine part computes.
+**Scope:** every idea in `noise_sieve_*.md`, `fluidic_*.md`, `utm_demon_openqasm.md`, `demon_utm_four_noise_vectors.md`, `hash_boundary_functional_folding.md`, `subtractive_cosmological_framework.md` and `cyclic_field_inversion_seed_crystal.md`. `noise_sieve_5_cell_tracking_harmonics.md` sets the sieve on the cell program. It is in `thought_experiments/cell_tracking/`, and its sections are in the cell workbook ([on_the_engine.md](../cell_tracking/on_the_engine.md)). Where an idea has a working form, the module is named; [cell_tracking_table.md](../cell_tracking/cell_tracking_table.md) says which part of the n-body problem each module solves, and [engine_table.md](engine_table.md) what each machine part computes.
 
 The status column follows the ledger's rules ([README.md](README.md)): proved, measured, built, theory, refuted, not so.
 
@@ -84,7 +84,7 @@ Read right to left, it is the engine's run order:
 | time is a structural axis of the tower | proved: t is lifted with z, y and x, and undone exactly |
 | the tower reaches an irreducible floor | measured: 42.0% of raw over 25 samples; the low five bit planes show no anchor |
 | the floor is per sample, not per set | measured: no voxel anchored in every sample; anchors differ per sample |
-| one line of n dimensional embedding to radix the residue around | refuted as a size win: every radix around a line along x, y or t made the stream larger; grouping per floor helped (see the compression book's [ledger.md](../compression/ledger.md)) |
+| one line of n dimensional embedding to radix the residue around | refuted as a size win: every radix around a line along x, y or t made the stream larger; grouping per floor helped (see the compression workbook's [ledger.md](../compression/ledger.md)) |
 | a golden spiral scan instead of the raster | not yet tested: the scan measured on 21 September swept each shell by angle, not in the golden order, and its +658,073 bytes refute only that sweep |
 | the savings ratio 1.7174 near e − 1 | refuted: on four more samples the ratio was −8.29, 0.44, −73.2 and −1.60 |
 | a master schedule by family and order of operation | built for linear keys (the scheduler composes in program order) and for pointwise steps as tables (A13 of [engine_table.md](engine_table.md)); a schedule by family is theory |
@@ -97,13 +97,13 @@ Read right to left, it is the engine's run order:
 
 - **Eyes** are `shift_agreement`: how many set bits of one view land on set bits of another at every lag at once: the frame's own motion, read off the field.
 - **Arms** are the null draws (`--null`). The same body is climbed at the same lag toward frames far off in time, where no correspondence can exist. A body no draw reaches stands above background, and nothing in that test is a chosen number.
-- **Truthy/falsy probes** (fluidic draft §5) are a program's node policies, in the cell book ([on_the_engine.md](../cell_tracking/on_the_engine.md)).
+- **Truthy/falsy probes** (fluidic draft §5) are a program's node policies, in the cell workbook ([on_the_engine.md](../cell_tracking/on_the_engine.md)).
 
 | claim | status |
 |---|---|
 | shift agreement verifies motion at every lag | built; part of every tracked run |
 | the null permutation as the test of real correspondence | built (`--null`); its selection on the competition metric not yet measured on the current engine |
-| binary probes in place of chosen thresholds | a program's, in the cell book |
+| binary probes in place of chosen thresholds | a program's, in the cell workbook |
 
 ## 7. The demon observer, chords and the uroboros
 
@@ -125,7 +125,7 @@ The observer settling on hot bits, and the noise key fed back as the next cycle'
 
 | set | in the engine | status |
 |---|---|---|
-| true coherence | the residual's structure above the medium: bodies and their links | built; a program's links measured in the cell book |
+| true coherence | the residual's structure above the medium: bodies and their links | built; a program's links measured in the cell workbook |
 | the noise key | the residue: every floor's highs, held whole in the .kcr; the anchor counts per bit | proved lossless; measured |
 | the construct kit | the program, its key (.imp), the schedule (.sch) and the configuration (.cfg) | built |
 
@@ -160,7 +160,7 @@ The 2^n barrier does not go away in a machine. The engine keeps its state exact 
 | claim | status |
 |---|---|
 | exact reversible maps, undone exactly | proved (the tower); built (integer rotations, undone exactly in their test) |
-| outcomes read deterministically, with no random number anywhere | a program's, in the cell book |
+| outcomes read deterministically, with no random number anywhere | a program's, in the cell workbook |
 | unbounded state | not so: every width is bounded before a run |
 
 ## 11. The boundary functional of a keyspace, and folding
@@ -218,7 +218,7 @@ The PDF's cosmology (field inversion, the seed crystal of a new universe, eterna
 
 ## 14 and 15. The sieve on the cell program
 
-`noise_sieve_5_cell_tracking_harmonics.md` sets the sieve on the cell program: splits and entropy, each body's harmonics, edges by jitter and membership by sample coherence. Those two sections are in the cell book, [on_the_engine.md](../cell_tracking/on_the_engine.md).
+`noise_sieve_5_cell_tracking_harmonics.md` sets the sieve on the cell program: splits and entropy, each body's harmonics, edges by jitter and membership by sample coherence. Those two sections are in the cell workbook, [on_the_engine.md](../cell_tracking/on_the_engine.md).
 
 ## 16. The four noise vectors, and the noise keys stamped top down over w
 
@@ -255,7 +255,7 @@ Every noise term, these four and the rest Doug named on 25 September, has one ro
 
 | claim | status |
 |---|---|
-| the floor section in the `.cfg`, laid down before anything else runs | built, not yet run: the `.cfg` reads and writes it; a program's driver laying it down is in the cell book |
+| the floor section in the `.cfg`, laid down before anything else runs | built, not yet run: the `.cfg` reads and writes it; a program's driver laying it down is in the cell workbook |
 | entropy conserved at every voxel: each bit's flips have the parity of its net change | built, not yet run: checked in the history's own pass |
 | the floor's identity at every voxel places every departure: where steering happened | theory; the history holds it, and the reading is not built |
 | the clock as the elevator: any floor at any time reached directly | built: the tower's floors and the stream's chunks at known offsets; the history's windows at known places |

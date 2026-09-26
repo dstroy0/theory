@@ -21,7 +21,7 @@
 
 ### The competition metric
 
-The metric (`maint/score_submission.py`): nodes matched to key nodes within 7 µm, an edge a hit only where both ends match nodes the key joins, the edge Jaccard micro averaged over the split, times 1 − 0.1 × the node count's excess over the organisers' estimate, plus 0.1 × the division Jaccard. It is not the internal count the tracker prints under POOLED, which takes a key node as the object that holds its voxel.
+The metric (`maint/score_submission.py`): nodes matched to key nodes within 7 µm, an edge a hit only where both ends match nodes the key joins, the edge Jaccard micro averaged over the split, times 1 − 0.1 × the node count's excess over the organizers' estimate, plus 0.1 × the division Jaccard. It is not the internal count the tracker prints under POOLED, which takes a key node as the object that holds its voxel.
 
 | what | samples | result | settles |
 |---|---|---|---|
@@ -35,7 +35,7 @@ The training set is 71 samples of 44b6 and 128 of 6bba; the test set holds both.
 | what | samples | result | settles |
 |---|---|---|---|
 | the current engine, internal count | 6bba_05b6850b, 05db0fb1, 062c8d37, 07477033, 07e24132 | 3,756 of 3,873 edges correct, 97.0%; 115 wrong; 2 endpoints undetected | the engine runs on 6bba as it is |
-| the same run under the metric's matching, every node | the same five | 78.5% of key edges hit; 1.2% source unmatched; 19.6% land elsewhere, a median 6.7 µm from the target's match | on 6bba the loss is a link landing on a neighbouring node: the node set is far finer than the cells, and bodies, not finer pieces, are what should be linked |
+| the same run under the metric's matching, every node | the same five | 78.5% of key edges hit; 1.2% source unmatched; 19.6% land elsewhere, a median 6.7 µm from the target's match | on 6bba the loss is a link landing on a neighboring node: the node set is far finer than the cells, and bodies, not finer pieces, are what should be linked |
 
 ### 44b6 on the current engine
 

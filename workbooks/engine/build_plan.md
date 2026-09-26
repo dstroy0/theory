@@ -2,7 +2,7 @@
 
 **Purpose:** The order the engine's wants in [engine_table.md](engine_table.md) are built in, and every ruling on them, dated. Every session builds the next item, not whatever looks nearest. Built in order, one item at a time; an item is done when its program runs on the device and its row below says so.
 **Two tables, two concerns (23 September):** keep the cell table and the engine table separate; each is optimized against the other only through its interface section, never merged. **The engine is optimized for no scale:** no size, spacing, order, window or width is ever written into engine/. Each comes from the request or the data. The engine table's scale audit lists what is still in; this has been put in and ripped out repeatedly, and it is dangerous.
-**Scope:** the engine's items of the build plan kept from 22 to 24 September. The item numbers are the plan's own, and a number missing here is another book's: the cell program's items are in the cell book's [build_plan.md](../cell_tracking/build_plan.md), and the crystal's growth in the compression book's [build_plan.md](../compression/build_plan.md).
+**Scope:** the engine's items of the build plan kept from 22 to 24 September. The item numbers are the plan's own, and a number missing here is another workbook's: the cell program's items are in the cell workbook's [build_plan.md](../cell_tracking/build_plan.md), and the crystal's growth in the compression workbook's [build_plan.md](../compression/build_plan.md).
 
 Statuses: proved, measured, built, theory, refuted, not so. "Not built" means nothing of it exists yet.
 
@@ -130,7 +130,7 @@ Still to wire:
 Cell-specific modules (bodies, score_sample, answer_key, the measure/*) are due to move to cell_tracking first.
 22. Ruled 23 September: CRC every schedule, cfg and key at imprint and verify right before each cycle; CRC every disk read and write, with a flush read-back. Size the buffers generously, by experiment, to match ingest and r/w throughput (Doug suspects a hardware queuing "snap io desert"). Not started.
 23. Ruled 23 September: `decimal_double` never rounds. `decimal_double_expand` gives the exact leading bits of digits × 10^ex in an `AnchorExactInteger` candidate, plus a binary exponent e2. It also reports `fits` (the candidate holds the whole value), `terminates` (the binary expansion ends; a tenth does not) and `needed_bits` (the width to grow to). Checked against Python fractions on 22 cases at 128 and 4096 bits: 1e2200 needs 5109 bits, and a 4096-bit build gets its exact top 4096 with fits 0.
-24. Ruled 23 September ("split it, go"): the slide and the overlap are engine math and are back in max_tree, wired for errors. The slide's key voxels became generic probe voxels, and the engine returns each recorded level's probe partition. The present/alone tally left the engine for cell_tracking, and a slide count that disagrees with the tree's is now a logic error. The overlap keeps probes (points) and probe links (point pairs) as its only interface. The key-cell grading that goes with this item is the cell program's (the cell book's build plan, item 24).
+24. Ruled 23 September ("split it, go"): the slide and the overlap are engine math and are back in max_tree, wired for errors. The slide's key voxels became generic probe voxels, and the engine returns each recorded level's probe partition. The present/alone tally left the engine for cell_tracking, and a slide count that disagrees with the tree's is now a logic error. The overlap keeps probes (points) and probe links (point pairs) as its only interface. The key-cell grading that goes with this item is the cell program's (the cell workbook's build plan, item 24).
 25. Ruled 23 September, integrity: "the only acceptable crc is a merkle dag". Every CRC-64 is replaced by BLAKE3 Merkle roots. The answers:
 - root: the full 32 bytes;
 - shape: dimensional, leaf = one x-row of LE u16 lanes (its own width, BLAKE3 chunks it), then y, z, t, sample, set;
@@ -248,7 +248,7 @@ Cell-specific modules (bodies, score_sample, answer_key, the measure/*) are due 
    - The job test runs in a scratch TESSERA_STATE: 24/0, including damaged, cut and unsealed histories refused and the kept peak surviving a restart.
    - The old unsealed real history was moved to %LOCALAPPDATA%\tessera\<uuid>\history.unsealed.
    - The history now loads before the pipe or socket exists, and the note uses s_daemon_precalc. Rerun at 24/0.
-   - "The engines own runs need to go through tessera". The driver's jobs are the cell program's (the cell book's build plan, item 36).
+   - "The engines own runs need to go through tessera". The driver's jobs are the cell program's (the cell workbook's build plan, item 36).
    - Sims submit (24 September), each 0 failed with its tessera checks:
      - sim_job.cu with sim_job_submit/sim_job_release; sim_close releases; run.sh builds the client and the daemon beside the sim.
      - Declared and peak: period_power 262,144/145,915,904; nbody 26,542,080/173,178,880; noise_floor 9,142,272/187,858,944; root_universal 339,510/152,207,360; fixed_pattern 141,056/143,818,752; classify 118,016/145,915,904.
@@ -258,7 +258,7 @@ Cell-specific modules (bodies, score_sample, answer_key, the measure/*) are due 
      - Fixed: PATH_MAX via linux/limits.h; _GNU_SOURCE in the measure; the timer's return; ENGINE_NOINLINE_HELPER; platform strings guarded; the daemon uses its string table, and the ticket names its signum.
      - WSL's NVML lists no process's memory; tessera_measure_paravirtual refuses, and the daemon exits. The suite passes with 0 warnings.
      - Native Linux is not available here.
-   - The crystal's growth between 22 and 24 September is the compression book's (its build plan).
+   - The crystal's growth between 22 and 24 September is the compression workbook's (its build plan).
    - Service files (24 September): engine/daemon/service/tessera@.socket and tessera@.service (systemd user units). Activation was proven in WSL: systemd started the daemon on a client's connection, then the WSL measure refusal ended it. Windows needs no service. The docker mount is documented, not run.
    - Reservation rule done (24 September, by the stop hook's "finish all open items"): tessera_ledger_wants = max(declared, kept peak) is used for admission, the shadow, the spare and the reservation at start. The ledger budget test is 22/0; the job test is 24/0. The real prove reserved 3,958,566,912, its kept peak.
    - Docker mount run (24 September): Docker Engine 29.1.3 in WSL; the static test/tessera_socket_probe.c in a container, socket mounted, TESSERA_RUNTIME=/run/tessera. systemd started the daemon on the container's connection; the WSL refusal ended it.

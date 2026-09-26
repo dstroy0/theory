@@ -1,6 +1,6 @@
 # Reproducing the SHA-256 measurements
 
-Every number in this book comes from a command in this repository. This maps them. A reader can
+Every number in this research paper comes from a command in this repository. This maps them. A reader can
 regenerate any figure or claim instead of taking it on trust.
 
 Nothing here is stored as data. The measurement files are regenerated from source and gitignored:
@@ -16,7 +16,7 @@ stating because `tools/` also holds miner tooling that has nothing to do with th
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | measurement engine, ten arms              | `src/bench/bench_sac.cu`                                                                         |
 | analysis and viewers                      | `tools/check/`, `tools/radar/`, `tools/view/build_*_view.py`, `tools/view/make_shadow_figure.py` |
-| the book                                  | `theory/cryptography/sha256/`, built by `tools/book/build_theory.sh`                             |
+| the research paper                                  | `theory/cryptography/sha256/`, built by `maint/texbuild/build_theory.sh`                             |
 | the working ledger, with every refutation | `docs/sha256-topology.md`                                                                        |
 | **not part of this work**                 | `tools/audit/`, `tools/chain/`, `tools/check/language_of_nature.py`                              |
 
@@ -24,10 +24,10 @@ stating because `tools/` also holds miner tooling that has nothing to do with th
 
 ```
 .\build_scope.ps1                 # builds bench_sac.exe and the other device benches
-sh tools/book/build_theory.sh     # builds the book to build/theory/cryptography/sha256/main.pdf
+sh maint/texbuild/build_theory.sh     # builds the research paper to build/theory/cryptography/sha256/main.pdf
 ```
 
-The book build fails on a dropped glyph instead of shipping one. A clean exit means every character
+The research paper build fails on a dropped glyph instead of shipping one. A clean exit means every character
 in it rendered.
 
 ## The engine
@@ -55,7 +55,7 @@ use 20 or 22. With no arm it runs the strict-avalanche sweep between `first_roun
 
 ## Claim to command
 
-| claim in the book                                                   | how to reproduce                                                                                                                                               |
+| claim in the research paper                                                   | how to reproduce                                                                                                                                               |
 | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | the soliton: 312 certain cells, 135 bits, 32 bits/round             | `bench_sac.exe 18 45 64 signed`                                                                                                                                |
 | 312 = 256 aligned + 56 skewed, all skew at residue 25               | `bench_sac.exe 18 45 64 cells`                                                                                                                                 |
@@ -101,7 +101,7 @@ theory:
 - `bench_sac.exe 18 45 64 waves` carries an injected wave of known amplitude, faded until the
   readout loses it. That fixes the sensitivity of every residue reading by measurement.
 - The `psrand` source in `sources` is binomial by construction and reads an rms deviation of exactly
-  1.000. If it does not, the harness is broken and no other number in this book stands.
+  1.000. If it does not, the harness is broken and no other number in this research paper stands.
 - `tools/radar/radar_assay.py` checks predictions written into `bench_sac.cu` before the run. The
   ablation results cannot have been fitted afterwards.
 

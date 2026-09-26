@@ -3,9 +3,9 @@
 Carry the amplitude, not a rounding of it.
 
 A quantum state is a vector of complex amplitudes. A mainstream simulator stores each one as a
-floating-point pair, so `1/sqrt2` becomes `0.70710678...`, the norm drifts off one, and a circuit
-run forward then inverted lands *near* the start rather than *on* it. This engine keeps every
-amplitude as an exact element of a number field. Nothing is rounded, so the norm is exactly one, two
+floating-point pair. There `1/sqrt2` becomes `0.70710678...`, the norm drifts off one, and a circuit
+run forward then inverted lands *near* the start instead of *on* it. This engine keeps every
+amplitude as an exact element of a number field. Nothing is rounded: the norm is exactly one, two
 equal states are equal to the bit, and an inverse circuit returns to the start state exactly.
 
 Everything below is output the two engines actually produced, not a claim written ahead of them.
@@ -17,16 +17,16 @@ The standard gate set `{X, Y, Z, S, H, CNOT, CZ, controlled-T}` needs only a sho
 
     Q(sqrt2)[i] = { (a + b*sqrt2) + i*(c + d*sqrt2) : a, b, c, d in Q }
 
-an element is four exact rationals. The field is closed under `+ - * /`, so every amplitude a
+an element is four exact rationals. The field is closed under `+ - * /`, and every amplitude a
 circuit over that gate set can reach stays inside it. `H`'s `1/sqrt2 = (1/2)*sqrt2` and the
 controlled phase's `(1+i)/sqrt2` are held exactly and never decay. The reference implementation
-carries the quadruple as four `fractions.Fraction` values — no numeric library.
+carries the quadruple as four `fractions.Fraction` values and uses no numeric library.
 
 ## Compact form (matrix product state)
 
 The state is held as one small tensor per qubit, joined by bonds. The bond across a cut is the exact
-Schmidt rank there. After every two-qubit gate the bond is trimmed by a rank-revealing factorisation
-`M = C*F` computed by exact Gaussian elimination over the field — no singular value is ever formed.
+Schmidt rank there. After every two-qubit gate the bond is trimmed by a rank-revealing factorization
+`M = C*F` computed by exact Gaussian elimination over the field. No singular value is ever formed.
 Cost scales with the entanglement actually present, not with the qubit count.
 
 Output of `mps_qubits.py`:
@@ -52,7 +52,7 @@ The scrambler's rising-then-falling bond profile is the entanglement light-cone 
 The field is extended to `Q(sqrt2)[i](w)`, where `w = e^{i*phi(Delta)}` is a distance-dependent phase
 carried as a *formal* unit on the circle: `conj(w) = 1/w`, and `w * conj(w) = 1` exactly. Amplitudes
 become exact rational functions of `w`, reduced by polynomial GCD. The same rank-revealing
-factorisation runs unchanged — a bond trims only under linear dependence that holds for *every*
+factorization runs unchanged. A bond trims only under linear dependence that holds for *every*
 `Delta`.
 
 An observable is read by a **boundary lens**: instead of expanding the state to `2^n` numbers, the
@@ -73,7 +73,7 @@ The lens reads the separation back as an exact function of it; the `Delta` never
 
 ## Host-against-host cross-check
 
-Specialising `w = e^{i*pi/4}` makes `CPHASE(e^{i*pi/4})` the controlled-T gate, so the symbolic
+Specializing `w = e^{i*pi/4}` makes `CPHASE(e^{i*pi/4})` the controlled-T gate. The symbolic
 engine and the numeric engine must agree at that point:
 
     symbolic <X0X1> at w = e^{i pi/4} : (1/2)*sqrt2
@@ -88,5 +88,5 @@ computation is built on.
 
 Exact arithmetic, an exact state, and an exact reading are general-purpose: they serve chemistry,
 physics, and the verification of any circuit, and they reveal nothing about what a given circuit
-computes. That is the whole claim — exactness as a substrate, and the three forms a state takes on
-it: dense, compact, symbolic.
+computes. The claim is exactness as a substrate, and the three forms a state takes on it: dense,
+compact, symbolic.

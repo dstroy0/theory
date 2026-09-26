@@ -6,7 +6,7 @@ Navier-Stokes statement names, one poke at a time, claiming nothing. **Scope:**
 `evidence/proofs/posits/proof_boundary_inheritance.py`, and this file.
 
 Kept by the precision measurement specialist. This is a workbook, not a result. It follows the rail the
-millennium book set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`) and the analytic
+millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`) and the analytic
 number theory workbook beside this file already follows:
 
 - Claim nothing. No open problem is attacked here. Nothing below bears on whether Fefferman's (A), (B),
@@ -25,7 +25,7 @@ to a neighborhood, not a claim staked in it.
 ## The problem, stated fully
 
 Read from Charles Fefferman's statement for the Clay Mathematics Institute, six pages including the errata
-page, fetched from the Clay site on 2026-09-17 and read in full. The millennium book's chapter
+page, fetched from the Clay site on 2026-09-17 and read in full. The millennium research paper's chapter
 (`theory/theory/millennium/chapters/chapter_navier_stokes.tex`) read the same document on 2026-09-11 and
 its account agrees with this reading at every point checked.
 

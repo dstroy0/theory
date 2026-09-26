@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Report which prose findings a book change added or removed, from two runs of the prose gate.
+"""Report which prose findings a research paper change added or removed, from two runs of the prose gate.
 
-    python tools/book/prose_delta.py before.txt after.txt
+    python tools/research_paper/prose_delta.py before.txt after.txt
 
-The prose gate is anchor_sift's maint/prose/docs_check.py. A book carries findings older than any one change,
+The prose gate is anchor_sift's maint/prose/docs_check.py. A research paper carries findings older than any one change,
 and a change is therefore graded on the difference: run the gate over copies of the changed files at the base commit
 and in the working tree, save both outputs, and hand them here. Run the gate with PYTHONIOENCODING=utf-8:
 under a cp1252 console it can crash on a finding's text and exit 1, which reads like a breaking finding.

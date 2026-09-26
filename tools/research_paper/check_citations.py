@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-r"""Print every line citation a book change added beside the lines it names, at the commit it is pinned to.
+r"""Print every line citation a research paper change added beside the lines it names, at the commit it is pinned to.
 
-    python tools/book/check_citations.py --since 5ce1632 --source ../anchor_sift --pin 1044ca6 \
+    python tools/research_paper/check_citations.py --since 5ce1632 --source ../anchor_sift --pin 1044ca6 \
         --pin-prefix bench/driver/=d65d219 \
         --alias anchor_sift.h=src/engine/c/engine/anchor_sift.h \
         --alias anchor_sift.c=src/engine/c/engine/anchor_sift.c \
@@ -9,7 +9,7 @@ r"""Print every line citation a book change added beside the lines it names, at 
         --alias chapter_anchor_sift_workbook.tex=theory/workbook/chapters/chapter_anchor_sift_workbook.tex \
         --local README.md PUBLIC/delta_null
 
-A book cites another repository by line, as \texttt{path:N} or \texttt{path:N-M}, and a bare \texttt{:N} on the
+A research paper cites another repository by line, as \texttt{path:N} or \texttt{path:N-M}, and a bare \texttt{:N} on the
 same source line means the file named last. A line number is a claim about one commit, so each citation is
 resolved against the commit its path is pinned to and printed beside the sentence that cites it. Reading that
 output is the check: a line that exists and says something else is as wrong as a line that does not exist,
@@ -62,7 +62,7 @@ def main():
     parser.add_argument("--pin-prefix", action="append", default=[], metavar="PREFIX=REV",
                         help="cited paths starting with PREFIX resolve at REV instead")
     parser.add_argument("--alias", action="append", default=[], metavar="SHORT=PATH",
-                        help="a short name the book writes for a full path in the cited repository")
+                        help="a short name the research paper writes for a full path in the cited repository")
     parser.add_argument("--local", action="append", default=[], metavar="PATH",
                         help="a cited path that belongs to this repository's working tree")
     args = parser.parse_args()
@@ -70,22 +70,22 @@ def main():
     prefixes = pairs(args.pin_prefix, "--pin-prefix")
     aliases = pairs(args.alias, "--alias")
 
-    code, book, err = run(["git", "rev-parse", "--show-toplevel"], ".")
+    code, research_paper, err = run(["git", "rev-parse", "--show-toplevel"], ".")
     if code != 0:
         print("check_citations: not inside a git checkout: %s" % err.strip())
         return 2
-    book = book.strip()
+    research_paper = research_paper.strip()
     code, source, err = run(["git", "rev-parse", "--show-toplevel"], args.source)
     if code != 0:
         print("check_citations: --source is not a git checkout: %s" % err.strip())
         return 2
     source = source.strip()
-    print("book repository:   %s, added lines since %s under %s" % (book, args.since, " ".join(args.paths)))
+    print("research paper repository:   %s, added lines since %s under %s" % (research_paper, args.since, " ".join(args.paths)))
     print("cited repository:  %s, default pin %s" % (source, args.pin))
     for prefix, rev in sorted(prefixes.items()):
         print("  pinned prefix:   %s at %s" % (prefix, rev))
 
-    code, diff, err = run(["git", "diff", "-U0", args.since, "--"] + args.paths, book)
+    code, diff, err = run(["git", "diff", "-U0", args.since, "--"] + args.paths, research_paper)
     if code != 0:
         print("check_citations: git diff failed: %s" % err.strip())
         return 2
@@ -119,7 +119,7 @@ def main():
             if key not in cache:
                 if where == "local":
                     try:
-                        with open("%s/%s" % (book, last), encoding="utf-8") as handle:
+                        with open("%s/%s" % (research_paper, last), encoding="utf-8") as handle:
                             cache[key] = handle.read().split("\n")
                     except OSError:
                         cache[key] = None

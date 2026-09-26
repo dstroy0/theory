@@ -5,10 +5,10 @@ theory, one poke at a time, claiming nothing. **Scope:** `examples/0_experimenta
 `evidence/proofs/posits/proof_set_theory.py`, and this file.
 
 Kept by the precision measurement specialist. This is a workbook, not a result. It follows the rail the
-millennium book set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`), because that
-book already refused the exact temptation this one has to refuse:
+millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`), because that
+research paper already refused the exact temptation this one has to refuse:
 
-- Claim nothing. No open problem is attacked here. A method that led a book would already claim to
+- Claim nothing. No open problem is attacked here. A method that led a research paper would already claim to
   reach something; nothing of that kind is claimed or supported.
 - Cite nothing unread. A fact that arrived by report says so in the sentence carrying it.
 - Gaps go in the sentence making the claim, not in a footnote.

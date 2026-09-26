@@ -1,7 +1,7 @@
 # The cell program on the engine
 
-**Purpose:** Hold what the engine's books measured on the cell program's samples, and the sieve's sections that set it on the cells, so the engine book carries the machine alone and points here for the program's numbers.
-**Scope:** text moved on 25 September out of the engine book: [engine_table.md](../engine/engine_table.md) (M2, M5, M9, M10, M12 and M14), [noise_sieve_tower.md](../engine/noise_sieve_tower.md) (§14 and §15, and its lines on the program's node policies, links, random numbers, edge rows and floor) and [tessera_scheduler.md](../engine/tessera_scheduler.md) (the driver's jobs). Each part names where it stood, and its words are as they stood there. Statuses follow [README.md](README.md).
+**Purpose:** Hold what the engine's workbooks measured on the cell program's samples, and the sieve's sections that set it on the cells, so the engine workbook carries the machine alone and points here for the program's numbers.
+**Scope:** text moved on 25 September out of the engine workbook: [engine_table.md](../engine/engine_table.md) (M2, M5, M9, M10, M12 and M14), [noise_sieve_tower.md](../engine/noise_sieve_tower.md) (§14 and §15, and its lines on the program's node policies, links, random numbers, edge rows and floor) and [tessera_scheduler.md](../engine/tessera_scheduler.md) (the driver's jobs). Each part names where it stood, and its words are as they stood there. Statuses follow [README.md](README.md).
 
 ## From the engine table
 
@@ -13,7 +13,7 @@ The cell program's scan runs it on the 25 at 34 bits in and 10 limbs out, 20.1 m
 
 ### M5. The correlation operator C
 
-The box (`--box`, 23 September) on 44b6_0113de3b: **proved**. C is read at the 27 shifts around every climbed lag and at the drift for 726,273 climbers (every forward pair and every null draw): 20,335,644 cells, 30,196,969 entries, 15.3 s. A cell meeting more labels than the kernel's table (10,507 cells) writes its raw pieces and the host merges them, with no cap. At the climbed lag, C sums to the climb's held count on all 726,273; the climbed lag is the highest of its 27 neighbours on all 726,273; at the drift, C equals `body_overlap` on all 80,697 labels.
+The box (`--box`, 23 September) on 44b6_0113de3b: **proved**. C is read at the 27 shifts around every climbed lag and at the drift for 726,273 climbers (every forward pair and every null draw): 20,335,644 cells, 30,196,969 entries, 15.3 s. A cell meeting more labels than the kernel's table (10,507 cells) writes its raw pieces and the host merges them, with no cap. At the climbed lag, C sums to the climb's held count on all 726,273; the climbed lag is the highest of its 27 neighbors on all 726,273; at the drift, C equals `body_overlap` on all 80,697 labels.
 
 ### M9. The files
 
@@ -67,7 +67,7 @@ The two findings these runs gave are the scheduler's, in [tessera_scheduler.md](
 
 | set | in the engine | status |
 |---|---|---|
-| true coherence | the residual's structure above the medium: bodies and their links | built; 97.0% of 3,873 labelled edges linked on five 6bba samples by the internal count |
+| true coherence | the residual's structure above the medium: bodies and their links | built; 97.0% of 3,873 labeled edges linked on five 6bba samples by the internal count |
 
 ### §10. A universal Turing machine and the demon
 
@@ -109,7 +109,7 @@ The `.cfg`'s `floor` section names where each sample's noise keys are held (`--f
 
 So every body the tree finds already carries its ℓ ≤ 2 fingerprint as exact integers, with nothing to fit. The source's "unique harmonics for each body because of intrinsic physical differences" is then a matching rule. A body in the next frame is the same body where its mass, dipole displacement and quadrupole agree, up to the motion the frame shows. The retrograde vector −∇(∂C₁ₘ/∂t) is the time derivative of the dipole: the body's centroid velocity, run backwards to where the motion started.
 
-**Where it lands on the score.** On the five 6bba samples, 19.6% of key edges are lost because a cell's link lands on a neighbouring node, a median 6.7 µm from the right one (ledger, 22 September). Neighbouring nodes differ in mass and quadrupole even where their centroids are close, and a body's fingerprint tells it from its neighbours. A link chosen by the ℓ ≤ 2 fingerprint instead of by overlap alone is the direct test of this section.
+**Where it lands on the score.** On the five 6bba samples, 19.6% of key edges are lost because a cell's link lands on a neighboring node, a median 6.7 µm from the right one (ledger, 22 September). Neighboring nodes differ in mass and quadrupole even where their centroids are close, and a body's fingerprint tells it from its neighbors. A link chosen by the ℓ ≤ 2 fingerprint instead of by overlap alone is the direct test of this section.
 
 | claim | status |
 |---|---|
@@ -118,7 +118,7 @@ So every body the tree finds already carries its ℓ ≤ 2 fingerprint as exact 
 | a split is a boundary discontinuity, confirmed over the whole sample by an entropy bump that settles; a lysis by one that bleeds out | theory; bodies' fates are built, the entropy test is not; the division term (0.1 of the score) is 0 today |
 | mitosis and lysis change fluidics far around them | theory |
 | each body's ℓ ≤ 2 harmonics held exactly | built: mass, first and second moments per body in the component tree |
-| linking bodies by their ℓ ≤ 2 fingerprint wins back the neighbouring node losses | theory; the direct test against 19.6% on the five 6bba samples |
+| linking bodies by their ℓ ≤ 2 fingerprint wins back the neighboring node losses | theory; the direct test against 19.6% on the five 6bba samples |
 | spherical harmonics above ℓ = 2 | theory; they need the body's surface, not only its moments |
 
 ### 15. Edges by jitter, membership by sample coherence

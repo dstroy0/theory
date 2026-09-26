@@ -99,7 +99,7 @@ The daemon opens its ledger and loads its history before it makes any endpoint: 
 
 ## The driver submits (24 September)
 
-A program's driver runs every job through tessera, one job a part. Its signum, its declaration, its parts and its runs are the program's, in the cell book ([on_the_engine.md](../cell_tracking/on_the_engine.md)). Its times are 2 s holding, 20 ms sweep and 5 s idle.
+A program's driver runs every job through tessera, one job a part. Its signum, its declaration, its parts and its runs are the program's, in the cell workbook ([on_the_engine.md](../cell_tracking/on_the_engine.md)). Its times are 2 s holding, 20 ms sweep and 5 s idle.
 
 - **The signum** is the BLAKE3 hash of the part's name, a NUL, and the whole effective request; a changed setting is a new signum.
 - **The declaration** is the largest sample's lattice in 16-bit lanes. For `--ingest` it comes from the source's description (`engine_source_lanes`, which reads no voxel); for every other part, from the `.kcr` head.

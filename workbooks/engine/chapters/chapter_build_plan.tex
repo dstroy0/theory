@@ -5,7 +5,7 @@
 
 \textbf{Two tables, two concerns (23 September):} keep the cell table and the engine table separate; each is optimized against the other only through its interface section, never merged. \textbf{The engine is optimized for no scale:} no size, spacing, order, window or width is ever written into engine/. Each comes from the request or the data. The engine table's scale audit lists what is still in; this has been put in and ripped out repeatedly, and it is dangerous.
 
-\textbf{Scope:} the engine's items of the build plan kept from 22 to 24 September. The item numbers are the plan's own, and a number missing here is another book's: the cell program's items are in the cell book's build\_\allowbreak{}plan.md, and the crystal's growth in the compression book's build\_\allowbreak{}plan.md.
+\textbf{Scope:} the engine's items of the build plan kept from 22 to 24 September. The item numbers are the plan's own, and a number missing here is another workbook's: the cell program's items are in the cell workbook's build\_\allowbreak{}plan.md, and the crystal's growth in the compression workbook's build\_\allowbreak{}plan.md.
 
 Statuses: proved, measured, built, theory, refuted, not so. “Not built” means nothing of it exists yet.
 
@@ -206,7 +206,7 @@ Still to wire:
 \begin{enumerate}
 \item Ruled 23 September: CRC every schedule, cfg and key at imprint and verify right before each cycle; CRC every disk read and write, with a flush read-back. Size the buffers generously, by experiment, to match ingest and r/w throughput (Doug suspects a hardware queuing “snap io desert”). Not started.
 \item Ruled 23 September: \texttt{decimal\_\allowbreak{}double} never rounds. \texttt{decimal\_\allowbreak{}double\_\allowbreak{}expand} gives the exact leading bits of digits × 10\textasciicircum{}ex in an \texttt{Anchor\allowbreak{}Exact\allowbreak{}Integer} candidate, plus a binary exponent e2. It also reports \texttt{fits} (the candidate holds the whole value), \texttt{terminates} (the binary expansion ends; a tenth does not) and \texttt{needed\_\allowbreak{}bits} (the width to grow to). Checked against Python fractions on 22 cases at 128 and 4096 bits: 1e2200 needs 5109 bits, and a 4096-bit build gets its exact top 4096 with fits 0.
-\item Ruled 23 September (“split it, go”): the slide and the overlap are engine math and are back in max\_\allowbreak{}tree, wired for errors. The slide's key voxels became generic probe voxels, and the engine returns each recorded level's probe partition. The present/alone tally left the engine for cell\_\allowbreak{}tracking, and a slide count that disagrees with the tree's is now a logic error. The overlap keeps probes (points) and probe links (point pairs) as its only interface. The key-cell grading that goes with this item is the cell program's (the cell book's build plan, item 24).
+\item Ruled 23 September (“split it, go”): the slide and the overlap are engine math and are back in max\_\allowbreak{}tree, wired for errors. The slide's key voxels became generic probe voxels, and the engine returns each recorded level's probe partition. The present/alone tally left the engine for cell\_\allowbreak{}tracking, and a slide count that disagrees with the tree's is now a logic error. The overlap keeps probes (points) and probe links (point pairs) as its only interface. The key-cell grading that goes with this item is the cell program's (the cell workbook's build plan, item 24).
 \item Ruled 23 September, integrity: “the only acceptable crc is a merkle dag”. Every CRC-64 is replaced by BLAKE3 Merkle roots. The answers:
 \end{enumerate}
 
@@ -375,7 +375,7 @@ Still to wire:
 \item The job test runs in a scratch TESSERA\_\allowbreak{}STATE: 24/0, including damaged, cut and unsealed histories refused and the kept peak surviving a restart.
 \item The old unsealed real history was moved to \%LOCALAPPDATA\%\textbackslash{}tessera<uuid>\textbackslash{}history.unsealed.
 \item The history now loads before the pipe or socket exists, and the note uses s\_\allowbreak{}daemon\_\allowbreak{}precalc. Rerun at 24/0.
-\item “The engines own runs need to go through tessera”. The driver's jobs are the cell program's (the cell book's build plan, item 36).
+\item “The engines own runs need to go through tessera”. The driver's jobs are the cell program's (the cell workbook's build plan, item 36).
 \item Sims submit (24 September), each 0 failed with its tessera checks:
 
 \begin{itemize}
@@ -391,7 +391,7 @@ Still to wire:
 \item WSL's NVML lists no process's memory; tessera\_\allowbreak{}measure\_\allowbreak{}paravirtual refuses, and the daemon exits. The suite passes with 0 warnings.
 \item Native Linux is not available here.
 \end{itemize}
-\item The crystal's growth between 22 and 24 September is the compression book's (its build plan).
+\item The crystal's growth between 22 and 24 September is the compression workbook's (its build plan).
 \item Service files (24 September): engine/daemon/service/tessera@.socket and tessera@.service (systemd user units). Activation was proven in WSL: systemd started the daemon on a client's connection, then the WSL measure refusal ended it. Windows needs no service. The docker mount is documented, not run.
 \item Reservation rule done (24 September, by the stop hook's “finish all open items”): tessera\_\allowbreak{}ledger\_\allowbreak{}wants = max(declared, kept peak) is used for admission, the shadow, the spare and the reservation at start. The ledger budget test is 22/0; the job test is 24/0. The real prove reserved 3,958,566,912, its kept peak.
 \item Docker mount run (24 September): Docker Engine 29.1.3 in WSL; the static test/tessera\_\allowbreak{}socket\_\allowbreak{}probe.c in a container, socket mounted, TESSERA\_\allowbreak{}RUNTIME=/run/tessera. systemd started the daemon on the container's connection; the WSL refusal ended it.

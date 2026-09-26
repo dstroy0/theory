@@ -187,7 +187,7 @@ Every open question becomes an exact lookup or filter, no search and no bound.
   is why the classes are solved bottom-up, with a stalemate-on-promotion kept a draw, not a win.
 - **Find a trebuchet by filter, not by hand.** Once the K+P vs K+P table exists, question 3 finds the
   mutual zugzwang without hand-construction, the robust way to exhibit the negative case.
-- **The README routing line.** `examples/game_theory/README.md` says the game-theory book is authored
+- **The README routing line.** `examples/game_theory/README.md` says the game-theory research paper is authored
   upstream in `theory_bucket`. The anchor sift engine is reconciling that line; `theory/` is plain
   tracked content today with no gitlink behind it. Authoring this log here is consistent with the
   current state.

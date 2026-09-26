@@ -383,7 +383,7 @@ test/engine, src/engine and theory_bucket/cell_tracking.
 
 <!-- docs-check: end quoting -->
 
-### 18:02, 9101bbb: theory: knf_identity in the engine table; theory_tex skips a book's built PDF
+### 18:02, 9101bbb: theory: knf_identity in the engine table; theory_tex skips a research paper's built PDF
 
 <!-- docs-check: quoting -->
 
@@ -394,11 +394,11 @@ test/engine, src/engine and theory_bucket/cell_tracking.
   two-crystals bullet splits the identity, built, from the pairwise
   agreement, open.
 - theory_tex.py: a PDF with a .tex of its own stem beside it is the
-  book's build output (main.pdf from main.tex), not a chapter. It had
+  research paper's build output (main.pdf from main.tex), not a chapter. It had
   generated chapter_main.tex from main.pdf; the stale sweep removed it.
   The three hand-made thought_experiments PDFs stay chapters.
 - .gitignore: the LaTeX build outputs (aux, toc, synctex, out, fls,
-  fdb_latexmk) and each book's main.pdf.
+  fdb_latexmk) and each research paper's main.pdf.
 - two_crystals.md: American spelling, and one phrase reworded.
 - The workbook's two chapters regenerated.
 ```

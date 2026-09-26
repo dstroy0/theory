@@ -1,7 +1,7 @@
 # Precision coordination log
 
 **Purpose:** Record how the precision constants and the exact arithmetic under them reached the
-image_transforms book and the examples, letting a later session pick up the citations without
+image_transforms research paper and the examples, letting a later session pick up the citations without
 re-deriving them. **Scope:** `theory/theory/image_transforms/`, the precision examples under
 `examples/0_experimental/`, and the constants owned by `src/engine/c/no_rounding/` and
 `theory/theory/precision/`.
@@ -53,7 +53,7 @@ Two notes carried from that check and from the private repository's lead:
 - The generator and the Proth witness are different numbers for `2013265921` (generator 31, witness
   11). They must not be conflated: one builds the twiddle table, the other proves the prime. For the
   other two device primes both are 3. The generators are absent from the paper's witness table,
-  where the book states one it re-derives it and shows the primitive-root check instead of citing the
+  where the research paper states one it re-derives it and shows the primitive-root check instead of citing the
   paper for it.
 - The three device primes multiply to a 94-bit number, the CRT reassembly ceiling for the device
   multiply.
@@ -202,7 +202,7 @@ feature`, with the README row added there.
 
 Fefferman's statement was fetched from the Clay site and read in full for this entry, since the corpus at
 `Downloads/millenium/` holds the five statements the Clay index listed as unsolved and not this one, as
-the millennium book's corpus chapter records. The 2026 blowup paper was not read past what that book's
+the millennium research paper's corpus chapter records. The 2026 blowup paper was not read past what that research paper's
 Navier-Stokes chapter read, and nothing here rests on it.
 
 Handoff to the engine (it commits; the specialist touches no git): the script and the README row as
@@ -212,7 +212,7 @@ Handoff to the engine (it commits; the specialist touches no git): the script an
 ## 2026-09-17 entry five: Birch and Swinnerton-Dyer, the congruent number reading
 
 Douglas set the goal to pick up another Millennium problem. The choice is Birch and Swinnerton-Dyer,
-which the millennium book's toolkit chapter already recommended, because its obstruction matches the
+which the millennium research paper's toolkit chapter already recommended, because its obstruction matches the
 instrument: the refined conjecture is an exact numerical identity, and whether a computed number lands on
 an integer is precision-bound. Same deliverable shape as Navier-Stokes: read Wiles's statement in full,
 define the sets, run only the part exact integer and rational arithmetic honestly touches, claim nothing.

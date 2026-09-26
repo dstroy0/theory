@@ -1,7 +1,7 @@
 # The build plan: compression
 
 **Purpose:** The compression items of the build plan kept from 22 to 24 September, dated. The order of work on the floor is in [compression_table.md](compression_table.md) ("The plan" and "How to close the gap").
-**Scope:** the one compression finding the build plan recorded under the engine's item 36 (the engine book's [build_plan.md](../engine/build_plan.md)).
+**Scope:** the one compression finding the build plan recorded under the engine's item 36 (the engine workbook's [build_plan.md](../engine/build_plan.md)).
 
 ## Found, 24 September
 

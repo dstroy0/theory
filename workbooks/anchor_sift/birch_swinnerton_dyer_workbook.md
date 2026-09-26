@@ -6,7 +6,7 @@ Swinnerton-Dyer conjecture, one poke at a time, claiming nothing. **Scope:**
 this file.
 
 Kept by the precision measurement specialist. This is a workbook, not a result. It follows the rail the
-millennium book set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`) and the analytic
+millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`) and the analytic
 number theory and Navier-Stokes workbooks beside this file already follow:
 
 - Claim nothing. No open problem is attacked here. Nothing below bears on whether BSD is true.
@@ -15,7 +15,7 @@ number theory and Navier-Stokes workbooks beside this file already follow:
 - Withdrawn entries stay on the page with whatever killed them. One is recorded below.
 - Draw the bar, never derive it. No threshold is reasoned out of a distribution here.
 
-The millennium book's toolkit chapter (`theory/theory/millennium/chapters/chapter_the_toolkit.tex`)
+The millennium research paper's toolkit chapter (`theory/theory/millennium/chapters/chapter_the_toolkit.tex`)
 recommended this problem, and that reason is what this workbook acts on: its obstruction matches the
 instrument. The refined conjecture is an exact numerical identity, and the question whether a computed
 number lands on an integer is precision-bound, where the other Millennium problems match the apparatus
