@@ -71,7 +71,7 @@ Written 24 September: the whole engine algorithm in math, from every workbook, w
   - The CRC-64 key: the advance over 2^k zero bytes is A^{2^k}, 48 matrices (24,576 bytes), and crc(a ⊕ b) = crc(a) ⊕ crc(b) ⊕ crc(0).
   - The mirror fold repeats with period 2N: one period is laid as a table of offsets.
 - Tables: (g∘f)[x] = g[f[x]]. Two never-negative u, v with b_u + b_v ≤ 32 index as u·2^{b_v} + v. A table is 2^b·⌈out_bits/32⌉·4 bytes.
-- Not built: the lane index as a register; the latch, first lane = min{ℓ : cond(ℓ)}.
+- Not built on main: the lane index as a register; the latch, first lane = min{ℓ : cond(ℓ)}. Both are built off main, in PR 15 at anchor_sift `1fbc0c5`.
 
 **E2. Ingest** (M9). Source → (u, σ). A signed DICOM pixel p ↦ p + 2^15. Slices are ordered by an exact key from their positions (E0). σ = the headers, deflated by our LZ77 and Huffman.
 
