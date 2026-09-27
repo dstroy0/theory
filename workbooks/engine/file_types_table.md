@@ -25,4 +25,4 @@ proposed, it is checked against this table and against the whole biohub tree, an
 | Extension | Offered for |
 |---|---|
 | `.kfc` `.kst` `.kgr` `.ksd` | The other apx files (flattened, OAPX history, BAPX bodies, IMP key); still open with Doug (build_plan.md). |
-| `.khw` | The hardware constraints file the VHDL state-boundary pass reads (clock budget per state, cost of each form, memory ports and read latency, the forms that end a state). Awaiting Doug. |
+| `.khw` | A separate hardware constraints file. Withdrawn (Doug, 27 September: file creep); the constraints are entries of the language's `.krs`. |
