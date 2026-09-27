@@ -10,7 +10,7 @@ being easy to state, easy to draw and cheap to compute, and nothing about the re
 
 | field | required | what it holds |
 |---|---|---|
-| `name` | yes | a label, so the letters of a reading can be named |
+| `name` | yes | a label, by which the letters of a reading can be named |
 | `origin` | yes | where the arm sits, as a point. Inside the object, outside it, anywhere |
 | `orientation` | yes | the frame the arm is stated in |
 | `weight` | yes | a real value per placement point, the arm's response to a point being lit |
@@ -42,8 +42,7 @@ while a tool assuming membership handles only the first.
 ## What is free, and what is required
 
 **Free.** The origin, inside the object or outside it. The shape. Whether arms overlap each other or
-anything else. How many arms there are. Whether they cover the space. Whether they are bodies at
-all.
+anything else. How many arms there are. Whether they cover the space. Whether they are bodies.
 
 **Required.** That the arm exists, and that its orientation is known.
 
@@ -53,7 +52,7 @@ its own right, recorded in the established table of `docs/boundary-counting.md` 
 independence.
 
 Orientation is required for a different reason from the rest. Whether arms sit disjoint or aligned
-does not matter to the reading, but the derivation uses the orientation, so it has to be recorded.
+does not matter to the reading, but the derivation uses the orientation, and it has to be recorded.
 The next section is where it gets used.
 
 ## The point cloud case
@@ -81,7 +80,7 @@ arm, reading an object of any dimension, carrying a real weight exactly as the r
 point cloud arm is the same idea sampled instead of continuous.
 
 An implementation has one decision to make here and it should make it openly: a line touches few
-placement points, so the rule taking the arm's support to the placement has to be stated, whether by
+placement points, and the rule taking the arm's support to the placement has to be stated, whether by
 incidence, by nearest point, or by a kernel of some width. That rule is part of the arm and belongs
 in the record beside the weight, since two arms with the same dwell and different sampling rules are
 two different arms.
@@ -118,7 +117,7 @@ the letter a caller reads.
 The dwell arm is the case this section was written for. Its support is the golden spiral taken as a
 curve, its dwell at each place along the curve is the weight there, and its sampling rule is
 incidence at integer parameter. A one-dimensional arm reading a three-dimensional object, returning
-the same letters bit for bit. The curve is written with different arithmetic from the placement, so
+the same letters bit for bit. The curve is written with different arithmetic from the placement, and
 the agreement is not two calls to one piece of code.
 
 Recombination is listed with no arm because it declines to measure one: each octant's letter comes
@@ -138,8 +137,8 @@ measuring it. Clearance at or under the rounding means the sign convention decid
 On this placement the clearance is exactly zero. Index 0 has longitude `0 * GOLDEN`, the sine of
 exactly zero is exactly zero, and its third coordinate is exactly zero at 64, 128, 256, 512, 1024
 and 4096 points alike. Under the rotated frame its carried dot product against that face came back
-at +3.123e-17, so it held its arm by the sign of a rounding residual. The default lit set leaves
-index 0 dark, so the letters could not have moved for it whatever the drawings did, and the check
+at +3.123e-17: it held its arm by the sign of a rounding residual. The default lit set leaves
+index 0 dark, and the letters could not have moved for it whatever the drawings did, and the check
 now runs the redraws a second time with the on-face points forced lit. They agree there too.
 
 So the reading is independent of its drawing for 255 points by measurement and for 1 by convention,
@@ -187,8 +186,8 @@ is at the jagged extreme, where a transition is a set of discrete bit flips and 
 points change at once. A field moving continuously is at the other. The same arms read both, and the
 machinery does not know which it has.
 
-**Resolution is a choice, so it has to be recorded.** Two readings taken at different resolutions are
-readings of two different objects, and the area law is stated over a resolution, so the count of
+**Resolution is a choice, and it has to be recorded.** Two readings taken at different resolutions are
+readings of two different objects, and the area law is stated over a resolution, and the count of
 modes moves when the choice moves. Recording it costs nothing at the time and is unrecoverable
 later. A resolution that was picked and not written down turns into a property the object appears to
 have.
@@ -201,7 +200,7 @@ the data. A search that only varies its input is varying one of the two things i
 Two properties make this worth doing and not merely possible. The arm set is free in origin, shape,
 overlap and count, which leaves a very large space of candidates. And the objective is already
 written down: the report table above gives count, rank, least singular value and whether the set
-tiles, so any proposed mutation can be scored before it is used instead of judged after.
+tiles, and any proposed mutation can be scored before it is used instead of judged after.
 
 What a mutation cannot do is beat the counting. Rank stays bounded by the number of independent
 arms, and no shape recovers a direction that no arm reaches. What a mutation can do is buy
@@ -220,7 +219,7 @@ capability are one requirement seen twice.
 
 ## What a set of arms can carry
 
-The reading is a projection onto the span of the arm rows, so the count of directions it recovers is
+The reading is a projection onto the span of the arm rows, and the count of directions it recovers is
 the rank of `W` and no other quantity. Three consequences, each of which has caught somebody here.
 
 **Rank is the count of independent arms.** Not the count of arms. Adding an arm that is a
@@ -276,7 +275,7 @@ hundred times worse than the incomplete degree below it, because at fifteen the 
 square and its last direction is nearly dependent on the others. One degree of redundancy repairs
 it. The notch appears at fifteen at every depth measured.
 
-So an arm set chosen by counting coefficients does not merely choose badly among good options. At
+An arm set chosen by counting coefficients therefore does not merely choose badly among good options. At
 degree fifteen it chooses something beaten by a cheaper reading that makes no claim to completeness.
 
 ## Depth, and what it does to a set
@@ -289,7 +288,7 @@ not couple them.
 
 What depth does decide is where extra arms stop being delivered. At `r/R = 0.40` the least live
 singular value reads 7.605e-7 at degree 20 and 7.606e-7 at degrees 24, 28 and 32, identical to seven
-figures, so the marginal value of every degree past twenty is zero. An optimizer counting those
+figures, and the marginal value of every degree past twenty is zero. An optimizer counting those
 coefficients is counting something nothing delivers.
 
 Past a certain depth the directions are not merely expensive, they are absent. Directions go missing
@@ -301,7 +300,7 @@ under any arm design. The two figures come from methods that share no code.
 ## Arms matched to a representation
 
 Since the forward representation is known, an arm can be shaped as its inverse. The arm matched to
-degree `l` and order `m` carries that harmonic's own pattern divided by the gain at that degree, so
+degree `l` and order `m` carries that harmonic's own pattern divided by the gain at that degree, and
 the deconvolution becomes the arm's geometry instead of a step applied to measured numbers.
 
 This moves the amplification onto known geometry, computable once at any precision, and off the

@@ -22,7 +22,7 @@ or perfect agreement as a result.
 
 **Caught:** H6 rotated the nonce, which enters at `W[3]` in round three, instead of the chaining
 value, and reported a decay that never happened. H23 measured through `W[17]`, which does not depend
-on `W[3]`, and reported 100.000% agreement, which was zero equalling zero. `bench_closeness` labeled
+on `W[3]`, and reported 100.000% agreement, which was zero equaling zero. `bench_closeness` labeled
 rounds 1–3 "premise holds: no" when the nonce had not entered yet.
 
 **The subtraction:** `bench_reach.cpp`, and it is computed and not sampled. Every state bit
@@ -45,7 +45,7 @@ that produced H6 and H23 are visible directly in those two tables, and both woul
 before the measurement instead of after it.
 
 **The control, run in the opposite direction.** An analysis that claimed reachability everywhere
-would pass an absence test trivially, so both halves are needed. Over 24,000 random flips at rounds
+would pass an absence test trivially, and both halves are needed. Over 24,000 random flips at rounds
 one to six:
 
 | | |
@@ -83,7 +83,7 @@ expected-worst and the corpus-size ratios in H1 are both hand-derived and neithe
 
 ## 3. Asymmetric treatment of the two arms - *open*
 
-Applying one operation to one member of a pair and a different operation to the other, so the
+Applying one operation to one member of a pair and a different operation to the other, where the
 measured difference includes the difference in treatment.
 
 **Caught:** H29 added `K` to one member and `rotr(K)` to the other and produced a 25.8% survival that
@@ -108,7 +108,7 @@ instead of written.
 | words carried | 6 | 4 | 2 | 0 |
 | share of an eight-word read that agrees for free | **75%** | 50% | 25% | 0% |
 
-**H30 read all eight words after one round, so three quarters of its comparison agreed before the
+**H30 read all eight words after one round, and three quarters of its comparison agreed before the
 round function was consulted.** Reading only the written words needs no correction factor and no
 argument; it is just the right read.
 
@@ -129,7 +129,7 @@ Reporting a plug-in estimate whose value is fixed by how many samples were drawn
 distribution.
 
 **Caught:** the Renyi order one half plug-in is `2 log2 sum sqrt(p)`. Where every observed value is a
-singleton that sum is exactly `sqrt(n)`, so the estimate reads `log2 n` whatever the true entropy
+singleton that sum is exactly `sqrt(n)`, and the estimate reads `log2 n` whatever the true entropy
 is. At 2,000,000 pairs the ceiling is 20.93 bits and the estimate reads 18.25.
 
 **The subtraction:** print the ceiling next to the estimate. Where they are close the estimate is
@@ -142,14 +142,14 @@ unchecked, and Good-Turing coverage is the obvious place to look next.
 
 Constructing a pair that is meant to differ and failing to check that it does.
 
-**Caught:** `bench_closeness` XORed at positions that were not distinct, so bits flipped back and some
+**Caught:** `bench_closeness` XORed at positions that were not distinct: bits flipped back and some
 pairs were identical. It printed "smallest output distance: 0 bits", which reads as a collision,
 directly above prose saying nothing came close.
 
 **The subtraction:** count and report the pairs whose intended difference is zero. A nonzero count is
 a construction defect, not a result.
 
-## 8. Optimiser-dependent result - *built*
+## 8. Optimizer-dependent result - *built*
 
 A compiler folds, contracts, reassociates and hoists. A folded measurement is indistinguishable from
 a computed one by reading the output.
@@ -182,12 +182,12 @@ realigned. `-mstackrealign` changes the prologue not at all. **Nothing in this t
 source change here avoids it**; the instruction is available and `-O2` runs it happily.
 
 The resolution is that the `-O0` arm drops `-mavx2`. `sha256_core.c` gates its vector arm on
-`__AVX2__` and the `#else` arm defers to the scalar reference, so the unoptimised build is the
+`__AVX2__` and the `#else` arm defers to the scalar reference, which makes the unoptimized build the
 reference arm - the arm a fold audit wants, since it is the arm whose arithmetic the
 statistics read. `kat_validation` then runs `-O0` clean: **24 run, 0 failed.**
 
 **And what that costs, which has to be said instead of buried.** For the two benches that exercise
-the vector arm, the `-O0` column now tests different code from the other two columns, so agreement
+the vector arm, the `-O0` column now tests different code from the other two columns, and agreement
 there is evidence about the reference arm and not about the vector arm. The vector arm is covered
 instead by `kat_validation` asserting it equal to the reference on the FIPS vectors, the genesis
 block, block 125552 and 1000 consecutive real headers - which is a strong check, but it is a
@@ -198,7 +198,7 @@ those two rows would be exactly the kind of substitution this register exists to
 
 **Caught:** H23's prose said the two "agree often" directly above a column reading 0.0000%.
 
-**The subtraction:** every prose claim names the number it rests on, so the two can be compared
+**The subtraction:** every prose claim names the number it rests on, and the two can be compared
 without re-deriving the claim.
 
 ## 10. Conflated quantities - *open*
@@ -231,7 +231,7 @@ Reporting the largest of many bins against the expectation for one bin.
 
 ## 13. Argmax over a tied set - *partial, and freshly caught*
 
-Selecting "the most common" value where many values share the top count, so the selection is made by
+Selecting "the most common" value where many values share the top count, where the selection is made by
 the sort's tiebreak and not by the data.
 
 **Caught:** `bench_canary` steers a walk through delta space by following the most common outgoing
@@ -278,7 +278,7 @@ both rules. The histogram copy applied the first rule to order one and put **0.2
 0.8272 belonged**, on the headline full-domain run.
 
 **Caught again, one layer out.** The Poisson prediction at order one was missing a `- log2(mean)`
-term. That term is exactly zero when the mean count is one, the full-domain case, so the
+term. That term is exactly zero when the mean count is one, the full-domain case, and the
 wrong formula **agreed perfectly at the only point it was being read at** and disagreed everywhere
 else. A defect that hides precisely at the operating point is the worst kind to leave in, and it was
 only visible because a smoke run at a smaller domain existed.
@@ -300,7 +300,7 @@ The thing that caught the wrong idea was running at a domain where the term does
 |---|---|---|---|
 | 1 absence as measurement | exact reachability, `bench_reach` | **built** | 3 defects, and it predates them |
 | 4 over-reading the output | write mask, `bench_reach` | **built** | 75% of H30's one-round read |
-| 8 optimiser | three-arm build diff | **built** | 3 performance claims; 19 benches cleared |
+| 8 optimizer | three-arm build diff | **built** | 3 performance claims; 19 benches cleared |
 | 14 one seed | seed sweep, `audit_seeds` | **built** | H22 confirmed not a draw |
 | 15 formula written twice | one `deficit_term`, no copies | **built** | 2 wrong numbers in `bench_renyi` |
 | 2 hand null | `Pi_Sigma` permutation | partial | a factor of 4,200 from the headline |

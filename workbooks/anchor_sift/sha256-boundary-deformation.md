@@ -13,11 +13,11 @@ Run the measurements with `python examples/proofing/state_deflection.py`.
 
 SHA-256 compresses in sixty four rounds over a state of eight thirty-two bit words, which is 256
 bits. The reading places those 256 bits on 256 points of a ring arrangement and expands the lit set
-in spherical harmonics, so the state becomes a field on a sphere and the field has a shape. Bit `i`
+in spherical harmonics, and the state becomes a field on a sphere and the field has a shape. Bit `i`
 lights point `i`; no mapping was invented to make the instrument fit the object, because 256 bits
 and 256 points are the same count.
 
-The compression agrees with the published digest of the empty string before any of this is read, so
+The compression agrees with the published digest of the empty string before any of this is read, which confirms that
 the object under the instrument is SHA-256 and not an approximation of it.
 
 ## The calibration: which part of the shape is the observer's, and which is not
@@ -29,7 +29,7 @@ the null the measurement rests on, not because it is new.
 - **Deflection**, the power per degree `P_l = Σ_m |a_lm|²`, is invariant under every rotation in
   SO(3): the degree-`l` subspace carries a unitary irreducible representation of the group, and a
   magnitude built from it cannot record how the object was turned. Measured null under a whole-step
-  rotation: **2.539 × 10⁻¹⁴**, which is the arithmetic and not the object.
+  rotation: **2.539 × 10⁻¹⁴**, an error of the arithmetic and not of the object.
 - **Torsion**, the phase `arg a_lm` of the same coefficients, moves by exactly `−mα` under a
   rotation by `α`. It records the turn, sign included. Measured recovery of a known angle:
   **1.803 × 10⁻¹³ radians**.
@@ -44,7 +44,7 @@ out, or is checked against a control that holds the frame fixed.
 ## The measurement, on the surface itself
 
 The reading renders exactly one deformed surface in the scene, and it is the state's. Every
-enclosing shell measures a vertex-radius standard deviation of exactly zero, so they are perfect
+enclosing shell measures a vertex-radius standard deviation of exactly zero: they are perfect
 spheres; the state's surface measures a standard deviation of 0.999 against a mean radius of 8.795,
 at 11.4 percent. Read as a radius field over the sphere and tracked across the sixty four
 rounds:
@@ -55,8 +55,8 @@ rounds:
 | the offset, a cone | 1 | `d_z` swings about `0.07` and changes sign several times |
 
 The quadrupole is a fixed feature: the surface is elongated by the same amount, in the same axis,
-the whole way through. The dipole migrates and inverts, so the cone walks around the surface and
-changes which pole it favours more than once.
+the whole way through. The dipole migrates and inverts, and the cone walks around the surface and
+changes which pole it favors more than once.
 
 ## The claim, stated as a number
 
@@ -70,10 +70,10 @@ Measured a second way, on a different object through different code (the rendere
 viewer, against the lit set in Python) the same statistic reads **z = −3.0**. Two pipelines with
 no shared arithmetic land two hundredths apart.
 
-A drift at that level is what a surface computed from a slowly changing state looks like, so the
+A drift at that level is what a surface computed from a slowly changing state looks like, and the
 next section is the control that pins the change to the state.
 
-## Why it is the state and not the observer or the probe
+## Why the change belongs to the state, not the observer or the probe
 
 Two interventions, because the round clock advances everything at once and an observation that the
 picture changes when the clock moves does not by itself say what moved it.
@@ -86,7 +86,7 @@ state and not to the probe.
 
 **The rounds were replaced by independent states.** The real round sequence gives `z = −2.87`. A
 control that swaps the rounds for independent states of the same per-round weights, everything else
-identical, gives `z = 0.00` with a spread of 0.94, so the real sequence sits 3.1 control deviations
+identical, gives `z = 0.00` with a spread of 0.94, and the real sequence sits 3.1 control deviations
 out. The drift is in the succession of states, not in the reading of any one of them.
 
 ## The mechanism, which is not exotic
@@ -100,9 +100,9 @@ SHA-256's round computes two words and shifts the other six:
 
 Six of the eight words at round `r` are round `r−1`'s words in a new position, measured at 63 of 63
 rounds. A surface computed from a state that is five-sixths carried over cannot jump between
-consecutive rounds, so a coherent, autocorrelated drift is precisely the shift register showing.
+consecutive rounds. A coherent, autocorrelated drift is therefore the shift register showing through.
 
-**This is the whole claim, and it is worth stating without deflation.** The reading was built to
+**The claim, stated without deflation.** The reading was built to
 show a field. Nobody built it to expose the Merkle-Damgard shift register, and the register turned
 up in it anyway: legible to the eye as a lemon whose cone walks and inverts, and holding at three
 standard deviations when the drift is measured against a control. The result is not a new property
@@ -115,7 +115,7 @@ established by intervention.
 - **The observer-invariance is classical.** Rotation-invariant power and orientation-carrying phase
   are standard SO(3) representation theory, the same fact behind an angular power spectrum being usable
   without its phases. It is the calibration here, not a finding.
-- **What is specific to SHA-256** is the behaviour of the anisotropy across the clock: a persistent
+- **What is specific to SHA-256** is the behavior of the anisotropy across the clock: a persistent
   quadrupole, a dipole that inverts in runs at `z = −2.87`, and the trace to the shift register by
   intervention.
 - **No claim is made** about a weakness in SHA-256, about its output, or about anything a
