@@ -11,7 +11,7 @@ not enter. Only the measure and the resolution do.
 
 Two consequences follow that the rest of the work leans on. What a region holds scales with the area
 of its boundary and not with its volume. And a source at depth `d` inside a ball of radius `R`
-reaches harmonic degree `l` as `(r/R)^l`, so depth sets bandwidth, and a source prints a patch of
+reaches harmonic degree `l` as `(r/R)^l`: depth sets bandwidth, and a source prints a patch of
 angular size about `d/R` however small the source is.
 
 ## What is established
@@ -45,13 +45,13 @@ from a product into something nearer a sum. That is the work that would settle i
 diffeomorphism that fixes the boundary, and a whole family of interiors gives identical boundary data.
 Motion does not rescue this by itself, since transforming the medium and its contents together
 leaves the boundary data untouched. What rescues it is motion under a law: a diffeomorphism relabels
-space, so straight-line motion curves and Keplerian orbits stop being Keplerian, and only the
+space: straight-line motion curves and Keplerian orbits stop being Keplerian, and only the
 untransformed world satisfies the law it was supposed to obey. The orrery recovery rests on exactly
 this, which is worth stating plainly: it recovers radii from periods through Kepler, and a dynamical
 law is doing work that geometry alone could not.
 
 **Stability.** Uniqueness is not stability. Recovering detail at scale `x` needs precision growing
-exponentially in `1/x`, so everything is recoverable in principle and buried under noise in practice.
+exponentially in `1/x`, which leaves everything recoverable in principle and buried under noise in practice.
 This is visible in the tools and not only in the literature: the spectrum of a real blob dies by
 degree 46, and past there the inversion divides by a gain already below one part in a million.
 
@@ -61,7 +61,7 @@ Each of these produced a plausible number. None announced itself.
 
 **The half-integer arm of Gamma, off by two.** `Gamma(k + 1/2)` is root pi times the product of
 `(2j - 1)/2`. Written with `(2j + 1)/2` it starts one step along and returns twice the right answer
-at every odd argument, so the surface measure of every odd-dimensional sphere was doubled. The
+at every odd argument, and the surface measure of every odd-dimensional sphere was doubled. The
 constant then alternated high and low with the parity of the dimension. The cube never touches Gamma
 and stayed flat, which pointed at it. A count computed from the area and checked against the
 area would have agreed with itself.
@@ -73,7 +73,7 @@ three, seven and fourteen times and read exactly like shape-dependence. They wer
 wide, on every shape at once. The limit is enforced by the tool now instead of remembered.
 
 **A remainder tested for the wrong behavior.** The error in a lattice count oscillates while its
-envelope falls, so requiring each radius to beat the one before it fails on a correct count. It did:
+envelope falls, and requiring each radius to beat the one before it fails on a correct count. It did:
 0.0902, 0.1736, 0.0028, 0.0256 percent. Taken over a band of radii instead of at a point, the
 envelope comes down by a factor of forty-eight.
 
@@ -85,8 +85,8 @@ same requirement at all.
 
 The separation between two points drawn on a sphere concentrates near root two whatever the
 dimension is. A gap held at half of that is half the radius of curvature, and a cap that wide is
-nothing like the flat disc the count assumes it is. A cube's facets are flat and suffer none of it,
-so the two shapes part company and the answer reads as shape-dependence. On the device that
+nothing like the flat disc the count assumes it is. A cube's facets are flat and suffer none of it;
+the two shapes part company and the answer reads as shape-dependence. On the device that
 criterion passed a twelve dimensional run whose constants spread by 2.1 times: sphere 5.37, cube
 11.41, cross-polytope 8.20.
 
@@ -106,7 +106,7 @@ The area law was checked exactly on a sphere using the closed form for how many 
 carries. That left shape resting on packing, since a cube has no such formula.
 
 A flat torus has one. Glue opposite edges of a square and the eigenvalues become `(2 pi / L)^2` times
-the squared length of an integer vector, so counting modes below a cutoff is counting integer points
+the squared length of an integer vector, and counting modes below a cutoff therefore counts integer points
 inside a ball. The count is an integer, it holds no transcendental, and it can be taken at any
 dimension by raising the every-square series to a power and adding up coefficients.
 
@@ -136,7 +136,7 @@ decision on this arrangement, which is a fact about this arrangement and not abo
 
 A periodic structure in `n` dimensions, cut at an irrational angle and projected into fewer, comes
 out quasiperiodic: never one period, but several with irrational ratios between them. Penrose
-tilings are a five dimensional lattice seen in two. The correspondence runs both ways, so any
+tilings are a five dimensional lattice seen in two. The correspondence runs both ways, and any
 quasiperiodic pattern lifts to a periodic lattice in high enough dimension.
 
 That turns into a measurement. The count of rationally independent periods in a one dimensional
@@ -157,7 +157,7 @@ quantum indeterminacy. What the work here does is price the classical failure, w
 the more useful statement.
 
 A demon reading a boundary gets `measure / resolution^(n-1)` numbers. That is finite at any
-resolution and unbounded across resolutions, so nothing stops it improving except what improvement
+resolution and unbounded across resolutions, and nothing stops it improving except what improvement
 costs. Improvement costs exponentially: recovering detail at scale `x` needs precision growing like
 the exponential of `1/x`, because the inversion divides by a gain that falls as `(r/R)^l`. In the
 measurements here the spectrum dies by degree 46, and past there the division is by a number already
@@ -166,7 +166,7 @@ under one part in a million. The demon meets no wall of principle. It meets a bi
 **The distinction that matters, and it cuts against the reading this work invites.** Verifying the
 area law establishes that the channel is that wide. It does not establish that the interior holds
 only that much. Counted the ordinary way a volume carries `(R/x)^n` degrees of freedom while its
-boundary carries `(R/x)^(n-1)`, so the boundary is short by a factor of `R/x`. The holographic
+boundary carries `(R/x)^(n-1)`, which leaves the boundary short by a factor of `R/x`. The holographic
 principle says the interior really is only boundary-sized and nothing is lost. That is a physical
 conjecture and nothing here tests it. The pipe was measured. What has to fit through it was not.
 
@@ -175,7 +175,7 @@ and its only problem is precision. If it does not, the demon is short by `R/x` h
 becomes, and a counting deficit is never a rounding one. No arithmetic buys it back.
 
 There is a third pressure that applies either way. The demon is inside the region it is computing,
-so its own state is written on the same boundary and counted against the same budget. A demon that
+and its own state is written on the same boundary and counted against the same budget. A demon that
 stores a description of the interior has to store it somewhere the interior can already see.
 
 ### A fourth pressure: the basis, and the object it is pointed at
@@ -186,7 +186,7 @@ The bill above is priced in precision, and precision is not the first term. It i
 `L` carries exactly `(L+1)^2` real numbers about its source. Against a source with 256 degrees of
 freedom, a demon reading to degree eight recovers 81 directions and is blind in 175, and it is blind
 in them at any precision whatsoever. This is a counting shortfall of the same kind as the `R/x`
-deficit and not a rounding one, so no arithmetic buys it back either. The measurement is in the
+deficit and not a rounding one, and no arithmetic buys it back either. The measurement is in the
 established table above: the map reaches the rank its coefficient count allows at every degree below
 the source count, leaving the shortfall in coefficients to account for the blindness on its own.
 
@@ -211,7 +211,7 @@ A demon in that position is not short of precision and not short of coefficients
 different question, and nothing in its own accounting shows the substitution, because the reading
 still runs, still returns eight numbers that sum to one, and still produces a digest that checks
 against the published value. The check that caught it counts a property the object must have: a
-round only copies six of its eight words, so the carried words survive on the state and cannot
+round only copies six of its eight words, and the carried words survive on the state and cannot
 survive on the digest. Naming the object and testing the name is cheap. Both readings above cost the
 same to take and one of them was worth nothing.
 
@@ -231,7 +231,7 @@ exactly as the cloud's traces smear across the shell.
 Neither direction terminates on its own, and both terminate for the reader.
 
 Downward it stops at resolution. A constituent's smear on its own small surface subtends less than
-the finest detail the boundary between it and the observer can carry, so below that it is not there
+the finest detail the boundary between it and the observer can carry. Below that it is not there
 to be seen, and drawing it anyway would be inventing detail no boundary holds. The recursion
 stopping where resolution stops is the area law applied to the picture instead of stated about it.
 
@@ -264,7 +264,7 @@ On a golden placement, shifting every index by the same amount comes to a rigid 
 | the slide the screw predicts | worst error exactly 0 |
 | the pitch across six amounts | spread 4.3e-19 |
 
-The pitch does not depend on the amount, so one axis and one helix carry every shift. The indices a
+The pitch does not depend on the amount, and one axis and one helix carry every shift. The indices a
 shift runs off the end of return as a second rigid arm, a full axial extent away from where the
 screw alone would put them. Where a lit point lands is fixed once the amount is known.
 
@@ -298,14 +298,14 @@ is.
 | 15 | 256 | 256 | 0 | 3.474e-3 |
 | 16 | 289 | 256 | 0 | 1.524e-1 |
 
-The map reaches the rank its coefficient count allows at every degree below the source count, so the
+The map reaches the rank its coefficient count allows at every degree below the source count, and the
 shortfall in coefficients accounts for the blindness on its own. No sample size and no precision
 changes it. The eight-letter alphabet is rank 8, seven free numbers once the weight is fixed, blind
 in 248 of 256 directions.
 
 Degree fifteen is the floor, where `(L+1)^2` first reaches 256, and reaching the floor is not
 reaching a usable reading. The least singular value collapses to 3.5e-3 there and recovers to
-1.5e-1 at sixteen, so one degree of headroom is worth 44 times in conditioning. A reading degree
+1.5e-1 at sixteen: one degree of headroom is worth 44 times in conditioning. A reading degree
 chosen by counting coefficients alone lands on the worst usable degree available.
 
 The companion result is easy to misread. Sixty-four rounds wrote sixty-four distinct signatures, a
@@ -359,7 +359,7 @@ map, and a change lying there is invisible however large it is.
 | mean over all 63 pairs | 0.0278 | 1.04 times |
 
 The split is the finding and the mean is not. Early changes sit in the visible directions above
-chance, late changes sit in the blind ones below chance, and the mean is those cancelling. The early
+chance, late changes sit in the blind ones below chance, and the mean is those canceling. The early
 to late ratio is 2.88 against the delta's 1.68 over the same split, on 8 pairs at each end, and the
 sample size belongs in the same breath as the ratio.
 
@@ -404,7 +404,7 @@ Three pages carry the same argument in a form that can be looked at. Each writes
 file: no server, no fetch at run time, nothing to install.
 
 `build_sphere_view.py FILE` writes a blob onto the inside of a scattering ball. A symbol's rareness
-sets how hot it is and how deep it sits, so rare symbols ride near the shell and print small sharp
+sets how hot it is and how deep it sits, and rare symbols ride near the shell and print small sharp
 circles while common ones sit deep and print broad warmth. It ships the placement asked for
 alongside the same sources placed at random, on the same axes, because a symbol has a rareness
 without anyone choosing anything and does not have a direction. Whatever supplies one is a choice,
@@ -420,9 +420,9 @@ holding a cloud of confined lights, because the outside of one shell is the insi
 there is no vantage point that is not inside something. The shell can be a sphere, a cube, an
 octahedron or a cone, swapped under the cloud while it moves so the same population carries on
 against a different wall. It squashes to a disc. A carried beam casts shadows of whatever stops it,
-and beam energy decides what that is, so raising it switches shadows off one at a time. Dwell sorts
+and beam energy decides what that is, and raising it switches shadows off one at a time. Dwell sorts
 the light by how long it stayed inside. Zooming in crosses the shell and leaves the reader among the
-lights; zooming out puts the room's own wall in front of them and fades it, so the wall becomes the
+lights; zooming out puts the room's own wall in front of them and fades it, which makes the wall the
 surface being read.
 
 **What a reading of that field now contains.** The carried beam deposits into the same field as the

@@ -6,7 +6,7 @@ to about a kilobyte.**
 
 That is not a remark about pi. It means the battery assembled here - uniform bit shares, flat
 autocorrelation, full algebraic degree, no co-variation between output positions, incompressible to
-LZMA - is exactly the battery a sequence with a short generating program sails through. Reporting
+LZMA - is a battery that a sequence with a short generating program sails through. Reporting
 "no structure found" on the strength of it says less than it appears to.
 
 This document records what was measured, at what scope, and which instruments were found unable to
@@ -15,13 +15,13 @@ see what they were pointed at.
 ## The instrument faults, first
 
 Five, all in the same direction, every one producing an apparent finding, every one caught by a
-result being too clean rather than by care beforehand.
+result being too clean instead of by care beforehand.
 
 **A statistic read off the top of a sort.** The deepest timestamp reversals appeared to cluster near
 280 seconds. They were the eight largest values of a sorted list, which are close together by
 construction. The full population shows no band.
 
-**Three noise floors derived rather than drawn.** A shuffle of hour LABELS that returned identical
+**Three noise floors derived instead of drawn.** A shuffle of hour LABELS that returned identical
 counts every draw and printed a standard deviation of 0.00. A per-pool phase bar set at two Poisson
 floors when the statistic was a maximum minus a minimum over twenty-four bins, which spans three and
 a half to four and a half by construction - so every pool cleared a bar that sat below chance, and
@@ -29,11 +29,11 @@ twenty hours of random trough hours read as geography. And a window-scatter floo
 variance carried through a logarithm, giving 0.0582 where shuffling gives 0.1015.
 
 **A generator with a period.** Survey arms built as `at * (2*arm + 37) + 11 + 97*arm mod 256` are
-linear in the arm index, so both terms wrap together every 256 arms: arm 0 and arm 256 produced
+linear in the arm index, and both terms wrap together every 256 arms: arm 0 and arm 256 produced
 byte-identical headers. Nine hundred thirty one files held two hundred fifty six distinct arms, up
 to four copies each, and the duplication inflated the summed squared z from 256 to 942 - which read
 as a thirty sigma discovery and reproduced the duplication factor to within one per cent. Headers
-are now hashed from the arm index rather than stepped from it.
+are now hashed from the arm index instead of stepped from it.
 
 **A test whose answer was geometry.** Reading a state through a mirrored helix appeared to test the
 handedness of SHA-256, which is chiral by design: six rightward rotations and no leftward one. But
@@ -45,16 +45,16 @@ at 1e-16, which is float64's floor.
 reporting it alone implies that magnitude and phase separate cleanly. They separate only on rotations
 about the reading axis. Under a general rotation the coefficients mix, magnitude redistributes across
 orders inside a degree, and the summed power is preserved because that mixing cancels - not because
-nothing moved. Summing over orders is precisely the operation that makes the mixing invisible.
+nothing moved. Summing over orders makes the mixing invisible.
 
 ## What was actually established, at its real scope
 
-**On SHA-256, bounded rather than proven flat.** Across 550 billion evaluations spanning 256
+**On SHA-256, bounded instead of proven flat.** Across 550 billion evaluations spanning 256
 genuinely distinct headers, the output bits are individually unbiased to about four parts in a
-million and carry no co-variation a permutation null cannot produce. Exhaustive Walsh-Hadamard over
+million and carry no co-variation a permutation null cannot produce. Walsh-Hadamard over all
 262144 input masks per output bit finds no linear approximation that survives on nonces it did not
 see; every in-sample maximum sits below the null's own expected maximum. The algebraic degree in the
-nonce bits saturates by round eight, so no transform has fewer coefficients than points to ride.
+nonce bits saturates by round eight, and no transform has fewer coefficients than points to ride.
 Reversing every rotation gives a function statistically identical to the standard one - avalanche
 means differ by a third of a standard error and both reach half the output at round eighteen - so
 handedness is cosmetic and the rotation amounts carry the diffusion.
@@ -87,7 +87,7 @@ is what a one-way function is, and nobody has proven one exists. SHA-256's hardn
 Every measurement above assumed the gap and confirmed its local consequences, which is circular, and
 the pi control is what exposed the circle.
 
-Kolmogorov complexity is uncomputable, so no tool decides it. A compressor gives an upper bound:
+Kolmogorov complexity is uncomputable: no tool decides it. A compressor gives an upper bound:
 compression proves structure, failure to compress proves nothing, because a compressor hunts
 repetition and a generating program is not repetition. Measured directly, pi compresses to 1.0010
 against random's 1.0001 - the positive control fails completely, and any claim of the form "it does
@@ -96,11 +96,11 @@ not compress, therefore no structure" is a statement about zlib.
 What does separate pi from noise is neither distribution nor compression. It is reproducibility: an
 independent method computes the same digits, and agreement between two programs sharing no arithmetic
 is what demonstrates a generating program. That is a predictive test, and the predictive test for a
-hash is the linear approximation search, which is the one axis above that pi would fail.
+hash is the linear approximation search, the only axis above that pi would fail.
 
 ## Reading the interior instead of the boundary
 
-Every measurement above reads a digest, which is the boundary of the computation. That is the right
+Every measurement above reads a digest, the boundary of the computation. That is the right
 shape for a physical system, where the interior cannot be reached and has to be inferred from what
 escapes. It is the wrong shape here, and the reason is worth stating plainly: nothing about this
 interior is hidden. The schedule words, the eight state words at every round, and the six values
@@ -117,7 +117,7 @@ Read that way, one flipped input bit shows something the digest cannot.
 The nonlinear functions lag the linear ones by a round, and the lag persists: at round seventeen the
 linear values sit at 15.5 to 16.0 bits of difference while Choose and Majority sit at 14.3 and 14.8.
 
-The mechanism is in their definitions. Choose is (e and f) xor (not e and g), so where f and g AGREE
+The mechanism is in their definitions. Choose is (e and f) xor (not e and g). Where f and g AGREE
 at a bit position the result does not depend on e there at all. Majority cannot be moved by one of
 three inputs either. So the nonlinear functions absorb the first arrival and pass it on only once a
 second input has been reached. A digest sums all six paths into one number and cannot say which
@@ -144,8 +144,8 @@ function spends roughly its first thirty rounds before every input can reach eve
 remaining thirty-four past the point where the support constrains anything.
 
 This is the sharpest result here and the only one that needs no statistics to stand up. Its limit is
-equally sharp: forbidden transitions prune trajectory SEARCHES, which is what differential
-cryptanalysis does. Mining evaluates forward and searches no trajectories, so the grammar does not
+equally sharp: forbidden transitions prune trajectory SEARCHES, the work differential
+cryptanalysis does. Mining evaluates forward and searches no trajectories, and the grammar does not
 help there.
 
 ## Two response measurements whose verdicts were wrong
@@ -154,7 +154,7 @@ Recorded because the faults are the same shape as the others and both were caugh
 
 **Susceptibility reported "clears" and did not.** The loudest cell of the real 512 by 256 table read
 -4.33 standard errors against a null table's loudest of -4.11, and the code called that a clearance.
-A maximum over 131072 cells is itself a random variable with real spread, so one draw of it is not a
+A maximum over 131072 cells is itself a random variable with real spread, and one draw of it is not a
 bar. The seventh derived threshold in this work, again too low.
 
 **The pair response has no power at all.** Flipping two input bits and comparing against the
@@ -171,13 +171,13 @@ artifact, not the signal.
 
 ## The tools
 
-    tools/audit/compressibility.py   the pi arm, permanently, so no null here escapes it
+    tools/audit/compressibility.py   the pi arm, permanently: no null here escapes it
     tools/audit/walsh_bias.py        every input mask by transform, not a sampled few
     tools/audit/handedness.py        SHA-256 against its mirror, rotations reversed
     tools/audit/spectral_bench.py    invariance shown alongside the mixing it cancels
     tools/audit/comb_arms.py         pooled depth and sign agreement, separated
     tools/audit/agglomerate.py       co-variation, which every other test here is blind to
-    tools/audit/chirality.py         a placement validator, which is what it turned out to be
+    tools/audit/chirality.py         a placement validator, as it turned out to be
     tools/audit/compare_corpus.py    the clean survey against the contaminated chain
     tools/audit/collision_entropy.py every reading in one comparable unit
     tools/audit/watchdog.py          calibrated models instead of guessed thresholds
@@ -198,7 +198,7 @@ either holds or it does not, and anyone can check it in an afternoon without rep
 Its control is the 1996 BBP formula for pi. Pointed at base sixteen, power one, stride eight, the
 pipeline returns an exact relation, and the known formula holds on the same values to 895 bits of
 900 - the remainder being the series truncation. The relation is not unique: Bailey's compendium
-notes in its Section 11 that the auxiliary sums satisfy zero relations among themselves, so the
+notes in its Section 11 that the auxiliary sums satisfy zero relations among themselves, and the
 exact relations form a lattice and the known formula is one member. Demanding a particular member was
 the wrong control and reported a correct answer as a failure.
 

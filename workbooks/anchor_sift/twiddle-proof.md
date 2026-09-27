@@ -2,7 +2,7 @@
 
 A number theoretic transform is a sum of powers of one constant. Its correctness rests entirely on
 that constant having the order it is supposed to have, and that order is rarely verified. Below:
-what verification costs, what it catches, and why it can be made a proof rather than a test.
+what verification costs, what it catches, and why it can be made a proof instead of a test.
 
 Run it with `python examples/proofing/twiddle_proof.py --check`.
 
@@ -19,7 +19,7 @@ the **twiddle constants**. In the Cooley–Tukey butterfly they enter as
     d = a − b·w
 
 and in the Gentleman–Sande butterfly as `c = a + b`, `d = (a − b)·w`. A transform of length `2^k` is
-`k` stages of `n/2` butterflies, so the twiddles are touched more often than any other value in the
+`k` stages of `n/2` butterflies, and the twiddles are therefore touched more often than any other value in the
 computation and are the only inputs that are supposed to be constant.
 
 ## The attack, and why it works
@@ -36,7 +36,7 @@ one. No error is available to raise. The wrong twiddle is simply used.
 
 ## The same fault, with no attacker
 
-We reached that fault condition by carelessness rather than by injection, which is worth recording
+We reached that fault condition by carelessness instead of by injection, which is worth recording
 because it is the cheaper route to it.
 
 A transform was built under the constants module on three moduli. The third, `1610612737`, was taken
@@ -45,7 +45,7 @@ generator was raised to `(p−1)/L` to produce a root of unity of order `L`, exa
 construction requires. A check written next to it reported the root was fine.
 
 The check was trial division to one hundred, on a ten digit number. `1610612737` is **composite**,
-and the proof is one line: `2^(1610612736) mod 1610612737 ≠ 1`, so Fermat refuses it. The certificate
+and the proof is one line: `2^(1610612736) mod 1610612737 ≠ 1`, and Fermat therefore refuses it. The certificate
 is the witness `2`.
 
 Because it is composite, `g^((p−1)/L)` had no particular order, the twiddles were wrong, and the
@@ -69,12 +69,12 @@ Every modulus a transform can use has this shape, because admitting a root of un
 is the same as `2^n` dividing `N − 1`. So the theorem reaches every candidate that matters.
 
 **Why a witness is a proof.** Suppose `a^((N−1)/2) ≡ −1 (mod N)`, and let `p` be any prime factor of
-`N`. Then `a^((N−1)/2) ≡ −1 (mod p)` as well, so the order of `a` modulo `p` divides `N − 1` but does
+`N`. Then `a^((N−1)/2) ≡ −1 (mod p)` as well. The order of `a` modulo `p` therefore divides `N − 1` but does
 not divide `(N−1)/2 = k · 2^(n−1)`. Since `N − 1 = k · 2^n`, the order must therefore carry the full
 `2^n`, giving `2^n | p − 1` and so `p ≡ 1 (mod 2^n)`. Every prime factor of `N` is at least `2^n + 1`.
 
-If `N` were composite it would have at least two such factors, so `N ≥ (2^n + 1)^2 > 2^(2n)`. But
-`k < 2^n` gives `N = k · 2^n + 1 < 2^(2n) + 1`. The two cannot both hold, so `N` is prime. ∎
+If `N` were composite it would have at least two such factors, giving `N ≥ (2^n + 1)^2 > 2^(2n)`. But
+`k < 2^n` gives `N = k · 2^n + 1 < 2^(2n) + 1`. The two cannot both hold, and `N` is therefore prime. ∎
 
 That last step needs `k < 2^n` and nothing weaker. A modulus outside the range is therefore
 reported as out of range instead of being tested anyway.
@@ -96,7 +96,7 @@ generator to a root of unity is precisely where the constant stops being checked
 
 > **Claim.** For `L = 2^m`, if `ω^L = 1` and `ω^(L/2) ≠ 1`, then `ω` has order exactly `L`.
 
-**Proof.** The order divides `L = 2^m`, so it is `2^j` for some `j ≤ m`. If `j < m` then `2^j` divides
+**Proof.** The order divides `L = 2^m` and is therefore `2^j` for some `j ≤ m`. If `j < m` then `2^j` divides
 `2^(m−1) = L/2`, which would give `ω^(L/2) = 1`. It does not. So `j = m`. ∎
 
 Two exponentiations settle it completely, with no factoring of anything. This is cheap enough to run
@@ -106,11 +106,11 @@ test.
 
 The generator itself is proved the same way and just as completely: `g` generates the whole group if
 and only if `g^((p−1)/q) ≠ 1` for every prime `q` dividing `p − 1`. Here `p − 1 = k · 2^n` with `k`
-small, so factoring it is factoring `k`, and the proof is complete instead of partial.
+small, and factoring it amounts to factoring `k`, and the proof is complete instead of partial.
 
 ## What it costs on this desktop
 
-One proof is one modular exponentiation. Measured on unbounded integers with nothing vectorised and
+One proof is one modular exponentiation. Measured on unbounded integers with nothing vectorized and
 nothing on the GPU:
 
 | bits | decimal digits | one proof |
@@ -138,7 +138,7 @@ The tabled moduli are small because they are sized to a machine word. A lane hol
 product of two residues has to fit in one, and so the modulus stops below `2^32`. That is a property
 of the lane. It is not a property of the mathematics.
 
-The arithmetic here is on unbounded integers, so the proof runs at any width, and moduli far past
+The arithmetic here is on unbounded integers, and the proof runs at any width, and moduli far past
 anything tabled can be produced and proved on demand. Found and proved by this file:
 
 | modulus | shape | transform length |
@@ -162,16 +162,16 @@ precisely is what licenses the way the transform is implemented.
 
 **Proof.** `w_j · w_k = ω^(j+k)`. Write `j + k = qn + r` with `0 ≤ r < n`. Then
 `ω^(j+k) = (ω^n)^q · ω^r = 1^q · ω^r = ω^r = w_r`, and `r` is `(j+k) mod n`. The identity is
-`w_0 = ω^0 = 1` and the inverse of `w_j` is `w_(n−j)`, so the set is closed, has an identity and has
-inverses, which makes it a group; it is generated by one element, so it is cyclic. ∎
+`w_0 = ω^0 = 1` and the inverse of `w_j` is `w_(n−j)`. The set is therefore closed, has an identity and has
+inverses, which makes it a group; it is generated by one element, which makes it cyclic. ∎
 
 Two consequences are used directly:
 
 - **The table sums to zero.** For `n > 1`, `Σ_j w_j = (ω^n − 1)/(ω − 1) = 0/(ω − 1) = 0`, exactly,
   because `ω ≠ 1` makes the denominator invertible. This is an integer zero and not a small residual.
-- **The table is generated by repeated multiplication.** `w_(j+1) = w_j · ω`, so building the whole
+- **The table is generated by repeated multiplication.** `w_(j+1) = w_j · ω`, and building the whole
   table costs one modular multiply per entry. In floating point that construction is warned against
-  because error accumulates along the chain. In the exact ring there is no error to accumulate, so
+  because error accumulates along the chain. In the exact ring there is no error to accumulate, and
   the cheap construction and the correct one are the same construction.
 
 ### The disproof: the law is necessary and is not sufficient
@@ -205,8 +205,8 @@ property any single relation among entries exposes.
 
 > **Claim.** For `L = 2^m`, `ω` has order exactly `L` if and only if `ω^L = 1` and `ω^(L/2) ≠ 1`.
 
-**Proof.** The order divides `L = 2^m`, so it is `2^j` for some `j ≤ m`. If `j < m` then `2^j`
-divides `2^(m−1) = L/2`, giving `ω^(L/2) = 1`. It does not, so `j = m`. ∎
+**Proof.** The order divides `L = 2^m` and is therefore `2^j` for some `j ≤ m`. If `j < m` then `2^j`
+divides `2^(m−1) = L/2`, giving `ω^(L/2) = 1`. It does not, and therefore `j = m`. ∎
 
 No factoring, no search, two exponentiations, and it catches the case every cheaper test misses.
 
@@ -217,14 +217,14 @@ the group law permits. But the group law permits that construction from **any** 
 whose order divides the length, including a wrong one, and the result would be a transform that
 returns values of the ordinary shape that are not the convolution of anything.
 
-So the order proof is not an optional extra beside the optimisation. It is the precondition for the optimisation being safe, and it has to run first. Stated as a rule: **prove the order, then
+So the order proof is not an optional extra beside the optimization. It is the precondition for the optimization being safe, and it has to run first. Stated as a rule: **prove the order, then
 generate the table.** Reversing those two produces a fast wrong answer, which is this tree's
 recurring failure with a stopwatch attached.
 
 The change was measured. Replacing an exponentiation per butterfly with one table read cut the
 transform at length 2^27 from 2006 ms to 680 ms, a factor of 2.95, and the output digest was
-identical at every length tested. A correct optimisation moves the clock and leaves the answer
-alone, so comparing the digest before and after says which of the two happened here.
+identical at every length tested. A correct optimization moves the clock and leaves the answer
+alone, and comparing the digest before and after says which of the two happened here.
 
 ## On the card, where a second silent wrong answer was waiting
 
@@ -253,7 +253,7 @@ the boundary. One arm agreed and two did not, for that reason alone.
 about the arithmetic went unstated, the transform returned values of the ordinary shape, and nothing
 in the output said otherwise. The first was a constant nobody proved; the second was a width nobody
 checked. Neither was found by reading the code. Both were found because the gate ran cases that
-differed in one property, so the failure named its own cause.
+differed in one property, and the failure named its own cause.
 
 Widened to 64 bits, all three moduli agree with the host, and the device multiply agrees with
 Python's own at every size tested.
@@ -277,7 +277,7 @@ hours for the same product. The extrapolation is stated as an extrapolation, sin
 past anything measured directly.
 
 **The packing costs nothing.** A large integer is already a run of
-32-bit limbs, so handing one to the device is `value.to_bytes(count * 4, "little")` and reading one
+32-bit limbs, and handing one to the device is `value.to_bytes(count * 4, "little")` and reading one
 back is `int.from_bytes(raw, "little")`. Those are the same bytes named twice, not a conversion. The
 device returns the product as three arrays and the caller assembles
 
