@@ -12,7 +12,9 @@
 2. "n*n^n^n is the base Atom storage class of the engine, it is the problem's space, it is infinite, n grows to n grows to n grows to n ad infinitum"
 <!-- docs-check: end quoting -->
 
-The full checks are in ENGINE_PROOF.md, now anchor_sift docs/ENGINE_PROOF.md (a6d1bff on cell_tracking, main after its PR merges), under "The halting problem does not arise in this system".
+The full checks are in ENGINE_PROOF.md, now anchor_sift docs/ENGINE_PROOF.md (a6d1bff on cell_tracking, main after its PR merges). It speaks to halting at Theorem 4 (:117) and under "What is not claimed" (:312): "The halting problem is untouched."
+
+The words "the question does not arise" come from [steering.md](../../workbooks/anchor_sift/steering.md), section "Why halting is the wrong question" (:73), sentence at :89. That claim is withdrawn in [findings-for-verification.md](../../workbooks/anchor_sift/findings-for-verification.md):107. The analysis there covered one invocation and concluded about the system, and the system's outer loop, self-examination, has no bound. It does not stand. The same lines are in anchor_sift docs/ at ddeccb3.
 
 - **Truth 1, checked.** The answer path is total: the sweep is a bounded loop, the descent terminates (Theorem 5), and the count is exact at every instant (Theorem 3).
 - **Truth 2, checked.** `steer_descend` refuses malformed input before any work (`anchor_sift.c:938-962`), and the survivors-length refusal is marked FAILS CLOSED (`anchor_sift.c:959-960`).
