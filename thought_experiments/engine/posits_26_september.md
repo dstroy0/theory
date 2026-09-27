@@ -12,7 +12,7 @@
 2. "n*n^n^n is the base Atom storage class of the engine, it is the problem's space, it is infinite, n grows to n grows to n grows to n ad infinitum"
 <!-- docs-check: end quoting -->
 
-The full checks are in [ENGINE_PROOF.md](../../theory/ENGINE_PROOF.md), under "The halting problem does not arise in this system".
+The full checks are in ENGINE_PROOF.md, removed at 3a292ee; last version at 3a292ee^, under "The halting problem does not arise in this system".
 
 - **Truth 1, checked.** The answer path is total: the sweep is a bounded loop, the descent terminates (Theorem 5), and the count is exact at every instant (Theorem 3).
 - **Truth 2, checked.** `steer_descend` refuses malformed input before any work (`anchor_sift.c:938-962`), and the survivors-length refusal is marked FAILS CLOSED (`anchor_sift.c:959-960`).
@@ -100,6 +100,7 @@ A bit that never flips has no completed run and gives no dwell law.
 9. "the encoding itself is what lets the cell proliferate, it grows to be as complex as its program, that is so beautiful"
 10. "and it can evolve, by interacting with other cells and incorporating that information into its reincarnation"
 11. "the system itself evolves over time to recognize malformed questions that destabalize it before they fully unfurl, protecting itself"
+12. "the I don't know what to call it, cell? admits these automata "ribosomes" and the cellular ecosystem kills them or lets them live, but the cell knows everything happening inside of it, it is omniscient here"
 <!-- docs-check: end quoting -->
 
 No posit here is derived. The lines below say what the engine holds at the pin that a posit names, as a cross-reference and not as a proof.
@@ -113,3 +114,11 @@ No posit here is derived. The lines below say what the engine holds at the pin t
 **Posits 8 and 11, cross-reference.** The exits are true, false, malformed (no lattice was built) and answered (engine_table.md item 10). The imprint refuses a malformed program before anything is laid or run: a step that reads itself or a later step (`keymath.cu:413-418`), or a field past its record (`keymath.cu:420-426`). A refused program never loads (`engine.cu:179`, `:219`). A launch that fails leaves its block at `ENGINE_PROGRAM_FAULT` (`cycle.cu:3269`). The answer table, which would hold a malformed exit keyed by the program's signum and know it without a second run, is item 10's stage 3. Status: not built.
 
 **Posits 9 and 10, cross-reference.** A compiled program's size follows its steps (engine_table.md item 9, the compile table). The refinement loop, where a generator recompiles against a critic's verdicts (engine_table.md M23), is not built.
+
+**Posit 12, a reading. Status: not built beyond the two membranes below.** The GPU or host is posit 4's open superset, the cell is a supervising process, and the ribosomes are the probes it admits. A ribosome translates a question, written as code, into an answer, given as behavior, the way a ribosome translates codons into protein. The target's ruleset kills the probe or lets it finish. A killed probe is answered by its death (engine_table.md item 11(e), the note on illegal operations).
+
+**Posit 12, cross-reference.** Two membranes are built at anchor_sift `ddeccb3`. `tessera_run` admits a job and reports the admission ("admitted after ... s, ... of ... processors reserved", `tessera_run.c:1475`). It watches the job's process tree and signals the processes still living (`tessera_run.c:916-926`). On release it reports the time, the exit status and the peak processors (`tessera_run.c:1503`), and `qasm.cu`'s tessera ticket reports its peak bytes (`qasm.cu:1051`). Inside the record machine, `CYCLE_RECORD_CHECK=1` runs the interpreter on the same lanes as the compiled program and refuses the launch where their records or refusals differ word for word (`cycle.cu:1272-1273`, `:3344-3346`). The check runs only when that variable is set.
+
+**The limit on the cell, a reading.** The cell knows everything inside it only while it survives every death it watches, and the unit that dies has to be strictly smaller than the unit that watches. A CUDA illegal address leaves the whole context unusable (cited from knowledge, not read). On a GPU the ribosome therefore needs a cell of its own, a process, or the watcher dies with what it watches. The cell also knows only what crosses its boundary as an observable effect: the exit status, the signal, the output and the resource peaks.
+
+**Posits 8, 11 and 12, a reading.** Posit 12 is posit 8 seen from the cell's side. The cell learns which questions are malformed by watching which ribosomes die, and that learning is posit 11's self-protection.
