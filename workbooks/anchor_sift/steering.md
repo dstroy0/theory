@@ -96,7 +96,7 @@ A level that finds no candidate leaving fewer survivors than it started with has
 
 The two are different kinds of statement and the guide keeps them apart. The period argument is a theorem over every corpus of that period. This rule is an observation about one field, taken on a sample of it when `sample_stride` is above one. "pruned nothing on this sample" does not establish "can prune nothing". Being wrong costs speed and cannot cost the count.
 
-Destroying the levels below a destroyed probe costs nothing, and the reason is an induction and not a budget.
+Destroying the levels below a destroyed probe costs nothing, and the reason is inductive, not a matter of budget.
 
 The destroy test compares the minimum over every candidate against the current population (`src/engine/c/engine/anchor_sift.c:1051`). When it fires, the minimum leaves the population unchanged. Every candidate leaves it unchanged. Placing one would prune nothing, and the next level would inherit the identical population. Its candidate set is the same set or a subset of it, since the enumeration bounds are arguments and constants that do not vary by level (`src/engine/c/engine/anchor_sift.c:1202`) and the coarm descent only ever removes a placed position from consideration. Every candidate in a subset of a set that all left the population unchanged also leaves it unchanged. The next level's minimum is the whole population and its test fires too. By induction every level below prunes nothing.
 
@@ -108,7 +108,7 @@ The argument is exact over the population the planner sees: the sampled one when
 
 ## The boundary, stated as domain and range
 
-Every claim below falls out of writing down what each function takes and what it can return. Nothing here is new behavior. It is the same engine read algebraically.
+Every claim below falls out of writing down what each function takes and what it can return. None of it is new behavior. It is the same engine read algebraically.
 
 Let `A` be the alignments, `N = |A|`, and `T` the alignments where the needle occurs exactly. A probe `p` is a set of needle positions together with the needle's bytes there. Its decision at an alignment is determined by the corpus bytes at that alignment and those positions alone.
 
@@ -135,7 +135,7 @@ The correction above that moved this claim from "reads" to "bytes read at an ali
 
 The bound is attained. The empty probe set takes no probe reads and sends every alignment to the compare, which reads at least one byte each, giving exactly `N`. The configuration that steers least sits exactly on the floor. The floor therefore belongs to the problem; no steering lowers it.
 
-`test_steer` asserts this on all five fields. It checks that every route's probe reads plus compares reaches `N`, and that the empty probe set takes exactly zero probe reads and exactly `N` compares (`test/engine/test_steer.c`). The floor is reported outside the route table on purpose: the table counts probe reads and the floor counts total reads, and one column carrying two units invites a reader to compare a bound against a cost. In real bytes the empty probe set is the most expensive route there is, since every alignment takes a full compare.
+`test_steer` asserts this on all five fields. It checks that every route's probe reads plus compares reaches `N`, and that the empty probe set takes exactly zero probe reads and exactly `N` compares (`test/engine/test_steer.c`). The floor is kept out of the route table for a reason: the table counts probe reads and the floor counts total reads, and one column carrying two units invites a reader to compare a bound against a cost. In real bytes the empty probe set is the most expensive route there is, since every alignment takes a full compare.
 
 **What the theorem does not cover.** It binds engines that decide an alignment from reads at that alignment. A skipping search breaks that premise deliberately: it uses a read at one alignment to decide a range of others, and never visits most of them. Its reads per alignment are taken over a sparse subset of `A` and fall below one for that reason. That is a different quantity wearing the same name, and no ratio between the two measures anything.
 
@@ -145,7 +145,7 @@ An earlier version of this section claimed the engine is not Turing complete and
 
 **What is true of one invocation.** Every loop inside one call is bounded by a quantity fixed before that call runs. The sweep over alignments runs to `N`, the descent runs to `ANCHOR_STEER_ANCHORS`, and the shape enumeration runs to `needle_len` and to a caller's `max_length`. No continuation depends on a predicate computed from corpus content. One call is total and its running time is a function of the input sizes.
 
-**Why that decides nothing.** A system that halts on every input decides its own halting. Establishing Turing completeness is exactly the question of whether the outer loop is bounded, and the outer loop here is self examination. Nothing bounds the number of rounds. The engine spawns, destroys, re-reads and turns on itself again.
+**Why that decides nothing.** A system that halts on every input decides its own halting. Establishing Turing completeness comes down to whether the outer loop is bounded, and the outer loop here is self examination. Nothing bounds the number of rounds. The engine spawns, destroys, re-reads and turns on itself again.
 
 This section has now been written three ways and two of them were wrong. What follows separates what is settled from what is open, and the open part is marked as open.
 
@@ -165,11 +165,11 @@ This section has now been written three ways and two of them were wrong. What fo
 
 The question was whether the construction admits unbounded storage, and it was framed as turning on the coarm count: if an engine spawned coarms that each carried their own survivor vector, the state would be a tuple whose size grows with the arm count.
 
-**Settled, and the bound from above is what settles it.** One coarm per level means the arms do not multiply: the descent is a chain and not a branching tree. The state never becomes a tuple whose size grows, and the premise the growing answer needs is false here. The loop is `while (placed < count)` with `count` at most `ANCHOR_STEER_ANCHORS`. It cannot run longer than a constant whatever the corpus holds.
+**Settled, and the bound from above is what settles it.** One coarm per level means the arms do not multiply: the descent is a single chain with no branching. The state never becomes a tuple whose size grows, and the premise the growing answer needs is false here. The loop is `while (placed < count)` with `count` at most `ANCHOR_STEER_ANCHORS`. It cannot run longer than a constant whatever the corpus holds.
 
 One descent is therefore a finite automaton WITH data dependent control flow, bounded above by a constant. It is not a fixed depth decision procedure, because the destroy test is a genuine conditional branch on data that decides whether to recurse.
 
-**The cap is load bearing and this paragraph used to say the opposite.** An earlier version claimed the depth is data independent and that the constant is incidental. At four billion the classification would not shift. Both halves are wrong. Depth IS data dependent, downward only: the destroy test can cut the descent short and nothing can extend it. The constant bounding it from above is the only thing ruling out unbounded depth, and at four billion it would still rule it out, and that is the point. Data independence is not available as an argument.
+**The cap is load bearing and this paragraph used to say the opposite.** An earlier version claimed the depth is data independent and that the constant is incidental. At four billion the classification would not shift. Both halves are wrong. Depth IS data dependent, downward only: the destroy test can cut the descent short and nothing can extend it. The constant bounding it from above is the only thing ruling out unbounded depth, and at four billion it would still rule it out; the size of the constant was never the argument. Data independence is not available as an argument.
 
 One argument this section used to give is retired outright. It said the trichotomy shows no cycling. An unbounded run must be a deepening recursion. That is self defeating, because non-cycling on a finite state space forces termination instead of permitting unbounded depth.
 
@@ -185,9 +185,9 @@ Unbounded reading alone buys nothing. A finite automaton over an infinite read-o
 
 What it composes into keeps everything this document argues for. Growth happens only between descents, on the branch where a descent refuses: the shape of asking another slightly different question. Inside a descent the survivors still only shrink. Soundness, the anytime property and termination all hold at the inner level, because all three follow from that one monotonicity. The outer machine is universal and every inner step of it is a sound, terminating, interruptible filter.
 
-Nobody would owe a universality proof for it either. Read a window, act on what was read, append, continue is a tag system, and 2-tag systems have been known universal since Minsky in 1961. What is owed is an encoding into that shape.
+Nobody would owe a universality proof for it either. Read a window, act on what was read, append, continue is a tag system, and 2-tag systems have been known universal since Minsky in 1961. The proof still owes an encoding into that shape.
 
-The price is exactly the property the engine is sold on. At the outer level termination goes, and that is the evidence and not a defect to repair: if it stayed decidable whether an outer run finishes, the thing would not be universal. The inner loop keeps its guarantee and the outer one gives up the one it never claimed.
+The price falls exactly on the property the engine is sold on. At the outer level termination goes, and that is the evidence and not a defect to repair: if it stayed decidable whether an outer run finishes, the thing would not be universal. The inner loop keeps its guarantee and the outer one gives up the one it never claimed.
 
 None of this settles the question above. It names what would move the answer and not what the answer is, and nothing in the tree is being built toward it.
 
@@ -199,7 +199,7 @@ The boundary function is `anchor_steer_probe_fits`, whose domain is probes paire
 
 The gap is at length one. `anchor_steer_probe_fits` returns 1 for a length one probe at ANY step, zero included, because the length test returns before the step test. The sweep sets its step limit to 2 at length one and generates step 1 alone. So legal probes exist that the sweep never produces: origin 3 length 1 at steps 0, 2, 7, 13, 64 and 100000 all fit, and all return the same count through `anchor_steer_count_with_probes`, because a probe of length one reads one position and its step is unread. The header says exactly that already.
 
-Quotient the legal set by "reads the same needle positions" and the sweep enumerates one member of every class. That is what the guarantee needs, since two probes reading the same positions refute the same alignments and have the same marginal gain. A maximum over the representatives is a maximum over the set. Nothing was unsound; the claim was wider than the code and wider than it needed to be.
+Quotient the legal set by "reads the same needle positions" and the sweep enumerates one member of every class. The guarantee needs no more, since two probes reading the same positions refute the same alignments and have the same marginal gain. A maximum over the representatives is a maximum over the set. Nothing was unsound; the claim was wider than the code and wider than it needed to be.
 
 Two smaller corrections from the same audit. At length two with a needle of twelve, the highest fitting step at origin zero is eleven while the sweep tries to twelve. One iteration per origin and length is always refused. And `max_length` is an argument. The next section's ratio is exact over probes of length at most `max_length` and not over probes of any length, which the earlier wording did not say.
 
@@ -253,7 +253,7 @@ The table below runs on five fields. An earlier version of this section reported
 
 Every route on every field returned the reference count.
 
-The family shows three things one field could not. Steering pays nothing on a uniform field, where no symbol is rarer than another and the ordering has nothing to order by. It pays most where the field repeats or its rarity spreads, taking 1.877 to 1.067 on the skewed field and 1.187 to an exact 1.000 on the period 16 field, which the planner reaches with one probe where the unsteered route places four. And the two mechanisms separate: on the skewed field the recursive reorder moves 1.877 to 1.875 while spawning coarms moves it to 1.067. What pays there is the spawning and not the ordering. On the license text both routes move together and the distinction is invisible.
+The family shows three things one field could not. Steering pays nothing on a uniform field, where no symbol is rarer than another and the ordering has nothing to order by. It pays most where the field repeats or its rarity spreads, taking 1.877 to 1.067 on the skewed field and 1.187 to an exact 1.000 on the period 16 field, which the planner reaches with one probe where the unsteered route places four. And the two mechanisms separate: on the skewed field the recursive reorder moves 1.877 to 1.875 while spawning coarms moves it to 1.067. There the spawning pays and the ordering does not. On the license text both routes move together and the distinction is invisible.
 
 **The weakest field is uniform, and an earlier version of this paragraph said it was the license text.** Read the best steered route and not the reorder column: the license text goes 1.072 to an exact 1.000 on coarms, the floor. Uniform goes 1.003 to 1.003 and does not move at all, on any route, because a uniform field has no rarity for the steering to spend and there is nothing for an ordering to order by. That is the honest worst case and the one to quote against.
 
@@ -285,7 +285,7 @@ The planner costs are stated in the header as worst cases and are not measured. 
 
 `sample_stride` is the control and no default is recommended, because the crossover was not measured.
 
-Reads are the wrong statistic for a contiguous eye and the table above inherits that. A step-1 eye of length L is one wide load that the machine may satisfy in a single memory transaction, and counting L reads charges it for work done once. Short-circuiting also makes the trip count vary, and a varying trip count costs a mispredicted branch per alignment. The branchless free-order arm exists for that reason (`src/engine/c/engine/anchor_sift.h:157`). An eye evaluated branchlessly trades L reads for one predictable branch. Deciding whether eyes ever pay needs a cycle measurement, and none was taken.
+Reads are the wrong statistic for a contiguous eye and the table above carries that fault. A step-1 eye of length L is one wide load that the machine may satisfy in a single memory transaction, and counting L reads charges it for work done once. Short-circuiting also makes the trip count vary, and a varying trip count costs a mispredicted branch per alignment. The branchless free-order arm exists for that reason (`src/engine/c/engine/anchor_sift.h:157`). An eye evaluated branchlessly trades L reads for one predictable branch. Deciding whether eyes ever pay needs a cycle measurement, and none was taken.
 
 The exact dispatch was graded against eleven fields swept from flat to concentrated, agreeing with the double form of the same rule on all eleven. That shows the change is harmless. It does not show it was needed, because no field was constructed whose double-form verdict falls inside the old series error of the threshold. Until one is, the improvement is argued from the algebra and not demonstrated.
 

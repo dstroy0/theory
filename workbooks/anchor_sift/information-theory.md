@@ -129,7 +129,7 @@ be empty. That is where the holes live.
 
 ### 3.1 Every advantage quoted from an `H2` measurement overstates the search advantage
 
-`H_alpha` is decreasing in alpha, so `H_{1/2} >= H_2`, so
+`H_alpha` is decreasing in alpha. Therefore `H_{1/2} >= H_2`, and
 
     deficit(1/2) <= deficit(2)
 
@@ -159,7 +159,7 @@ random-function null instead of eyeballing the values:
 | 16 bits | `1.3770e-06` | `1.3758e-06` | 1.0009 |
 | 24 bits | `2.34378e-04` | `2.34356e-04` | 1.0001 |
 
-Their own resolution at width 8 is `sqrt(2/255) = 8.8%`, so 0.977 is centred. **The whole of SHA-1's
+Their own resolution at width 8 is `sqrt(2/255) = 8.8%`, and 0.977 is centered. **The whole of SHA-1's
 measured imbalance is the imbalance any function drawn at random would show, to four significant
 figures.** The paper says the balance is high. The sharper statement available from the same table
 is that the deficit is exactly generic, and that is a much stronger claim about SHA-1 than "high".
@@ -182,14 +182,14 @@ exploitable. This is not yet done and it is the largest unresolved methodologica
 Raised mid-session, and correct: a compiler folds, contracts, reassociates and hoists, and a folded
 measurement is indistinguishable by eye from a computed one. `bench_engines` already caught an
 entire engine that was a constant function; nothing structural stops the same happening to a
-statistic. Results that depend on the optimiser are not results.
+statistic. Results that depend on the optimizer are not results.
 
 Two arms, both mechanical:
 
 **Differential.** `tools/audit/audit_compiler.ps1` builds every bench three ways - `-O0`, `-O2`, and `-O2
 -ffp-contract=off` - and runs all three. `-O0` folds nothing, hoists nothing and contracts nothing,
 . A bench whose three outputs are byte-identical computed its numbers instead of inheriting them.
-GCC contracts multiply-add into FMA by default, which changes rounding, so the third arm separates
+GCC contracts multiply-add into FMA by default, which changes rounding, and the third arm separates
 that from folding proper.
 
 **Constant pool.** `tools/audit/audit_constants.py` reads every double in a binary's read-only data and
@@ -211,7 +211,7 @@ suggested it. Three of them bear directly here and one of them reframes this ent
 
 From the ledger:
 
-> Histogram quantities are permutation invariant, so they describe the maximum entropy case and are
+> Histogram quantities are permutation invariant. They describe the maximum entropy case and are
 > free. The arrangement is what remains after that.
 
 **Every number `bench_renyi` produces is a histogram quantity.** All seven Rényi orders, the
@@ -233,17 +233,17 @@ statistic in this tree.
 
 Proved in `proof_null_property.py` on four constructed clouds - lattice or scatter crossed with
 patterned or random values - where a value-permuting null can only reveal order in the values and a
-position-moving null can only reveal order in the geometry, so the predicted hits fall on a diagonal
+position-moving null can only reveal order in the geometry. The predicted hits therefore fall on a diagonal
 and anything off it refutes the posit.
 
 The permutation null over arrangements of a fixed multiset satisfies this exactly for the question
-asked here: it preserves every count and destroys every position, so it deletes the arrangement and
+asked here: it preserves every count and destroys every position. It deletes the arrangement and
 keeps the
 counts. The ledger's reason it cannot be wrong is worth quoting because it is stronger than
 "we chose a sensible baseline":
 
 > Drawing uniformly from the arrangements of a fixed multiset is the least committal distribution
-> consistent with the observed histogram, so it asserts nothing beyond the quantity already measured.
+> consistent with the observed histogram. It asserts nothing beyond the quantity already measured.
 > Every other background in this work is a model and can be false. This one is the data with one
 > property deleted.
 
@@ -309,9 +309,9 @@ Widening the search for structure in the hole arrangement, one step at a time:
 Each step multiplies the cost by orders of magnitude and returns the same answer. That pattern is
 not an accident of this particular search, and the ledger already names why:
 
-> Histogram quantities are permutation invariant, so they describe the maximum entropy case and are
+> Histogram quantities are permutation invariant. They describe the maximum entropy case and are
 > free. The arrangement is what remains after that, and Proposition 2 states that no knowledge of a
-> domain removes the exact compare, so the cost of an arrangement is made of checks that have to be
+> domain removes the exact compare. The cost of an arrangement is made of checks that have to be
 > performed. Deriving it would be obtaining the irreducible half without paying for it, the
 > thing Proposition 2 denies.
 
@@ -332,7 +332,7 @@ the cost.
 The cost does not merely grow. It floors, with a knee, and the position of the knee is derivable
 instead of a matter of opinion.
 
-Checking `N` directions means taking a maximum over `N` statistics, so the threshold a real signal
+Checking `N` directions means taking a maximum over `N` statistics, and the threshold a real signal
 has to clear is the expected largest of `N` nulls:
 
     reach   R(N) = sqrt(2 ln N)  minus a slowly varying correction
@@ -370,7 +370,7 @@ hypothesis, not about having a bigger machine.
 - **A second header.** One block's header is one corpus. Nothing here has been asked to conserve
   across a different one, the homogeneity check posit 5.3 demands. One hypothesis, cheap
   now that the enumeration is on the device.
-- **A reduced-width analogue.** An 8-bit-word SHA-256 has a state small enough to enumerate
+- **A reduced-width analog.** An 8-bit-word SHA-256 has a state small enough to enumerate
   completely. That is the axis where speed still converges the representation, because it replaces
   every sampled result in this workbook with an exact one instead of buying another `sqrt(2 ln N)`
   of reach against an exponential price. It is the only open item that is a better object instead of

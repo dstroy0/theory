@@ -1,7 +1,7 @@
 # The octant lexicon
 
 Eight regions, one letter each, and a word that a computation spells as it runs. The alphabet is
-general. It reads a lit set on a boundary and knows nothing about what lit it, so the same eight
+general. It reads a lit set on a boundary and knows nothing about what lit it, and the same eight
 letters serve any object that can be placed on a sphere. The instance it was tested on is SHA-256,
 and `tools/view/octant_lex.py` lexes that hash round by round and prints the word.
 
@@ -57,7 +57,7 @@ blindness, before any measurement is taken.
 | 16 | 289 | 256 | 0 | 1.524e-1 |
 
 Against a 256-bit lit set, a reading to degree eight recovers 81 directions and is blind in 175. The
-map reaches the rank its coefficient count allows at every degree below the source count, so the
+map reaches the rank its coefficient count allows at every degree below the source count, and the
 shortfall in coefficients accounts for the blindness on its own. No sample size, no precision and no
 number of beams changes it.
 
@@ -66,10 +66,10 @@ in 248 of 256 directions.
 
 Degree fifteen is the floor, where `(L+1)^2` first reaches 256. Reaching the floor is not reaching a
 usable reading: the least singular value collapses to 3.5e-3 there and recovers to 1.5e-1 at
-sixteen, so one degree of headroom is worth 44 times in conditioning. A reading degree picked by
+sixteen: one degree of headroom is worth 44 times in conditioning. A reading degree picked by
 counting coefficients alone lands on fifteen and reports success.
 
-Measured at full depth and no conduction, the most favourable case, in `tools/view/frame_findings.md`.
+Measured at full depth and no conduction, the most favorable case, in `tools/view/frame_findings.md`.
 
 ## The instance it was tested on
 
@@ -84,14 +84,14 @@ distinction decides every number below, and an earlier version of this page had 
 section on the corrected reading records what moved.
 
 The check counts which object it has instead of trusting the caller. A round only copies six of its
-eight words, `b,c,d` taking `a,b,c` and `f,g,h` taking `e,f,g`, so on the working state all 378
+eight words, `b,c,d` taking `a,b,c` and `f,g,h` taking `e,f,g`. On the working state all 378
 carried words match the words they come from and on the digest none do.
 
 ## The placement under it
 
 The 256 state bits go onto a golden placement. One index of shift on that placement is a rigid
 screw: turn 2.399963 radians, axial slide -0.007812, pitch -0.003255258. The pitch holds for every
-amount, so one helix carries them all, and where a shifted bit lands is fixed once the amount is
+amount, and one helix carries them all, and where a shifted bit lands is fixed once the amount is
 known. `docs/boundary-reading.md` carries that measurement and the library it came from.
 
 ## The word
@@ -138,13 +138,13 @@ cleared.
 Two cautions on that, both of which bound it.
 
 The fall is a trend in the means and not a monotone series. The per-round deltas over the first
-eight rounds run 12.9, 14.0, 12.8, 8.4, 11.9, 14.9, 8.5 and 12.0, so round 5 is the first crossing
+eight rounds run 12.9, 14.0, 12.8, 8.4, 11.9, 14.9, 8.5 and 12.0: round 5 is the first crossing
 and not the last time the delta sits high.
 
 Naming the move is not part of the measurement. A move that carries mass from octant to octant
 instead of mixing it will raise the delta above independence, and a rigid relabeling of the indices
 is such a move. Reading the early excess as the register shift is a reading of why, and it has not
-been measured. What is measured is that the excess is present on the working state and absent on the
+been measured. The measurement shows the excess present on the working state and absent on the
 digest.
 
 ## How much of each change the alphabet could see
@@ -166,7 +166,7 @@ discards the rest.
 
 Read the split and never the mean. The early changes sit in the directions the alphabet can see
 above what chance would put there, the late changes sit in its blind directions below what chance
-would put there, and the mean is those two cancelling. Taken alone the mean reports that the reading
+would put there, and the mean is those two canceling. Taken alone the mean reports that the reading
 catches an arbitrary few percent, and that reading of it is an artifact of averaging.
 
 The early to late ratio is 2.88, against 1.68 for the delta over the same split, on 8 pairs at each
@@ -177,7 +177,7 @@ the same breath.
 The delta divides counts by a weight moving 4.3 bits a round, and `docs/finer-alphabet.md` records
 that moving denominator as the reason the delta's trend might be bookkeeping instead of arrangement.
 The visible fraction is a ratio of two norms of one difference vector in raw counts and carries no
-such term. It shows the trend larger, so the denominator was damping the effect and not producing
+such term. It shows the trend larger: the denominator was damping the effect and not producing
 it.
 
 The control arm is what licenses reading any of this. Differences with no structure in them must

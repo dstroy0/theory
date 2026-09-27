@@ -1,6 +1,6 @@
 # Provenance: Authorship, Priority, And Terms
 
-**Purpose:** Establish three separate claims about this work with three separate instruments, so each
+**Purpose:** Establish three separate claims about this work with three separate instruments, so that each
 one is checkable by a stranger with no secret and no cooperation from the author. Say which
 instrument answers which claim, and say which proposed mechanisms do not work.
 **Scope:** `maint/signing/`, `MANIFEST.tsv` and its signature, the public key, the timestamp proofs.
@@ -16,7 +16,7 @@ instrument answers which claim, and say which proposed mechanisms do not work.
 | terms | derivatives stay open | the AGPL | none, it is a license |
 
 The three fail independently, and an instrument for one is worthless for the others. A signature
-proves who, and its own date field is written by the signer, so it proves nothing about when. A
+proves who, and its own date field is written by the signer, and it therefore proves nothing about when. A
 blockchain anchor proves when to the second and says nothing about who. A license governs copying
 and says nothing about either.
 
@@ -81,7 +81,7 @@ The AGPL is doing real work and should stay. It keeps a derivative that is offer
 service obliged to offer its source, covering the gap the GPL leaves. That coverage is the reason to
 pick it.
 
-**What it does not do.** It is a copyright license, so it governs copying, modification and
+**What it does not do.** It is a copyright license: it governs copying, modification and
 distribution of the code. It does not establish who was first, because priority is a question about
 dates and not about permissions. It does not stop an independent inventor, because copyright never
 reached independent creation. And it has no bearing on whether a leaked key can be used to forge a
@@ -92,16 +92,16 @@ and it is not a protection for a secret.
 
 ## 5. Mechanisms That Do Not Work
 
-Three were proposed. Each is written out here with its failure, so none of them is reached for again
+Three were proposed. Each is written out here with its failure, so that none of them is reached for again
 on the assumption it was never considered.
 
 ### 5.1 Embedding the private key in the library
 
-**Proposed:** encrypt the private key and ship it inside the code, so signing works with nobody at
+**Proposed:** encrypt the private key and ship it inside the code, so that signing works with nobody at
 the keyboard.
 
 **Why it fails.** For the library to sign unattended, the library must be able to decrypt the key
-unattended, so whatever unlocks it ships alongside it. The result is obfuscation and not encryption.
+unattended, and whatever unlocks it ships alongside it. The result is obfuscation and not encryption.
 An attacker holding the artifact runs offline with unlimited time and unlimited attempts, and the
 target is the passphrase and never the 4096-bit modulus.
 
@@ -116,7 +116,7 @@ authorship claim entirely, and it removes it retroactively.
 
 ### 5.2 A passphrase in an answer file
 
-**Proposed:** an answer file directory holding the passphrase, so signing is unattended.
+**Proposed:** an answer file directory holding the passphrase, so that signing is unattended.
 
 **Why it fails.** Identical to 5.1 with an extra step. Any process on the machine can then sign as
 him. Section 6 has the version of the answer-file idea that works: it holds the digests awaiting
@@ -127,7 +127,7 @@ signature, and never the passphrase.
 **Proposed:** put the key in a Bitcoin status message so it stays available.
 
 **Why it fails.** This is 5.1 published to the most permanent medium that exists. Bitcoin is
-immutable and globally replicated by design, so there is no deletion, no expiry and no
+immutable and globally replicated by design: there is no deletion, no expiry and no
 jurisdiction to appeal to. An encrypted key on chain is a fixed target that every future attacker
 can grind against with better hardware than exists today, and the grinding is invisible.
 
@@ -142,7 +142,7 @@ claim precedence.
 
 **Why it fails on its own terms.** A MAC address is a software setting and is changed with one
 command. An IP address records whatever the path presented at the time and is not attached to a
-person. Neither is evidence about *when*, and priority turns on when, so neither competes with a
+person. Neither is evidence about *when*, and priority turns on when. Neither competes with a
 chain anchor or an archive record.
 
 **And it costs something.** It publishes the home network's identity to every reader of the artifact,
@@ -161,8 +161,8 @@ maint/signing/
   verify.py          checks every signature against the public key, and needs no secret
 ```
 
-The division of labour is the point. Computing digests, assembling the queue, checking that every
-listed file is present and unchanged, and verifying signatures after the fact are all keyless, so
+The division of labor is the point. Computing digests, assembling the queue, checking that every
+listed file is present and unchanged, and verifying signatures after the fact are all keyless, and
 they run unattended and on any machine. Signing is one command over one small file, run by the
 person holding the key, with the passphrase going to the gpg agent's own prompt and never through a
 file, an argument, an environment variable or a log.
@@ -195,7 +195,7 @@ availability. That inversion lets the design survive its author.
 
 ## 8. Owed
 
-* `maint/signing/` is specified above and not built. Nothing in it needs a secret, so it can be
+* `maint/signing/` is specified above and not built. Nothing in it needs a secret, and it can be
   built and run unattended once the shell is available again.
 * OpenTimestamps is not installed. It is a Python package and a small one.
 * The public key is not yet published to a keyserver or committed to the repository.

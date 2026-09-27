@@ -2,7 +2,7 @@
 
 `tools/view/boundary_read.py` takes a set of lit points on a sphere and returns three readings of
 where those points sit, how they push the boundary, and how they twist it. Nothing in the module
-knows what a lit point means, so the same code serves a hash state, a solar system or a file of
+knows what a lit point means, and the same code serves a hash state, a solar system or a file of
 bytes without changing. The caller supplies the meaning.
 
 This page is written for someone lifting the module into another tree. Every number below came from
@@ -22,7 +22,7 @@ that one if the reader is going to take arms as data.
 
 ## Placements
 
-A placement decides where index `k` sits on the sphere. The choice shapes what can be read, so both
+A placement decides where index `k` sits on the sphere. The choice shapes what can be read, and both
 of them are offered and neither is a default.
 
 | placement | where index `k` goes | what it is good for |
@@ -32,7 +32,7 @@ of them are offered and neither is a default.
 
 `golden_place` carries the property the screw below depends on: one step in the index is one fixed
 rigid move, the same move everywhere along the spiral. `ring_place` puts its latitudes at the
-interiors of the bands, so no ring lands on a pole where every point of it would pile into one
+interiors of the bands, and no ring lands on a pole where every point of it would pile into one
 place. Pick the ring placement when the operation under test is a rotation and the golden placement
 when the operation is a shift of the index.
 
@@ -67,7 +67,7 @@ The check moves a lit set along its rings by seven different amounts and reads b
 | deflection | moved by 2.5e-14 of itself, which is nothing |
 | torsion | recovered the angle to 1.8e-13 radians, sign included |
 
-The split is exact in both directions, so the choice is not a matter of taste. A caller whose
+The split is exact in both directions, and the choice is therefore not a matter of taste. A caller whose
 operations are rotations reads the twist. A caller who wants a quantity that holds still while the
 object turns reads the push. A caller who does not yet know which of those they have should read
 both and keep whichever one carries a signal.
@@ -83,10 +83,10 @@ error to swallow.
 `octant_share(points, live)` splits space into eight regions by the sign of each coordinate. Every
 region has a trilateral right-angle corner at the origin, all eight corners meet at that one point,
 and on the boundary the same split cuts eight congruent spherical triangles of area `pi/2` each, by
-Girard, totalling `4 pi`. The measured shares sum to 1.000000000000000.
+Girard, totaling `4 pi`. The measured shares sum to 1.000000000000000.
 
 The eight sign frames are not all the same kind of move. Their determinants split four at `+1` and
-four at `-1`, so half are rotations of the first octant and half carry a mirror. A caller reading
+four at `-1`: half are rotations of the first octant and half carry a mirror. A caller reading
 handedness off this split should know it is there before relying on it.
 
 `octant_delta(before, after)` reports how much of the reading moved between two shares, as a
@@ -119,7 +119,7 @@ plus that arm, and where a lit point lands is fixed once the amount is known.
 ## What it costs
 
 `complex_coefficients` is the expensive call. It walks the lit set once per order and computes a
-Legendre column per point, so the work grows as the lit count times `top` squared. Degree eight over
+Legendre column per point, and the work grows as the lit count times `top` squared. Degree eight over
 a few hundred lit points is immediate. A caller wanting a much higher degree should form the table
 once and hand it to both readings, the shape the module is already written in.
 
@@ -132,7 +132,7 @@ wrong. The recurrence is there to prevent a picture that looks plausible and is 
 
 The degree is a choice about how much a reading carries, and not a limit the arithmetic imposes. The
 basis measures orthonormal to 2.2e-14 at degree fifteen under exact quadrature, and to 1.8e-14 at
-degree eight, so precision is not what holds a reading at any degree a caller is likely to want. The
+degree eight, and precision does not limit a reading at any degree a caller is likely to want. The
 overflow above is a real ceiling and it sits an order of magnitude beyond that.
 
 What does bound the reading is counting. A reading to degree `L` carries exactly `(L+1)^2` real
@@ -169,7 +169,7 @@ reports the residual. A threshold is then measured and never picked.
 | a reading over arms | the arms redrawn as different shapes at the same weight | 2.220e-16 |
 
 The last row is a null over the reader instead of over the object. An arm is identified by its
-topology together with its weight, and a shape is one realization of that, so drawing the arms
+topology together with its weight, and a shape is one realization of that. Drawing the arms
 differently while holding the weight cannot move a letter. `tools/view/arm_draw.py` draws one set
 four ways, including as a line with a dwell particle on it, and no placement point changed arm under
 any of them. `docs/arm-records.md` reports it in full.
@@ -178,7 +178,7 @@ Three of the seven are exactly zero and not merely small, because the moves are 
 octant reading has no continuum of small changes at all: a share is a count over a weight and both
 are integers, and at fixed weight the smallest change it can register is `1/weight`. Two states of
 *differing* weight can still give shares arbitrarily close together, leaving a caller who compares
-across weights to make a modelling choice about which states count as the same. Say that plainly
+across weights to make a modeling choice about which states count as the same. Say that plainly
 instead of calling it a tolerance.
 
 The companion measurement is not a null. Torsion recovers a known angle to 1.803e-13 radians, which
@@ -202,7 +202,7 @@ first and stay quiet on the second, and it withholds every floor and fails if ei
 checker that has never caught its own defect is a checker nobody has tested.
 
 The third reports the redraw row at each of its three levels and holds four drawings that are not
-redraws against itself first. It is called by the second, so running it separately is for reading
+redraws against itself first. It is called by the second, and running it separately is for reading
 the detail and not for coverage.
 
 Exit status is zero when all of them pass. Running any of the modules without `--check` prints its

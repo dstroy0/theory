@@ -19,14 +19,14 @@ f(n) = sum over l from 0 to L, sum over m from -l to +l of  a_lm  Y_lm(n)
 ```
 
 The reading is the vector `a`, of length `(L+1)^2`. At the ceiling the clock runs to, `L = 10`, that
-is 121 real numbers. Everything below is an operator on that vector, and the table is the catalogue
+is 121 real numbers. Everything below is an operator on that vector, and the table is the catalog
 of them.
 
 Two facts about the vector before any operator touches it.
 
 **Its length is the bound on what a reading can say.** A reading to degree `L` carries `(L+1)^2` real
-numbers about its source, whatever the source is. 256 sources read at degree 8 arrive as 81 numbers,
-so 175 directions of the source space are absent from the reading. The eight-letter octant alphabet
+numbers about its source, whatever the source is. 256 sources read at degree 8 arrive as 81 numbers;
+175 directions of the source space are absent from the reading. The eight-letter octant alphabet
 is rank 8, absent in 248, with 7 free numbers left once the weight is fixed. Measured in
 `reading_rank.py`.
 
@@ -83,7 +83,7 @@ g_l = (r/R)^l  exp(-l(l+1) tau_total)  [l <= L]  (-1)^(l if reflected)
 tau_total = tau_conduction + tau_pixel
 ```
 
-The two smoothing times add. The heat kernel on the sphere is a semigroup, so
+The two smoothing times add. The heat kernel on the sphere is a semigroup:
 `exp(-l(l+1) tau_1) exp(-l(l+1) tau_2) = exp(-l(l+1)(tau_1 + tau_2))`, and smoothing for `tau_1` then
 `tau_2` is smoothing once for the sum. Nothing about that is an approximation.
 
@@ -99,7 +99,7 @@ chain was already forming.
 
 ## 4. Why They Are Diagonal, And Why One Is Not
 
-The table is not a coincidence and does not have to be memorised. The Laplace-Beltrami operator on
+The table is not a coincidence and does not have to be memorized. The Laplace-Beltrami operator on
 the sphere has the degree `l` subspace as its eigenspace with eigenvalue `-l(l+1)`:
 
 ```
@@ -116,13 +116,13 @@ separately. Every diagonal row of the table commutes with `Delta`:
 * **T4 and T5, smoothing.** Both are `exp(tau Delta)`, the heat semigroup. An operator built as a
   function of `Delta` commutes with it by construction.
 * **T1, T2, T7, T8, rotations and parity.** These are isometries of the sphere, and `Delta` is built
-  from the metric, so they commute with it. Each degree `l` subspace is an irreducible unitary
+  from the metric, and they therefore commute with it. Each degree `l` subspace is an irreducible unitary
   representation of SO(3) of dimension `2l+1`, and rotation therefore mixes orders inside a degree
   while moving no power between degrees.
 * **T6, truncation.** A spectral projection onto a set of eigenspaces.
 
-**T11 does not commute with `Delta`, and cannot.** A translation is not a map of the sphere to itself,
-so there is no `Delta` on the sphere for it to commute with. Re-expanding a field about a shifted
+**T11 does not commute with `Delta`, and cannot.** A translation is not a map of the sphere to itself;
+there is no `Delta` on the sphere for it to commute with. Re-expanding a field about a shifted
 origin mixes every degree into every other, at `O(L^3)` and with no per-degree number to carry it.
 Every cheap operation in this tree is diagonal, and the operation the tree avoids fails to be.
 
@@ -155,9 +155,9 @@ sigma  = length of the change in direction across one pixel   (radians)
 tau_pixel = sigma^2 / 2
 ```
 
-Two properties follow that a mip chain has to be built to imitate. The width varies per pixel, so
+Two properties follow that a mip chain has to be built to imitate. The width varies per pixel, and
 the filter is continuous in distance and in surface angle with no levels and no transitions between
-them. And the width enters `tau_total`, so it is applied by the same eleven multiplications section 3
+them. And the width enters `tau_total`, and it is applied by the same eleven multiplications section 3
 already pays for.
 
 ### 5.3 Where the degrees stop mattering
@@ -210,7 +210,7 @@ power by T3, and the same grid draws it more accurately. The grid is wrong in pr
 structure the state happens to hold.
 
 **Read the gradient column.** The surface is shaded, and shading takes its normal from
-the gradient. A linear interpolant has a constant gradient inside a triangle, so the drawn normal is
+the gradient. A linear interpolant has a constant gradient inside a triangle, which makes the drawn normal
 a staircase across a field whose gradient turns smoothly. At degree 10 the median normal is 7.5
 degrees off and one sample in twenty is more than 47 degrees off. That is the 5-degree quilt visible
 on the reconstruction, and it is a far larger error than the 1 percent in the value column.
@@ -241,7 +241,7 @@ interpolant, confirmed at 3.95 against a predicted 4.
 | samples at 900 px across | not applicable | 636,172, or 236 times the grid's |
 
 The grid pass is bound by a 1.25 MB table that does not fit in cache. A fragment evaluation reads the
-121 coefficients and computes the basis from the direction, so its working set is 484 bytes at any
+121 coefficients and computes the basis from the direction, and its working set is 484 bytes at any
 sample count. **No frame time is claimed here.** These are sizes and counts; throughput belongs to a
 measurement in the page, and section 8 lists it as unmeasured.
 
@@ -264,7 +264,7 @@ geometry would be a Gibbs artifact sold as a feature.
 subspace is a unitary irrep. Under a rotation by `alpha` about the read axis, `arg a_lm` moves by
 exactly `-m alpha`.
 
-A reading therefore splits exactly:
+Every reading therefore splits exactly:
 
 * **Power per degree is intrinsic.** It is a property of the source, carrying no information about
   where the reader stands.
@@ -298,7 +298,7 @@ also grades every copy of the table in this tree against the definition: fifteen
 them the tool's own reference, and all fifteen match.
 
 Pi is checked twice more, against a 50-digit prefix and against a second computation from Euler's
-arctangent identity. Machin's and Euler's identities share no term, so agreement between them is not
+arctangent identity. Machin's and Euler's identities share no term, and agreement between them is not
 two copies of one mistake.
 
 **The measured value this produced.** The double the golden placement runs on sits 4.441e-16 radians
@@ -338,7 +338,7 @@ and not the world. The power-under-rotation null floor stands at 4.005e-16 from 
 * **T11's cost** is quoted as `O(L^3)` from the shape of the re-expansion and has not been timed
   here, because the tree avoids it.
 * **Depth and degree do not interact in the choice.** Depth multiplies a column by about a constant
-  without reordering degrees, so the price and the structure are chosen separately. Measured, and
+  without reordering degrees, and the price and the structure are chosen separately. Measured, and
   the mechanism is T3's diagonality.
 
 ## References
