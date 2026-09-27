@@ -18,7 +18,7 @@ information reaches the engine in a form the engine can sift.
 
 `anchor-sift.md` §2.2 supplies the soundness half for free. An anchor is a necessary condition
 copied
-out of the pattern, so no selection rule can lose a true occurrence. That holds here and is not in
+out of the pattern, and no selection rule can therefore lose a true occurrence. That holds here and is not in
 question anywhere in this document. §2.3 supplies the other half: a matching anchor establishes
 nothing. A survivor still pays the exact compare.
 
@@ -79,7 +79,7 @@ ruled out and would need a larger sample.
 
 ### H3 - A repeating curve from the rotations
 
-**Claim.** A probability set is a wave; a wave repeats. SHA-256's rotations are periodic, so some
+**Claim.** A probability set is a wave; a wave repeats. SHA-256's rotations are periodic, which predicts that some
 nonce lag should show digests agreeing on more than half their bits.
 **Method.** `bench_corpus.cpp:test_repeating_curve`. Bit agreement between `digest(n)` and
 `digest(n+lag)` over 2,097,152 pairs, at 20 lags including every SHA-256 rotation amount
@@ -104,14 +104,14 @@ recording the first nonce that clears.
 
 **Verdict.** Supported. The source is memoryless.
 **Consequence.** This is the structural negative result. A memoryless source means no history
-predicts the next draw, so no ordering of the nonce space is better than any other.
+predicts the next draw, and therefore no ordering of the nonce space is better than any other.
 
 ### H5 - The 2D boundary knows when it was rotated
 
 **Claim.** Project the state onto its two dimensional boundary, eight words by thirty-two bits, and
 transform along the bit axis. A cyclic rotation by `r` is multiplication by `exp(-2*pi*i*k*r/32)`,
-so
-the magnitude spectrum is invariant and the phase carries `r`.
+and
+the magnitude spectrum is therefore invariant while the phase carries `r`.
 **Method.** `bench_transform.cpp:check_rotation_identity`. Exact 32-point DFT, 256 random words and
 random rotations, comparing magnitudes and phase against the predicted ramp.
 **Result.** Largest magnitude drift 1.35e-13. Largest phase error 5.61e-13 rad.
@@ -177,7 +177,7 @@ linear in exactly one of them.
 | add a constant | 0.02% | 100.00% |
 
 **Verdict.** **Supported exactly.** This corrects the table in §4 as it stood before: modular
-addition is not "nonlinear", it is linear in the other structure. A projection that diagonalises one
+addition is not "nonlinear", it is linear in the other structure. A projection that diagonalizes one
 structure necessarily fails on the other, and a round applies both.
 
 ### H10 - The carry is the lift, and it is biased
@@ -243,7 +243,7 @@ the same collapse by round 8.
 ### H13 - A vector walk to the answer
 
 **Claim.** Walk a vector toward the answer using the approximate representation. The most probable
-next step carries larger magnitude than the rest, so following it converges.
+next step carries larger magnitude than the rest, and following it converges.
 **Method.** `bench_walk.cpp`. Fitness is leading zero bits of the doubled digest, the same
 quantity the target tests. Three measurements: correlation between `f(current)` and `f(neighbor)`;
 best-of-32-neighbors against best-of-32-unrelated; and a head to head against plain enumeration at
@@ -264,10 +264,10 @@ identical hash budget, with restarts allowed so the walk is tested in its strong
 Head to head over 24 runs of 1,048,576 hashes each: walk 20.500 mean best leading zeros,
 enumeration 20.375. Walk wins 11, enumeration wins 11, 2 ties. Both sit on log2(budget) = 20, the
 best of N draws from a flat domain.
-**Verdict.** Not supported. Every step definition matches the unrelated-nonce control, so the domain
+**Verdict.** Not supported. Every step definition matches the unrelated-nonce control, which shows that the domain
 has no neighborhoods and steepest ascent is random sampling with a costlier step.
 **Note on where this method does work.** The technique is sound wherever the landscape is
-correlated, so it works on alphabet and word webs. Those corpora have H2 well under 8. The
+correlated, and it works on alphabet and word webs. Those corpora have H2 well under 8. The
 digest domain measures 7.999999 by H2, and that measurement is the same statement as this one:
 no neighborhoods.
 
@@ -299,7 +299,7 @@ an error in the first revision of this entry and is corrected here. The miner co
 | field | width | where it lands | effect |
 |---|---|---|---|
 | nonce | 32 bits | header 76-79, `W[3]` of block two | inner loop |
-| extranonce2 | 64 bits here (pool sets the width) | coinbase, so the merkle root | changes the midstate **and** `W[0]` |
+| extranonce2 | 64 bits here (pool sets the width) | coinbase, and through it the merkle root | changes the midstate **and** `W[0]` |
 | ntime | ~13 bits of slack within the allowed window | header 68-71, `W[1]` | rollable |
 | version | 16 bits under BIP320 | header 0-3, inside the midstate | rollable |
 
@@ -317,13 +317,13 @@ Within one fixed job and one fixed extranonce2, the frontier is:
 | W[0] merkle tail, W[1] ntime, W[2] nbits | known for this choice of them |
 | W[3] nonce | unknown, 32 bits |
 | W[4..15] padding and length | known, constant |
-| W[16..63] | generated from W[0..15], so unknown |
+| W[16..63] | generated from W[0..15] and therefore unknown |
 | rounds 0, 1, 2 of hash one | computable without the nonce |
 | round 3 onward | needs W[3] |
-| hash two's message | is hash one's output, so needs all of it |
+| hash two's message | is hash one's output and needs all of it |
 
 Forward frontier: 3 rounds of 128, and only with extranonce2 and version held fixed. Moving either
-of those changes the midstate, so those 3 rounds have to be recomputed too. Backward frontier: 0
+of those changes the midstate, and those 3 rounds have to be recomputed too. Backward frontier: 0
 rounds, because inverting round t needs `W[t]` and every schedule word past 15 is generated from the
 words being solved for.
 
@@ -347,7 +347,7 @@ the same seam.
 and
 never measured, and the workbook said so.
 **Method.** `bench_extranonce.cpp`, using a real `mining.notify` captured from solo.ckpool.org kept
-verbatim, so the coinbase layout and the 12-entry branch are what a pool actually sends. A step here
+verbatim, which makes the coinbase layout and the 12-entry branch the ones a pool actually sends. A step here
 rebuilds the coinbase, its double hash, every merkle fold, the merkle root, and therefore the
 midstate.
 **Control first.** Moving extranonce2 moves the merkle root, moves nothing else in the header, and
@@ -396,16 +396,16 @@ path by two independent routes.
 **Where real winning nonces land.** 1000 solves in 16 buckets across the nonce space, 62.5 expected
 each: 74, 66, 65, 65, 69, 59, 62, 62, 82, 66, 58, 53, 62, 53, 58, 46. Chi-square 17.6 on 15 df
 against an expected 15, z = +0.47. Uniform. These are real answers to the real search, and they land
-nowhere in particular, so there is no region of the space a miner should prefer.
+nowhere in particular, and there is no region of the space a miner should prefer.
 
 **Version rolling in the wild.** 616 distinct version values across 1000 blocks, which is BIP320
 rolling being actively spent as a search dimension. That is direct evidence for the correction in
 §H15: bounding the input to the nonce was wrong, and the network does not do it either.
 
-### H18 - There is no noise floor, so stop quoting one
+### H18 - There is no noise floor; stop quoting one
 
 **Claim.** The digest field carries no background noise, because the information is held elsewhere.
-**Why it is right.** SHA-256 is deterministic, so `H(digest | input)` is exactly zero. The flatness
+**Why it is right.** SHA-256 is deterministic, which makes `H(digest | input)` exactly zero. The flatness
 is
 not a noisy signal averaging out; it is pseudorandomness with no stochastic component at all. H14
 already showed where the information is: preserved perfectly in the mechanism, recoverable by
@@ -442,9 +442,9 @@ round constant K[0], initial value word 0, and a golden-ratio constant the algor
 control.
 **Result at 2^26 pairs.** One row crossed five sigma: salt `0x00000001`, bit 169, bias +3.338e-04,
 **+5.47 sigma**. Every other row closed. Over 15 salts times 256 positions that is 3840 tests, whose
-expected worst by chance alone is near 4.1 sigma, so 5.47 is above the bar but not far above it.
+expected worst by chance alone is near 4.1 sigma: 5.47 is above the bar but not far above it.
 **Confirmation, the point.** The flagged row was retested at 2^32 pairs, 64 times the
-sample. A real bias grows as sqrt(N), so 5.47 sigma should have become roughly 43 sigma.
+sample. A real bias grows as sqrt(N), and 5.47 sigma should therefore have become roughly 43 sigma.
 
 | | worst position | bias | sigma |
 |---|---|---|---|
@@ -524,8 +524,8 @@ identically zero for every base point. A vanishing differential is a **proof** o
 **exactly 3**; round 5 onward degree **at least 12**, past the table. Ceiling is 32.
 **Verdict.** The only measurement in this workbook that proves something about the output instead of
 bounding it. Degree goes from 3 to ≥12 in one round.
-**Correction made in producing it.** Order `k` vanishes exactly when degree is *below* `k`, so the
-degree is the **highest failing** order. The first version printed the lowest, which labeled every
+**Correction made in producing it.** Order `k` vanishes exactly when degree is *below* `k`, and the
+degree is therefore the **highest failing** order. The first version printed the lowest, which labeled every
 row with any failure as "degree 1" and would have hidden the exact-3 result at round 4 entirely.
 
 ### H22 - Which element destroys the rotational relation
@@ -548,7 +548,7 @@ survival, with the prediction written down before each run.
 | no constants, no mixing | 0.00% | 0.00% |
 
 **Verdict. The prediction failed.** Removing the constants changed nothing. Only the variant with
-neither constants nor modular addition survives, so both elements are structural and the constants
+neither constants nor modular addition survives. Both elements are therefore structural and the constants
 were given sole credit in error.
 **The correction, and it is quantitative.** The theory does not say addition preserves the relation.
 It says addition preserves it with a probability and computes that probability:
@@ -560,7 +560,7 @@ It says addition preserves it with a probability and computes that probability:
 | predicted by the formula | 0.265625 |
 | difference | -0.000345 |
 
-A round applies about six additions, so per-round survival is `0.265280^6 = 3.485e-04`, giving 1.43
+A round applies about six additions, which makes per-round survival `0.265280^6 = 3.485e-04`, giving 1.43
 expected survivors in a 4096-trial table. The row read 0.00% because the relation was destroyed by
 the **additions**, at a rate the table had no resolution to see. Rotation, exclusive or and the
 Sigma
@@ -574,12 +574,12 @@ anything: the constants are not optional and nobody chooses them at mining time.
 
 **Claim.** Every projection so far attacked the compression function. The schedule is a weaker
 object:
-`sigma0` and `sigma1` are rotations, shifts and exclusive or, so both are GF(2)-linear, and only the
+`sigma0` and `sigma1` are rotations, shifts and exclusive or, which makes both GF(2)-linear, and only the
 three modular additions per word leave that basis. It is also where the one real structural win in
 Bitcoin mining lives, since ASICBoost exploits the schedule's independence from the chaining value.
 **Method.** `bench_schedule.cpp`. Confirm the linearity, measure the real expansion against its
-xor-linearised twin on dense values and on sparse differences, and trace the mining case exactly.
-**Result, linearity.** Confirmed over 200,000 pairs for both spread functions, and the linearised
+xor-linearized twin on dense values and on sparse differences, and trace the mining case exactly.
+**Result, linearity.** Confirmed over 200,000 pairs for both spread functions, and the linearized
 expansion is linear as a whole map over 20,000 blocks.
 **Result, dense values.** 0.0000% exact agreement at W[16] and every word after. Mean Hamming
 distance 767.8 of 1536, which is 50% and therefore two unrelated values. Four dense random addends
@@ -597,7 +597,7 @@ per word from W[18], the first expanded word the nonce reaches:
 enters, then collapses by a factor of 140 in one step at W[20], which is where the difference first
 re-enters through `sigma1` and is spread.
 **Result, mining case, exact and not sampled.** Of 16 input words, 12 are literal constants.
-Tracing which expanded words depend on W[3]: only **W[16] and W[17]**, so 2 of 48. Rounds computable
+Tracing which expanded words depend on W[3]: only **W[16] and W[17]**, 2 of 48. Rounds computable
 before the nonce is needed: 3 of 64. Measured speedup on the expansion alone: **1.033x**, roughly a
 quarter of that end to end.
 **Corrections made in producing it.** Two, both the same shape. The first table measured agreement
@@ -607,17 +607,17 @@ a
 column reading 0.0000%.
 **The lesson, the valuable part.** 1.033x against ASICBoost's ~20% is the gap, and the gap
 is the finding. ASICBoost does not hold the nonce variable and share the remainder. It makes chunk
-two byte-identical across candidates by varying the merkle root or version instead, so all 48 words
-are shared instead of 2. The win comes from **choosing which dimension to vary**, not from analysing
+two byte-identical across candidates by varying the merkle root or version instead, and all 48 words
+are shared instead of 2. The win comes from **choosing which dimension to vary**, not from analyzing
 the one everyone already varies.
 
 ### H24 - The chain as an iterated map
 
 **Claim.** Every test so far lived inside one header's nonce space. Block N's hash is literally a
-field of block N+1's header, so the sequence is an iterated map `h(n+1) = F(h(n), rest(n))`, and
+field of block N+1's header, which makes the sequence an iterated map `h(n+1) = F(h(n), rest(n))`, and
 iterated maps have orbits, recurrences and periods.
 **Stated before measuring.** A block hash is not a uniform 256-bit value. It is conditioned on
-clearing the target, so the top ~76 bits are forced and only the remainder is free. Every test uses
+clearing the target: the top ~76 bits are forced and only the remainder is free. Every test uses
 the free bits, because a test on the whole hash finds very large structure that is entirely the
 conditioning.
 **Method.** `bench_chainmap.cpp` over the 1000-block corpus.
@@ -631,16 +631,16 @@ conditioning.
 | power spectrum, 499 bins | peak/mean **5.961** against 12.429 expected |
 
 **Verdict.** No long-range structure at this sample size.
-**Correction made in producing it, and the most spectacular-looking of the programme.** The first
+**Correction made in producing it, and the most spectacular-looking of the program.** The first
 version modeled the overshoot as geometric in nibbles, predicted 58.6 blocks at 80 leading zeros,
 measured 426, and reported a **7.27x excess**. The target is not at a nibble boundary: nbits
-`0x1702355e` puts it near 2^177.14, so P(clearing 80 bits) is 2^176/2^177.14 = 0.454 instead of
+`0x1702355e` puts it near 2^177.14, and P(clearing 80 bits) is 2^176/2^177.14 = 0.454 instead of
 1/16. Using each block's own nbits the ratio is 1.0076. The entire effect was a boundary I had not
 accounted for.
 **Why no orbits were ever likely, which is structural instead of statistical.** An autonomous map
 `h -> F(h)` has orbits. This one is `h(n+1) = F(h(n), rest(n))` where `rest` carries a fresh
 coinbase
-and a fresh nonce chosen by whoever mined that block. Fresh entropy enters at every step, so it is a
+and a fresh nonce chosen by whoever mined that block. Fresh entropy enters at every step, which makes it a
 Markov chain with injection instead of a dynamical system, and a system with injection cannot recur.
 **Bound instead of proof.** 1000 blocks cannot see a period longer than about 500, and the corpus
 spans one difficulty adjustment.
@@ -650,7 +650,7 @@ spans one difficulty adjustment.
 **Claim.** Instead of setting pins in sequence, which H27 shows is impossible here, set them all at
 once across the field using many co-arms.
 **The theorem behind it, which is real.** Co-arms buy a quadratic gain when the win condition is
-*relational*, satisfied by a pair of arms agreeing. N arms make N(N-1)/2 pairs, so events grow as N
+*relational*, satisfied by a pair of arms agreeing. N arms make N(N-1)/2 pairs, and events grow as N
 squared while work grows as N. That is the birthday bound and it is why a collision against a
 256-bit hash costs 2^128 instead of 2^256.
 **Method.** `bench_coarms.cpp`. Both conditions measured on identical digests, matching on 24 bits.
@@ -672,7 +672,7 @@ nowhere to submit it. The birthday bound finds two inputs that agree; proof of w
 input that is small.
 **Consequence, which explains H20 from the other side.** The co-arm salt cascade divided winners
 along with everything else because a cascade of arms is relational by construction while the target
-is absolute, so the arms filtered on a property the target does not care about.
+is absolute: the arms filtered on a property the target does not care about.
 **The counterexample that proves the rule.** Equihash is a collision-finding proof of work, designed
 relational precisely so memory and the birthday bound matter, and specifically to resist the
 hardware
@@ -680,8 +680,8 @@ Bitcoin's absolute target rewards. Bitcoin chose the other side deliberately.
 
 ### H26 - What the human encoded, and what delivery requires
 
-**Claim.** A human invented this and humans encode things in what they invent, so there should be a
-designer's fingerprint. Separately: if we know the nonce we can rehash and rederive the solution, so
+**Claim.** A human invented this and humans encode things in what they invent, and there should be a
+designer's fingerprint. Separately: if we know the nonce we can rehash and rederive the solution. Then
 what is the problem?
 **Method.** `bench_delivery.cpp`. Derive every constant from the primes; time verification against
 search; test whether a known solution transfers to another header.
@@ -713,7 +713,7 @@ nonce"
 is not a step toward the answer; it is the answer, already held.
 **Result, transferability.** Block 125552's real nonce, with one merkle bit flipped, the
 least a different coinbase does: leading zeros fall from ~64 to **0**, against a target needing 60.
-The merkle root commits to the coinbase and the coinbase carries the payout address, so putting your
+The merkle root commits to the coinbase and the coinbase carries the payout address. Putting your
 address in it invalidates every nonce anyone has ever found. That binding makes the work
 belong to the payee instead of being transferable and worth nothing.
 
@@ -770,7 +770,7 @@ or near zero. **With the constants present, all 32 frames read 0.000000** over 4
 at three, 0.00005% at four.
 **A small real positive.** Measured exceeds `p^n` by about 1.6x at round two and 2.1x at rounds
 three
-and four, so successive rounds are slightly positively correlated in the frame instead of
+and four, which makes successive rounds slightly positively correlated in the frame instead of
 independent. That is a genuine structural effect and it is the thread H29 pulls.
 **Verdict.** Extrapolating the measured per-round rate: 2.249e-212 over 128 rounds against brute
 force at 8.636e-78. Riding the best frame for the depth a header hash runs is about **4e133 times
@@ -788,7 +788,7 @@ Posit
 raised during the work: the error is recursive.
 **Method.** `bench_thread.cpp`, four pulls in order of what they would be worth.
 **Pull one, recursion. Supported.** Conditioning at each depth instead of waiting for rare
-survivors, so every depth carries the same statistical weight:
+survivors, and every depth carries the same statistical weight:
 
 | round | conditional | vs base |
 |---|---|---|
@@ -842,7 +842,7 @@ constant, one output word.
 **Verdict.** 234 orders of magnitude short, and the chain does not chain: round zero gives 0.002
 because the incoming delta is zero, and every round after collapses by about 300x. A nonzero
 incoming
-delta is worth far less than a zero one, so published searches need backtracking instead of
+delta is worth far less than a zero one, and published searches therefore need backtracking instead of
  greed.
 **Correction made in producing it.** The first sweep measured all 8 output words and reported
 **P = 1.00000000 at every frame**. A round writes only `state[0]` and `state[4]`; the other six are
@@ -863,7 +863,7 @@ shifts of the input, trivially rotational on output, and they outvoted the two r
 | fraction of the delta axis visited | **1.86e-09** |
 
 **Resolution floor.** At 300,000 pairs the smallest measurable probability is 3.33e-06, and the
-chained rounds sat at 6.67e-06, which is two occurrences. Those rounds are at the floor, so the
+chained rounds sat at 6.67e-06, which is two occurrences. Those rounds are at the floor, and the
 compound is an upper bound on a quantity that may be smaller instead of a measurement of it.
 **Standing.** This is a lower bound on what is reachable, not an upper bound on what exists. A
 better
@@ -884,10 +884,10 @@ statistic `M`, the residual is
 A permutation null cannot be derived wrongly, because it preserves the carrier's own counts by
 construction and not by arithmetic.
 **Method.** `bench_deltanull.cpp`. `M` is the concentration of the most common rotational-XOR delta,
-the statistic H29 reported as the programme's strongest positive. `pi` re-pairs the two members
+the statistic H29 reported as the program's strongest positive. `pi` re-pairs the two members
 while
 leaving both output multisets exactly as measured. If the concentration lives in the *pairing* it is
-real structure; if it lives in the *marginals*, a permutation preserves it and the residual
+real structure; if the *marginals* carry it, a permutation preserves it and the residual
 vanishes.
 **Result.** 2,000,000 pairs, 12 null draws.
 
@@ -903,11 +903,11 @@ concentration as **775,000 times uniform**. That compared a max-statistic agains
 probability, the wrong reference: drawing 2,000,000 samples into 2^32 bins gives an expected
 maximum count of two or three by chance alone. That is the 0.0001% the permutation null
 returns. **The correct figure is 184.5x, not 775,000x.** The headline was inflated by about 4,200.
-**What remains.** The residual is real. All twelve null draws returned the same value, so the null
+**What remains.** The residual is real. All twelve null draws returned the same value: the null
 has nearly no variance at this resolution and 184.5x sits far outside it. The rotational pairing
 does carry structure the marginals do not.
 **What does not change.** The 234-orders-short conclusion in H30 was computed from the probability
-1.845e-04, not from the concentration ratio, so it stands untouched. Only the framing was wrong.
+1.845e-04, not from the concentration ratio, and it stands untouched. Only the framing was wrong.
 **Standing recommendation.** Every statistic in this workbook that was compared against a
 hand-derived
 null should be re-run against `Pi_Sigma`. The ones with an outside reference - the 1000 real solves,
@@ -979,16 +979,16 @@ consistency check. **The 15.497 bits is the collision advantage. The search adva
 that and is smaller.**
 **What cannot be said, and why it matters.** Order one half is not estimable from a sparse sample.
 The plug-in is `2 log2 sum sqrt(p)`, and where every observed delta is a singleton that sum is
-exactly `sqrt(n)`, so the estimate reads `log2 n` whatever the true entropy is. At 2,000,000 pairs that
+exactly `sqrt(n)`, and the estimate reads `log2 n` whatever the true entropy is. At 2,000,000 pairs that
 ceiling is 20.93 bits and the plug-in reads 18.25, close enough to it that the number is mostly
-sample size. `bench_deltanull.cpp` now prints the ceiling beside the estimate so the artefact cannot
+sample size. `bench_deltanull.cpp` now prints the ceiling beside the estimate so the artifact cannot
 be read as a measurement. **The only place order one half is exactly computable is where nothing is
 sampled**, the whole reason `bench_renyi` enumerates.
 **Verdict.** The axis is real, the prediction along it is parameter-free, and the estimator is
 validated in both directions by controls. The workbook has been reading one point of a family and
 quoting it as the answer to a question a different point answers.
 
-### H33 - Which results survive the optimiser
+### H33 - Which results survive the optimizer
 
 **Claim.** A compiler folds, contracts, reassociates and hoists. Where it folds a measurement into
 an immediate the bench prints a compile-time answer while appearing to compute one, and that is not
@@ -1016,7 +1016,7 @@ Three moved, and all three are ratios of measured throughputs instead of propert
 | `bench_schedule` | speedup on the expansion alone | 0.932x | **0.395x** | 0.256x |
 | `bench_delivery` | ratio, search over verify | 1.08e+19 | **5.46e+19** | 6.15e+19 |
 
-**Verdict.** No statistical or topological result in this workbook depends on the optimiser. The
+**Verdict.** No statistical or topological result in this workbook depends on the optimizer. The
 three that do are performance claims, and each states as a fact about the algorithm something that
 is a fact about the build. `bench_schedule` matters most of the three: the rolling-window expansion
 this tree has been carrying as a pending fix measures **0.395x at `-O2`, meaning two and a half
@@ -1035,11 +1035,11 @@ at the printed precision: 56 of 56 agree. Nothing else in the tree has that chec
 **Claim.** Three separate defects in this workbook have one cause: measuring an effect along a path
 that does not exist, and reading the resulting nothing as a result. H6 rotated the nonce instead of
 the chaining value. H23 measured through `W[17]`, which does not depend on `W[3]`, and reported
-100.000% agreement, which was zero equalling zero. `bench_closeness` graded rounds 1–3 as "premise
+100.000% agreement, which was zero equaling zero. `bench_closeness` graded rounds 1–3 as "premise
 holds: no" when the nonce had not arrived. This is failure mode one in `docs/failure-modes.md` and
 it
 has produced more defects here than any other.
-**The instrument.** `bench_reach.cpp`. Computed, not sampled - the circuit is a fixed graph, so
+**The instrument.** `bench_reach.cpp`. Computed, not sampled - the circuit is a fixed graph;
 reachability is decidable and "no path exists" is a constraint of a different kind from "no effect
 observed". Every state bit carries the set of input bits that can reach it, over all 768 inputs of
 one
@@ -1064,7 +1064,7 @@ on.
 The widest cone grows 256, 320, 352, 384, 416, 448, 480, … - thirty-two bits per round after the
 first two, one schedule word per round. This is a hard structural constant this tree has not had.
 **Control, run in the opposite direction.** An analysis claiming reachability everywhere would pass
-an absence test trivially, so both halves are needed. Over 24,000 random flips at rounds 1–6:
+an absence test trivially, and both halves are needed. Over 24,000 random flips at rounds 1–6:
 
 | | |
 |---|---|
@@ -1083,7 +1083,7 @@ since the first revision, where it was listed as unbuilt.
 ### H35 - The arrangement of the holes, checked in every direction there is
 
 **Claim.** Every number this workbook has produced about the digest distribution is a function of
-the count multiset alone, so all of them are permutation invariant and none can see *where* the
+the count multiset alone, which makes all of them permutation invariant and none can see *where* the
 holes sit. From `anchor_sift`'s ledger: histogram quantities describe the maximum entropy case and
 are free; the arrangement is what remains. Nothing here had ever asked about it.
 **The instrument.** `bench_renyi.cpp` and `bench_renyi_cuda.cu`. All `2^32` nonces of block 125552's
@@ -1114,7 +1114,7 @@ Longest run of holes 20 against 21.72 expected; longest run of reached values 50
 **Verdict.** No structure in the arrangement, on any axis tested, at any width, in any direction.
 **What it cost, the actual finding.** Going from every two-byte mask to every mask was
 10,900 times the work and bought 1.67σ of reach. Detection reach goes as `sqrt(2 ln N)` while cost
-goes as `N log N`, so **cost is exponential in the square of the reach** and the next 1.67σ costs
+goes as `N log N`, and therefore **cost is exponential in the square of the reach** and the next 1.67σ costs
 about a million times more. The complete-direction approach floors near 7σ for any budget that
 exists, and the knee is already behind us. Derivation in `docs/information-theory.md` §5.7.
 **Three defects caught on the way, all by checks and not by eye.** The transform's own
@@ -1137,7 +1137,7 @@ on.
 
 **Claim.** From the symbol-width posit in `anchor_sift`: a detector is not told where the units
 begin, and a slice of the right width at the wrong offset splits every unit across two symbols.
-Every window this tree has ever read is byte-aligned, so seven of the eight alignments had never
+Every window this tree has ever read is byte-aligned, and seven of the eight alignments had never
 been looked at, at any width. Structure sitting at an offset of one to seven bits would have been
 split at every window in every run recorded here and invisible to all of them.
 **Method.** `tools/audit/sweep_phase.ps1`. Eight runs at `2^28`, one per phase, each reading the digest as
@@ -1145,7 +1145,7 @@ a ring so every phase covers all 256 bits instead of running off the end into a 
 The splitmix64 control runs at every phase too, because a pseudorandom function has no preferred
 alignment and its spread across phases is the floor.
 **Why `2^28` and not `2^32`.** The resolution of a deficit ratio depends on the bin count and not on
-the domain: the chi-square statistic behind it has variance twice its degrees of freedom, so one
+the domain: the chi-square statistic behind it has variance twice its degrees of freedom, and one
 window resolves its deficit to `sqrt(2/(r-1))` whatever the domain size. Eight runs at `2^28` are
 each exactly as sensitive to a phase difference as one run at `2^32`, at a sixteenth of the cost.
 **Result.** Mean spread of the deficit ratio across the eight phases:
@@ -1158,7 +1158,7 @@ each exactly as sensitive to a phase difference as one run at `2^32`, at a sixte
 **Verdict.** No phase dependence. The sixteen-bit family is the sharp instrument here and it reads
 0.997 - SHA256d varies with alignment exactly as much as a pseudorandom function does, which is to
 say not at all. The byte-window ratio of 1.373 is a ratio of two spread estimates each built from
-eight numbers, so each carries about 27% relative uncertainty and their ratio about 38%; both
+eight numbers, and each carries about 27% relative uncertainty and their ratio about 38%; both
 spreads also sit below the 1.57% resolution of that family, meaning both are measuring sampling
 noise instead of anything about alignment. It is not a finding and it should not be read as one.
 **What this closes.** The symbol-width posit's second half, the phase. Its first half, the width,
@@ -1194,7 +1194,7 @@ because 137 samples is 1.7 envelope symbols at block 80 and falls below Nyquist.
 falls straight between the rungs of a two-rung ladder.**
 **So scale and unit were unbound.** The unit runs over all 32 digest bytes and the scale over a
 geometric ladder of 12 blocks, which is 384 readings per signal instead of 3. All 32 bytes come
-from one hash, so sweeping the unit costs memory and not work. The comb was then hidden in **byte 19
+from one hash, and sweeping the unit costs memory and not work. The comb was then hidden in **byte 19
 of 32**. A fixed-byte reading misses it 31 times in 32 and the sweep has to find it to pass.
 **Result**, 2^20 nonces, best cell of 384 per signal:
 
@@ -1230,7 +1230,7 @@ measure absence at every shallower depth - the defect H34 exists to prevent, avo
 bivariate normal, `-log2(1 - c^2)/2`, because a correlation is not additive and a bit is, and only
 bits can be divided by the rounds spent.
 **Two co-arms, coupled instead of independent.** A round writes `state[0]` and `state[4]` and
-shifts the rest along, so those are the only two places it puts anything. Both are driven by the
+shifts the rest along, and those are the only two places it puts anything. Both are driven by the
 same input difference on the same pair, which makes them co-arms - an earlier attempt in
 this tree used independent arms and was structurally guaranteed to null. The joint reading is the
 multiple correlation of the input distance on both at once.
@@ -1245,14 +1245,14 @@ multiple correlation of the input distance on both at once.
 | 5 | 0.0011 | 0.0299 | 0.0299 | 0.00013 | −0.0040 |
 | 6 and beyond | at control | at control | | 0 | ~0 |
 
-**There is no interior maximum.** Bits per round falls about five-fold per round, so the shallowest
+**There is no interior maximum.** Bits per round falls about five-fold per round, and the shallowest
 depth is always the most efficient and there is no clever depth to steer to on the pooled curve.
 **Three things fell out of that table.** The co-arm gain is real but small - the joint exceeds the
-better single arm at every depth, by one to three percent, so the two arms do carry slightly
+better single arm at every depth, by one to three percent: the two arms do carry slightly
 different parts. `state[4]` holds correlation about ten times longer than `state[0]`, which is
 structural: `state[0] = carry_one + carry_two` mixes both carries plus `mix_low` and `majority`
 while `state[4] = state[3] + carry_one` is a single addition. And it cross-checks `bench_closeness`
-independently: that bench put the difference on the nonce, which enters at round 4, so its death at
+independently: that bench put the difference on the nonce, which enters at round 4, and its death at
 round 10 is this one's death at round 6, offset by exactly four.
 **The pooled curve is a mean, and it was hiding the answer.** Stratified by how many bits differ,
 using the distance of the mean output distance from 16 in standard errors - a statistic that stays
@@ -1269,11 +1269,11 @@ defined when the weight is fixed, where a correlation does not:
 At four rounds a one-bit difference reads **525.7 standard errors** and a sixteen-bit difference
 reads **0.4**. Three orders of magnitude apart, inside the single number the pooled table reported.
 **The law, and the wall it implies.** Death depth falls by exactly one round per doubling of the
-weight, so `depth ≈ 7 - log2(w)`, which is linear in the logarithm and makes weight the exponential
+weight, giving `depth ≈ 7 - log2(w)`, which is linear in the logarithm and makes weight the exponential
 lever on depth. Inverting it is the part worth having: the weight needed to reach depth `d` is
 `w = 2^(7-d)`. At `d = 7` that is one bit. At `d = 8` it is half a bit.
 
-**Weight is bounded below by one, so round seven is a wall instead of a slope.** There is no
+**Weight is bounded below by one, which makes round seven a wall instead of a slope.** There is no
 difference that reaches round eight by this route, because the lever runs out instead of because
 the signal happens to be small there. The one-bit difference is the deepest probe that exists and it
 dies at seven rounds of sixty-four, which is 5.5% of a doubled hash. Every deeper result in the
@@ -1293,7 +1293,7 @@ differences; if the object is to see anything at all, use light ones.
 **Which lands on the miner's own stride.** An increment `n -> n+1` flips exactly **2.0000** bits on
 average, measured over 2^24 steps - the carry chain makes it two regardless of where in the range it
 sits. So sequential nonce scanning generates differences in the weight-two stratum, which dies at
-round six of the seven that are reachable at all. **The miner is already walking the
+round six of the seven rounds it can reach. **The miner is already walking the
 deepest-surviving stratum without trying**, and there is one round of depth available above it,
 obtainable only by stepping the nonce so that consecutive candidates differ in a single bit - a Gray
 code order instead of a counting one. That is one round out of sixty-four, and it is all of
@@ -1306,14 +1306,14 @@ do - fewer active bits diffuse more slowly, and steering toward low-weight diffe
 published differential cryptanalysis already does. It is a locality that every pooled measurement in
 this workbook averaged away.
 **A defect caught in the reading, and its direction matters.** The bit flips were drawn
-independently, so two could land on the same bit and cancel, and a stratum labeled "9 to 16"
+independently, and two could land on the same bit and cancel, and a stratum labeled "9 to 16"
 quietly contained lower weights. That is failure mode 7 and it had already been fixed once in
 `bench_closeness`, then reintroduced here. The contamination made high-weight strata appear to
 survive *deeper* than they do: with distinct positions the 5-to-8 row at four rounds moves from
 −3.2 to −0.1 and the 3-to-4 row from −22.4 to −15.7. **The subtle error was hiding real tail
 error**,
 and correcting it sharpened the separation instead of weakening it. The bench now asserts the
-realised weight equals the requested one and stops instead of printing a mislabeled row.
+realized weight equals the requested one and stops instead of printing a mislabeled row.
 
 ## 4. What The Results Say Together
 
@@ -1370,9 +1370,9 @@ and the message schedule (H23). What remains:
 - ~~**Exact DAG reachability.**~~ Built, H34. The nonce reaches nothing for three rounds, `W[17]`
   carries none of it and `W[18]` carries all of it, and every state bit reads every input bit from
   round 21. The sampled light cone in H15 should now be re-read against the exact one.
-- **Reduced-width analogue.** An 8-bit-word SHA-256 has a state small enough to enumerate
+- **Reduced-width analog.** An 8-bit-word SHA-256 has a state small enough to enumerate
   completely, which would turn every sampled result in this workbook into an exact one.
-- **Rounds 5 through 9.** Every projection dies in that window and none characterises its interior.
+- **Rounds 5 through 9.** Every projection dies in that window and none characterizes its interior.
 - **Periodic disturbance on co-arms.** From `anchor_sift/docs/research/hourly_supposition.md` item 1:
   introducing a periodic disturbance is reported to move joint error toward zero by several orders
   of
@@ -1409,7 +1409,7 @@ Stated because a document that only lists what it ruled out reads as stronger th
 Every number in this document was produced by a binary in this tree against the real function, not
 quoted. The reduced-round instrument in `sha256_core.c:sha256_block_compress_partial` is asserted
 equal to `sha256_block_compress` at 64 rounds over 512 random blocks
-(`bench_transform.cpp:check_instrument`), so the instrument cannot drift from what it measures. The
+(`bench_transform.cpp:check_instrument`), and the instrument therefore cannot drift from what it measures. The
 SHA-256 implementation itself is validated against FIPS 180-4 vectors, the genesis block, and block
 125552 in `kat_validation.cpp`.
 
