@@ -7,7 +7,7 @@ proposed, it is checked against this table and against the whole biohub tree, an
 
 | Extension | What it is | Named by |
 |---|---|---|
-| `.kcr` | The information crystal (Kolmogorov crystal). krep kind "KCR\0", version 1. The only crystal format. | Doug, 23 September |
+| `.kcr` | The information crystal (Kolmogorov crystal): its own compression format. krep kind "KCR\0", version 1. The only crystal format. | Doug, 23 September |
 | `.krs` | A ruleset: how the emitter spells the forms in one language (`ptx.krs`, `c.krs`, `vhdl.krs`). | |
 | `.kcs` | A construction set, part of the crystal flattener. | Doug |
 | `.knf` | A sample's noise floor. | |
