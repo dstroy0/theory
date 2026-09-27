@@ -320,8 +320,8 @@ The interface through which the two tables optimize against each other.
 | the program asks | the engine's row | state |
 |---|---|---|
 | probes and probe links, not key cells: the slide's partitions and the overlap's census | M3 | built (engine side); `slide_score.cu` not hooked |
-| the component tree's LCA levels and DFS order, to replace bisection (low fruit 4, 6) | M3 | not built: `max_tree_nodes` and the probe partition are in no commit of anchor_sift or biohub, and `max_tree.h` at 1948ae1 has neither (26 September) |
-| one own-node pair table at the drift, summed over DFS ranges (low fruit 5) | M3, M5 | not built: `max_tree_pairs` and `max_tree_overlap_sums` are in no commit of anchor_sift or biohub (26 September); M5 not built |
+| the component tree's LCA levels and DFS order, to replace bisection (low fruit 4, 6) | M3 | built on main by PR 13 (55797c2): `max_tree_nodes`, `max_tree_probe_levels`, `max_tree_probe_partition`, proved on the host, 18071 checks, 0 failed (26 September); `slide_score.cu` not hooked, and the slide still bisects (:97, :207) |
+| one own-node pair table at the drift, summed over DFS ranges (low fruit 5) | M3, M5 | built on main by PR 13 (55797c2): `max_tree_pairs` and `max_tree_overlap_sums`, proved against direct counts in the same run; not hooked; M5 not built |
 | a per-axis coherence reading that returns an exact integer period (order = period) | M2 | theory |
 | a smooth and background pair per sample in flatten | M9 | ruled, not built |
 | the permanent over a whole support component, and its size | M6 | theory |
