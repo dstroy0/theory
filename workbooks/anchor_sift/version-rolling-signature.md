@@ -24,7 +24,7 @@ A statistic taken with an instrument that cannot reproduce a known answer is wor
 
 Every threshold below is the null's own largest excursion over the same number of cells. Reporting
 the loudest of thirty-two cells against a one-cell threshold is the ordinary way to manufacture a
-finding, so the null is asked for its loudest too.
+finding, and the null is therefore asked for its loudest too.
 
 ## The version window
 
@@ -51,7 +51,7 @@ window:
     chi-square against uniform, 15 degrees of freedom:  2882.8
     the same statistic on a uniform draw of the same size:  9.9
 
-A null of that size lands near fifteen and landed at 9.9, so the instrument reads its own floor
+A null of that size lands near fifteen and landed at 9.9: the instrument reads its own floor
 correctly and the corpus sits three hundred times above it.
 
 The distribution is bimodal with isolated spikes. Mass piles at both ends of the window at once -
@@ -63,7 +63,7 @@ powers of two. Twenty values out of sixty-five thousand hold better than a quart
 A lopsided histogram says nothing about who produced it. The obvious reading is that each value
 names the software that emitted the block. That reading was tested twice and failed twice.
 
-**Persistence.** An emitter mines many blocks over a period, so if a version value named one, equal
+**Persistence.** An emitter mines many blocks over a period. If a version value named one, equal
 values would clump along the chain. The count of adjacent height pairs sharing a value was five.
 The same count after shuffling the labels over the same blocks, two thousand times, was 7.2 with a
 scatter of 2.6. The observed count sits eight tenths of a standard error below chance.
@@ -91,7 +91,7 @@ sit exactly on them. The pattern is collective, not personal.
 The timestamps carry a second, physical effect, and three readings separate it from the effects
 around it.
 
-**The mining process is clean.** Block finding at fixed difficulty is a Poisson process, so the gaps
+**The mining process is clean.** Block finding at fixed difficulty is a Poisson process, and the gaps
 should be exponential. They are, without fitting anything:
 
     sd / mean    0.9839      an exponential is 1.0000 exactly
@@ -114,19 +114,19 @@ freedom, which is where a fair clock lands.
 
 **The clocks disagree about the time.** Thirty-one of 999 blocks, 3.10 per cent, record a timestamp
 earlier than their own parent. That cannot happen if the network's clocks agree. The protocol allows
-it, so the count is a direct measurement of the disagreement with no model in between. The deepest
+it, which makes the count a direct measurement of the disagreement with no model in between. The deepest
 is height 965370, three hundred and four seconds before its parent.
 
 The three readings together locate the effect precisely. The process is clean and the clocks tick
-correctly, so what is left is offset: machines that keep good time and hold the wrong time.
+correctly. The remainder is offset: machines that keep good time and hold the wrong time.
 
 The offsets are large. They run from two seconds to 304, and the shape over the whole set is broad:
 binned at a minute, nine, three, seven, three, eight and one.
 
 That breadth rules out the first mechanism worth suspecting. NTP holds a machine within
-milliseconds, and even a deep stratum accumulates seconds at worst, so a five minute offset is four
-orders of magnitude past anything a synchronisation tree produces. These clocks are not badly
-synchronised. They are not synchronised.
+milliseconds, and even a deep stratum accumulates seconds at worst. A five minute offset is therefore four
+orders of magnitude past anything a synchronization tree produces. These clocks are not badly
+synchronized. They are not synchronized.
 
 It also rules out the second. Miners may move a timestamp as search space, which would tie it to the
 version window, the other field moved the same way. It does not: the rolled version against the
@@ -135,7 +135,7 @@ timestamp mod 600, mod 64, and its low bit gives -0.021, -0.006 and -0.028 again
 One lead is worth recording without claiming it. Blocks that reverse carry a mean rolled version of
 7159 against 14772 for the rest, which a permutation null puts at 2.09 standard errors. On a single
 test named in advance that would be worth something. As one of several run here it does not clear a
-largest-of-many bar, so it is a question for a longer corpus.
+largest-of-many bar, and it is left as a question for a longer corpus.
 
 An earlier draft of this document reported a narrow band near 280 seconds among the deepest
 reversals. That band was an artifact of printing the eight largest values of a sorted list, which
@@ -147,7 +147,7 @@ sorting.
 
 A statistic that is real and stationary sharpens as the square root of the count. Noise does not
 sharpen at all. That difference is the whole reason to integrate, and it tests a result without
-needing a new idea, so the readings above were repeated on seven times the corpus - 6980 blocks,
+needing a new idea. The readings above were therefore repeated on seven times the corpus - 6980 blocks,
 48.2 days - with the predictions written down first.
 
 | reading | at N=1000 | predicted at N=6980 | observed |
@@ -168,36 +168,36 @@ The one lead did not resolve. Reversing blocks carrying a lower rolled version r
 errors at a thousand blocks, which predicts -5.52 at this depth. It read -2.64: larger, but nothing
 like square root growth. It is neither confirmed nor dead and wants a deeper corpus, not a verdict.
 
-The reversal population is now readable at 208 reversals rather than 31. Binned by minute it runs
+The reversal population is now readable at 208 reversals, up from 31. Binned by minute it runs
 72, 37, 22, 30, 20, 23, 4 across zero to seven minutes - broad and decaying, with no discrete bands.
 That shape is the second argument against stratum error, independent of the argument from scale.
 
 ## A daily cycle, and what its phase would mean
 
-Within a difficulty epoch the target is fixed, so blocks arrive at a rate proportional to the
+Within a difficulty epoch the target is fixed, and blocks arrive at a rate proportional to the
 hashrate then running. Anything that moves hashrate on a daily cycle therefore moves the count of
 blocks in that hour, and electricity is priced on exactly such a cycle.
 
 Grouped by hour of day in UTC, the counts swing 27.5 per cent peak to trough, with a chi-square of
 36.62 on 23 degrees of freedom. A multinomial null over the same count and the same bins gives a
-mean of 22.95 and a ninety-fifth percentile of 35.10, so 108 of 3000 draws reached the observed
+mean of 22.95 and a ninety-fifth percentile of 35.10; 108 of 3000 draws reached the observed
 value: p = 0.036. By day of week the swing is 13.8 per cent at p = 0.052. Both are marginal, and
 neither is worth a claim on its own.
 
-The phase is the interesting part, and it was noticed after looking rather than predicted, so it is
+The phase is the interesting part, and it was noticed after looking, not predicted, which leaves it
 a hypothesis here and not a result. The counts run high across 08:00 to 11:00 UTC and low across
 18:00 to 23:00. Those are 02:00 to 05:00 and 12:00 to 17:00 in United States Central time: the
 overnight trough when power is cheapest, and the afternoon peak when it is dearest and when fleets
 exposed to grid pricing curtail.
 
 **The phase now has its own test, and it passes.** It needed one: a chi-square is invariant to
-relabelling the bins, so the p = 0.036 above fires identically whatever hour the trough lands in and
+relabeling the bins, and the p = 0.036 above therefore fires identically whatever hour the trough lands in and
 never spoke to the phase at all. An amplitude with a null and a phase without one is exactly how the
 retracted per-pool claim below went wrong, and the two sat one section apart.
 
 `maint/chain/phase_replication.py` splits the corpus and asks whether both halves put the trough in
 the same place. The interleaved split, even heights against odd, decides it: both halves span the
-same epochs, the same difficulty and the same population, so nothing but noise can separate them.
+same epochs, the same difficulty and the same population, and only noise can separate them.
 
 | split | half one trough | half two trough | apart | chance this close |
 |---|---|---|---|---|
@@ -205,23 +205,23 @@ same epochs, the same difficulty and the same population, so nothing but noise c
 | first half against second | 22:00 UTC | 22:00 UTC | 0 h | p = 0.037 |
 
 Chance puts two troughs that close about one time in twenty-two; the null is drawn multinomially at
-each half's own total, because the three-hour smoothing correlates neighbouring bins and the
+each half's own total, because the three-hour smoothing correlates neighboring bins and the
 distance distribution is nothing like uniform on 0 to 12.
 
 Two things worth reading off it. The **trough** is the stable feature and the **peak** is not: the
-peak moves from 08:00 to 13:00 between the time halves while the trough does not move at all, so the
-trough is what any phase claim should be built on. And this says nothing about migration in either
+peak moves from 08:00 to 13:00 between the time halves while the trough does not move at all, which makes the
+trough the feature any phase claim should be built on. And this says nothing about migration in either
 direction: the corpus spans 48 days and each half 24, while mining geography moves over years. Two
 halves three weeks apart agreeing is what a stable phase looks like *and* what an unmeasurably slow
 migration looks like. Separating those needs years of corpus, not this one.
 
-That phase carries geography. A miner's cycle follows its own local time, so a population spread
+That phase carries geography. A miner's cycle follows its own local time. A population spread
 evenly around the globe cancels to nothing in UTC and produces no daily signal at all. A signal
 exists only because the distribution is uneven, and the hour at which the trough falls is a
 longitude-weighted average of where the hashrate actually sits. The amplitude says how concentrated
 it is.
 
-Which makes the cycle a measurement rather than a curiosity: track its phase over years and it
+Which makes the cycle a measurement instead of a curiosity: track its phase over years and it
 traces the migration of mining around the planet, from public data, with no need to ask anyone where
 their machines are.
 
@@ -235,17 +235,17 @@ operation is not a test.
 
 The chain supplies the test. Global hashrate fell by roughly half across May to July 2021 when
 mining was banned in China, and recovered over the following months as fleets moved, principally to
-North America. It is dated, documented, enormous, and independent of anything being fitted here. So:
+North America. It is dated, documented, large, and independent of anything being fitted here. So:
 
     if hashrate-from-intervals is an instrument, it must show the 2021 collapse and the recovery
 
 with two checks alongside it. The ban forced the largest downward difficulty retargets in the
-chain's history, which are dated and public, so the detector has to place those correctly too - and
-retargets change intervals by design, so any window straddling one must be excluded or it will read
+chain's history, which are dated and public, and the detector has to place those correctly too - and
+retargets change intervals by design, and any window straddling one must be excluded or it will read
 as an event that is really a rule.
 
 The migration gives the daily cycle its own known answer at the same time. Hashrate moved from
-around longitude 105 east to around 100 west, which is close to half the planet, so the phase of
+around longitude 105 east to around 100 west, which is close to half the planet, and the phase of
 the daily cycle has to shift by most of twelve hours across 2021. A cycle that does not move when
 the miners demonstrably moved is not measuring the miners.
 
@@ -270,7 +270,7 @@ document does not record which script produced each of them, and that has not be
 
 ## Errors made and corrected here
 
-Two are worth recording, because both were caught by a null rather than by judgment.
+Two are worth recording, because both were caught by a null instead of by judgment.
 
 The first was a band. An earlier draft reported the deepest reversals clustering near 280 seconds,
 which was an artifact of printing the eight largest values of a sorted list: the largest values of a
@@ -297,11 +297,11 @@ negative result above is the reason to run it.
 
 ## Where the ideas came from
 
-Almost nothing here is new machinery. The contribution is pointing existing instruments at a
+Almost all the machinery here already existed. The contribution is pointing existing instruments at a
 dataset they are not usually pointed at, and the instruments belong to other people.
 
 The detection chain is radar's. Estimating the background under a cell from an order statistic of
-its neighbours, so that other targets sitting in the training cells cannot mask the one being
+its neighbors, so that other targets sitting in the training cells cannot mask the one being
 tested, is Rohling's ordered-statistic CFAR [7]. Naming the waveform before opening the data and
 projecting onto it is matched filtering, and the reason that projection carries no
 multiple-comparison penalty.
@@ -318,7 +318,7 @@ with what they found.
 The fields being read were specified by other people too, and reading them correctly means reading
 their specifications. The sixteen bits at 13 through 28 are reserved by BIP320 [6]; the Stratum
 extension that negotiates and rolls them is BIP310, by Pavel Moravec and Jan Capek [8]; the
-signalling scheme those bits were taken out of is BIP9 [9]. The header itself, the double hash, and
+signaling scheme those bits were taken out of is BIP9 [9]. The header itself, the double hash, and
 the difficulty rule are Nakamoto's [1], and SHA-256 is FIPS 180-4 [2] on the Merkle-Damgard
 construction [10].
 

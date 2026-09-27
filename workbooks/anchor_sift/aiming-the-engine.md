@@ -14,16 +14,16 @@ primitives anywhere. Measured on one desktop:
 
     pi to 10,000,000 digits              116.5 s, checked twice against an independent series
     a 1,290,000,000-bit product          1.72 s of device time
-    2.15 trillion SHA-256 evaluations    summarised in 3 MB of counters
+    2.15 trillion SHA-256 evaluations    summarized in 3 MB of counters
     26.6 billion multiply-accumulates    3.2 s, once the work was in the shape the card wants
 
-The last line is the one worth reading twice. The same permutation null took 24 draws a minute in
+The last line is worth reading twice. The same permutation null took 24 draws a minute in
 Python and 2000 draws in three seconds as a Gram matrix. The card was never the constraint; the
 shape of the work was.
 
 ## Read the interior, not the boundary
 
-A physical system forces a boundary reading: the interior cannot be reached, so it is inferred from
+A physical system forces a boundary reading: the interior cannot be reached, and it is inferred from
 what escapes. Almost nothing the engine is pointed at has that constraint, and treating it as though
 it does is a blindfold put on by hand.
 
@@ -54,7 +54,7 @@ is no way to tell them apart from inside the result.
 The clearest case: a compression test found no structure in a hash and was about to be believed.
 Adding an arm for the digits of pi - a sequence with a KILOBYTE generating program by construction -
 showed pi compressing to 1.0010 against random's 1.0001. The instrument could not distinguish a
-known short program from none, so its verdict was empty and the claim would have been a fact about
+known short program from none. Its verdict was empty and the claim would have been a fact about
 zlib.
 
 Every instrument gets one: pi for algorithmic structure, a planted relation for a relation search, a
@@ -64,14 +64,14 @@ class for a scanner. If the control does not fire, the null is about the tool.
 ## Draw the bar, never derive it
 
 Seven derived thresholds in one night and every one came in too low. The error is one-directional
-and that is why it is worth a rule rather than more care: deriving a bar means enumerating the
-sources of variance, and the ones left out only ever ADD variance, so the derived value is always
+and for that reason it earns a rule instead of more care: deriving a bar means enumerating the
+sources of variance, and the ones left out only ever ADD variance, which makes the derived value always
 the low estimate. A drawn bar has them all whether or not anyone thought of them.
 
     a shuffle of labels that returned identical counts every draw, sd 0.00
     a bar at two Poisson floors for a statistic that spans three and a half by construction
     chi-square's variance through a logarithm: 0.0582 where shuffling gives 0.1015
-    root(2 ln N), which is the EXPECTED maximum, so half of all nulls exceed it
+    root(2 ln N), the EXPECTED maximum, which half of all nulls exceed
 
 Resample instead. Shuffle the labels, redraw the counts at the same N and the same bin count,
 recompute the identical statistic, read the percentile. Where the statistic is a maximum, a minimum
@@ -79,17 +79,17 @@ or a range this is not optional, because those have no usable closed form.
 
 ## Match the null to the nuisance parameters
 
-An unmatched null reports the nuisance parameter and calls it structure. A lit set's spectrum
+A null drawn without matching reports the nuisance parameter and calls it structure. A lit set's spectrum
 depends heavily on how many bits are lit, and the weight wandered between 57 and 140 across the
-rounds being compared - so a null drawn at a fixed weight would have reported that wander as signal
+rounds being compared - and a null drawn at a fixed weight would have reported that wander as signal
 at every step.
 
 **Hold fixed whatever the statistic is sensitive to and does not mean.**
 
-## Normalise so the baseline is flat
+## Normalize so the baseline is flat
 
 For points with no preferred direction every mode carries the same expected power, and a degree
-holds (2l+1) of them, so per-degree power RISES as (2l+1) with nothing in it at all. Drawn: the
+holds (2l+1) of them, and per-degree power therefore RISES as (2l+1) with nothing in it at all. Drawn: the
 ratio is flat at 3.867 for a weight of 64 and 5.095 for 128, to within two and a half per cent
 across ten degrees, and the two constants stand in the ratio the finite-population correction
 predicts - 1.318 measured against 1.333 expected.
@@ -117,7 +117,7 @@ A residual that STOPS at 1e-16 is float64. A residual that FALLS with the width 
 object. Only fixed point can tell those apart, and the difference is not academic: an invariance
 measured in a double reported 1e-14 and could not say whether the theorem held exactly or merely sat
 where a double runs out. Recomputed in fixed point it read 2^-60, 2^-92 and 2^-123 at widths of 64,
-96 and 128 - tracking the width, so the invariance is exact.
+96 and 128 - tracking the width, which shows the invariance is exact.
 
 **Measure the same thing at two widths. If the answer moves, it was the format.**
 
@@ -133,7 +133,7 @@ argument for keeping the ring narrow was being made about the same number.
 ## The instrument is the first suspect
 
 Six faults in one night, every one producing something that looked like a finding, every one
-caught by the result being too clean rather than by care beforehand:
+caught by the result being too clean instead of by care beforehand:
 
     a thirty sigma excess that was a generator with a period of 256
     twenty hours of geography that was twenty random trough hours
@@ -151,18 +151,18 @@ A corpus is memoryless when its items carry nothing about each other: drawing on
 about the next. Establishing it is worth doing early, because it decides which whole families of
 method are available and which are wasted effort.
 
-It was established here by direct measurement rather than assumption. Distance-to-target
+It was established here by direct measurement instead of assumption. Distance-to-target
 autocorrelation across 200,000 consecutive items was inside the null band at every lag from 1 to
 1024. Hill-climbing on that distance lost to random draw by 3.81 standard errors on an equal budget -
-not tied, LOST, because it spent its budget probing neighbours that carried nothing.
+not tied, LOST, because it spent its budget probing neighbors that carried nothing.
 
 What that settles, in both directions:
 
     ruled out   every ordering strategy at once, AT AND ABOVE A MEASURED FLOOR. If items are
-                independent, search order cannot change the expected cost, so any cleverness about
+                independent, search order cannot change the expected cost, and any cleverness about
                 WHICH item to try next is spending effort on a quantity that does not exist. One
-                measurement retires the entire family rather than each member separately - which is
-                the strongest thing a null does anywhere in this tree, and exactly why it was the
+                measurement retires the entire family instead of each member separately - the
+                strongest thing a null does anywhere in this tree, and exactly why it was the
                 one that got quoted past its evidence.
 
                 Both arms read the digest through the leading-zero count, which is about two bits of
@@ -175,11 +175,11 @@ What that settles, in both directions:
 
                 The engineering conclusion survives intact, because mining's objective IS that
                 count. The general claim did not, and the difference is the whole lesson: this null
-                was the most load-bearing result here and it was the LAST one to get a floor, for
+                carried the most weight of any result here and it was the LAST one to get a floor, for
                 the reason every fault in this file shares - it looked clean, and a readout that
                 guarantees a near-null looks exactly like an object that has nothing in it.
-    granted     the arms. Independence is exactly what lets observations be pooled by addition
-                with no calibration step, so a memoryless corpus can be sampled in any order, at
+    granted     the arms. Independence lets observations be pooled by addition
+                with no calibration step, and a memoryless corpus can therefore be sampled in any order, at
                 any depth, by any number of observers, and combined exactly.
 
 The second is the useful half and it is easy to miss. Because each arm carries its own exact zero -
@@ -188,10 +188,10 @@ deviations add, the variances add with them, and there is no fitting anywhere. N
 planned in advance: short arms while exploring, long arms where something looks interesting, all
 combined into one exact estimate.
 
-Memory per arm is flat. The counters are the same size whatever the depth, so a thousand arms hold
+Memory per arm is flat. The counters are the same size whatever the depth, and a thousand arms hold
 2.15 trillion evaluations in three megabytes - about 700 million per kilobyte, and the footprint
-does not grow. That is what makes "keep looking until the question is answered" a real option rather
-than a wish: the record never fills.
+does not grow. That flat footprint makes "keep looking until the question is answered" a real option
+instead of a wish: the record never fills.
 
 And the two things arms buy do not scale alike, which decides how many to run:
 
@@ -202,7 +202,7 @@ And the two things arms buy do not scale alike, which decides how many to run:
 The second saturates. At 32 arms a unanimous reading happens by chance about once in ten million
 over 256 cells, and past that point more arms buy depth only. Thirty-two is the knee.
 
-## Elision, and how to use it rather than fight it
+## Elision, and how to use it instead of fighting it
 
 Elision is a value ceasing to depend on an input - the state becoming identical whether that input
 was one thing or another. It is normally described as loss, and from the inversion side it is. From
@@ -217,7 +217,7 @@ back empty anyway.
 Three ways to use it:
 
 **As a constraint, not a loss.** Where a dependency has been elided, everything downstream of that
-dependency is decided. That prunes searches over trajectories outright rather than probabilistically,
+dependency is decided. That prunes searches over trajectories outright instead of probabilistically,
 and it is why a support measurement is worth more per run than any frequency.
 
 **As a clock.** Elision accumulates at a rate, and the rate is a property worth knowing. Here the
@@ -228,7 +228,7 @@ past it. That number is invisible to any reading of the finished output.
 **As the thing that tells you where to stop measuring.** Once a dependency is elided no instrument
 recovers it, however precise, because the state is genuinely identical either way. A measurement
 aimed past the elision point is measuring nothing and will return a floor that looks like a result.
-Knowing where elision completes is knowing where the readable window closes - and in the one case
+Knowing where elision completes is knowing where the readable window closes - and in the only case
 measured here it closed at round thirty while the tempting place to look was round sixty-four.
 
 The general form: **elision is where the object stops being able to tell you something, and finding
@@ -240,6 +240,6 @@ that boundary is cheaper and harder-edged than anything on either side of it.**
 2. Read the interior if the interior is readable.
 3. Run the positive control. If it does not fire, stop.
 4. Draw the bar. Match the null to the nuisance parameters.
-5. Normalise until the baseline is flat.
+5. Normalize until the baseline is flat.
 6. Measure at two widths and see whether the floor moves.
 7. When something clears, suspect the instrument, and only then the object.
