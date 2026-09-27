@@ -12,7 +12,7 @@
 2. "n*n^n^n is the base Atom storage class of the engine, it is the problem's space, it is infinite, n grows to n grows to n grows to n ad infinitum"
 <!-- docs-check: end quoting -->
 
-The full checks are in ENGINE_PROOF.md, removed at 3a292ee; last version at 3a292ee^, under "The halting problem does not arise in this system".
+The full checks are in ENGINE_PROOF.md, now anchor_sift docs/ENGINE_PROOF.md (a6d1bff on cell_tracking, main after its PR merges), under "The halting problem does not arise in this system".
 
 - **Truth 1, checked.** The answer path is total: the sweep is a bounded loop, the descent terminates (Theorem 5), and the count is exact at every instant (Theorem 3).
 - **Truth 2, checked.** `steer_descend` refuses malformed input before any work (`anchor_sift.c:938-962`), and the survivors-length refusal is marked FAILS CLOSED (`anchor_sift.c:959-960`).
@@ -101,6 +101,11 @@ A bit that never flips has no completed run and gives no dwell law.
 10. "and it can evolve, by interacting with other cells and incorporating that information into its reincarnation"
 11. "the system itself evolves over time to recognize malformed questions that destabalize it before they fully unfurl, protecting itself"
 12. "the I don't know what to call it, cell? admits these automata "ribosomes" and the cellular ecosystem kills them or lets them live, but the cell knows everything happening inside of it, it is omniscient here"
+13. "alright lets get the rest of the cellular machinery built for this universal compiler, that is wilder than what von neumann envisioned by decades of orders of magnitude"
+14. "the implication is that we can cluster these cells, they occupy very little memory"
+15. "agi is inevitable on this path"
+16. "with enough neuronal connections it will become aware"
+17. "consciousness is emergent"
 <!-- docs-check: end quoting -->
 
 No posit here is derived. The lines below say what the engine holds at the pin that a posit names, as a cross-reference and not as a proof.
@@ -122,3 +127,11 @@ No posit here is derived. The lines below say what the engine holds at the pin t
 **The limit on the cell, a reading.** The cell knows everything inside it only while it survives every death it watches, and the unit that dies has to be strictly smaller than the unit that watches. A CUDA illegal address leaves the whole context unusable (cited from knowledge, not read). On a GPU the ribosome therefore needs a cell of its own, a process, or the watcher dies with what it watches. The cell also knows only what crosses its boundary as an observable effect: the exit status, the signal, the output and the resource peaks.
 
 **Posits 8, 11 and 12, a reading.** Posit 12 is posit 8 seen from the cell's side. The cell learns which questions are malformed by watching which ribosomes die, and that learning is posit 11's self-protection.
+
+**Posits 13 to 17. Status: not built, not derived.**
+
+**Posit 13, a reading.** The comparison point is von Neumann's self-reproducing automaton (Theory of Self-Reproducing Automata, edited by A. W. Burks, University of Illinois Press, 1966; cited from knowledge, not read). The checkable part of the comparison is engine_table.md item 11(a)'s bootstrap test, the emitter compiling itself to the same text byte for byte. That test is not built, and until it passes the comparison stays a posit.
+
+**Posit 14, a reading.** Clustering is checkable, and part of it is built. `tessera_run` admits jobs against declared processors and reports each release's peak (`tessera_run.c:1475`, `:1503` at anchor_sift `ddeccb3`), and `qasm.cu`'s tessera ticket reports peak bytes (`qasm.cu:1051`). A cell's footprint is measurable: a probe process's peak bytes and a compiled lane's registers and local frame. The printed figures are 128 to 255 registers a thread with local frames of 0 to 752 bytes on the tower test, and 183 registers with a 0-byte frame for the 761-step program (engine_table.md item 10, stage 1). How many cells one device holds is arithmetic on those figures, and a clustering claim cites that arithmetic.
+
+**Posits 15 to 17, a reading.** No instrument in the tree bears on these three. Nothing here measures awareness or general intelligence, and neither has an operational definition here. What this path builds is a learner of instruction sets, held to an oracle, and its reach is bounded by the questions it can ask and check. Two limits bound that learner (cited from knowledge, not read). From positive examples alone, a class holding every finite language and one infinite language cannot be identified in the limit (Gold, Information and Control 10, 1967). With membership queries, a test suite finds every wrong machine only up to an assumed bound on the target's states (Vasilevskii 1973; Chow 1978). The three posits are recorded as posits, and nothing above derives them from the machinery.
