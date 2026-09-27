@@ -3059,7 +3059,9 @@ def tex_prose(lines):
     rest, the same trade prose_only already makes about string literals in source.
     """
     kept = []
-    for line in lines:
+    # The quiet markers are read on the raw lines. In a .tex file a marker can only sit in a %
+    # comment, and the comment strip below would take the marker with it before quieted() saw it.
+    for line in quieted(lines):
         held = line
 
         # Comment to end of line, on an unescaped percent. A note to a co-author is prose and would
@@ -3100,7 +3102,7 @@ def tex_prose(lines):
         held = held.replace("&", " ").replace("\\\\", " ")
 
         kept.append(held)
-    return quieted(kept)
+    return kept
 
 
 # A quoted or apostrophized span, blanked before a `#` is looked for. A hash inside a string is

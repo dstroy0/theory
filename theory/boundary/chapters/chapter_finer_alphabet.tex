@@ -23,6 +23,8 @@ Subdividing does not repair the reading, and the argument settling it is countin
 
 At \(k = 3\) there are twice as many cells as placement points. Most letters can never be written at all, and the alphabet carries dead symbols. At \(k = 2\) the cell count equals the typical lit count, each cell holds two placement slots, and the reading has stopped being a coarse-graining: it is close to a permuted list of which bits are lit. On a 256-point placement \(k = 2\) is the last depth meaning anything, and by then the object being read is no longer a distribution over regions.
 
+\textbf{Derived, 26 September.} The slots per cell in the table are means. Midpoint subdivision gives unequal cells: at \(k = 1\) an octant's center triangle has area \(0.551\) and each corner triangle \(0.340\), a ratio of \(1.62\), and the four sum to the octant's \(\pi/2\). At \(k = 3\), \(256\) points in \(512\) cells leave at least half the cells empty. The count gives at least half, and the claim of most needs more than the count.
+
 Raising the placement's point count moves the ceiling but not the problem, since the redraw level below is set by the ratio of cells to lit points and that ratio is what the subdivision changes.
 
 \section{The same ceiling, counted on the reading instead of the placement}
@@ -38,6 +40,8 @@ A finer alphabet is therefore bounded twice, once by how many cells the placemen
 Separately from the ceiling, a finer alphabet is expected to raise the delta and the redraw level together, leaving their ratio where it was.
 
 The floor half of that is solid. Two independent states of the same weight give a level growing as the square root of the cell count, ordinary redraw statistics needing no assumption about the function being read. The delta half is only an expectation: a round's movement acts like a partial redraw and is expected to scale the same way. An attempt to derive that equality is recorded below, along with the reason it does not stand.
+
+\textbf{Derived, 26 September.} The square-root growth holds while each cell holds many lit points, where the level grows as \(\sqrt{c/n}\) for \(c\) cells and \(n\) lit points. As the points per cell fall toward one, the level saturates at the set difference share, about \(0.5\) (the units note below), and stops growing.
 
 \section{A derivation that did not hold}
 
@@ -105,3 +109,14 @@ What is not established is a link between the shift and the octant delta. The de
 One run at \(k = 1\) and \(k = 2\), each with its own redraw level computed at the matched weight, reporting the ratio and not the delta. Two ratios near the \(k = 0\) value confirm the expectation. A ratio falling with \(k\) refutes it cheaply, and the two ceilings still stand either way.
 
 \textbf{Ownership.} The subdivision candidate and the run are the engine's. The refutation of the \(\sqrt{s}\) derivation is the engine's, and the rank bound is the engine's. The reproduction, the units correction, the object correction and the reruns above belong to this document.
+
+\section{References}
+
+\textbf{Added 26 September.} Prior art for subdividing a sphere and for counting points into cells. Cited from knowledge; volumes and pages are not yet checked against the originals.
+
+\begin{enumerate}
+  \item Baumgardner, J. R. and Frederickson, P. O. (1985). \emph{Icosahedral discretization of the two-sphere}. SIAM Journal on Numerical Analysis 22, 1107--1115. For recursive subdivision of spherical triangles.
+  \item G\'orski, K. M., Hivon, E., Banday, A. J., Wandelt, B. D., Hansen, F. K., Reinecke, M. and Bartelmann, M. (2005). \emph{HEALPix: a framework for high-resolution discretization and fast analysis of data distributed on the sphere}. The Astrophysical Journal 622, 759--771. For a subdivision whose cells have equal area.
+  \item Feller, W. (1968). \emph{An Introduction to Probability Theory and Its Applications}, Volume I, third edition. Wiley. For occupancy, points placed into more cells than there are points.
+  \item National Institute of Standards and Technology (2015). \emph{Secure Hash Standard}, FIPS 180-4. For the round, its six copied words and the feed-forward.
+\end{enumerate}

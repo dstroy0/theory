@@ -295,6 +295,8 @@ The sources. The papers' titles, venues and pages were checked here against Cros
 | 2^googol cells, the deep path | n = 10^100, hex position 2.5e99; P = 3 × 10^100 + 64 bits, and a host turn would need SIM_EXACT_LIMBS = 2^331 | 46,844,928 of 2.5e99 terms in 663 sweeps and 64.043 s, 7.31e5 terms a second; stopped, no digit printed | at the measured rate the sum takes about 1.08e86 years; the cost is linear in the position (measured) |
 | the tessera job | the default request and 2^(2^30); 2^googol | declared 3,413,540 bytes, peak 221,413,376 on both; 2^googol declared 11,542,512, its peak not read, since the run was killed | the declaration counts the sim's buffers and not the record kernel's per-thread file (measured) |
 
+**Note, 26 September.** D. H. Bailey, "The BBP Algorithm for Pi", 17 September 2006 (davidhbailey.com, `dhbpapers/bbp-alg.pdf`), read 26 September. Its Table 1 (p. 6) prints 26C65E52CB4593 at 10^6, 17AF5863EFED8D at 10^7 and ECB840E21926EC at 10^8, the digits in the first row above. Its text (p. 4) prints 6C65E52CB459350050E4BB1 from position 1,000,001 and calls it the first 24 hex digits there. The string holds 23. The decimal list printed beside it reads 12 in its nineteenth place, where the string reads E, which is 14. The engine's run gives E there with the string's other 22 digits, and its 117 to 135 certified bits cover the 92 bits of 23 hex digits (Derived). The row above keeps the string.
+
 ### The Gaussian step on the record machine
 
 The Gaussian step is BBP's ×16 taken as eight floors of (a, b) ↦ (a − b, a + b), z = a + bi times 1 + i (A16 of [engine_table.md](engine_table.md); 24 September: "2 then 1").
