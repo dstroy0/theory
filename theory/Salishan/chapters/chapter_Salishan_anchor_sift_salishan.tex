@@ -4,11 +4,11 @@
 
 \textbf{Purpose:} Apply the anchor-sift method to the Salishan papers: find the language, and decide what may join a pure corpus. \textbf{Scope:} \texttt{data/\allowbreak{}salishan/\allowbreak{}}
 
-The method is in \texttt{.\allowbreak{}.\allowbreak{}/\allowbreak{}anchor-\allowbreak{}sift-\allowbreak{}method.\allowbreak{}md}. This is what happens when it is fed these papers.
+The method is in \texttt{.\allowbreak{}.\allowbreak{}/\allowbreak{}anchor-\allowbreak{}sift-\allowbreak{}method.\allowbreak{}md}. This chapter records what happens when it is fed these papers.
 
 \subsection{The idea}
 
-English is the target. What English does not account for is what we want.
+English is the target. We want what English does not account for.
 
 That inverts the problem into the half that is resourced. Nobody has to know Nsyilxcən or Lushootseed to find it in a paper. English has to be known, and the residue is the language, a gloss, or a page of font damage.
 
@@ -101,7 +101,7 @@ Growing the Lushootseed anchor does not reach the 103 papers, and an earlier ver
 
 What the 95 need is a measure that separates the anchors as seen from a mixed residue, which the byte pair distribution does not. \texttt{corpus-\allowbreak{}derivation.\allowbreak{}md} section 7 has the first thing that does: holding a concept fixed with the word web's gloss edge, flattening the pooled counts to maximum entropy, and testing one run at a time. That recovers a published dialect border inside Lushootseed at a corpus size where the whole-distribution comparison needs 2.9 times more text. It has not yet been turned on the 95.
 
-Two dialects pooled into one anchor is still worth splitting, because it is what inflated the floor from 0.305 to 0.641 and it is the same defect in every corpus that holds more than one paper. Splitting it is a correction to the anchors, not a route to the 95.
+Two dialects pooled into one anchor is still worth splitting, because it inflated the floor from 0.305 to 0.641 and it is the same defect in every corpus that holds more than one paper. Splitting it is a correction to the anchors, not a route to the 95.
 
 \textbf{Author:} dstroy0 (Douglas Quigg) <dquigg123@gmail.com> \textbf{Date:} 2026-09-04
 

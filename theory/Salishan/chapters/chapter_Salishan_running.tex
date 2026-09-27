@@ -13,7 +13,7 @@ python -m pip install pypdf pypdfium2 requests numpy soundfile
 python maint/data/salishan/get_papers.py
 \end{lstlisting}
 
-That fetches the eleven papers the readers need and writes \texttt{build/\allowbreak{}papers/\allowbreak{}<name>.\allowbreak{}txt} for each. Nothing else in this directory works until it has run, and it is the only step that touches the network. \texttt{pypdfium2} renders a page to an image, which two of the eleven papers need and the other nine do not. \texttt{numpy} and \texttt{soundfile} are for the sound representation and nothing in the text pipeline imports them; \texttt{soundfile} is what decodes the mp3s in \texttt{build/\allowbreak{}audio/\allowbreak{}}, which are not fetched by this script.
+That fetches the eleven papers the readers need and writes \texttt{build/\allowbreak{}papers/\allowbreak{}<name>.\allowbreak{}txt} for each. Every other step in this directory waits on it, and it is the only step that touches the network. \texttt{pypdfium2} renders a page to an image, which two of the eleven papers need and the other nine do not. \texttt{numpy} and \texttt{soundfile} are for the sound representation and nothing in the text pipeline imports them; \texttt{soundfile} decodes the mp3s in \texttt{build/\allowbreak{}audio/\allowbreak{}}, which are not fetched by this script.
 
 \texttt{-\allowbreak{}-\allowbreak{}all} fetches all 993 papers in the archive instead of the eleven. \texttt{-\allowbreak{}-\allowbreak{}list} prints what would be fetched and stops. \texttt{-\allowbreak{}-\allowbreak{}convert} converts PDFs already sitting in \texttt{build/\allowbreak{}papers/\allowbreak{}} and fetches nothing, skipping any PDF that already has text beside it. \texttt{-\allowbreak{}-\allowbreak{}stem <name>} takes one paper by its filename.
 
@@ -45,7 +45,7 @@ Nothing after the fetch needs the network. The sift depends on the readers, beca
 9. sift_extract.py     reads 4, writes build/corpora/sifted/
 \end{lstlisting}
 
-Steps 2 and 3 apply only to a paper the fetch flagged \texttt{NOT THE PAGE}, which is two of the eleven. For the other nine the extracted text is what the page says and both steps are skipped.
+Steps 2 and 3 apply only to a paper the fetch flagged \texttt{NOT THE PAGE}, which is two of the eleven. For the other nine the extracted text matches the page and both steps are skipped.
 
 \subsection{Where the tools are}
 

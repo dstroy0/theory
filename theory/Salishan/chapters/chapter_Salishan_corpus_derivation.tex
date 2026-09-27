@@ -12,7 +12,7 @@ With no failures in N independent trials the true rate is under 3/N with 95 perc
 
 \subsection{2. What the checks have seen}
 
-A paper contributes trials only where its extracted text is what the page prints. The others are checked against a damaged source. Their disagreements measure the source and not the table. The references chapter names each of them.
+A paper contributes trials only where its extracted text matches what the page prints. The others are checked against a damaged source. Their disagreements measure the source and not the table. The references chapter names each of them.
 
 \begin{figure}[htbp]
 \centering
@@ -24,7 +24,7 @@ A paper contributes trials only where its extracted text is what the page prints
 
 \textbf{What to read off it.} Every paper is one point, trials against failures. The 16 on the zero line are the evidence. The 9 above it are checked against a text that is not what their page prints. The reader squares are a separate measurement in their own color, and they sit high: a reader is a script and it gets a great deal wrong. Section 5 gives those per paper, the only form they mean anything in.
 
-\textbf{Why the right panel is here.} The extraction has a lifetime, and the question is which reader carries it. A person reads a paper at a fixed accuracy however large the corpus gets. That arm is flat. The algorithm's accuracy is a function of corpus size. That arm climbs. Whether and where they cross decides whether the corpus is worth growing for its own sake, and the panel is what answers it.
+\textbf{Why the right panel is here.} The extraction has a lifetime, and the question is which reader carries it. A person reads a paper at a fixed accuracy however large the corpus gets. That arm is flat. The algorithm's accuracy is a function of corpus size. That arm climbs. Whether and where they cross decides whether the corpus is worth growing for its own sake, and the panel answers it.
 
 \textbf{What to read off it.} The algorithm arm is the fraction of dialects whose distance from the other corpora pooled into one reference corpus clears twice their resolution. The arm starts at zero, because a small corpus resolves nothing, and it crosses the reader arm at 1.73e+04 byte pairs, which is behind the corpus already on disk. Both arms are drawn: byte pairs alone, and byte pairs with the dialect's own alphabet applied first. Setting an algorithm given nothing beside a person given a page is not a fair comparison, and the alphabet is the first part of what the extraction already knows that it can be handed.
 
@@ -188,7 +188,7 @@ Paper & Rows asked for & Reproduced & Items written & Invented & Wrong language 
 
 The readers get a great deal wrong. The median reproduces 0.619 of what its table asks for, and the spread runs from one paper to the next with no common rate behind it, because each reader was written to one paper's layout. These are a table in Section 3 instead of a term for that reason.
 
-A reader that does not reproduce a row is not by itself an impurity. The row is in the hand extraction either way, and the extraction is the oracle. What the last two columns count is what the reader added, the part that can reach the pure stream without a person having written it.
+A reader that does not reproduce a row is not by itself an impurity. The row is in the hand extraction either way, and the extraction is the oracle. The last two columns count what the reader added, the part that can reach the pure stream without a person having written it.
 
 \subsection{6. The word web}
 
@@ -210,7 +210,7 @@ That makes it something a test of this algorithm almost never has: an answer tha
 
 Comparing whole distributions does not work at this size. The method resolves at 6707 bytes and the two varieties hold 1469 and 2768. Neither the byte pair distribution nor the word web separates them, and a blind partition scores no better than the majority class. The check prints what that route would need: about 2.9 times the labeled Lushootseed now on disk.
 
-Asking for one term at a time does work, and it is the same move the sound work uses. Because both varieties are one language, nearly all of what a distribution over their runs measures is what they have in common, and at this size that shared mass swamps the difference. Flattening the pooled counts to maximum entropy takes it out: a run is weighed against where the pooled total alone would put it. A run carrying no border information then contributes nothing however common it is. Each run is its own test, and what a run needs is enough of itself, not enough of the language.
+Asking for one term at a time does work, and it is the same move the sound work uses. Because both varieties are one language, a distribution over their runs measures almost only what they have in common, and at this size that shared mass swamps the difference. Flattening the pooled counts to maximum entropy takes it out: a run is weighed against where the pooled total alone would put it. A run carrying no border information then contributes nothing however common it is. Each run is its own test, and what a run needs is enough of itself, not enough of the language.
 
 The concept is held fixed while this is asked, over the 58 concepts both varieties name, using the word web's gloss edge. Without that control a run can separate the two sets because the varieties differ or because different words were cited, and those are not the same finding.
 
@@ -241,7 +241,7 @@ Term & Deviate & Northern & Southern \\
 
 The last column of the first table is the test that is allowed to fail. The border is put back on the same forms at random 200 times and the radix run again on each, and at width 2 only 1 of those random borders found as much as the published one. Swapping the two sides also negates every deviate exactly, but this estimator does that on any two sets whatever and it is evidence of nothing.
 
-The term carrying the border is the stressed schwa, and it is southern: 45 of them to 6 in the north over the same concepts. The paper those labels came from is Mellesmoen and Kye's comparative analysis of stress in northern and southern Lushootseed. The algorithm was shown the forms and never the labels, and what it returned is what the paper is about.
+The term carrying the border is the stressed schwa, and it is southern: 45 of them to 6 in the north over the same concepts. The paper those labels came from is Mellesmoen and Kye's comparative analysis of stress in northern and southern Lushootseed. The algorithm was shown the forms and never the labels, and it returned the paper's subject.
 
 \textbf{Compiled By:} dstroy0 (Douglas Quigg) <dquigg123@gmail.com> \textbf{Generated by:} \texttt{maint/\allowbreak{}data/\allowbreak{}salishan/\allowbreak{}corpus\_\allowbreak{}derivation.\allowbreak{}py}
 
