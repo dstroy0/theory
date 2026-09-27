@@ -15,7 +15,7 @@ This PR follows #5. It brings the record machine's width fix and the heap/ring/l
 
 #### Engine
 
-- **keymath.** A `QUOTIENT` or `EXACT_QUOTIENT` whose divisor is a `CONSTANT` c now drops ⌊log₂ c⌋ bits from its numerator's width, never below 1. `QUOTIENT` rounds toward zero, so |q| ≤ |v|/c < 2^(L − ⌊log₂ c⌋). `EXACT_QUOTIENT` does not round.
+- **keymath.** A `QUOTIENT` or `EXACT_QUOTIENT` whose divisor is a `CONSTANT` c now drops ⌊log₂ c⌋ bits from its numerator's width, never below 1. `QUOTIENT` rounds toward zero: |q| ≤ |v|/c < 2^(L − ⌊log₂ c⌋). `EXACT_QUOTIENT` does not round.
 - **cycle.cu.** The device's exact quotient used to truncate its numerator to the result's limbs before the multiply-back check.
   - That was harmless while the two widths were always equal.
   - With a narrower result and an odd constant divisor, it would refuse a correct division.
@@ -239,8 +239,8 @@ record_boundary_test (48 checks, 0 failed, 7 new).
 The identity of a lane's structure, taken with T and null permutations
 of its own samples (Doug: "an identity of T using T:null permutation
 of T"). Each lane is drawn with 8 keyed shuffles. A shuffle keeps every
-value, and T keeps the count, so the crystal's heap against the draws'
-reads the arrangement alone.
+value, and T keeps the count. The crystal's heap against the draws'
+therefore reads the arrangement alone.
 
 - Identified of 256, with the crystal heap against the draws' mean:
   ramp 256 (0.13), ramp +-8 256 (0.33), ramp +-1024 254 (0.73),
@@ -262,7 +262,7 @@ reads the arrangement alone.
 
 ```text
 knf_identity (23 checks, 0 failed), on the nbody lattice's law in a 64^3
-cube over 177 frames, so the entropy history has 16 whole windows.
+cube over 177 frames, giving the entropy history 16 whole windows.
 
 The data is mutated over xyz (Doug: "mutate the data over the spatial
 coordinate set xyz and get its entire null permutation id"). A spatial
@@ -538,7 +538,7 @@ Goodstein.
 - Doug's two quotes, verbatim as a posit. The one on tower recursion is
   recorded as the idea's history, apart from the 5/3 tower.
 - Derived: it never closes (Lambert); it is dense and equidistributed
-  (Weyl); the orbit is countable with measure 0, so N cells fill at a
+  (Weyl); the orbit is countable with measure 0, and N cells fill at a
   finite step; the record returns are the q_j (Khinchin); the drift
   runs over the intermediate returns; the descent is one Euclid step a
   level.
@@ -741,7 +741,7 @@ The turn at depth n is alpha's bit n, and the BBP formula reads it where it
 stands. Each term is a lane of the record machine: 16^(d - i) mod 8i + j by
 base-16 powering, every square taken mod 8i + j, its fraction floored to W
 bits. A tail program takes the terms past d, and a pair program adds lanes
-mod 2^W in rounds, so a sweep reduces on the engine. keymath sizes every
+mod 2^W in rounds: a sweep reduces on the engine. keymath sizes every
 register, the scheduler lays them with reuse, and tessera admits the job.
 The error interval, 4 (N + T) + 1 units, certifies the leading bits.
 
@@ -839,7 +839,7 @@ the fewer of the operation's own rule and the form's bound,
 |c| + sum |c_i| (2^(b_i) - 1). A coefficient past 2^62 makes the
 register an atom.
 
-Terms that cancel drop out, so (a - b) + b is a's width, and a Gaussian
+Terms that cancel drop out: (a - b) + b is a's width, and a Gaussian
 floor (a - b, a + b) grows half a bit a floor, as its values do: over
 eight floors of 24-bit fields the widths are 25 25 26 26 27 27 28 28,
 where the rule before gave 25 to 32. A 5/3 tower's registers at level l

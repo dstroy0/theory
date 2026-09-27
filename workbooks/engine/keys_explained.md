@@ -5,7 +5,7 @@
 
 ## 0. Why these ideas get resisted
 
-Ordinary code is written as instructions: do this, then this, to every input, every time. The cost of a program is its steps times its inputs, and nobody questions that. A key breaks that product. The steps are paid once, on one stand-in, and every input after that costs one application, whatever the program's length. That sounds like something for nothing. It gets doubted, then hedged, then argued down to "an optimization that works for some cases". It is not an optimization. It is what composition *is* once every step is exact.
+Ordinary code is written as instructions: do this, then this, to every input, every time. The cost of a program is its steps times its inputs, and nobody questions that. A key breaks that product. The steps are paid once, on one stand-in, and every input after that costs one application, whatever the program's length. That sounds like something for nothing. It gets doubted, then hedged, then argued down to "an optimization that works for some cases". It is not an optimization. Once every step is exact, this *is* composition.
 
 The second default is floating point. Most code rounds at every step and treats the error as noise to be managed. Under rounding, none of what follows holds, and so it looks like it cannot hold. The engine does not round, and so it does.
 

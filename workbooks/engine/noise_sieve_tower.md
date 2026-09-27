@@ -185,7 +185,7 @@ The draft in `subtractive_cosmological_framework.md` is a cosmology. Its cosmolo
 
 **Phase cancellation is subtraction of the whole medium.** "You read the incoming packet, flip the sign, and output it. The wave hits your boundary, meets its exact inverse, and resolves to zero." That is the residual's key: 2^g · B_narrow − B_wide · B_narrow. The wide term is the medium, and it is subtracted whole, in exact two's complement. The medium resolves to exactly zero, and what is left stands above it. The inversion is exact only because the arithmetic is: a rounded inverse leaves a residue of rounding, and that residue would read as structure.
 
-**The identity:null permutation means field noise readings only.** A null is not a blank pointer or an error. Asked what is here, it returns a valid, boring reading of the field noise, indistinguishable from empty space. That is the precise meaning of the engine's null draws. The same body is climbed at the same lag toward frames far off in time, where no correspondence exists. What comes back is what field noise alone reads there. A body is real only where it stands above that reading. The reading is taken, not assumed: nothing is drawn from a distribution, and no threshold is chosen.
+**The identity:null permutation means field noise readings only.** A null is not a blank pointer or an error. Asked what is here, it returns a valid, boring reading of the field noise, indistinguishable from empty space. That is the precise meaning of the engine's null draws. The same body is climbed at the same lag toward frames far off in time, where no correspondence exists. What comes back is the reading field noise alone gives there. A body is real only where it stands above that reading. The reading is taken, not assumed: nothing is drawn from a distribution, and no threshold is chosen.
 
 **Listening at the noise floor.** "Tune the receiver to field noise": a receiver matched to the floor takes only what rises above it. The anchor counts are that receiver. The low five bit planes sit at the floor (near ½ at every voxel), and a bit is signal only where its count leaves ½.
 
@@ -194,7 +194,7 @@ The draft in `subtractive_cosmological_framework.md` is a cosmology. Its cosmolo
 | rules reach every locale as a front that takes time, not instantly | measured: one launch a slab, 31 ms a frame |
 | subtracting the medium's exact inverse leaves it at zero | proved: the residual's key, 0 of 10,485,760,000 lanes differing from the step by step residual |
 | a null is the field noise reading, not an empty return | built: the null draws (`--null`) climb toward frames far off in time |
-| signal is what leaves the floor | measured: the low five bit planes at ½ in every 44b6 sample; anchors in bits 6 to 11 |
+| the signal leaves the floor | measured: the low five bit planes at ½ in every 44b6 sample; anchors in bits 6 to 11 |
 
 The draft's cosmology (arrival shells, network daemons, black hole sinks) lies outside what this engine measures; it is in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).
 

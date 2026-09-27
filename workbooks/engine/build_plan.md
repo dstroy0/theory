@@ -134,7 +134,7 @@ Cell-specific modules (bodies, score_sample, answer_key, the measure/*) are due 
 25. Ruled 23 September, integrity: "the only acceptable crc is a merkle dag". Every CRC-64 is replaced by BLAKE3 Merkle roots. The answers:
 - root: the full 32 bytes;
 - shape: dimensional, leaf = one x-row of LE u16 lanes (its own width, BLAKE3 chunks it), then y, z, t, sample, set;
-- stored levels: "every floor of the tower", so every level's nodes are stored, rows included (about 6% of a knee crystal at 512 columns);
+- stored levels: "every floor of the tower", and every level's nodes are stored, rows included (about 6% of a knee crystal at 512 columns);
 - scope: "every crc64, we need 100% idempotent determinism against cosmic flips" (head, side bytes, members, stream, parts, sets, schedule, keys, flattened, history, bodies);
 - the universal root: "literally every file the engine touches plus one on itself" (inputs read, outputs written, and the engine's own binary);
 - placement: "Measure both, report": the hash section after the head against a footer, write cost and one-plane check cost on the knee set;
