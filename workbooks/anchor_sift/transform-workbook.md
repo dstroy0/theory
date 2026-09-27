@@ -2,9 +2,9 @@
 
 **Purpose:** Record every hypothesis tested about the transform SHA256d undergoes over the nonce,
 the
-method used, the measurement obtained, and the verdict, so that a projection already ruled out is
+method used, the measurement obtained, and the verdict. A projection already ruled out is then
 not
-re-derived and a projection not yet tried is visible.
+re-derived, and a projection not yet tried is visible.
 **Scope:** `src/bench_corpus.cpp`, `src/bench_transform.cpp`, `src/sha256_core.c`,
 `src/sha256_core.h`
 **Owner:** dstroy0 (Douglas Quigg) <dquigg123@gmail.com>
@@ -13,7 +13,7 @@ re-derived and a projection not yet tried is visible.
 ## 1. The Problem As Stated
 
 Mining searches for a nonce whose doubled digest falls at or below a target. Framed as a topology
-mapping problem: find the projection under which the digest domain carries structure, so that the
+mapping problem: find the projection under which the digest domain carries structure and the
 information reaches the engine in a form the engine can sift.
 
 `anchor-sift.md` §2.2 supplies the soundness half for free. An anchor is a necessary condition
@@ -350,7 +350,7 @@ never measured, and the workbook said so.
 verbatim, which makes the coinbase layout and the 12-entry branch the ones a pool actually sends. A step here
 rebuilds the coinbase, its double hash, every merkle fold, the merkle root, and therefore the
 midstate.
-**Control first.** Moving extranonce2 moves the merkle root, moves nothing else in the header, and
+**Control first.** Moving extranonce2 moves the merkle root, leaves the rest of the header unmoved, and
 moves the midstate. All three confirmed before anything was concluded.
 **Result.**
 
@@ -698,7 +698,7 @@ primes, two root functions and a truncation.
 A freely chosen constant could hide a trapdoor only its chooser knows; a constant forced to equal
 `cbrt` of the seventeenth prime cannot, because anyone can rederive it and no freedom remains to
 hide
-anything in. **What the human encoded is a proof that they encoded nothing else.** That is the
+anything in. **What the human encoded proves they encoded only that.** That is the
 opposite of obfuscation.
 **Result, verification against search.**
 
@@ -917,8 +917,8 @@ including the keyhole scan's expected-worst and the corpus-size ratios, do.
 ### H32 - The Renyi order axis, and the order this workbook has been reading
 
 **Claim.** Every entropy in H1 through H31 is collision entropy, Renyi order two. Order is a
-continuous axis and it has never been varied. Order two was not chosen for a reason; it is what a
-collision counter measures and a collision counter was what was to hand.
+continuous axis and it has never been varied. Order two was not chosen for a reason; a collision
+counter measures it, and a collision counter was to hand.
 **The instrument.** Renyi entropy `H_alpha = (1/(1-alpha)) log2 sum p^alpha`, which is strictly
 decreasing in alpha unless the distribution is uniform. Each point of the axis answers a different
 question about the same distribution:
@@ -1085,7 +1085,7 @@ since the first revision, where it was listed as unbuilt.
 **Claim.** Every number this workbook has produced about the digest distribution is a function of
 the count multiset alone, which makes all of them permutation invariant and none can see *where* the
 holes sit. From `anchor_sift`'s ledger: histogram quantities describe the maximum entropy case and
-are free; the arrangement is what remains. Nothing here had ever asked about it.
+are free; the arrangement remains. Nothing here had ever asked about it.
 **The instrument.** `bench_renyi.cpp` and `bench_renyi_cuda.cu`. All `2^32` nonces of block 125552's
 header enumerated on the device, whole SHA256d, and the 32-bit window at digest bytes 0–3 counted
 into a four gigabyte array - the one family where a bin can be empty. 1,579,996,784 to
@@ -1302,8 +1302,8 @@ what this axis has left to give.
 **Verdict.** The corpus has one average best stride and there are localities inside it. Low-weight
 differences are where the premise survives, by about a factor of two in depth, and steering there
 keeps the premise instead of rejecting it. This is not a departure from what SHA-256 should
-do - fewer active bits diffuse more slowly, and steering toward low-weight differences is what
-published differential cryptanalysis already does. It is a locality that every pooled measurement in
+do - fewer active bits diffuse more slowly, and published differential cryptanalysis already
+steers toward low-weight differences. It is a locality that every pooled measurement in
 this workbook averaged away.
 **A defect caught in the reading, and its direction matters.** The bit flips were drawn
 independently, and two could land on the same bit and cancel, and a stratum labeled "9 to 16"
@@ -1333,7 +1333,7 @@ alternates between them.
 | exclusive or | yes | no, 0.21% | Walsh-Hadamard over GF(2)^32 |
 | add mod 2^32 | no, 0.02% | yes | neither of those two |
 
-Rotate and exclusive or alone are GF(2)-linear and would fall to linear algebra. Addition is what
+Rotate and exclusive or alone are GF(2)-linear and would fall to linear algebra. Addition
 forces the change of structure, and the carry recursion measured in H10 is the mechanism: it is
 the part of the sum that leaves the GF(2) basis. SHA-256 interleaves all three for 64
 rounds, twice.
