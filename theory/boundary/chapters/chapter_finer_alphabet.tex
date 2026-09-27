@@ -25,7 +25,7 @@ At \(k = 3\) there are twice as many cells as placement points. Most letters can
 
 \textbf{Derived, 26 September.} The slots per cell in the table are means. Midpoint subdivision gives unequal cells: at \(k = 1\) an octant's center triangle has area \(0.551\) and each corner triangle \(0.340\), a ratio of \(1.62\), and the four sum to the octant's \(\pi/2\). At \(k = 3\), \(256\) points in \(512\) cells leave at least half the cells empty. The count gives at least half, and the claim of most needs more than the count.
 
-Raising the placement's point count moves the ceiling but not the problem, since the redraw level below is set by the ratio of cells to lit points and that ratio is what the subdivision changes.
+Raising the placement's point count moves the ceiling but not the problem, since the redraw level below is set by the ratio of cells to lit points and the subdivision changes that ratio.
 
 \section{The same ceiling, counted on the reading instead of the placement}
 
@@ -100,7 +100,7 @@ A frame is the eight working words as the round leaves them, with nothing added 
 
 The two objects are told apart by counting and not by assertion. A round only copies six of its eight words, \(b,c,d\) taking \(a,b,c\) and \(f,g,h\) taking \(e,f,g\). Over sixty-three transitions that is \(378\) carried words, and on the working state all \(378\) match the words they come from while on the digest none do.
 
-That count also settles a question this section previously recorded as closed the wrong way. The register shift is present in the working state exactly, since matching all \(378\) carried words is what being a register shift consists of. The earlier text reported the shift as invisible, on a test that undid the word shift and found \(108.9\) of \(224\) bits differing against a coin's \(112.0\) with no exact match in sixty-four rounds. That test was run on digest frames, and it was measuring the feed-forward.
+That count also settles a question this section previously recorded as closed the wrong way. The register shift is present in the working state exactly, since being a register shift consists of matching all \(378\) carried words. The earlier text reported the shift as invisible, on a test that undid the word shift and found \(108.9\) of \(224\) bits differing against a coin's \(112.0\) with no exact match in sixty-four rounds. That test was run on digest frames, and it was measuring the feed-forward.
 
 What is not established is a link between the shift and the octant delta. The delta's early excess over the redraw floor is measured, and a rigid relabeling of indices is the kind of move producing such an excess, but attributing the excess to the register shift is a reading of why and has not been measured. The two statements sit at different levels and only the first is a count.
 

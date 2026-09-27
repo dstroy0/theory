@@ -27,7 +27,7 @@ to a permuted list of which bits are lit. On a 256-point placement `k = 2` is th
 means anything, and by then the object being read is no longer a distribution over regions.
 
 Raising the placement's point count moves the ceiling but not the problem, since the redraw level
-below is set by the ratio of cells to lit points and that ratio is what the subdivision changes.
+below is set by the ratio of cells to lit points and the subdivision changes that ratio.
 
 ## The same ceiling, counted on the reading instead of the placement
 
@@ -131,8 +131,8 @@ eight words, `b,c,d` taking `a,b,c` and `f,g,h` taking `e,f,g`. Over sixty-three
 digest none do.
 
 That count also settles a question this section previously recorded as closed the wrong way. The
-register shift is present in the working state exactly, since matching all 378 carried words is what
-being a register shift means. The earlier text reported the shift as invisible, on a test that
+register shift is present in the working state exactly, since being a register shift means
+matching all 378 carried words. The earlier text reported the shift as invisible, on a test that
 undid the word shift and found 108.9 of 224 bits differing against a coin's 112.0 with no exact
 match in sixty-four rounds. That test was run on digest frames, and it was measuring the
 feed-forward.

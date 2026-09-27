@@ -16,7 +16,7 @@ number theory and Navier-Stokes workbooks beside this file already follow:
 - Draw the bar, never derive it. No threshold is reasoned out of a distribution here.
 
 The millennium research paper's toolkit chapter (`theory/theory/millennium/chapters/chapter_the_toolkit.tex`)
-recommended this problem, and that reason is what this workbook acts on: its obstruction matches the
+recommended this problem, and this workbook acts on that reason: its obstruction matches the
 instrument. The refined conjecture is an exact numerical identity, and the question whether a computed
 number lands on an integer is precision-bound, where the other Millennium problems match the apparatus
 only in subject. That chapter also drew the honest bound: the arithmetic imposes no floor, and the honest

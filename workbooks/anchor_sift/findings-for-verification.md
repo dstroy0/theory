@@ -122,7 +122,7 @@ I presented the equality oracle as lifting a constraint on the engine. It lifted
 
 The python cascade has never needed bytes. `survivors` reads `places.get(needle[offset], ())` and `positions_by_symbol` builds `places` with `setdefault(value, set())` over any iterable. A symbol there is a dict key and the requirement is equality and hashability (`src/engine/python/sift/anchors.py:104`, `src/engine/python/sift/anchors.py:110-115`). `examples/crystallography/5_sift/lattice_breaks_the_product_rule.py` runs the cascade over crystals with element strings as symbols, importing `representation.exact` and `representation.structure.crystal` and no shared library at all. Both claims were checked against the source and verify.
 
-So the C entries were narrower than the proof they implement AND narrower than the python engine they are graded against, and the byte framing in the C headers is what a reader would have concluded the construction required.
+So the C entries were narrower than the proof they implement AND narrower than the python engine they are graded against, and a reader of the C headers would have concluded from their byte framing that the construction required bytes.
 
 **The two are still not equivalent, and the gap now runs the other way.** A dict key must be hashable. The oracle asks only whether two positions are equal. A value that cannot be hashed, or whose equality is real while a hash of it would be a lie, can be searched by the C engine and cannot be searched by the python one. Anyone grading the two against each other needs to know which fields only one of them accepts, because the grading assumes they answer the same question over the same inputs.
 
@@ -216,7 +216,7 @@ The first version of this entry rested on `src/engine/c/portable/anchor_sift.h:6
 
 **So the cap is load bearing and data independence is not available.** The earlier entry said the reverse in both directions: that data independence was structural, that the cap was incidental, and that at four billion the classification would not shift. Withdrawn. The bound from above is the only thing doing the work, and it is a constant.
 
-**The corrected classification.** One descent is a finite automaton WITH data dependent control flow, bounded above by a constant. It is not a fixed depth decision procedure, because the destroy test is a genuine conditional branch on data deciding whether to recurse. The constant is what still rules out universality.
+**The corrected classification.** One descent is a finite automaton WITH data dependent control flow, bounded above by a constant. It is not a fixed depth decision procedure, because the destroy test is a genuine conditional branch on data deciding whether to recurse. The constant still rules out universality.
 
 **Why removing the cap would not reach universality over a fixed corpus.** The probe family is fixed by `needle_len` and `max_length`, and a placed position is never reconsidered. The placed set grows strictly through a finite family and the descent halts with or without the bound. A growing corpus grows the family, and O2 therefore remains the one term, with the tag route still the target.
 
@@ -301,7 +301,7 @@ Clifford, Jalsenius, Porat and Sach, "Space Lower Bounds for Online Pattern Matc
 
 **Exact pattern matching is not in that list.** The bound is for distance measures. The question I had parked, whether that `m` is the same `m`, was the wrong question: it is not even the same problem.
 
-**The dichotomy is what settles the two paths, and it separates them.** Verbatim:
+**The dichotomy settles the two paths, and it separates them.** Verbatim:
 
 > We then show a dichotomy between distance functions that have wildcard-like properties and those that do not. In the former case which includes, as an example, pattern matching with character classes, we give Omega(m) bit space lower bounds. For other distance functions, we show that there exist space bounds of Omega(log m) and O(log^2 m) bits.
 

@@ -6,7 +6,7 @@ has already measured, and the one axis that arrangement turns out to expose.
 The short version: thirty-one hypotheses were graded on collision entropy, which is Rényi order
 two. Order is a continuous axis running from zero to infinity, each point of it answering a
 different question about the same distribution, and it has never been varied. Order two was not
-chosen. It is what a collision counter measures and a collision counter was what was to hand.
+chosen. A collision counter measures it, and a collision counter was to hand.
 
 ---
 
@@ -212,11 +212,11 @@ suggested it. Three of them bear directly here and one of them reframes this ent
 From the ledger:
 
 > Histogram quantities are permutation invariant. They describe the maximum entropy case and are
-> free. The arrangement is what remains after that.
+> free. The arrangement remains after that.
 
 **Every number `bench_renyi` produces is a histogram quantity.** All seven Rényi orders, the
 Bellare–Kohno balance, the count of holes, the Arikan guessing factor - each is a function of the
-multiset of bin counts and of nothing else. Shuffling which value carries which count leaves every
+multiset of bin counts and of nothing besides. Shuffling which value carries which count leaves every
 one of them exactly unchanged.
 
 So the headline result - that SHA256d's output histogram over an completely enumerated `2^32`
@@ -225,7 +225,7 @@ terms, **entailed instead of discovered**. It is the maximum-entropy case, and i
 to be the answer. That is worth having as a measured fact instead of an assumption, but it is not a
 finding about SHA-256's arrangement, because no permutation-invariant quantity can be.
 
-The arrangement is what remains, and it is where anything would have to live. `bench_renyi` now runs
+The arrangement remains, and anything would have to live there. `bench_renyi` now runs
 the Walsh spectrum of the hole indicator against a splitmix control, the first arrangement
 statistic in this tree.
 
@@ -310,7 +310,7 @@ Each step multiplies the cost by orders of magnitude and returns the same answer
 not an accident of this particular search, and the ledger already names why:
 
 > Histogram quantities are permutation invariant. They describe the maximum entropy case and are
-> free. The arrangement is what remains after that, and Proposition 2 states that no knowledge of a
+> free. The arrangement remains after that, and Proposition 2 states that no knowledge of a
 > domain removes the exact compare. The cost of an arrangement is made of checks that have to be
 > performed. Deriving it would be obtaining the irreducible half without paying for it, the
 > thing Proposition 2 denies.

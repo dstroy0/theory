@@ -142,7 +142,7 @@ caught by the result being too clean instead of by care beforehand:
     a chirality result fixed by geometry before the data was read
     an invariance that was a scalar hiding the structure it summed over
 
-When a result is surprising, the tool produced it and the tool is what changed. Check it first, and
+When a result is surprising, the tool produced it and the change lies in the tool. Check it first, and
 build the check into the tool so the next surprise has to pass it.
 
 ## A memoryless corpus, and what that buys
