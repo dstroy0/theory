@@ -167,7 +167,7 @@ excess "the nonlinearity", which implies it carries information. It does not.
 loudest of 1.394 with the top swingers uniformly cold, which looked like a second channel invisible
 to a heat map. At 60000 samples the null arm's own loudest is 1.3965, no bit clears it, and the
 correlation between swing and heat is -0.0671 inside a band of 0.1250. The anticorrelation was the
-artifact, not the signal.
+artifact, and no signal remains.
 
 ## The tools
 

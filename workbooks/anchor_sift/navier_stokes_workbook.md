@@ -30,7 +30,7 @@ number theory workbook beside this file already follows:
 We know nothing here that the field does not. Every object in these two files belongs to someone else
 and is named with respect in the prior-art section; the two files only run those objects in exact
 arithmetic, which adds no rounding and a second route, and those two are all they add. This is help offered
-to a neighborhood, not a claim staked in it.
+to a neighborhood, with no claim staked in it.
 
 ## The problem, stated fully
 

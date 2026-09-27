@@ -22,7 +22,7 @@ Let `Q` be a set of exact quantities. A quantity is one of two kinds.
 
 - DEFINED: fixed by exact operations or a convergent exact series. Examples: the rationals, `sqrt(n)`,
   `pi`, `e`, `ln 2`, `zeta(2)`. A defined quantity can be computed to any number of places. Its
-  precision is a budget, not a floor.
+  precision is a budget, set by how many places are asked for.
 - MEASURED: a deposited value with an uncertainty fixed upstream by whoever measured it. Examples: a
   crystal cell edge (crystallography: published to about 4 to 5 places with a bracketed
   uncertainty), a physical constant such as the Bohr radius or the Rydberg energy (particle

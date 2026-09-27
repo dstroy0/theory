@@ -2018,7 +2018,7 @@ a record of twenty places it was looked for, with the sensitivity of each search
 different claims, and only the second one has been earned.
 
 And "with the sensitivity of each search stated" is the clause the claim rests on. It has to be true of
-every row, not only most of them. H13 - the nonce landscape - did not meet it. Its null was drawn
+every row without exception. H13 - the nonce landscape - did not meet it. Its null was drawn
 and its head-to-head was fair, but both of its arms read the digest through `fitness()`, the count
 of leading zero bits, and nothing in the bench established what size of gradient that readout could
 still have missed. An unbounded null was being quoted as though it excluded everything.

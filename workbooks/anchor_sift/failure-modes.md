@@ -146,8 +146,8 @@ Constructing a pair that is meant to differ and failing to check that it does.
 pairs were identical. It printed "smallest output distance: 0 bits", which reads as a collision,
 directly above prose saying nothing came close.
 
-**The subtraction:** count and report the pairs whose intended difference is zero. A nonzero count is
-a construction defect, not a result.
+**The subtraction:** count and report the pairs whose intended difference is zero. A nonzero count reports
+a construction defect and carries no result.
 
 ## 8. Optimizer-dependent result - *built*
 

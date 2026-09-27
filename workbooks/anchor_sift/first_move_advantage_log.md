@@ -132,8 +132,8 @@ caution that applies here.
   latter stays exact.
 - **Protein structure analysis**: a magnitude is exact for what its symmetry preserves and provably
   blind to what the symmetry flips. Measured on 6VXX (ref a70cbe3): 2915/2915 psi torsions hold the
-  squared magnitude and flip the sign under reflection. The handedness lives in the sign, not the
-  magnitude. This is the anti-invariant argument, and it is why first-move advantage must be the
+  squared magnitude and flip the sign under reflection. The handedness lives in the sign, and the
+  magnitude carries none of it. This is the anti-invariant argument, and it is why first-move advantage must be the
   signed channel.
 - **btc_miner engine**: a norm is a rank-1 readout that throws the rank away; a real higher-degree
   object read as one number vanished into the null and survived only per component (per degree). Keep
