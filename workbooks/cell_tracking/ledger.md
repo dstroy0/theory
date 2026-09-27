@@ -35,12 +35,12 @@ The training set is 71 samples of 44b6 and 128 of 6bba; the test set holds both.
 | what | samples | result | settles |
 |---|---|---|---|
 | the current engine, internal count | 6bba_05b6850b, 05db0fb1, 062c8d37, 07477033, 07e24132 | 3,756 of 3,873 edges correct, 97.0%; 115 wrong; 2 endpoints undetected | the engine runs on 6bba as it is |
-| the same run under the metric's matching, every node | the same five | 78.5% of key edges hit; 1.2% source unmatched; 19.6% land elsewhere, a median 6.7 µm from the target's match | on 6bba the loss is a link landing on a neighboring node: the node set is far finer than the cells, and bodies, not finer pieces, are what should be linked |
+| the same run under the metric's matching, every node | the same five | 78.5% of key edges hit; 1.2% source with no match; 19.6% land elsewhere, a median 6.7 µm from the target's match | on 6bba the loss is a link landing on a neighboring node: the node set is far finer than the cells, and bodies, not finer pieces, are what should be linked |
 
 ### 44b6 on the current engine
 
 | what | samples | result | settles |
 |---|---|---|---|
 | internal count | the 25 | 6,254 of 6,358 edges correct, 98.4%; 104 wrong | |
-| the metric's matching, every node | the 25 | 87.1% of key edges hit; 1.1% source unmatched; 10.9% land elsewhere, a median 5.75 µm off | the older components dump's 60% unmatched was that dump, not the engine |
+| the metric's matching, every node | the 25 | 87.1% of key edges hit; 1.1% source with no match; 10.9% land elsewhere, a median 5.75 µm off | the older components dump's 60% with no match was that dump, not the engine |
 | SCORE, the 400 largest nodes a frame | the 25 | 0.661: edge Jaccard 0.670, node count factor 0.986 (1,000,000 nodes against 880,906 estimated) | the node count is the lever: every node gives Jaccard 0.635 but 5.8 million nodes, and the score falls to 0.279 |

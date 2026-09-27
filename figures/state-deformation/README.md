@@ -8,7 +8,7 @@ observation and being a measurement.
 ## What is in the picture
 
 SHA-256 compressing the empty message, sixty four rounds. The 256 bits of the compression state
-light 256 points on an eight by thirty two ring placement, so bit `i` lights point `i` and no
+light 256 points on an eight by thirty two ring placement: bit `i` lights point `i` and no
 mapping had to be invented to make the instrument fit the object. The boundary field is expanded to
 degree 10, which is 121 modes, with conduction `tau = 0.0008`. Two neutrino sources cast beams that
 stop on lit bits, and the count of beams stopped equals the count of bits set.
@@ -24,7 +24,7 @@ stop on lit bits, and the count of beams stopped equals the count of bits set.
 | degree | 10 of 10, 121 modes, `conduct = 25` |
 | scale | 0.34 of a 1288 by 930 viewport |
 
-The camera is the important one. Perspective distortion is fixed when the camera is fixed, so it
+The camera is the important one. Perspective distortion is fixed when the camera is fixed, and it therefore
 cannot produce a change between frames. Every difference across this sequence belongs to the object.
 
 ## Files
@@ -40,7 +40,7 @@ showing the hot and cold bits arranged along spiral arms.
 
 One mesh in the scene is deformed and only one. Its vertex radii have a standard deviation of 0.999
 against a mean of 8.795, which is 11.4 percent. Every boundary shell measures a standard deviation
-of exactly 0.0000, so the three nested boundaries are perfect spheres and the 256 bits sit on a
+of exactly 0.0000: the three nested boundaries are perfect spheres and the 256 bits sit on a
 perfect sphere at radius 7.128.
 
 Reading that surface as a radius field over the sphere:
@@ -83,7 +83,7 @@ The round computes two words and shifts the other six:
 
 Six of the eight words at round `r` are words from round `r - 1` in a new position, measured at 63
 of 63 rounds in `examples/proofing/state_deflection.py --check`. A surface computed from a state
-that is five sixths unchanged cannot jump, so the autocorrelation this sequence shows is very
+that is five sixths unchanged cannot jump; the autocorrelation this sequence shows is very
 probably the shift register appearing in the shape.
 
 That is worth saying plainly because it is the interesting reading and not a deflation. The viewer

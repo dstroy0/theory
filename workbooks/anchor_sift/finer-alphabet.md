@@ -20,7 +20,7 @@ are points to write into them.
 | 2 | 128 | 2 |
 | 3 | 512 | 0.5 |
 
-At `k = 3` there are twice as many cells as placement points, so most letters can never be written
+At `k = 3` there are twice as many cells as placement points, and most letters can never be written
 at all and the alphabet carries dead symbols. At `k = 2` the cell count equals the typical lit count,
 each cell holds two placement slots, and the reading has stopped being a coarse-graining: it is close
 to a permuted list of which bits are lit. On a 256-point placement `k = 2` is the last depth that
@@ -52,7 +52,7 @@ together, leaving their ratio where it was.
 The floor half of that is solid. Two independent states of the same weight give a level that grows
 as the square root of the cell count, which is ordinary redraw statistics and needs no assumption
 about the function being read. The delta half is only an expectation: a round's movement
-behaves like a partial redraw, so it is expected to scale the same way. An attempt to derive that
+behaves like a partial redraw and is expected to scale the same way. An attempt to derive that
 equality is recorded below, along with the reason it does not stand.
 
 ## A derivation that did not hold
@@ -65,7 +65,7 @@ two expressions and the ratio depends on `s` alone.
 **The hole.** A share is a count divided by the weight, and the weight changes every round. On the
 working state it ranges from 108 to 140 lit bits and moves by 4.3 bits per round on average, which
 is 3.5% of the weight. A change in the denominator moves all eight shares even for points that never
-moved, so the cancellation the argument rests on does not happen.
+moved, and the cancellation the argument rests on does not happen.
 
 **The test.** Predicting `s` from the ratio squared and counting the lit points that actually moved,
 over all 63 consecutive pairs, with the digest column kept beside it because the earlier version of

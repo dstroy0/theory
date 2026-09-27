@@ -152,8 +152,8 @@ census over a reference distribution does not get it used. The declaration now s
 | `anchor_steer_probe_fits`   | `anchor_sift.h:771` | whether one probe shape is legal against a needle length |
 
 **The inference.** These are the planner's inputs and its decision, exposed before the run instead
-of after. `probe_fits` is the boundary function. Enumerating it maps the whole legal probe set,
-so the sweep's argmax becomes checkable.
+of after. `probe_fits` is the boundary function. Enumerating it maps the whole legal probe set
+and makes the sweep's argmax checkable.
 
 **Run.** `probe_fits` exercised across steps 0, 1, 2, 7, 13, 64 and 100000 at length one, all legal.
 `bench_dispatch` prints six rules scored two ways, by rows won and by cycles given up, and the two

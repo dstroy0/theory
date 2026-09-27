@@ -62,7 +62,7 @@ scale would give `beta_z = beta_r` and no elongation at all.
 
 **D2. THE ONE THAT CARRIES THE INTUITION: `beta_z` is at or near zero.**
 
-Axial signals travel as Kelvin waves at speed of order `Gamma/r`. The traverse time is
+Axial signals travel as Kelvin waves at speed of order `Gamma/r`. The crossing time is
 
     t_axial ~ z / (Gamma/r) = z*r/Gamma ~ (T-t)^(beta_z + beta_r)
 
@@ -82,7 +82,7 @@ one.
 
 **D4. The forcing does not concentrate.** `f` stays `O(1)` with support that does not shrink onto the
 blowup point. If the proof needs `f` to sharpen as `t -> T`, the mechanism is being driven from
-outside rather than by the fluid's own motion, and the intuition above is wrong about what is
+outside instead of by the fluid's own motion, and the intuition above is wrong about what is
 happening.
 
 ## How to score this

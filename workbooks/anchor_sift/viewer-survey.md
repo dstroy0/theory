@@ -19,11 +19,11 @@ Everything below is from `tools/view/room_view_template.html` and the builders t
 | banner-marked sections | 38 | 0 | 16 |
 | frame-loop sites | 3 | 4 | 3 |
 
-No script carries `type="module"`, so every declaration at the top of the room viewer's script is a
+No script carries `type="module"`: every declaration at the top of the room viewer's script is a
 property of one hoisted scope, and any of the 355 is reachable from any of the 102 functions.
-Nothing there is private, so nothing is known to be safe to move.
+Nothing there is private, and nothing is therefore known to be safe to move.
 
-Two numbers say the split is not a rewrite. The duplicate count is zero, so no name has to be
+Two numbers say the split is not a rewrite. The duplicate count is zero: no name has to be
 renamed to make modules possible. And 38 banner-marked sections already name the decomposition in
 comments: the boundaries, the engine arms, the beam and what it scatters from, the operation clock,
 the boundary reconstruction, the panels, the callouts, the redraw. Whoever wrote those wrote the
@@ -44,7 +44,7 @@ a page whose loop turns over data it no longer has.
 weakening it.** The watchdog advanced its turn counter from `requestAnimationFrame` and ran its
 check on `setTimeout`. A background tab stops the first and not the second, and a page opened in a
 tab that was not visible therefore completed one turn and was declared dead on schedule. The report then
-latched: the failure set a flag and the guarded turn opened by returning on that flag, so the loop
+latched: the failure set a flag and the guarded turn opened by returning on that flag, and the loop
 never ran again even once the tab came forward. What Douglas saw was a frozen viewer with a red
 banner, frozen by its own watchdog.
 

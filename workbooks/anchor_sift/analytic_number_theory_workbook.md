@@ -160,7 +160,7 @@ The statement is standard: floating point is subject to rounding and is not suit
 verified proof. Verified computing uses interval arithmetic, carrying each quantity as an interval
 guaranteed to contain the true value, with directed rounding at each step. On zeta, David Platt isolated
 every non-trivial zero with imaginary part below about `3 * 10^10` to an absolute precision of `2^-102`,
-and verified the list complete with a rigorous version of Turing's method, at a cost in multi-precision
+and verified the list complete with a provably correct version of Turing's method, at a cost in multi-precision
 certified numerics far above hardware floating point. That is an independent verification of the
 hypothesis up to that height, and it was possible only by leaving floating point behind.
 

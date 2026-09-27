@@ -13,7 +13,7 @@ reaches the output, measured against how far in it started.
 ## Why this is the right question and breaking it is the wrong one
 
 A break needs a boundary observable that departs from flat by more than sample noise, at full
-rounds. The tree's own instruments say there is none: `H(digest | input) = 0`, so the bias bound is
+rounds. The tree's own instruments say there is none: `H(digest | input) = 0`, and the bias bound is
 limited by sample size alone with no floor beneath it, and the keyhole, SAC and Renyi benches read
 flat at full rounds. Twenty years of linear and differential cryptanalysis reach about 31 of 64
 rounds and no further. Hunting the full-round hole is hunting a thing the detector already says is
@@ -36,7 +36,7 @@ The observable is one already built:
 - **bit bias.** How far each output bit's one-rate departs from half. The survey bench, truncated.
 - **collision entropy of the output byte histogram.** The Renyi bench, truncated.
 
-Each returns a single number per round count, so the run is one curve per observable, 64 points
+Each returns a single number per round count, which makes the run one curve per observable, 64 points
 each.
 
 ## The detection floor, drawn on the same axes
@@ -53,7 +53,7 @@ underneath, or show it genuinely flattening.
 
 The decay spans many orders of magnitude, from a large leak at a few rounds to nothing measurable at
 full rounds. Read in single precision the small end is noise about noise. The `representation`
-arm's exact contract carries the small counts without rounding, so the curve stays a curve down to
+arm's exact contract carries the small counts without rounding, and the curve stays a curve down to
 where sample size and not arithmetic stops it. That separates measuring the decay from
 measuring the floating-point floor, and it is the reason this experiment belongs in this tree and
 nowhere else.
