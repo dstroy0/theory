@@ -252,7 +252,7 @@ The shape would be a caller supplied array of `count` entries, filled with the s
 
 **The cost is the evidence.** At the outer level, termination goes. That is not a regression waiting to be fixed: if it were still decidable whether a given outer run finishes, the thing would not be universal. The engine's current selling point is that it always returns an answer, and this trades exactly that, at the outer level only.
 
-**This does not settle O1 and must not be recorded as settling it.** What the engine IS today is unchanged: `ANCHOR_STEER_ANCHORS` is 4, the trichotomy shows it does not cycle, and both were verified this morning. This names what would move the answer, not what the answer is.
+**This does not settle O1 and must not be recorded as settling it.** What the engine IS today is unchanged: `ANCHOR_STEER_ANCHORS` is 4, the trichotomy shows it does not cycle, and both were verified this morning. This names what would move the answer and leaves the answer open.
 
 **Nothing is blocked on it and nothing is being built.**
 
@@ -279,7 +279,7 @@ The oracle column is flat across a 65536 fold increase in sigma, with no trend. 
 
 **The durable claim is about memory.** Sigma 2^32 is not measured and was not allocated: 16.0 GB of counters at four bytes a slot. The timing carries a caveat, and that caveat is the reason to prefer the memory claim. The table route in the bench callocs and frees its counters every iteration, and a real caller searching many needles against one fixed corpus builds the census once and amortizes it, which widens the table's time advantage and means the time column overstates the oracle's case. Memory does not amortize. 16 GB is 16 GB whether it is paid once or a thousand times.
 
-**One behavioral note from the same run.** `placed` came back 2 at sigma 2^8 and 2^12 and 1 from 2^16 up: at a large alphabet the first probe cuts the survivors far enough that a second adds nothing. That also explains why the oracle's small sigma rows are its slowest. It is doing more work there, not suffering from sigma.
+**One behavioral note from the same run.** `placed` came back 2 at sigma 2^8 and 2^12 and 1 from 2^16 up: at a large alphabet the first probe cuts the survivors far enough that a second adds nothing. That also explains why the oracle's small sigma rows are its slowest. The extra time there is the second probe's work.
 
 So the claim boundary in O3 is now partly closed. The trend is measured, it is the trend the construction predicts, and the regime where the table is the right choice is named and not waved at.
 

@@ -71,7 +71,7 @@ and `3892314113` (above `2^31`).
   precision. Operand length is unbounded. There is no fixed limb count on that cleared precision path,
   unlike the engine's fixed 108-limb C width.
 - Device arm: NTT multiply over the three Proth primes, reassembled by CRT (Garner), used only when
-  both operands are at least 1024 limbs. That crossover is a measured floor, not a direction.
+  both operands are at least 1024 limbs. That crossover is a measured floor and sets no direction.
 - That repository is private, and a citation from public `anchor_sift` into one of its paths resolves
   for nobody. All citations go to `theory/theory/twiddle_constants_article.tex`, tracked in this public
   tree and on ePrint.

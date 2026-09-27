@@ -114,7 +114,7 @@ established by intervention.
 
 - **The observer-invariance is classical.** Rotation-invariant power and orientation-carrying phase
   are standard SO(3) representation theory, the same fact behind an angular power spectrum being usable
-  without its phases. It is the calibration here, not a finding.
+  without its phases. It serves here as the calibration and finds nothing new.
 - **What is specific to SHA-256** is the behavior of the anisotropy across the clock: a persistent
   quadrupole, a dipole that inverts in runs at `z = −2.87`, and the trace to the shift register by
   intervention.

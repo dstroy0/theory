@@ -26,7 +26,7 @@
 
 \textbf{Nonce bit thirty-one carries \(180\) sigma.} Refuted. The sweep covered \(2^{31}\) nonces. Bit thirty-one is zero in every sample against an expectation computed over the full space. The kernel now takes a sixty-four-bit bound and always sweeps the whole \(2^{32}\).
 
-\textbf{The \(5.0\%\) word-round saving is worth \(5.0\%\) of runtime.} Refuted on the CPU. Implemented, exactly correct on two hundred thousand nonces, and measured at \(0.998\), \(0.978\), \(1.079\), \(0.957\), with a median about \(1.00\). Word-rounds bound arithmetic, not runtime. On the device, where the kernel is ALU and power bound, the same change is worth \(4.34\%\).
+\textbf{The \(5.0\%\) word-round saving is worth \(5.0\%\) of runtime.} Refuted on the CPU. Implemented, exactly correct on two hundred thousand nonces, and measured at \(0.998\), \(0.978\), \(1.079\), \(0.957\), with a median about \(1.00\). Word-rounds bound arithmetic, and on the CPU arithmetic does not bound runtime. On the device, where the kernel is ALU and power bound, the same change is worth \(4.34\%\).
 
 \textbf{A single timed pass can resolve a five percent effect.} Refuted. One pass each read \(0.935\) to \(1.166\), a spread wider than the effect.
 

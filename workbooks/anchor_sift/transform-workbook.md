@@ -198,7 +198,7 @@ into each bit position.
 | 31 | 0.499937 | 0.500000 |
 
 **Verdict.** **Supported.** This is the place in this workbook where structure is *found* instead of
- bounded. The carry into position 1 is a quarter, not a half.
+ bounded. The carry into position 1 is a quarter, and it climbs to a half only by position 31.
 **Consequence, and the limit.** This is the surface differential cryptanalysis of ARX
 constructions works on, and it is why the published attacks reach the round counts they do. It is
 also local: the bias halves per position and is under 0.2% by position 8, and each addition is

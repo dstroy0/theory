@@ -84,7 +84,7 @@ continuously during search, and a winning block records wherever the roll stood 
 distribution is a picture of where implementations spend their time, not of who is searching. Zero
 is where a counter starts, 0xffff is a mask, 0xfff8 is that mask with three bits cleared, and the
 powers of two are single-bit states. Those are conventions, arrived at independently, and the piles
-sit exactly on them. The pattern is collective, not personal.
+sit exactly on them. The pattern is collective and names nobody.
 
 ## Clock disagreement
 
@@ -212,7 +212,7 @@ Two things worth reading off it. The **trough** is the stable feature and the **
 peak moves from 08:00 to 13:00 between the time halves while the trough does not move at all, which makes the
 trough the feature any phase claim should be built on. And this says nothing about migration in either
 direction: the corpus spans 48 days and each half 24, while mining geography moves over years. Two
-halves three weeks apart agree under a stable phase *and* under an unmeasurably slow migration. Separating those needs years of corpus, not this one.
+halves three weeks apart agree under a stable phase *and* under an unmeasurably slow migration. Separating those needs years of corpus, far more than this one holds.
 
 That phase carries geography. A miner's cycle follows its own local time. A population spread
 evenly around the globe cancels to nothing in UTC and produces no daily signal at all. A signal

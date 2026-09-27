@@ -5,7 +5,7 @@ Swinnerton-Dyer conjecture, one poke at a time, claiming nothing. **Scope:**
 `examples/0_experimental/exact_congruent_number.py`, `evidence/proofs/posits/proof_group_law.py`, and
 this file.
 
-This is a workbook, not a result. It follows the rail the
+This is a workbook, and it claims no result. It follows the rail the
 millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`) and the analytic
 number theory and Navier-Stokes workbooks beside this file already follow:
 
@@ -67,7 +67,7 @@ odd squarefree to an integer count of a ternary quadratic form.
 ## Their sets, defined
 
 Written as sets so every later sentence names the set it is about. The definitions are transcribed from
-Wiles, not designed. `E` is an elliptic curve `y^2 = x^3 + a x + b` over `Q`.
+Wiles unchanged. `E` is an elliptic curve `y^2 = x^3 + a x + b` over `Q`.
 
 - `E(Q)`, the rational points with the point at infinity `O`, under the chord-tangent law: three
   collinear points sum to `O`, and `O` is the identity. It is an abelian group,

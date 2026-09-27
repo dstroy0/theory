@@ -15,7 +15,7 @@ anchor_sift `1948ae1`. Every run recorded below was made before the deletion.
 deleted, each byte-identical to its state before the deletion, and biohub pins anchor_sift at
 `d09b489`. `representation/exact.py` is at the pin again; nothing here was rerun against it.
 
-This is a workbook, not a result. It follows the rail the
+This is a workbook, and it claims no result. It follows the rail the
 millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`) and the analytic
 number theory workbook beside this file already follows:
 
@@ -74,7 +74,7 @@ signs `- int u . d theta/dt - sum int u_i u_j d theta_i/dx_j = nu int u . Laplac
 
 Written as sets so that every later sentence names the set it is about. `n = 3` and `nu > 0` are fixed
 throughout; `e_j` are the unit vectors; "smooth" is `C^inf`. Each set is Fefferman's condition as he
-wrote it, and the definitions are transcribed, not designed.
+wrote it, and the definitions are transcribed unchanged.
 
 - `D_4`, the whole-space data: smooth `u° : R^3 -> R^3` with `div u° = 0` and, for every multi-index
   `alpha` and every `K > 0`, a constant `C_{alpha K}` with `|d_x^alpha u°(x)| <= C_{alpha K} (1+|x|)^-K`
@@ -202,7 +202,7 @@ not on the Clay list.
   chain `datum -> u_3`: the ring carries no format kind; measurement is carried to every order, exactly
   on the ABC family; completeness is carried and grows.
 - The disjoint-translate constructor splits the bilinear term exactly when supports are disjoint and not
-  when they overlap, in one variable on a lattice of eighths. Its algebra, not their corollary.
+  when they overlap, in one variable on a lattice of eighths. That result belongs to its own algebra and stands apart from their corollary.
 - We do not know whether (A), (B), (C) or (D) holds. We have not read the 2026 proof. We have computed
   no blowup, no weak solution, no singular set, and no solution on `R^3`. The two files reach one
   countable island inside `D_8` and read it exactly; they reach nothing past it.

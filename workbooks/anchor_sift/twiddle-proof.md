@@ -278,7 +278,7 @@ past anything measured directly.
 
 **The packing costs nothing.** A large integer is already a run of
 32-bit limbs, and handing one to the device is `value.to_bytes(count * 4, "little")` and reading one
-back is `int.from_bytes(raw, "little")`. Those are the same bytes named twice, not a conversion. The
+back is `int.from_bytes(raw, "little")`. Those are the same bytes named twice, and no conversion happens. The
 device returns the product as three arrays and the caller assembles
 
     base + p0 · step + p0 · p1 · rest

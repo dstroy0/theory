@@ -55,7 +55,7 @@ A single pass ranks every anchor against the whole field. That is the correct qu
 size_t anchor_steer_spawn_coarms(const AnchorSteerDescent *args);
 ```
 
-One pointer to a const argument structure, not a parameter list. Build the structure at the call site with `ANCHOR_STEER_CALL`, which gives it automatic storage and zeroes every member the caller does not name. The members this entry reads (`src/engine/c/engine/anchor_sift.h:654-671`):
+Its one argument is a pointer to a const argument structure. Build the structure at the call site with `ANCHOR_STEER_CALL`, which gives it automatic storage and zeroes every member the caller does not name. The members this entry reads (`src/engine/c/engine/anchor_sift.h:654-671`):
 
 - `offsets` [BORROWS] out. Chosen offsets, written in evaluation order. Owned by the caller.
 - `count` in. How many coarms to spawn, at most `ANCHOR_STEER_ANCHORS`.

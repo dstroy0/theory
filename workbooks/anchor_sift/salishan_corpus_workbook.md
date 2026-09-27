@@ -6,7 +6,7 @@ Salishanists have asked in print, one question at a time, with a control run bef
 `lexical_suffix_origins.py`, `reduplication_glottalization.py`, `vowelless_words.py`,
 `nuxalk_obstruent_words.py`), and this file.
 
-This is a workbook, not a result. It follows the rail the other workbooks beside it follow:
+This is a workbook, and it claims no result. It follows the rail the other workbooks beside it follow:
 
 - Claim nothing past the measurement. A number here is a count over these tables, and these tables are
   what 138 papers chose to print. Every entry says which papers a number rests on.
@@ -133,7 +133,7 @@ ICSNL 57), and none for the other four.
 What it shows. The method sorts the languages the survey could classify. The blanks cannot be filled
 from these tables: the forms that would fill them are not in the 138 papers extracted so far. The Twana
 count is four roots from one paper, and whether they are the reduplication type Table 4 classifies was
-not checked. It is a question for the authors, not a correction.
+not checked. It stands as a question for the authors and corrects nothing.
 
 ## P3, 2026-09-24: Nuxalk vowelless words and the spacing of clitics
 

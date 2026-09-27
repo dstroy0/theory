@@ -4,7 +4,7 @@
 theory, one poke at a time, claiming nothing. **Scope:** `examples/0_experimental/exact_zeta_values.py`,
 `evidence/proofs/posits/proof_set_theory.py`, and this file.
 
-This is a workbook, not a result. It follows the rail the
+This is a workbook, and it claims no result. It follows the rail the
 millennium research paper set down (`theory/theory/millennium/chapters/chapter_what_this_is.tex`), because that
 research paper already refused the exact temptation this one has to refuse:
 
@@ -60,7 +60,7 @@ facts and connects them to the measurement floor.
 - Prior art: Cantor 1891 for the diagonal, Turing 1936 for the computable reals being a countable
   subset, and the standard result that the computable reals have measure zero. Reported from a web
   search, not from the primary papers, which are unread here; the constructions are reproduced and
-  verified in the file. The file stands on the reproduction, not the citation.
+  verified in the file. The file stands on the reproduction, and the citation carries none of its weight.
 
 **The connection, stated carefully.** A zeta value at an even integer is `c_k * pi^(2k)`, an exactly
 nameable number, one point in the countable set. A measured quantity is a real the engine can only

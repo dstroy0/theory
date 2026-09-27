@@ -129,7 +129,7 @@ python S/font_substitution.py <damaged paper> <clean reference> [more]
 python S/font_substitution.py 19-Lyon_ICSNL50_final-78 LyonICSNL60_Inch-2
 \end{lstlisting}
 
-Tests a candidate character mapping by counting how many damaged tokens become forms attested in a clean paper. Read the change between the two rates, not either one alone.
+Tests a candidate character mapping by counting how many damaged tokens become forms attested in a clean paper. The reading is the change between the two rates, and each rate alone is only half of it.
 
 \begin{lstlisting}[breaklines=true,breakatwhitespace=false,basicstyle=\ttfamily\small]
 python S/case_delta.py
@@ -181,7 +181,7 @@ What it prints is the delta from a flat distribution over each field, at 6, 8, 1
 
 \subsection{What the modules are for}
 
-These are imported, not run.
+These modules are libraries: other code imports them.
 
 \tiny
 \setlength{\tabcolsep}{2pt}

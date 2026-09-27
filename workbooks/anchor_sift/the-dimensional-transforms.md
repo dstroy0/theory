@@ -46,8 +46,8 @@ Every one preserves the information and moves the coordinates. The family resemb
 and it has a consequence worth stating flatly: **a transform cannot make a question answerable that
 was unanswerable. It can only make an answerable question cheap.**
 
-The engine is faster because of the NTT, not more capable. The boundary reading is legible because
-of the harmonic expansion, not more informed. Nothing in this tree computes anything a slower
+The NTT makes the engine faster and leaves its capability where it was. The harmonic expansion makes
+the boundary reading legible and adds no information to it. Nothing in this tree computes anything a slower
 arrangement could not compute, and stating that plainly keeps the rest of the claims
 defensible.
 

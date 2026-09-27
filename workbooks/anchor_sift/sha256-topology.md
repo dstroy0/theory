@@ -112,8 +112,8 @@ A step in the extranonce2 dimension costs **24.0x** a nonce step and carries no 
 - **Backward:** 0 rounds. Inverting round `t` needs `W[t]`; every schedule word past 15 is generated
   from the words being solved for.
 
-The obstruction is **circularity**, not information loss. That distinction is established, not
-asserted: H14 proves nothing is lost.
+The obstruction is **circularity**, and every bit of information survives. H14 establishes that
+distinction by proving nothing is lost.
 
 ### 2.7 The one exact result: algebraic degree
 
@@ -942,7 +942,7 @@ true minimum instead of the sparsest thing a sample happened to hold.
 **Both interesting-looking columns are traps, and both were nearly believed.**
 
 The zeros at rounds 8 to 14 sit at bits 256, 320, 384 and 448 - message words 8, 10, 12 and 14,
-which have not entered the cone yet. The sweep found the light cone, not a characteristic.
+which have not entered the cone yet. The sweep found the light cone and no characteristic.
 
 And a weight near 100 against a random 128 is not sparse, it is **the minimum of that many draws**.
 The min-of-N correction is the max-of-N correction wearing a different sign:
@@ -962,7 +962,7 @@ different construction entirely.
 - **Shadows** - the field collapsed along each axis, scrubbable round by round.
 - **Voxel field** - the same data as a turnable mesh under seven embeddings.
 
-The embedding selector is a test, not decoration. Residue is genuinely periodic mod 32, and for that reason the
+The embedding selector is a working test. Residue is genuinely periodic mod 32, and for that reason the
 **tube** is the honest map for it; the **toroid** imposes a periodicity on the round axis that does
 not exist and is included precisely because it lies. Structure appearing under one embedding and
 not another belongs to the map instead of the field. Agreement across embeddings is therefore the
@@ -1337,7 +1337,7 @@ advance per round, which is where that component is going; and a **decay**, the 
 round, or how fast it is being elided. Together they are one complex frequency, and the shape
 of drift against frequency identifies a mechanism, beyond detecting one.
 
-What this can carry is **position, not value**. The phase of a component is the residue offset it
+What this can carry is **position** alone. The phase of a component is the residue offset it
 sits at: the arm locates structure. Nothing in it recovers the value of any bit.
 
 Written down before the run, which keeps the reading from being fitted to the result afterwards:

@@ -1,6 +1,6 @@
 # Exact Simulation
 
-Carry the amplitude, not a rounding of it.
+Carry the amplitude itself and round nothing.
 
 A quantum state is a vector of complex amplitudes. A mainstream simulator stores each one as a
 floating-point pair. There `1/sqrt2` becomes `0.70710678...`, the norm drifts off one, and a circuit
