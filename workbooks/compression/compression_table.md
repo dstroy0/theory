@@ -99,7 +99,7 @@ Let each electron give an independent output X in lane units, of one law for eve
 
   s_r = E[X^r] / E[X],
 
-giving s₁ = 1 and s₂ = g·F², with g = E[X] the gain and F² = E[X²] / E[X]² the excess factor (row 12). The transfer curve's slope (C7) is g·F², not g. One output for every electron (X = g) gives s_r = g^(r−1): F² = 1, and the rungs g, g², g³ the moment ladder is graded against (row 1). An electron-multiplying register's output for one electron is near exponential, with E[X^r] = r!·g^r. Then F² = 2, s₂ = 2g, s₃ = 6g² and s₃ = 3g·s₂.
+giving s₁ = 1 and s₂ = g·F², with g = E[X] the gain and F² = E[X²] / E[X]² the excess factor (row 12). The transfer curve's slope (C7) is g·F², larger than g by the excess factor. One output for every electron (X = g) gives s_r = g^(r−1): F² = 1, and the rungs g, g², g³ the moment ladder is graded against (row 1). An electron-multiplying register's output for one electron is near exponential, with E[X^r] = r!·g^r. Then F² = 2, s₂ = 2g, s₃ = 6g² and s₃ = 3g·s₂.
 
 The ladder is log-convex. For X ≥ 0, Cauchy–Schwarz gives E[X²]² ≤ E[X]·E[X³] and E[X³]² ≤ E[X²]·E[X⁴], and therefore
 
@@ -170,7 +170,7 @@ All from the frames themselves, read through `maint/zarr_frames.py`. The scripts
 | controls: os.urandom | 100 / 256 | 50.19 / 128.25; 0 low | | | |
 | controls: xorshift64 | 256 | exactly 64 on all 64 seeds: caught every time | | | |
 
-Bits 0 to 5 are indistinguishable from os.urandom in every direction the test reads. Structure begins at bit 6 and grows to bit 11. This rules out linear generators only; nonlinear ones are untested. The fixed pattern does not show here: it is an offset added below the noise, which scrambles into the low bits. It is read by the per-voxel mean, not by bit linearity.
+Bits 0 to 5 are indistinguishable from os.urandom in every direction the test reads. Structure begins at bit 6 and grows to bit 11. This rules out linear generators only; nonlinear ones are untested. The fixed pattern does not show here: it is an offset added below the noise, which scrambles into the low bits. The per-voxel mean reads it, and bit linearity cannot.
 
 **The noise at each level (the photon transfer curve, first pass; C3, C1).** The variance of each voxel is taken from successive frame differences (Σ (I_t − I_{t−1})² / 2(n − 1)), grouped by the voxel's mean over the 100 frames:
 

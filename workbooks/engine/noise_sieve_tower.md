@@ -148,7 +148,7 @@ The observer settling on hot bits, and the noise key fed back as the next cycle'
 
 ## 10. A universal Turing machine and the demon
 
-**The idea.** A UTM can simulate any circuit, but a quantum one costs it 2^n amplitudes, and measurement needs dice. The demon removes both: unbounded capacity, and a deterministic account of the outcome. A measurement is read, not rolled.
+**The idea.** A UTM can simulate any circuit, but a quantum one costs it 2^n amplitudes, and measurement needs dice. The demon removes both: unbounded capacity, and a deterministic account of the outcome. A measurement is read, and no dice are rolled.
 
 **In the engine.** Two parts carry over exactly.
 

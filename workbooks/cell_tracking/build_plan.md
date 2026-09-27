@@ -73,7 +73,7 @@ D1 and D2 are the engine's (the engine workbook's build plan).
   - each earlier voxel alive at r whose drifted place is inside the view and alive in the later frame emits the exact pair (earlier root, later root); voxels drifted outside the view emit nothing;
   - a device radix sort, then the distinct pairs, then partner counts a root;
   - "one" is the count of roots with exactly 1 partner, and "mutual" (AND = product) is the count of distinct pairs whose two ends both have exactly 1.
-- **Sampled r values:** each frame's key-partition events from the slide, plus its most-components cut, each mapped to its exact residual. This is a key-driven sample, not every r. Every r would be about 1.1M labellings a frame, and which r to sample is still Doug's.
+- **Sampled r values:** each frame's key-partition events from the slide, plus its most-components cut, each mapped to its exact residual. This is a key-driven sample of the r values. Every r would be about 1.1M labellings a frame, and which r to sample is still Doug's.
 - **6bba_48816121**, 99 pairs, 3,615 cuts:
   - at the earlier frame's cut: 61,679 components, 15,979 overlap exactly one (26%), and **6,688 mutual (11%)**;
   - the best mutual over each pair's sampled cuts sums to **13,783** (139 a pair, against 68 at the cut);
@@ -140,6 +140,6 @@ D1 and D2 are the engine's (the engine workbook's build plan).
 37. **The score, 24 September.** Tessera and portability stop here ("stop getting bogged down in portability").
    - The real metric is `maint/score_submission.py` (edge Jaccard × node count factor). The tracker's own tally (83.1%) is leaf-to-leaf and is not the score.
    - The current engine reads only `.kcr`. The 25 were re-ingested into `D:/kaggle_project_data/biohub_cell_tracking_set_kcr/train` (25 of 25 held, 10,207,190,124 bytes, 48.6% of raw, set root ad40e1d0…f53a39, 757 s); the `.iapx` set is untouched.
-   - **Baseline on the current engine: SCORE 0.209** (object, largest 400; Jaccard 0.210, 961,081 nodes against 880,906). The 22 September engine scored **0.661** (basin, largest 400; Jaccard 0.670). The tally is identical to 23 September's. The regression came with the v2 split, not today's work.
+   - **Baseline on the current engine: SCORE 0.209** (object, largest 400; Jaccard 0.210, 961,081 nodes against 880,906). The 22 September engine scored **0.661** (basin, largest 400; Jaccard 0.670). The tally is identical to 23 September's. The regression came with the v2 split, and today's work left it unchanged.
    - Cause: the 22 September nodes were peak basins (`binomial_basins`/`peak_basins`, steepest ascent over 26 neighbors, membership where the residual is positive), about 300,000 leaves a sample grouped into objects. The v2 engine's nodes are max-tree components at the most-components level, one object a leaf, cells merged into blobs. The basin modules were removed in the split and nothing in the engine does steepest ascent.
    - Built: `--basins` (rule → EngineBuffers → EngineBodiesRequest → MaxTreeObjectsRequest.basins). `max_tree_basin_ascent_kernel` points every voxel at the highest of itself and its 26 neighbors (key code, then ~index), and `max_tree_cc_flatten_kernel` follows each positive voxel to its peak; the peak, mark and body kernels are unchanged. The level cut stays the default until basins score.

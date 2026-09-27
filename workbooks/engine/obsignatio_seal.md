@@ -68,7 +68,7 @@ The second read is the only step that catches a flip in the first read, which wo
 - **Locality.** A change at lane (t, z, y, x) changes exactly ρ(t, z, y), π(t, z), υ(t), Λ, Ω and Θ, and no other node, except with probability 2^−256 per node. A change inside chunk c's bits changes κ(c), Σ, Ω and Θ, and no other node. A mismatch therefore walks down to its row or chunk. **Proved:**
   - 9,234 single-lane flips of a 2 × 3 × 3 × 513 volume each change exactly their four path nodes;
   - 57,216 single-bit flips of a stream (every bit, padding included) each change exactly the leaf that holds them, or nothing when they sit outside every message.
-- **End to end.** The lane nodes are taken from the source's lanes at ingest and compared against the lanes decoded from the file. A decoder fault shows as a row, not only a flip on disk.
+- **End to end.** The lane nodes are taken from the source's lanes at ingest and compared against the lanes decoded from the file. A decoder fault shows as a row as well as a flip on disk.
 - **Order of the check.** The stored bytes are checked first (κ, Σ, σ_s, μ). A flip on disk is named before anything decodes corrupted data. Then the side bytes inflate (σ_i, σ), then the file decodes (ρ … Λ), then Ω.
 - **Tampering, on a real crystal.** Single bits were flipped in copies of an RSNA knee crystal (1 × 24 × 640 × 640, 2,400 chunks, 15,386 lane nodes). Every case refused the crystal and named the place:
 
@@ -112,14 +112,14 @@ Of these operators, only the seal's is not associative: H(H(a ‖ b) ‖ c) ≠ 
 Doug's nine posits of 24 September on the wire and the witness are kept verbatim, numbered as he gave them, in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md). What the engine shows that bears on them follows (a to g, checked). Derived unless marked.
 
 - **(a) The seal detects and locates a change; it does not restore the value.** Locality is proved ("What it proves"): a mismatch walks down to its row or chunk.
-  - Derived: the seal can confirm a guessed repair. With t unknown flips in a segment of m bits, a search tries C(m, t) candidates. The right one proves, and a wrong one passes with probability 2^−256. One flip in a row of 960 lanes (15,360 bits) is 15,360 hashes. That is a search, not a code.
+  - Derived: the seal can confirm a guessed repair. With t unknown flips in a segment of m bits, a search tries C(m, t) candidates. The right one proves, and a wrong one passes with probability 2^−256. One flip in a row of 960 lanes (15,360 bits) is 15,360 hashes. That is a search, and the seal holds no error-correcting code.
   - "All crystals fail" (point 1), read against Locality: a change fails its own path of nodes up to the set root Θ. Every other sample's root Ω still proves.
 - **(b) Every crystal is legal, and T carries no redundancy** ("Redundancy" in [two_crystals.md](two_crystals.md)). Rebuilding needs the source or the whole crystal, and it fails closed: every tampered case in the table above was stopped and named.
 - **(c) A CRC with the seal as a locator.**
   - Erasure: a CRC of degree r with g(0) = 1 recovers any burst of at most r bits whose positions are known. The burst e at offset i leaves the syndrome x^i·e(x) mod g. g(0) = 1 makes x a unit mod g, and no nonzero e of degree below r is a multiple of g: the syndrome names e. At r = 64, a burst of up to 64 bits.
   - The seal locates to a row or a chunk, not to bits. Inside the segment the burst's place is unknown, and that is burst correction: a linear code that corrects every burst of length b needs r ≥ 2b check bits (Reiger 1960). A CRC-64 corrects bursts of at most 32 bits, and only with a generator chosen for it.
   - "We have the crc" (point 2) holds outside the `.kcr`: the `.bapx` body table carries a CRC-64, and the entropy history carries `payload_crc` and `cloud_crc`. The `.kcr`'s CRC words were replaced by the seal ("What it costs"). Adding one back is a format change, Doug's call.
-- **(d) The set root is a joint function of every crystal's root.** It changes on any change, except with probability 2^−256 per node. This is classical binding, not quantum entanglement (points 3 and 4). Θ over a set is built. The universal root is ruled, not built (below).
+- **(d) The set root is a joint function of every crystal's root.** It changes on any change, except with probability 2^−256 per node. This is classical binding, and it involves no quantum entanglement (points 3 and 4). Θ over a set is built. The universal root is ruled and still unbuilt (below).
 - **(e) The floor as amplitude and the knf as phase** (points 6 and 7).
   - An exact pair is an exact complex amplitude when the pair is (re, im), as Gaussian rationals. A (magnitude, phase) pair is exact only with the phase an index k of a root of unity, ζ_N^k in ℤ[ζ_N].
   - The knf as phase is untested, and it is carried in [posits_24_september.md](../../thought_experiments/engine/posits_24_september.md).

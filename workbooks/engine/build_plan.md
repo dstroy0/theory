@@ -1,6 +1,6 @@
 # The build plan: the engine
 
-**Purpose:** The order the engine's wants in [engine_table.md](engine_table.md) are built in, and every ruling on them, dated. Each build takes the next item, not whatever looks nearest. Built in order, one item at a time; an item is done when its program runs on the device and its row below says so.
+**Purpose:** The order the engine's wants in [engine_table.md](engine_table.md) are built in, and every ruling on them, dated. Each build takes the next item in order, even when another looks nearer. Built in order, one item at a time; an item is done when its program runs on the device and its row below says so.
 **Two tables, two concerns (23 September):** keep the cell table and the engine table separate; each is optimized against the other only through its interface section, never merged. **The engine is optimized for no scale:** no size, spacing, order, window or width is ever written into engine/. Each comes from the request or the data. The engine table's scale audit lists what is still in; this has been put in and ripped out repeatedly, and it is dangerous.
 **Scope:** the engine's items of the build plan kept from 22 to 24 September, and item 38 (26 September). The item numbers are the plan's own, and a number missing here is another workbook's: the cell program's items are in the cell workbook's [build_plan.md](../cell_tracking/build_plan.md), and the crystal's growth in the compression workbook's [build_plan.md](../compression/build_plan.md).
 
@@ -259,7 +259,7 @@ Cell-specific modules (bodies, score_sample, answer_key, the measure/*) are due 
      - WSL's NVML lists no process's memory; tessera_measure_paravirtual refuses, and the daemon exits. The suite passes with 0 warnings.
      - Native Linux is not available here.
    - The crystal's growth between 22 and 24 September is the compression workbook's (its build plan).
-   - Service files (24 September): engine/daemon/service/tessera@.socket and tessera@.service (systemd user units). Activation was proven in WSL: systemd started the daemon on a client's connection, then the WSL measure refusal ended it. Windows needs no service. The docker mount is documented, not run.
+   - Service files (24 September): engine/daemon/service/tessera@.socket and tessera@.service (systemd user units). Activation was proven in WSL: systemd started the daemon on a client's connection, then the WSL measure refusal ended it. Windows needs no service. The docker mount is documented and has never been run.
    - Reservation rule done (24 September, by the stop hook's "finish all open items"): tessera_ledger_wants = max(declared, kept peak) is used for admission, the shadow, the spare and the reservation at start. The ledger budget test is 22/0; the job test is 24/0. The real prove reserved 3,958,566,912, its kept peak.
    - Docker mount run (24 September): Docker Engine 29.1.3 in WSL; the static test/tessera_socket_probe.c in a container, socket mounted, TESSERA_RUNTIME=/run/tessera. systemd started the daemon on the container's connection; the WSL refusal ended it.
    - Open: native Linux (no native NVIDIA Linux driver on this machine); the is not run; no service files; engine runs don't submit through tessera (M14); the Ω engine-run path (lambda capture at about chaitin_omega.cu:2788) is unbuilt.
