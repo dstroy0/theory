@@ -101,7 +101,7 @@ Let each electron give an independent output X in lane units, of one law for eve
 
 so s₁ = 1 and s₂ = g·F², with g = E[X] the gain and F² = E[X²] / E[X]² the excess factor (row 12). The transfer curve's slope (C7) is g·F², not g. One output for every electron (X = g) gives s_r = g^(r−1): F² = 1, and the rungs g, g², g³ the moment ladder is graded against (row 1). An electron-multiplying register's output for one electron is near exponential, with E[X^r] = r!·g^r. Then F² = 2, s₂ = 2g, s₃ = 6g² and s₃ = 3g·s₂.
 
-The ladder is log-convex. For X ≥ 0, Cauchy–Schwarz gives E[X²]² ≤ E[X]·E[X³] and E[X³]² ≤ E[X²]·E[X⁴], so
+The ladder is log-convex. For X ≥ 0, Cauchy–Schwarz gives E[X²]² ≤ E[X]·E[X³] and E[X³]² ≤ E[X²]·E[X⁴], and therefore
 
   s₃ ≥ s₂²,  s₂·s₄ ≥ s₃²,
 
@@ -187,7 +187,7 @@ Bits 0 to 5 are indistinguishable from os.urandom in every direction the test re
 | 8 | 434.3 | 28,994.8 | 170.3 | 9.46 | 66.76 |
 | 9 | 523.0 | 47,819.6 | 218.7 | 9.82 | 91.43 |
 
-Shot noise has variance proportional to the level: variance / mean constant. Here it climbs from 1.22 to 91.43. So above the dimmest decile the frame-to-frame change is mostly not noise: it is the signal moving, bodies crossing the voxel between frames. That part is deterministic given the tracks, and it is what the set's model and local coherence remove.
+Shot noise has variance proportional to the level: variance / mean constant. Here it climbs from 1.22 to 91.43. So above the dimmest decile the frame-to-frame change is mostly not noise: it is the signal moving, bodies crossing the voxel between frames. That part is deterministic given the tracks, and the set's model and local coherence remove it.
 
 | reading | bits a voxel | of raw |
 |---|---|---|
@@ -352,7 +352,7 @@ Each part is in `anchor_sift/src/engine` at 1948ae1, with its proof in [the engi
 
 ## How to close the gap, in order
 
-1. **Measure F2 on one sample** (44b6_0113de3b). The gap between the crystal and F2 is what the Rice coder alone leaves: its block size, its k and its escape against the counts. That share of the gap is recoverable without changing the tower.
+1. **Measure F2 on one sample** (44b6_0113de3b). The gap between the crystal and F2 is the Rice coder's own share: its block size, its k and its escape against the counts. That share of the gap is recoverable without changing the tower.
 2. **Measure F3 with the contexts the ledger already points at.** Grouping by floor (−1.16 MB) and pairs along t (−1.99 MB on this sample) are contexts. F3 says what the best such context can take, and so whether to build one.
 3. **Settle F4.** Measured on 44b6_0113de3b at 5.902 bits a voxel (36.9%): bits 0 to 5 carry no linear generator, and the photon transfer curve with structure removed gives gain 1.162, read noise about 1.6, and no dark offset. Measured on the 25 at 6.229 bits a voxel (38.9%), gain 0.986 on average. Still to do: the shot line above level 300, where it is assumed and not read; the constant regions and the spatially correlated category (44b6_267148e4, 668e0cc7, 5740d24b) as functionals; the bent fits (12dfb391, 53f95252); the z correlation near 0.12 at the dimmest levels; nonlinear generator classes on the low planes. Read since on 24 of the kcr set, each measured and none yet a functional: the constant region (row 24 of the noise vector integration table), the dim z correlation (row 25) and the bending transfer curve (row 26).
 4. **The noise functionals** (the plan above): the photon transfer curve, each category's functional, F5 integrated, and the range coder that reaches it.
