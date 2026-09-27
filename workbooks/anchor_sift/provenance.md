@@ -1,7 +1,7 @@
 # Provenance: Authorship, Priority, And Terms
 
-**Purpose:** Establish three separate claims about this work with three separate instruments, so that each
-one is checkable by a stranger with no secret and no cooperation from the author. Say which
+**Purpose:** Establish three separate claims about this work with three separate instruments, each
+one checkable by a stranger with no secret and no cooperation from the author. Say which
 instrument answers which claim, and say which proposed mechanisms do not work.
 **Scope:** `maint/signing/`, `MANIFEST.tsv` and its signature, the public key, the timestamp proofs.
 **Owner:** dstroy0 (Douglas Quigg) <dquigg123@gmail.com>
@@ -92,13 +92,13 @@ and it is not a protection for a secret.
 
 ## 5. Mechanisms That Do Not Work
 
-Three were proposed. Each is written out here with its failure, so that none of them is reached for again
-on the assumption it was never considered.
+Three were proposed. Each is written out here with its failure, to keep any of them from being reached for
+again on the assumption it was never considered.
 
 ### 5.1 Embedding the private key in the library
 
-**Proposed:** encrypt the private key and ship it inside the code, so that signing works with nobody at
-the keyboard.
+**Proposed:** encrypt the private key and ship it inside the code, for signing with nobody at the
+keyboard.
 
 **Why it fails.** For the library to sign unattended, the library must be able to decrypt the key
 unattended, and whatever unlocks it ships alongside it. The result is obfuscation and not encryption.
@@ -116,7 +116,7 @@ authorship claim entirely, and it removes it retroactively.
 
 ### 5.2 A passphrase in an answer file
 
-**Proposed:** an answer file directory holding the passphrase, so that signing is unattended.
+**Proposed:** an answer file directory holding the passphrase, for unattended signing.
 
 **Why it fails.** Identical to 5.1 with an extra step. Any process on the machine can then sign as
 him. Section 6 has the version of the answer-file idea that works: it holds the digests awaiting

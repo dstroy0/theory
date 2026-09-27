@@ -50,7 +50,7 @@ Degree fifteen is the floor, where \((L+1)^2\) first reaches \(256\). Reaching t
 
 \section{The object being read}
 
-Everything from here down is one instance: SHA-256 compressing a single block, with its \(256\) working state bits taken as the lit set after each round. The hash is what the instrument was tried on, and the trying is not the subject.
+Everything from here down is one instance: SHA-256 compressing a single block, with its \(256\) working state bits taken as the lit set after each round. The instrument was tried on the hash, and the trying is not the subject.
 
 A frame is the eight working words as the round leaves them, with nothing added back. That distinction decides every number below, and an earlier version of this page had it wrong.
 
@@ -141,7 +141,7 @@ The early to late ratio is \(2.88\), against \(1.68\) for the delta over the sam
 
 \textbf{Derived, 26 September.} The visible fraction is \(\| P d \|^2 / \| d \|^2\) (\texttt{quotient\_coherence.py:15} at anchor\_sift \texttt{ddeccb3}), a ratio of squared norms, and the control's \(7/255\) below is that squared share.
 
-The control arm is what licenses reading any of this. Differences with no structure in them must return the fraction the row space predicts, and for differences holding the weight that figure is \(7\) of \(255\) and not \(8\) of \(256\): such a difference sums to zero, the all-ones direction lies inside the row space since the eight indicators add to it, and the difference lives in the hyperplane orthogonal to all-ones. Measured over \(200\) draws the control returns \(0.0267\) against a predicted \(0.0275\). \texttt{quotient\_coherence.py} refuses to report the measurement at all when the control misses.
+The control arm licenses reading any of this. Differences with no structure in them must return the fraction the row space predicts, and for differences holding the weight that figure is \(7\) of \(255\) and not \(8\) of \(256\): such a difference sums to zero, the all-ones direction lies inside the row space since the eight indicators add to it, and the difference lives in the hyperplane orthogonal to all-ones. Measured over \(200\) draws the control returns \(0.0267\) against a predicted \(0.0275\). \texttt{quotient\_coherence.py} refuses to report the measurement at all when the control misses.
 
 \section{The reading that was corrected}
 

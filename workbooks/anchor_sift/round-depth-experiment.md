@@ -66,10 +66,10 @@ nowhere else.
 - **The curve has a step, a shoulder, or a bump that does not fall.** A round range where more
   structure survives than the smooth decay predicts. That is where a cryptanalyst would look, and
   the framework would have pointed at it instead of guessing. Almost certainly it will not happen at
-  full rounds, but the experiment is what would show it if it did.
+  full rounds, but the experiment would show it if it did.
 - **The curve is already under the floor by a few rounds.** The samples were too few. Lower the line
   with more samples and run again. Nothing is concluded from a curve that starts under its own
-  floor, and passing that check is what a run does before its flat tail means anything.
+  floor, and a run passes that check before its flat tail means anything.
 
 ## What this does not claim
 

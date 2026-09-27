@@ -70,7 +70,7 @@ Measured a second way, on a different object through different code (the rendere
 viewer, against the lit set in Python) the same statistic reads **z = −3.0**. Two pipelines with
 no shared arithmetic land two hundredths apart.
 
-A drift at that level is what a surface computed from a slowly changing state looks like, and the
+A surface computed from a slowly changing state drifts at that level, and the
 next section is the control that pins the change to the state.
 
 ## Why the change belongs to the state, not the observer or the probe

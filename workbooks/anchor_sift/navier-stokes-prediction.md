@@ -92,8 +92,8 @@ They are what the equation forces and a competent derivation reaches them withou
 intuition above.
 
 The intuition is confirmed only if **D2** lands - `beta_z` at or near zero, with axial decoupling as
-the stated reason the collapse is possible. If `beta_z` comes out at or near `1/2`, so that the tube
-shortens at the same rate the core tightens, then "tighter knot, slower propagation" was a picture
+the stated reason the collapse is possible. If `beta_z` comes out at or near `1/2`, with the tube
+shortening at the same rate the core tightens, then "tighter knot, slower propagation" was a picture
 that resembled the answer and did not predict it, and this document is the record of that.
 
 D3 and D4 are secondary and can each fail without sinking D2.
@@ -102,5 +102,5 @@ D3 and D4 are secondary and can each fail without sinking D2.
 
 Not a proof, not a claim of priority over anyone's result, and not a claim that this work solved
 Navier-Stokes. It is a dated statement of what a specific physical intuition predicts, written
-before the source was available to check it against, so that a match afterwards means something and
+before the source was available to check it against. A match afterwards then means something, and
 a miss is on the record in the same place.

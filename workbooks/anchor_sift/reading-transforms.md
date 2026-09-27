@@ -253,7 +253,7 @@ kernel, which is not diagonal in degree and therefore leaves section 3 behind. T
 the same trade a trilinear filter makes against an anisotropic one.
 
 **Edges that are not band-limited.** T5 is exact for a band-limited field. The boundary field is
-band-limited by construction, since a truncated expansion is what a reading is. The room's walls, the
+band-limited by construction, since a reading is a truncated expansion. The room's walls, the
 beam stops and the arms have real corners, and prefiltering those rings. So the split is: the field
 gets the exact prefilter, the geometry keeps conventional coverage antialiasing. Applying T5 to the
 geometry would be a Gibbs artifact sold as a feature.

@@ -90,7 +90,7 @@ the device `2^27` primes:
 
 Point 3 is sharper than that. For 0/1 views each coefficient counts agreeing positions. It is at
 most the transform length; the transform length divides `p-1` and is therefore below `p` for any valid
-prime. A binary view is exact with no separate precondition. Weighting the views is what can breach
+prime. A binary view is exact with no separate precondition. Weighting the views can breach
 `p`: the bound becomes the sum of the weight products, and past `p` a single prime counts modulo
 itself, silently. The remedy is a prime above the largest coefficient, or CRT over several, the
 device path with its 94-bit product. The chapter states this bound as the design's own precondition.

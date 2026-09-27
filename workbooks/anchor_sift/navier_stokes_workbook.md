@@ -29,7 +29,7 @@ number theory workbook beside this file already follows:
 
 We know nothing here that the field does not. Every object in these two files belongs to someone else
 and is named with respect in the prior-art section; the two files only run those objects in exact
-arithmetic, which adds no rounding and a second route, and they add nothing else. This is help offered
+arithmetic, which adds no rounding and a second route, and those two are all they add. This is help offered
 to a neighborhood, not a claim staked in it.
 
 ## The problem, stated fully
@@ -276,8 +276,8 @@ with (2) enforced by Leray's projection. Nothing is rounded.
 `evidence/proofs/posits/proof_boundary_inheritance.py`, run and exit 0. `proof_domain_boundaries.py`
 named three kinds of boundary from a survey. A survey assigns the kind by judgment. Here the kind is not
 assigned: two probes are applied to the object, raise our scale by one and raise our horizon by one, and
-the object answers. FORMAT is what the scale probe moves, COMPLETENESS what the horizon probe moves,
-MEASUREMENT a gap to the target that neither probe moves, NONE no gap. `measurement` means exactly
+the object answers. The scale probe moves FORMAT and the horizon probe moves COMPLETENESS;
+MEASUREMENT is a gap to the target that neither probe moves, and NONE is no gap. `measurement` means exactly
 `unmoved by both of our probes`, and from this side `external` means the same. The verdict is only as
 good as the probes: the drawn null cuts the horizon probe from a completeness object and the classifier
 reports measurement, the limit stated and not hidden.

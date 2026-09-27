@@ -198,7 +198,7 @@ The grid pass is bound by a \(1.25\) MB table that does not fit in cache. A frag
 
 \textbf{Anisotropy.} The heat kernel is isotropic and a pixel's footprint near the silhouette is stretched. A single \(\sigma\) over-blurs across the short axis. The exact fix wants a directional kernel, which is not diagonal in degree and therefore leaves the composition law behind. The honest position is the same trade a trilinear filter makes against an anisotropic one.
 
-\textbf{Edges that are not band-limited.} T5 is exact for a band-limited field, and the boundary field is band-limited by construction, since a truncated expansion is what a reading is. The room's walls, the beam stops and the arms have real corners, and prefiltering those rings. The split is therefore: the field gets the exact prefilter, the geometry keeps conventional coverage antialiasing. Applying T5 to the geometry would be a Gibbs artifact sold as a feature.
+\textbf{Edges that are not band-limited.} T5 is exact for a band-limited field, and the boundary field is band-limited by construction, since a reading is a truncated expansion. The room's walls, the beam stops and the arms have real corners, and prefiltering those rings. The split is therefore: the field gets the exact prefilter, the geometry keeps conventional coverage antialiasing. Applying T5 to the geometry would be a Gibbs artifact sold as a feature.
 
 \section{Invariants, and the split they give}
 

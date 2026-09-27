@@ -74,8 +74,8 @@ Measured at full depth and no conduction, the most favorable case, in `tools/vie
 ## The instance it was tested on
 
 Everything from here down is one instance: SHA-256 compressing a single block, with its 256 working
-state bits taken as the lit set after each round. The hash is what the instrument was tried on, and
-the trying is not the subject. A reader who wants the alphabet and not this hash can stop above.
+state bits taken as the lit set after each round. The instrument was tried on the hash, and the
+trying is not the subject. A reader who wants the alphabet and not this hash can stop above.
 
 ## The object being read
 
@@ -180,7 +180,7 @@ The visible fraction is a ratio of two norms of one difference vector in raw cou
 such term. It shows the trend larger: the denominator was damping the effect and not producing
 it.
 
-The control arm is what licenses reading any of this. Differences with no structure in them must
+The control arm licenses reading any of this. Differences with no structure in them must
 return the fraction the row space predicts, and for differences that hold the weight that figure is
 7 of 255 and not 8 of 256: such a difference sums to zero, the all-ones direction lies inside the
 row space since the eight indicators add to it, and the difference lives in the hyperplane

@@ -51,7 +51,7 @@ the survivors far enough that a second adds nothing. That column is the steer be
 ## 2. What it read, in the two units that are not interchangeable
 
 Counted builds only, behind `ANCHOR_SIFT_COUNT_READS` (`anchor_sift.h:46`). At 0 the macros expand
-to nothing and the object is what it was.
+to nothing and the object stays as it was.
 
 | point                        | where              | what it says                                                                 |
 | ---------------------------- | ------------------ | ---------------------------------------------------------------------------- |
@@ -177,7 +177,7 @@ pointer the engine never dereferences. Equality is the whole interface: no order
 size, no alphabet enumeration. An observer holding the engine's state cannot recover what any symbol
 was.
 
-**That refusal is what is being bought and what is being paid for, and both are now measured.** It
+**That refusal is both the purchase and the price, and both are now measured.** It
 buys independence from alphabet size, priced in F14 at a 7.4 times constant factor per corpus symbol
 with a crossover near six times the corpus length. It costs `m` bits of state where exact streaming
 matching is reachable in `O(log^2 m)`, because that route runs on Karp-Rabin fingerprinting and
