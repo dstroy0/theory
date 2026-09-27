@@ -353,3 +353,23 @@ Finding x in a for less than half of a (25 September: "say we want to find x and
 | the reads | the 2,048 queries | at most 1,340 plane words, 5,360 bytes, against half of a, 131,072 samples, 262,144 bytes; without the early stop 2,048 words, n/128 | a query reads about 1% of half of a (measured); the lift reads all of a once to build the index |
 | all of it | the above | 11 checks, 0 failed; tessera declared 3,956,736 bytes, peak 148,013,056 | the knf is not used: the planes are the index |
 
+## 2026-09-27
+
+### The energy detector's period lands on a divisor
+
+The energy detector, `sims/art/periodic_energy.h`, which `fixed_pattern` and `classify_reject_recover` call, returns the period of the highest dispersion ratio. The classes are the period's phases, and the ratio is the energy between them per degree of freedom over the energy within them per its own.
+
+Measured, 27 September. The detector's Python route (`measure/periodic_energy.py` at anchor_sift `python_engine` 6568a94) agrees with the header line for line on 12 cases, 0 failed. On one of them the highest ratio is a divisor of the addend's period.
+- The case: 3,072 values, each a scene value drawn from 0 to 199, plus a hum over 64 phases drawn from −40 to 40, plus noise drawn from −20 to 20.
+- `energy_recover` returns period 2 at 14.503. The ratios, equal on both sides, rank 2 at 14.503, 8 at 9.048, 4 at 8.243, 32 at 7.657 and 64 at 7.156. The four periods above 64 each divide 64.
+
+Derived. With independent Gaussian values of one variance and no structure, the ratio at period p is Fisher's F with p − 1 and L − p degrees of freedom, and its spread narrows as p grows. The ratios of different periods are therefore not on one scale, and the period of the highest ratio need not be the period whose ratio is least likely without structure.
+
+Computed, a pure Python run from the F distribution's mean and variance over independent Gaussians at L = 3,072: the mean is 1.0007 at periods 2 and 64, and the standard deviation is 1.4158 at period 2 and 0.1802 at period 64. The 14.503 at period 2 stands 9.5 standard deviations above the mean, and the 7.156 at period 64 stands 34.2.
+
+The sims' own readings hold where the addend dominates: `fixed_pattern` reads period 64 at 179.565 against a band top of 5.241 (the sims, 23 September). The band is drawn for the highest ratio over every period, and it tests the pick without changing which period is picked.
+
+A candidate for testing (not built): a band for each period, drawn from the same shuffles, and the period whose ratio stands highest over its own band top, compared as exact ratios by cross multiplying as the period reading's margin is. It changes what the sims recover and waits on a posit and Doug's word.
+
+Prior art, cited from knowledge. A. Schwarzenberg-Czerny, "On the advantage of using analysis of variance for period search", Monthly Notices of the Royal Astronomical Society 241 (1989), 153–165. It folds a series at a trial period into a fixed number r of phase bins and scores the fold by the analysis of variance statistic, which follows F with r − 1 and n − r degrees of freedom when the series holds no signal. With r fixed, the degrees of freedom stay the same across trial periods. The detector here takes r as the period itself.
+
