@@ -12,7 +12,7 @@
 2. "n*n^n^n is the base Atom storage class of the engine, it is the problem's space, it is infinite, n grows to n grows to n grows to n ad infinitum"
 <!-- docs-check: end quoting -->
 
-The full checks are in [ENGINE_PROOF.md](../../theory/ENGINE_PROOF.md), under "The halting problem does not arise in this system".
+The full checks are in [ENGINE_PROOF.md](https://github.com/dstroy0/theory/blob/52dc362/theory/ENGINE_PROOF.md), under "The halting problem does not arise in this system".
 
 - **Truth 1, checked.** The answer path is total: the sweep is a bounded loop, the descent terminates (Theorem 5), and the count is exact at every instant (Theorem 3).
 - **Truth 2, checked.** `steer_descend` refuses malformed input before any work (`anchor_sift.c:938-962`), and the survivors-length refusal is marked FAILS CLOSED (`anchor_sift.c:959-960`).

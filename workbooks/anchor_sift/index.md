@@ -6,9 +6,9 @@ That is the construction. Every domain is that one sentence with a different ans
 
 |                               |                                                                               |
 | ----------------------------- | ----------------------------------------------------------------------------- |
-| [Setup](setup.md)             | dependencies, building the engine, building the research papers                         |
-| [Using it](usage.md)          | run the measure on something of your own                                      |
-| [Research](research/index.md) | the research papers in `theory/`, and how to build them |
+| [Setup](https://github.com/dstroy0/anchor_sift/blob/main/docs/setup.md) | dependencies, building the engine, building the research papers |
+| [Using it](https://github.com/dstroy0/anchor_sift/blob/main/docs/usage.md) | run the measure on something of your own |
+| [Research](../../README.md) | the research papers in `theory/`, and how to build them |
 
 The repository is at [github.com/dstroy0/anchor_sift](https://github.com/dstroy0/anchor_sift). Its README covers the algorithm, the areas of research, and the licensing.
 
