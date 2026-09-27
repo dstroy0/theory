@@ -16,7 +16,7 @@ Seven transforms carry this work. They look unrelated and they do one thing: the
 
 \textbf{The golden placement.} An index becomes a direction. Index \(k\) goes to height \(1 - 2(k + 0.5)/n\) at longitude \(k\gamma\), and \(256\) bit positions become \(256\) points on a sphere with no seam and no pole pile. A one-dimensional list becomes a two-dimensional surface.
 
-\textbf{The harmonic expansion.} A set of points on that surface becomes \((L+1)^2\) coefficients sorted by angular scale. At full rank it is lossless, making it a change of vocabulary and not a summary, and the sorting is what it buys: structure at a scale concentrates in one band instead of smearing across \(256\) numbers.
+\textbf{The harmonic expansion.} A set of points on that surface becomes \((L+1)^2\) coefficients sorted by angular scale. At full rank it is lossless, making it a change of vocabulary and not a summary, and it buys the sorting: structure at a scale concentrates in one band instead of smearing across \(256\) numbers.
 
 \textbf{The permutation as an orthogonal map.} \(k\) observations of a quantity become a vector in \(k\) dimensions, and correlation becomes the cosine of an angle. A permutation is then a rotation within the coordinate subgroup, preserving every length and randomizing every angle. This one was hiding in plain sight all night as \emph{shuffling the data}.
 
@@ -56,4 +56,4 @@ That fixes when a transform is useless, and the test for it is direct. A Boolean
   \item Translate back, and state the finding in the coordinate the question was asked in.
 \end{enumerate}
 
-Step four is what this work learned the hard way, twice.
+This work learned step four the hard way, twice.

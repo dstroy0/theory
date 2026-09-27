@@ -82,10 +82,10 @@ bytes, same blocks, same miners.
 
 ## What has no instrument
 
-The gap between a description of about a thousand bits and a search costing two to the forty eight
-is what a one-way function is, and nobody has proven one exists. SHA-256's hardness is conjectural.
+A one-way function is the gap between a description of about a thousand bits and a search costing
+two to the forty eight, and nobody has proven one exists. SHA-256's hardness is conjectural.
 Every measurement above assumed the gap and confirmed its local consequences, which is circular, and
-the pi control is what exposed the circle.
+the pi control exposed the circle.
 
 Kolmogorov complexity is uncomputable: no tool decides it. A compressor gives an upper bound:
 compression proves structure, failure to compress proves nothing, because a compressor hunts
@@ -95,7 +95,7 @@ not compress, therefore no structure" is a statement about zlib.
 
 What does separate pi from noise is neither distribution nor compression. It is reproducibility: an
 independent method computes the same digits, and agreement between two programs sharing no arithmetic
-is what demonstrates a generating program. That is a predictive test, and the predictive test for a
+demonstrates a generating program. That is a predictive test, and the predictive test for a
 hash is the linear approximation search, the only axis above that pi would fail.
 
 ## Reading the interior instead of the boundary

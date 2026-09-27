@@ -212,8 +212,7 @@ Two things worth reading off it. The **trough** is the stable feature and the **
 peak moves from 08:00 to 13:00 between the time halves while the trough does not move at all, which makes the
 trough the feature any phase claim should be built on. And this says nothing about migration in either
 direction: the corpus spans 48 days and each half 24, while mining geography moves over years. Two
-halves three weeks apart agreeing is what a stable phase looks like *and* what an unmeasurably slow
-migration looks like. Separating those needs years of corpus, not this one.
+halves three weeks apart agree under a stable phase *and* under an unmeasurably slow migration. Separating those needs years of corpus, not this one.
 
 That phase carries geography. A miner's cycle follows its own local time. A population spread
 evenly around the globe cancels to nothing in UTC and produces no daily signal at all. A signal
@@ -279,15 +278,15 @@ sorted list are close together by construction. The full population shows no ban
 The second was a null with no variance in it. The first daily reading shuffled the hour labels and
 recounted, which returns identical counts every time, because permuting a list does not change its
 multiset. It printed a null of 36.6 with a standard deviation of 0.00, and a null that cannot vary
-is not testing anything. The multinomial null above replaced it, and it is what moved the reading
-from meaningless to marginal.
+is not testing anything. The multinomial null above replaced it, and it moved the reading from
+meaningless to marginal.
 
 ## What would settle the open question
 
 Pool identity is recoverable from a block, though not from the fields used here: it sits in the
 coinbase transaction's tag, in plaintext, the basis explorers use to attribute blocks.
 Neither `maint/chain/blocks.json` nor `maint/chain/blocks_deep.json` carries it
-(`maint/chain/fetch_blocks.py:56-66`). Emitters had to be inferred above, and inference is what
+(`maint/chain/fetch_blocks.py:56-66`). Emitters had to be inferred above, and the inference
 failed.
 
 With attribution fetched alongside the headers the question becomes supervised. Given the pool that
@@ -301,8 +300,8 @@ Almost all the machinery here already existed. The contribution is pointing exis
 dataset they are not usually pointed at, and the instruments belong to other people.
 
 The detection chain is radar's. Estimating the background under a cell from an order statistic of
-its neighbors, so that other targets sitting in the training cells cannot mask the one being
-tested, is Rohling's ordered-statistic CFAR [7]. Naming the waveform before opening the data and
+its neighbors, which keeps other targets sitting in the training cells from masking the one
+being tested, is Rohling's ordered-statistic CFAR [7]. Naming the waveform before opening the data and
 projecting onto it is matched filtering, and the reason that projection carries no
 multiple-comparison penalty.
 

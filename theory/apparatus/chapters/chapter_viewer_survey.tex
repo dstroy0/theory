@@ -58,13 +58,13 @@ Every read of both room keys is guarded. \texttt{DATA.clock} appears as \texttt{
 
 Key presence is therefore neither necessary nor sufficient. Not necessary, because a guarded optional key may be absent by design. Not sufficient, because the failure that actually happened was not a missing reference: the guards worked, the defaults applied, and what shipped was a live page with inert controls. A checker built on presence alone would have flagged \texttt{build\_room\_view.py}, which is fine, and it would still need an argument for why the same absence is a defect in the builder beside it.
 
-The check catching the real failure is a different one: for each builder and template pair, report which optional features end up inert, so that a build states \emph{this page has no clock} out loud instead of shipping a dead control. It reports and does not refuse, failing only where a feature the builder's own name promises comes out inert.
+The check catching the real failure is a different one: for each builder and template pair, report which optional features end up inert, letting a build state \emph{this page has no clock} out loud instead of shipping a dead control. It reports and does not refuse, failing only where a feature the builder's own name promises comes out inert.
 
 The three rows above are candidates and not verdicts. They were found by matching payload keys as string literals in the builder source, and a key supplied through a variable would read as missing. \texttt{build\_room\_view.py} and \texttt{build\_sha\_room\_view.py} were opened and confirmed: both pack exactly \texttt{shell}, \texttt{core}, \texttt{source}, \texttt{things} and \texttt{settings}.
 
 \section{What the split kills first}
 
-\texttt{OCT\_SIGNS} is a hardcoded two-by-two-by-two sign loop carrying the comment \emph{the arms are fixed}. That comment is now false. An arm is a weight function over the placement and an arm set is a matrix whose rank is what the reading carries, and the eight sign octants are one instance of that with rank \(8\), blind in \(248\) of \(256\) directions. The loop asserts they are the only instance.
+\texttt{OCT\_SIGNS} is a hardcoded two-by-two-by-two sign loop carrying the comment \emph{the arms are fixed}. That comment is now false. An arm is a weight function over the placement and an arm set is a matrix whose rank the reading carries, and the eight sign octants are one instance of that with rank \(8\), blind in \(248\) of \(256\) directions. The loop asserts they are the only instance.
 
 \section{Vectorizing}
 

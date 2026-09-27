@@ -195,7 +195,7 @@ chain instead of the most mixed, which made every earlier depth a lower bound.
 | all four mixing functions are bijections | rank 32, kernel 0, Sigma and sigma alike | `bench_space` |
 | narrowed rank deficit in closed form | deg gcd(p(x), x^w + 1), agrees at every width | `bench_space` |
 | a one-bit nonce difference stays one bit | through W27, where the mean is already 15.58 | `bench_space` |
-| **the sparse path is reachable, and cheap** | W19 48%, W23 4.7e-5, W27 6e-7; nothing else beats chance | `bench_sparse` |
+| **the sparse path is reachable, and cheap** | W19 48%, W23 4.7e-5, W27 6e-7; no other path beats chance | `bench_sparse` |
 | the sparse path is a property of the recurrence | genesis, 125552 and an invented header agree | `bench_sparse` |
 | it arrives where nothing is left | W27 feeds round 27; forward state dies at round 10 | both |
 | **the sparse path traces exactly, no sampling** | linearized floor predicts every sampled rate, 0 contradictions | `bench_sparse` |
@@ -701,7 +701,7 @@ these were structural for a while. Every row names the measurement that ended it
 | the inverted direction dies at 14 | **superseded** | 15, at more pairs |
 | the 5.0% word-round saving is worth 5.0% of runtime | **refuted** | implemented and exactly correct on 200,000 nonces, and measured at 0.998, 0.978, 1.079, 0.957 - median about 1.00. Word-rounds bound arithmetic, not runtime |
 | two scans agreeing over a nonce range tests the shortcut | **refuted** | an anchor survives about once in 2^32 nonces. Both arms agreeing that a range holds no share therefore tests nothing. The check now compares anchor words against full digests nonce by nonce |
-| a single timed pass can resolve a 5% effect | **refuted** | one pass each read 0.935 to 1.166 on this machine, a spread wider than the effect. Best-of-seven with alternating arms is what the figures use |
+| a single timed pass can resolve a 5% effect | **refuted** | one pass each read 0.935 to 1.166 on this machine, a spread wider than the effect. The figures use best-of-seven with alternating arms |
 | vector walk / hill climbing finds a gradient | **refuted** | walk 20.500 against enumeration 20.375: no landscape to climb (H13) |
 | a minimum weight per word measures sparsity | **refuted** | a minimum is a tail statistic: at 2^27 pairs chance alone gives a one-bit word once per word. The rate against 33/2^32 is the measurement; the first `bench_sparse` reported the minimum and had to be rewritten |
 | real headers hash differently from invented ones | **refuted** | genesis, 125552 and an invented header give the same sparse words at the same rates; the padding and ten zero words change nothing |
@@ -735,7 +735,7 @@ not move at all.
 Classes 0 and 31 were predictable in advance and are not the finding. **The finding is that
 Sigma1's three amounts appear and Sigma0's nearly do not** - about one chance in 225 at a
 single depth, or one in 112 allowing that Sigma0 would have counted equally. The depths are not
-independent, so that is one result repeated, not fourteen.
+independent, and the fourteen are one result repeated.
 
 The mechanism: Sigma1 acts on e and feeds T1, which is added into both chains; Sigma0 acts on a and
 feeds T2, which reaches the a chain only. **It also explains Majority measuring as nothing on four
@@ -759,7 +759,7 @@ to see in one look. `tools/radar/radar_receive.py`.
 
 | stage | what it does | why it was needed |
 |---|---|---|
-| clutter estimate | what every class shares, removed per round | the common mode is what the refuted ridge was measuring |
+| clutter estimate | what every class shares, removed per round | the refuted ridge was measuring the common mode |
 | **OS-CFAR** | background under a cell from its neighbors, by median and MAD | the earlier reading used the scatter of the other 31 classes, which **contains** 6, 11, 25 and 31 - all real targets. Targets in the training cells inflate the noise floor and mask the detection |
 | coherent integration | sum rounds 6-16, where the signature is constant | gains sqrt(11) on a stationary target and nothing on noise |
 | matched filter | project onto the waveform | the waveform comes from the standard, leaving no max-of-N to pay |
@@ -824,7 +824,7 @@ operation and its signature disappears. The residues are the operations.
 
 **The experiment is not novel; the readout is.** Vaughn and Borowczak's follow-up (Cryptography,
 May 2026) tests **all 127 combinations** of the seven sub-functions across all 64 rounds; this
-assay's seven single ablations are a strict subset of their design. What differs is what is read
+assay's seven single ablations are a strict subset of their design. The difference lies in what is read
 off the matrix. They measure SAC compliance, a threshold on its maximum, which answers *does it
 diffuse*. The residue spectrum answers *which channel does it carry* - Sigma1's classes collapse,
 the carry dies with addition - and a pass/fail on a maximum cannot say that. Same matrix, different
@@ -1140,8 +1140,8 @@ sequential enumeration**. Everything below turns on that qualifier.
 Compressor topology changes the climb - 3 bit positions for 3:2 against 2 for 4:2, measured out of a
 Wallace tree - and changes this total by nothing, because a carry-propagate adder erases the
 difference every round. Sigma is a xor of rotations and rotation does not distribute over addition,
-and `ROTR(s+c)` is therefore not `ROTR(s)+ROTR(c)`: a and e must be settled before Sigma reads them. The
-resolved row is what a design can build.
+and `ROTR(s+c)` is therefore not `ROTR(s)+ROTR(c)`: a and e must be settled before Sigma reads them. A
+design can build the resolved row.
 
 #### A retracted claim
 
@@ -1306,7 +1306,7 @@ moving, at roughly 6.5 times the sensitivity of any standing reading - an effect
   2*pi*(f*v)*r/32, and the coordinate the readout lives in is drift = f*v. A uniform grid in v is
   correct at one frequency and wrong at the rest: at f = 15 the step was 1.875 in drift where 42
   rounds resolve 0.195, ten times too coarse. SHA-256's loudest cell sat at f = 15, exactly where
-  the grid was worst, so that reading was not trustworthy. The scan now runs uniformly in drift.
+  the grid was worst, and that reading was not trustworthy. The scan now runs uniformly in drift.
 - The magnitude channel weights each round by its own amplitude, and amplitude is where the noise
   is: a round that fluctuates large contributes large whatever its phase does. A phase-only channel
   normalizes every round to unit length first, and asks whether the phases line up
@@ -1320,8 +1320,8 @@ moving, at roughly 6.5 times the sensitivity of any standing reading - an effect
   that correction has changed an answer in this work and the first time it was applied to a
   reporting rule and not to a number.
 
-**A ceiling on the phase channel.** Summing R unit vectors cannot exceed R, so that statistic is
-bounded above by sqrt(2R) whatever the data does: 9.17 at 42 rounds. The injected wave reads 9.15,
+**A ceiling on the phase channel.** Summing R unit vectors cannot exceed R, which bounds that
+statistic above by sqrt(2R) whatever the data does: 9.17 at 42 rounds. The injected wave reads 9.15,
 which is saturation instead of a measurement. Against a null peak of 4.66 the channel has about a
 factor of two of usable range. Discarding amplitude is a good idea this baseline cannot afford.
 It would want many more rounds than SHA-256 has.
@@ -1335,7 +1335,7 @@ the only place this function still has structure to fingerprint.
 Fitting a complex exponential to `Z_f(r)` gives two numbers per frequency: a **drift**, the phase
 advance per round, which is where that component is going; and a **decay**, the amplitude fall per
 round, or how fast it is being elided. Together they are one complex frequency, and the shape
-of drift against frequency is what identifies a mechanism and not merely detecting one.
+of drift against frequency identifies a mechanism, beyond detecting one.
 
 What this can carry is **position, not value**. The phase of a component is the residue offset it
 sits at: the arm locates structure. Nothing in it recovers the value of any bit.
@@ -1487,7 +1487,7 @@ should say so instead of pretend it is injective.
   inverse at a shallow point on the same shape, four rounds earlier. Both are cliffs; the inverse's
   arrives later.
 
-  The peak is what remains: forward destroys **4.89 bits per round** at its steepest, against 5.000
+  The peak remains: forward destroys **4.89 bits per round** at its steepest, against 5.000
   for exactly 32x. One 32-bit word per round was the natural reading of that, and the width sweep
   tested it and did not support it. Across widths 4, 6, 8, 12, 16, 24, 32 the peak reads 3.50, 2.05,
   1.67, 3.54, 5.24, 3.03, 4.86 bits against widths of 2.00 to 5.00 - no tracking, and that column is
@@ -1496,7 +1496,7 @@ should say so instead of pretend it is injective.
   the grid happens to cut the fall.
 
   The column that does hold still is the wall: **10, 9, 9, 9, 9, 9, 10 across an eightfold change in
-  word width**. A wall set by how many words sit on the shift chain is what does not move
+  word width**. A wall set by how many words sit on the shift chain does not move
   when the bits inside them change, and a wall set by word width would have moved. That is evidence
   for chain length and against word size, and it is not conclusive: `bench_narrow` holds eight words
   at every width, and the word count has never been varied. Varying it settles the question.
@@ -1526,7 +1526,7 @@ should say so instead of pretend it is injective.
   compares seven constructions, not one construction at seven sizes**, and the peak column
   is reading. The wall holding still across all seven is the more interesting fact for surviving it.
 
-- **The wall is the chain length, and the word count is what proves it.** `bench_narrow` found the
+- **The wall is the chain length, and the word count proves it.** `bench_narrow` found the
   wall unmoved across an eightfold change in word width, which was evidence and not proof because it
   holds eight words at every width. `bench_words` generalizes the round to any even word count -
   majority and Sigma0 from the low half's head, choice and Sigma1 from the high half's head, joined
@@ -1640,8 +1640,8 @@ should say so instead of pretend it is injective.
 
   The first version of that bench reported the *minimum* weight per word and was wrong to. A minimum
   is a tail statistic that grows more extreme with the sample whether or not anything is there: at
-  2^27 pairs chance alone delivers a one-bit word about once per word. A minimum of one across
-  the deep words is what the null predicts. `bench_space`'s figure survives only because its sample
+  2^27 pairs chance alone delivers a one-bit word about once per word. The null predicts a minimum
+  of one across the deep words. `bench_space`'s figure survives only because its sample
   was 256 times smaller, where chance gives 0.001 and four hits are not chance. Counting the rate
   and holding it against 33/2^32 separates the two.
 
@@ -1717,8 +1717,8 @@ should say so instead of pretend it is injective.
 
   **Merkle rolling reaches W25 at 13% where nonce rolling reaches W23 at 0.002%** - six words deeper
   and about 6500 times more often, for a difference a miner already moves when it rolls the
-  extranonce. W0 also has floor 1 at W33, and it was **never observed** in 2^25 pairs: a floor is
-  what a chain with no carry anywhere achieves, and the chance of that falls with the chain's
+  extranonce. W0 also has floor 1 at W33, and it was **never observed** in 2^25 pairs: a chain with no
+  carry anywhere achieves the floor, and the chance of that falls with the chain's
   length. **Floor is not reachability**, and W33 is the row that proves it.
 
   What this does not do is help. W23 and W25 enter the compression at rounds 23 and 25, and forward
@@ -1752,8 +1752,8 @@ should say so instead of pretend it is injective.
   unverified when the 5.0% was first written down, and it did not survive verification.
 
   A single-pass timing would have reported this wrong in either direction: one pass each read from
-  0.935 to 1.166 on this machine, a spread wider than the effect. Best-of-seven with alternating
-  arms is what the numbers above use.
+  0.935 to 1.166 on this machine, a spread wider than the effect. The numbers above use
+  best-of-seven with alternating arms.
 
   The two savings have also **not** been carried into the eight-lane arm: `btc_miner` does not
   have them, and on this evidence there is no reason to port them.
@@ -1768,8 +1768,8 @@ should say so instead of pretend it is injective.
 
   **Forward is off at round 10, not merely small, bounded at least 16x below a continued slope.**
   Why the round function should terminate in one direction and decay in the other is still not
-  explained here. The direction of the asymmetry is at least the expected one: slow backward
-  diffusion is what meet-in-the-middle preimage attacks on reduced SHA-256 exploit, and the inverse
+  explained here. The direction of the asymmetry is at least the expected one: meet-in-the-middle
+  preimage attacks on reduced SHA-256 exploit slow backward diffusion, and the inverse
   reaching deeper agrees with the literature. The measured rates, 29.7 against 2.1, are this tree's
   own and are not something we have found a published figure to check against.
 

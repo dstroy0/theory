@@ -86,7 +86,7 @@ fine, and it would still need an argument for why the same absence is a defect i
 it.
 
 The check that catches the real failure is a different one: for each builder and template pair,
-report which optional features end up inert, so that a build states *this page has no clock* out
+report which optional features end up inert, letting a build state *this page has no clock* out
 loud instead of shipping a dead control. That is a report, not a gate, and it fails only where a
 feature the builder's own name promises comes out inert.
 
@@ -99,7 +99,7 @@ string literals in the builder source, and a key supplied through a variable wou
 
 `OCT_SIGNS` is a hardcoded two-by-two-by-two sign loop carrying the comment *the arms are fixed*.
 That comment is now false. `docs/arm-records.md` defines an arm as a weight function over the
-placement and an arm set as a matrix whose rank is what the reading carries, and the eight sign
+placement and an arm set as a matrix whose rank the reading carries, and the eight sign
 octants are one instance of that with rank 8, blind in 248 of 256 directions. The loop asserts they
 are the only instance. That one is the engine's, tied to T12 in the transform table.
 

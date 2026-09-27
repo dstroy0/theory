@@ -13,7 +13,7 @@ Two different invariants follow, and keeping them apart matters. Reordering a pr
 
 The survivor count depending on which probe is placed is the steering signal itself, measured in `steer_truthy_after_probe` (`src/engine/c/engine/anchor_sift.c:1143`). A reading that held the surviving set fixed across different probe sets would leave the planner with nothing to rank.
 
-A move that cannot change the answer is what this tree calls a null. Reordering is a null on the surviving set, and every probe set whatever is a null on the count.
+This tree calls a move that cannot change the answer a null. Reordering is a null on the surviving set, and every probe set whatever is a null on the count.
 
 One consequence shapes the whole design. A planner that samples badly, ranks wrongly, or contains a defect still produces some probe set, and every probe set yields the same count. Correctness is not a quantity the planner can spend. Speed is the only one it can spend, and that bounds the damage a bad planner does to the time it takes. The empty plan makes this vivid: destroy every probe, send every alignment to the full compare, and the answer is still exactly right at maximum cost.
 
@@ -165,7 +165,7 @@ This section has now been written three ways and two of them were wrong. What fo
 
 The question was whether the construction admits unbounded storage, and it was framed as turning on the coarm count: if an engine spawned coarms that each carried their own survivor vector, the state would be a tuple whose size grows with the arm count.
 
-**Settled, and the bound from above is what settles it.** One coarm per level means the arms do not multiply: the descent is a single chain with no branching. The state never becomes a tuple whose size grows, and the premise the growing answer needs is false here. The loop is `while (placed < count)` with `count` at most `ANCHOR_STEER_ANCHORS`. It cannot run longer than a constant whatever the corpus holds.
+**Settled, by the bound from above.** One coarm per level means the arms do not multiply: the descent is a single chain with no branching. The state never becomes a tuple whose size grows, and the premise the growing answer needs is false here. The loop is `while (placed < count)` with `count` at most `ANCHOR_STEER_ANCHORS`. It cannot run longer than a constant whatever the corpus holds.
 
 One descent is therefore a finite automaton WITH data dependent control flow, bounded above by a constant. It is not a fixed depth decision procedure, because the destroy test is a genuine conditional branch on data that decides whether to recurse.
 

@@ -32,7 +32,7 @@ pile. A one-dimensional list becomes a two-dimensional surface.
 
 **The harmonic expansion.** A set of points on that surface becomes (L+1) squared coefficients
 sorted by angular scale. At full rank it is lossless, which makes it a change of vocabulary and not a
-summary, and the sorting is what it buys: structure at a scale concentrates in one band instead of
+summary, and it buys the sorting: structure at a scale concentrates in one band instead of
 smearing across 256 numbers.
 
 **The permutation as an orthogonal map.** k observations of a quantity become a vector in k
