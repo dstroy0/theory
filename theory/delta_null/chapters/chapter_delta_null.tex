@@ -17,7 +17,7 @@ Two negative results transfer beyond this construction. Sizing a cascade of anch
 \subsection{1. Introduction}
 
 A search for a pattern in a body of data can test every condition, or it can test the ones we know
-are more probable. The second idea is what seems immediately attractive as a performance option,
+are more probable. The second idea seems immediately attractive as a performance option,
 test a preknown win condition. Delta null tests every possible position of every constituent of the
 object under examination using no information other than the object's identity.
 
@@ -159,7 +159,7 @@ A matching anchor establishes nothing. The exact compare cannot be removed by an
 
 \noindent\textbf{The selection rule is free.} Proposition 1 quantifies over every subconfiguration and never mentions what chose one. No frequency table, no random table, and no absence of a table can produce a false negative from a probe over the symbols themselves. A probe over rarity ranks carries one further condition, stated below. What a measure moves is how often the rejection fires.
 
-\noindent\textbf{The alphabet need not be known.} Both predicates are equalities between positions. Where \(\Sigma\) cannot be enumerated no table indexed by symbol exists, and rarity can still be counted through equality alone, at a cost of up to the square of the field length in oracle calls (\texttt{anchor\_sift.h:403}, \texttt{:497-500}). The flat measure is what remains for a rule that counts nothing, and maximum entropy is the base case for that rule. A weighted table is the special case available on a known domain.
+\noindent\textbf{The alphabet need not be known.} Both predicates are equalities between positions. Where \(\Sigma\) cannot be enumerated no table indexed by symbol exists, and rarity can still be counted through equality alone, at a cost of up to the square of the field length in oracle calls (\texttt{anchor\_sift.h:403}, \texttt{:497-500}). The flat measure remains for a rule that counts nothing, and maximum entropy is the base case for that rule. A weighted table is the special case available on a known domain.
 
 \noindent\textbf{The displacement support need not be ordered.} The definitions use \(+\) and never \(<\). A grid, a volume, and a rotated point configuration differ only in which members of \(G\) appear in \(D\). A rotation is a permutation of \(D\), which changes no term in either predicate.
 
@@ -171,7 +171,7 @@ Model occurrences of an anchor symbol as a Bernoulli process at rate \(q\). Over
 \[
   \mathbb{E}[C_1] = N q, \qquad \mathbb{E}[S] = \frac{1}{q}
 \]
-\(\mathbb{E}[C_1]\) is what the verify step reaches and \(\mathbb{E}[S]\) is the run a skipping search never touches. Reducing \(N\) candidates to \(O(1)\) survivors requires \(\log_2 N\) bits of discrimination and one anchor supplies \(-\log_2 q\) bits.
+The verify step reaches \(\mathbb{E}[C_1]\), and \(\mathbb{E}[S]\) is the run a skipping search never touches. Reducing \(N\) candidates to \(O(1)\) survivors requires \(\log_2 N\) bits of discrimination and one anchor supplies \(-\log_2 q\) bits.
 
 The second expression is Kac's lemma. For a stationary ergodic source the expected return time to a set of measure \(q\) is exactly \(1/q\), which makes the skip a recurrence time and not an artifact of the filter. That names an assumption the construction does not supply. Proposition 1 guarantees that no occurrence is lost, and Section 2.5 counts the symbol accesses, and neither says a pattern occurs at all. That last guarantee belongs to the source: a stationary ergodic process visits any event of positive probability almost surely, and there is no such promise for a process that is not stationary or not ergodic. Three guarantees with three owners, and only the first is this document's.
 
@@ -456,7 +456,7 @@ predicted & 2044.5 & 1022.3 & 511.1 & 255.6 & 127.8 & 63.9 \\
 \end{longtable}
 \normalsize
 
-The grid and cube rows sit below the prediction because those geometries admit fewer base positions, 3600 and 3375 against 4089 on the line. Within each row the halving per anchor is what the model gives.
+The grid and cube rows sit below the prediction because those geometries admit fewer base positions, 3600 and 3375 against 4089 on the line. Within each row the model gives the halving per anchor.
 
 \noindent\textbf{A rotation is invisible.} \texttt{grid2d\_\allowbreak{}scatter} and \texttt{grid2d\_\allowbreak{}turned} are the same eight points a quarter turn apart and agree at every anchor count, which puts Section 2.4's third corollary on a measurement.
 
@@ -1099,9 +1099,9 @@ A model can be wrong in the place it was not being watched. The caveat attached 
 
 \paragraph{4.9.7 Adaptive Probe Selection}
 
-Section 7.1 separates two arrangements. A fixed probe set can be made safe by deriving it from the pattern in advance. Deterministic sampling does that. A fixed probe set without that derivation is what Sections 4.9.5 and 4.9.6 measure failing. The third arrangement holds no probe set at all.
+Section 7.1 separates two arrangements. A fixed probe set can be made safe by deriving it from the pattern in advance. Deterministic sampling does that. Sections 4.9.5 and 4.9.6 measure a fixed probe set without that derivation failing. The third arrangement holds no probe set at all.
 
-The rule needs no pattern analysis and no distribution. The symbol about to be read is unknown. Every candidate position kills the same expected fraction of the alignments it touches, and what differs between positions is how many living alignments touch them at all. So the next read goes where the survivors overlap most, which is a function of the answers so far and of nothing else. The rule stops when a read separates nothing and confirms what remains (\texttt{bench/\allowbreak{}driver/\allowbreak{}bench\_\allowbreak{}ancorae\_\allowbreak{}ab.\allowbreak{}c:1139-\allowbreak{}1148}). It scores each read by a fraction expected before the read is made. The \(1 - 1/e\) bound Section 2.7 states for the engine's exactly scored descent is not established for it.
+The rule needs no pattern analysis and no distribution. The symbol about to be read is unknown. Every candidate position kills the same expected fraction of the alignments it touches, and what differs between positions is how many living alignments touch them at all. So the next read goes where the survivors overlap most, which is a function of the answers so far alone. The rule stops when a read separates nothing and confirms what remains (\texttt{bench/\allowbreak{}driver/\allowbreak{}bench\_\allowbreak{}ancorae\_\allowbreak{}ab.\allowbreak{}c:1139-\allowbreak{}1148}). It scores each read by a fraction expected before the read is made. The \(1 - 1/e\) bound Section 2.7 states for the engine's exactly scored descent is not established for it.
 
 \tiny
 \setlength{\tabcolsep}{2pt}
@@ -1173,7 +1173,7 @@ Every measurement before this one is given a needle. The construction does not r
 
 \noindent\textbf{The threshold cannot be trusted and is not.} Tests of one shift share read positions and are not independent, and a standard error computed as though they were is too small. The first run of this reported twelve shifts on the uniform corpus, which is SHA-256 output and has nothing to find.
 
-A shuffle of the same bytes settles it. It preserves the byte histogram exactly. The collision probability is unchanged, and it destroys every relation between positions, and that is all a shift can be. Whatever the detector reports there is what it reports on nothing.
+A shuffle of the same bytes settles it. It preserves the byte histogram exactly. The collision probability is unchanged, and it destroys every relation between positions, and that is all a shift can be. Whatever the detector reports there, it reports on nothing.
 
 \tiny
 \setlength{\tabcolsep}{2pt}
@@ -1252,7 +1252,7 @@ The uniform corpus also reduces to a single survivor, at a marker rate of 0.0049
 
 \subsubsection{4.13 Cross-Linguistic Regularities}
 
-Section 4.12 finds a boundary and Section 4.12.1 uses it. Neither says whether what it found is a property of language or of the one English sample it was run on, which was written by the author of this document. Two regularities are claimed to hold of every natural language and of nothing else: the frequency of a unit falls as roughly the reciprocal of its rank, and the frequent units are the short ones. Both are consequences of communicating under a fixed cognitive budget. Neither should care what the language is or when it was written.
+Section 4.12 finds a boundary and Section 4.12.1 uses it. Neither says whether what it found is a property of language or of the one English sample it was run on, which was written by the author of this document. Two regularities are claimed to hold of every natural language and only of natural language: the frequency of a unit falls as roughly the reciprocal of its rank, and the frequent units are the short ones. Both are consequences of communicating under a fixed cognitive budget. Neither should care what the language is or when it was written.
 
 Six public domain texts, fetched by \texttt{maint/\allowbreak{}data/\allowbreak{}fetch/\allowbreak{}fetch\_\allowbreak{}language\_\allowbreak{}corpora.\allowbreak{}py} and read by \texttt{bench\_\allowbreak{}ancorae\_\allowbreak{}ab.\allowbreak{}c} given a path. Line endings are folded into the space first, because a plain text file wrapped at a fixed width carries a return every fifty odd bytes and the detector finds the publisher's formatting before it finds the language.
 
@@ -1315,7 +1315,7 @@ what was found & where \\
 
 The most regular thing in a text file is almost never the language, because a language is produced by somebody composing and a file format is produced by a rule. Every result in Sections 4.12 to 4.14 required a layer of the format to be removed first, and the ones above were caught by reading the output and not by any check inside the method.
 
-Two conditions now sit on a candidate boundary and both came out of these failures. A boundary has to have a dispersion above 0.05, because Section 4.12.1 shows that a perfectly regular boundary fixes the phase of its own period and carries nothing else. Decoration and padding do that. And it has to occur at least once in 64 bytes. A symbol can be regular and still be a page number, which marks the page and not the unit. Both were added while trying to read a text that was failing for a third reason covered in Section 4.13.05, and both leave every corpus that already worked unchanged.
+Two conditions now sit on a candidate boundary and both came out of these failures. A boundary has to have a dispersion above 0.05, because Section 4.12.1 shows that a perfectly regular boundary fixes the phase of its own period and carries only that. Decoration and padding do that. And it has to occur at least once in 64 bytes. A symbol can be regular and still be a page number, which marks the page and not the unit. Both were added while trying to read a text that was failing for a third reason covered in Section 4.13.05, and both leave every corpus that already worked unchanged.
 
 \paragraph{4.13.05 Unicode Symbolization}
 
@@ -1398,7 +1398,7 @@ Measuring the floor needs several pairs matched for form at different separation
 
 Held against one 1611 reference the English texts give 0.5038 at 1623, 0.4286 at 1667, 0.4184 at 1720 and 0.3699 at 1813 in the top 100 band, which decreases at every step. The content band reverses once, rising from 0.1596 at 1623 to 0.1632 at 1667, and Milton is retelling the subject of the book being compared against. The topic produced that reversal, not the century.
 
-Converting the top 100 band to a loss per year gives 0.00171 across 1623 to 1667, 0.00019 across 1667 to 1720, and 0.00052 across 1720 to 1813. The first interval covers the civil war, the regicide, the plague and the fire, and it moves 8.9 times faster than the second, which covers the settled period after the Restoration. That ordering is what a drift rate responding to disruption would produce.
+Converting the top 100 band to a loss per year gives 0.00171 across 1623 to 1667, 0.00019 across 1667 to 1720, and 0.00052 across 1720 to 1813. The first interval covers the civil war, the regicide, the plague and the fire, and it moves 8.9 times faster than the second, which covers the settled period after the Restoration. A drift rate responding to disruption would produce that ordering.
 
 That ordering is not evidence of one. The 1667 to 1720 interval is the only pair in the series matched for form. The slowest interval is also the one interval where the largest confound was removed. The disruption term and the genre term take the same value on the same rows, and nothing measured here separates them. Whether a perturbation produces an oscillation is a further question this corpus cannot reach at all: five samples spread unevenly over 202 years are fewer than two per period for any period worth proposing. No periodicity is detectable and none is excluded.
 
@@ -1446,11 +1446,11 @@ None of this makes the regularities fragile, and the reason is the only result i
 
 So these regularities are not transmitted and do not need a surviving channel between two instances of them. They are properties of whatever produces a message, and they recur wherever that kind of producer recurs. Three language families, two scripts, 265 years and one percussive medium give the same measures for that reason and not because anything passed between them.
 
-The mechanism is that a shorter code for a more frequent symbol is what minimizes an expected transmission cost, which is a result in coding theory and not a fact about people. Any system paying per unit sent, over enough repetitions, arrives at it. So does a telegraph operator assigning codes by hand. Section 4.13.1 finds most of Morse's brevity surviving the destruction of the table he designed. A language is solved against one set of constraints, a vocal tract of fixed bandwidth, a working memory holding a few items, a listener decoding in real time and a finite childhood to learn in, and the optimum belongs to that constraint set instead of to any lineage. Nothing inherits the answer. Each language derives it again, because the problem is still there. Losing the content therefore does not remove the regularity: the regularity was never stored, and the conditions that regenerate it outlast every artifact.
+The mechanism is that a shorter code for a more frequent symbol minimizes an expected transmission cost, which is a result in coding theory and not a fact about people. Any system paying per unit sent, over enough repetitions, arrives at it. So does a telegraph operator assigning codes by hand. Section 4.13.1 finds most of Morse's brevity surviving the destruction of the table he designed. A language is solved against one set of constraints, a vocal tract of fixed bandwidth, a working memory holding a few items, a listener decoding in real time and a finite childhood to learn in, and the optimum belongs to that constraint set instead of to any lineage. Nothing inherits the answer. Each language derives it again, because the problem is still there. Losing the content therefore does not remove the regularity: the regularity was never stored, and the conditions that regenerate it outlast every artifact.
 
 One caution belongs with this and it is now measured. Distributions of this shape arise from processes doing no optimizing at all, and Section 7.4 runs that counterexample against these same measures. Independent character draws carrying a delimiter return a Zipf slope of -0.988, inside the range every natural corpus here occupies. The Zipf slope in this section carries no evidence about production and is withdrawn as such. The brevity correlation survives weakened, at -0.222 for the control against -0.247 to -0.364 for natural text. The boundary regularity against a null permutation survives intact, at 1.00 for the control against 1.79 and above for natural text. That counterexample does not weaken the method in this document, and strengthens it. A structure produced by nearly any generator is a better thing to key on than one belonging to a special class of them, and the requirement here was never that the source be a language. What the measures here need is that something regular produced the bytes. The filter of Section 2 needs less, a decidable equality between positions (Section 2.1), and it needs no alphabet, no dimension and no interpretation.
 
-The measures in Section 4.13 are also close to a question that has been asked before, since deciding whether an undeciphered corpus is a language at all is what a Zipf slope and a brevity correlation get used for. That literature exists and it is contested. It is not cited here because it has not been read in full, and Section 7 states what was read and what it cost.
+The measures in Section 4.13 are also close to a question that has been asked before, since a Zipf slope and a brevity correlation get used to decide whether an undeciphered corpus is a language at all. That literature exists and it is contested. It is not cited here because it has not been read in full, and Section 7 states what was read and what it cost.
 
 \paragraph{4.13.09 Frequency-Stratified Structure}
 
@@ -1554,7 +1554,7 @@ That is a property of what a text is about, recovered without reading any of it,
 
 \paragraph{4.13.1 Re-encoding Invariance}
 
-Every row above is alphabetic, and a regularity common to all of them could belong to that way of writing instead of to language. Re-encoding one of them settles it, because a re-encoding holds the meaning fixed and changes nothing else. Morse carries the same words over two marks and two silences, and \texttt{examples/\allowbreak{}language/\allowbreak{}1\_\allowbreak{}represent/\allowbreak{}encode\_\allowbreak{}percussive.\allowbreak{}py} produces it.
+Every row above is alphabetic, and a regularity common to all of them could belong to that way of writing instead of to language. Re-encoding one of them settles it, because a re-encoding changes only the writing and holds the meaning fixed. Morse carries the same words over two marks and two silences, and \texttt{examples/\allowbreak{}language/\allowbreak{}1\_\allowbreak{}represent/\allowbreak{}encode\_\allowbreak{}percussive.\allowbreak{}py} produces it.
 
 \tiny
 \setlength{\tabcolsep}{2pt}
@@ -1787,7 +1787,7 @@ The first entry recurring three times is the finding, not the anecdote. A patter
 
 \subsubsection{6.6 Unmeasured Quantities}
 
-Any vectorized cost model. Every figure in Section 4.9 counts sequential reads, and a shift is inherently serial because the next position cannot be computed until the current one has been read. Under a model that tests many positions per word operation, the advance advantage that decides Section 4.9.1 may not be available at all, and rejection would be the only lever left. The engine's only wide path is the planner's survivor scan (Section 2.7), which is not this arrangement, so that measurement would still decide whether the arrangement in Section 4.9.3 belongs in the library, and it has not been made.
+Any vectorized cost model. Every figure in Section 4.9 counts sequential reads, and a shift is inherently serial because the next position cannot be computed until the current one has been read. Under a model that tests many positions per word operation, the advance advantage that decides Section 4.9.1 may not be available at all, and rejection would be the only lever left. The engine's only wide path is the planner's survivor scan (Section 2.7), which is not this arrangement. That measurement would therefore still decide whether the arrangement in Section 4.9.3 belongs in the library, and it has not been made.
 
 The estimator's behavior against published estimators other than the two in Section 4.5. The construction on a domain whose alphabet is genuinely unenumerable. A spatially correlated domain of more than one dimension, on which a centroid based anchor rule would need to be tested, since on an independent domain every point of a pattern is interchangeable and such a rule correctly shows nothing. Any timing figure: what a SWAR word costs is a per part question and no host number answers it.
 
@@ -1871,11 +1871,11 @@ Three of the four measures fail. The Zipf slope from a geometric distribution ca
 
 Section 4.13 therefore may not read a Zipf slope, a brevity correlation or a type count as evidence of anything about production, and those claims are withdrawn. What remains of that section is the boundary regularity.
 
-That one separates completely, and across the whole sweep. Every memoryless arm scores between 0.99 and 1.01, which is a corpus indistinguishable from its own shuffle and is what a process with no memory has to give, whatever its alphabet size or delimiter rate. Every natural corpus scores at or above 1.79. This is the measure Sproat grants, writing of the randomization method that it ``seems to make sense as a way to spot memoryless non-equiprobable processes masquerading as structured systems'', and his stated limit on it applies here unchanged: a non-linguistic system that has structure passes it as well. So the surviving measure establishes that a corpus is not memoryless. It does not establish that a corpus is a language, and this document does not claim it does.
+That one separates completely, and across the whole sweep. Every memoryless arm scores between 0.99 and 1.01, which is a corpus indistinguishable from its own shuffle, the figure a process with no memory has to give, whatever its alphabet size or delimiter rate. Every natural corpus scores at or above 1.79. This is the measure Sproat grants, writing of the randomization method that it ``seems to make sense as a way to spot memoryless non-equiprobable processes masquerading as structured systems'', and his stated limit on it applies here unchanged: a non-linguistic system that has structure passes it as well. So the surviving measure establishes that a corpus is not memoryless. It does not establish that a corpus is a language, and this document does not claim it does.
 
 The surviving measure is also the one Section 7.3 can price. A corpus equal to its own shuffle carries no gradient and offers nothing to extract. The equilibrium reading holds exactly here, and the ratio above one is a distance from that equilibrium.
 
-\noindent\textbf{What a cipher does to the surviving measure.} Sproat's stated limit is that a structured non-linguistic system passes this test as well. The question is what it takes to make a text stop passing it. One English corpus was put through transforms that keep every symbol in the same seat range. The same measurement path reads all of them (\texttt{data/\allowbreak{}transform\_\allowbreak{}corpus.\allowbreak{}py}).
+\noindent\textbf{What a cipher does to the surviving measure.} Sproat's stated limit is that a structured non-linguistic system passes this test as well. This section asks what it takes to make a text stop passing it. One English corpus was put through transforms that keep every symbol in the same seat range. The same measurement path reads all of them (\texttt{data/\allowbreak{}transform\_\allowbreak{}corpus.\allowbreak{}py}).
 
 \tiny
 \setlength{\tabcolsep}{2pt}
@@ -1936,7 +1936,7 @@ The transforms in Section 7.4 leave the tail measure exactly where the head meas
 
 A relabeling of the symbols changes nothing, because the measure reads gaps between occurrences and a permutation moves which seat carries which gaps. The single symbol result is identical to four decimals at 0.2815, and over the whole spectrum a substitution is likewise invisible.
 
-A repeating key of length 8 divides the structure without removing it. Read whole, the ciphertext gives a tail figure of 0.99 against 0.73 for the plaintext, which is a corpus that looks memoryless. Split at a stride of 8 and averaged over all eight cosets, the ciphertext gives 0.896 and the plaintext gives 0.896. The agreement is exact because each coset was enciphered by one substitution, and a substitution is what the previous paragraph shows the measure cannot see.
+A repeating key of length 8 divides the structure without removing it. Read whole, the ciphertext gives a tail figure of 0.99 against 0.73 for the plaintext, which is a corpus that looks memoryless. Split at a stride of 8 and averaged over all eight cosets, the ciphertext gives 0.896 and the plaintext gives 0.896. The agreement is exact because each coset was enciphered by one substitution, and the previous paragraph shows the measure cannot see a substitution.
 
 The period does not have to be known. Scanning the stride over two ciphertexts of the same plaintext, one with a key length of 3 and one with 8, against the plaintext scanned the same way:
 
@@ -2093,7 +2093,7 @@ cmake --build build/engine_c
 \setlength{\tabcolsep}{2pt}
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{\dimexpr\textwidth/4-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr\textwidth/4-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr\textwidth/4-2\tabcolsep\relax}>{\raggedright\arraybackslash}p{\dimexpr\textwidth/4-2\tabcolsep\relax}@{}}
 \toprule
-suite & source & count & what it reaches that nothing else does \\
+suite & source & count & what it alone reaches \\
 \midrule
 CAVP ShortMsg & NIST & 65 & one shot, 0 to 64 bytes \\
 CAVP LongMsg & NIST & 64 & 163 to 6400 bytes \\
