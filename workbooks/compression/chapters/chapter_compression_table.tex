@@ -101,7 +101,7 @@ Let a voxel collect, each frame, μ photoelectrons, D·Δt dark electrons and ε
 
 L̄ = O + g·(μ + D·Δt + ε),  σ² = g²·(μ + D·Δt + ε) + R² + σ²\_\allowbreak{}J + σ²\_\allowbreak{}kTC,
 
-so σ² = g·(L̄ − O) + R² + σ²\_\allowbreak{}J + σ²\_\allowbreak{}kTC exactly. Charge that enters as whole electrons before the gain moves a voxel along the transfer line and never off it. At one exposure, the dark level, the dark shot and spurious charge are read as light, and the line's intercept (C7), c = R² + σ²\_\allowbreak{}J + σ²\_\allowbreak{}kTC − g·O, holds none of them. Dark current is read only where the light is known to be zero. A bias frame (no light, no exposure) gives O as its mean and the level-free sum as its variance. A dark frame at Δt adds g·D·Δt to the mean and g²·D·Δt to the variance, and their ratio is g. No frame at one temperature splits R², σ²\_\allowbreak{}J and σ²\_\allowbreak{}kTC from each other.
+giving σ² = g·(L̄ − O) + R² + σ²\_\allowbreak{}J + σ²\_\allowbreak{}kTC exactly. Charge that enters as whole electrons before the gain moves a voxel along the transfer line and never off it. At one exposure, the dark level, the dark shot and spurious charge are read as light, and the line's intercept (C7), c = R² + σ²\_\allowbreak{}J + σ²\_\allowbreak{}kTC − g·O, holds none of them. Dark current is read only where the light is known to be zero. A bias frame (no light, no exposure) gives O as its mean and the level-free sum as its variance. A dark frame at Δt adds g·D·Δt to the mean and g²·D·Δt to the variance, and their ratio is g. No frame at one temperature splits R², σ²\_\allowbreak{}J and σ²\_\allowbreak{}kTC from each other.
 
 \subsection{\texorpdfstring{C15. The cumulant ladder of a gained count (F4, F5; rows 1, 12 and 15)}{C15. The cumulant ladder of a gained count (F4, F5; rows 1, 12 and 15)}}
 
@@ -109,7 +109,7 @@ Let each electron give an independent output X in lane units, of one law for eve
 
 s\_\allowbreak{}r = E[X\textasciicircum{}r] / E[X],
 
-so s₁ = 1 and s₂ = g·F², with g = E[X] the gain and F² = E[X²] / E[X]² the excess factor (row 12). The transfer curve's slope (C7) is g·F², not g. One output for every electron (X = g) gives s\_\allowbreak{}r = g\textasciicircum{}(r−1): F² = 1, and the rungs g, g², g³ the moment ladder is graded against (row 1). An electron-multiplying register's output for one electron is near exponential, with E[X\textasciicircum{}r] = r!·g\textasciicircum{}r. Then F² = 2, s₂ = 2g, s₃ = 6g² and s₃ = 3g·s₂.
+giving s₁ = 1 and s₂ = g·F², with g = E[X] the gain and F² = E[X²] / E[X]² the excess factor (row 12). The transfer curve's slope (C7) is g·F², not g. One output for every electron (X = g) gives s\_\allowbreak{}r = g\textasciicircum{}(r−1): F² = 1, and the rungs g, g², g³ the moment ladder is graded against (row 1). An electron-multiplying register's output for one electron is near exponential, with E[X\textasciicircum{}r] = r!·g\textasciicircum{}r. Then F² = 2, s₂ = 2g, s₃ = 6g² and s₃ = 3g·s₂.
 
 The ladder is log-convex. For X ≥ 0, Cauchy–Schwarz gives E[X²]² ≤ E[X]·E[X³] and E[X³]² ≤ E[X²]·E[X⁴], and therefore
 
