@@ -23,7 +23,7 @@ target:
 | goal | status | what it would take |
 |---|---|---|
 | **G1.** Cheaper per candidate | partly achieved | midstate reuse and the anchor early exit are in the engine. Bounded below by two compressions. |
-| **G2.** Fewer candidates via a sound filter | **not achieved and provably not available from a salt** | a filter `A` with `A ⊆ D`, so §2.2 soundness applies |
+| **G2.** Fewer candidates via a sound filter | **not achieved and provably not available from a salt** | a filter `A` with `A ⊆ D`, for which §2.2's soundness applies |
 | **G3.** Solve instead of search | not achieved | invert or algebraically solve the system |
 
 The distinction between G2 and G3 matters and has been blurred repeatedly. G2 needs a *necessary
@@ -46,8 +46,8 @@ against the kernel or against published data.
 | Every operation is linear in exactly one of two module structures | H9: rotate 100% GF(2) / 25.15% ℤ, xor 100% / 0.21%, add 0.02% / 100% | **exact** |
 | The carry is the part of a sum that leaves the GF(2) basis, and it is biased | H10: `p_{i+1} = p_i/2 + 1/4`, matched to 4 decimals over 4M pairs | **exact** |
 
-The last row is the only *positive structural finding* in the whole programme. It is real, it is
-exactly characterised, and it is local: the bias halves per bit position and is under 0.2% by
+The last row is the only *positive structural finding* in the whole program. It is real, it is
+exactly characterized, and it is local: the bias halves per bit position and is under 0.2% by
 position 8.
 
 ### 2.2 The geometry of propagation
@@ -61,7 +61,7 @@ position 8.
 | **A light cone exists** and closes at round 7 of 128 | 256 bits / 64 bits per round = 4 rounds after entry at round 3 |
 
 This is a genuine finite propagation speed. It is the most topological fact established here. It is
-also the reason the cone is useless: the state is 256 bits and the schedule is 128 rounds, so the
+also the reason the cone is useless: the state is 256 bits and the schedule is 128 rounds; the
 cone covers everything in the first 5% of the computation.
 
 ### 2.3 Where structure dies
@@ -119,7 +119,7 @@ asserted: H14 proves nothing is lost.
 
 Everything in §2.1 through §2.6 is either a property of the mechanism or a sampled bound. This is
 the
-only measurement in the programme that is a **proof about the output**, and it came from looking at
+only measurement in the program that is a **proof about the output**, and it came from looking at
 intersections of difference directions, not at one direction at a time.
 
 A k-th order differential sums `f` over all `2^k` corners of a k-dimensional cube of input
@@ -140,15 +140,15 @@ rounds  1  2  3  4  5  6  7  8  9 10 11 12   degree
     10  .  .  .  .  .  .  .  .  .  .  .  .   at least 12
 ```
 
-**The degree goes from exactly 3 to at least 12 in one round.** The nonce carries 32 bits, so 32 is
+**The degree goes from exactly 3 to at least 12 in one round.** The nonce carries 32 bits, which makes 32
 the ceiling; the function is within a factor of three of its ceiling one round after the input
 arrives, out of 128. Degree growth is the quantity that decides whether any algebraic attack has
 room
 to work, and this says it does not, from round 5 onward, as a matter of algebra instead of of
 sampling.
 
-This also corrects a labelling error made while producing the table. Order `k` vanishes exactly when
-the degree is *below* `k`, so the degree is the **highest failing** order. The first version
+This also corrects a labeling error made while producing the table. Order `k` vanishes exactly when
+the degree is *below* `k`. The degree is therefore the **highest failing** order. The first version
 reported
 the lowest failing order, which labeled every row with any failure as "degree 1" and would have
 hidden the exact-3 result at round 4 entirely.
@@ -158,7 +158,7 @@ hidden the exact-3 result at round 4 entirely.
 Everything below is measured on this date and each row names the bench that produced it. This
 supersedes any earlier depth figure in this document: the earlier ones read a single fixed state
 word, and the word that survives longest turned out to be the *least* overwritten end of the shift
-chain instead of the most mixed, so every earlier depth was a lower bound.
+chain instead of the most mixed, which made every earlier depth a lower bound.
 
 ### Known
 
@@ -200,7 +200,7 @@ chain instead of the most mixed, so every earlier depth was a lower bound.
 | it arrives where nothing is left | W27 feeds round 27; forward state dies at round 10 | both |
 | **the sparse path traces exactly, no sampling** | linearized floor predicts every sampled rate, 0 contradictions | `bench_sparse` |
 | the nonce has exactly one genuine path | floor 1 only at W19; W23 and W27 are floor 2 | `bench_sparse` |
-| a cancelling word is the sparsest, not the emptiest | W0 at W25: linearized weight 0, one bit 13% of the time | `bench_sparse` |
+| a canceling word is the sparsest, not the emptiest | W0 at W25: linearized weight 0, one bit 13% of the time | `bench_sparse` |
 | **merkle rolling reaches deeper than nonce rolling** | W25 at 13% against the nonce's W23 at 0.002% | `bench_sparse` |
 | floor is not reachability | W0 floors at 1 on W33 and was never once observed | `bench_sparse` |
 | forward round 10 is off, not small | 2.386 at 2^30 pairs against 9.706 if the slope held | `bench_depth_cuda` |
@@ -252,7 +252,7 @@ was itself a crossing at fewer pairs, the same mistake one layer down.
 - ~~Whether the 5.0% is real in instructions instead of word-rounds.~~ Answered: **no**. Both
   savings are implemented, exactly correct, and worth nothing measurable. See below.
 - Whether the forward/inverted asymmetry is exploitable as a co-arm filter, the one
-  application the measurements point at: the inverse arm reaches strictly deeper, so agreement
+  application the measurements point at: the inverse arm reaches strictly deeper; agreement
   between the arms filters harder than either alone, and the weight strata are the buckets.
 - A clean backward cone for the *state* recursion. The exact schedule cone is now computed and is
   clean; the state one still depends on the round it starts from, which was chosen arbitrarily.
@@ -264,16 +264,16 @@ statistics, and every one of them names a measurement this work has not made.
 
 | # | hypothesis | how it fails | status |
 |---|---|---|---|
-| H1 | **The clutter is colored, not white.** The CFAR treats the 32 residue classes as independent; they share a message set and are certainly not. STAP estimates the covariance from target-free snapshots and whitens | rounds 24-64 are 41 *proven* target-free realisations, which is textbook secondary data. If the covariance comes back near-diagonal, the clutter is white and there is no gain | untested, data already dumped |
+| H1 | **The clutter is colored, not white.** The CFAR treats the 32 residue classes as independent; they share a message set and are certainly not. STAP estimates the covariance from target-free snapshots and whitens | rounds 24-64 are 41 *proven* target-free realizations, which is textbook secondary data. If the covariance comes back near-diagonal, the clutter is white and there is no gain | untested, data already dumped |
 | H2 | **The per-round decrement carries the round constants.** Deviation from exactly 2048 is 1.5 where measurement error is 0.25, and rounds differ in nothing but K_t. This is Specific Emitter Identification: the *imperfections* identify the emitter | correlate the deviation against properties of K_t. No correlation means the scatter is a noise estimate that is simply wrong | **next** |
 | H3 | **The probe has been a single omnidirectional element.** Flipping a *pattern* matched to a transport channel - say Sigma1's preimage {i, i-6, i-11, i-25} - is array gain on transmit, which beats any receive-side processing because it is two-way | a matched pattern that gains nothing over a single bit refutes the reading of the spectrum | untested |
-| H4 | **The message schedule is a delay line, so the array steers in depth.** Word w emits at round w+1, so choosing which words carry a difference sets each element's emission time | arrivals arranged to coincide should interfere measurably; if they add incoherently the light cone is not a usable delay line | untested |
+| H4 | **The message schedule is a delay line: the array steers in depth.** Word w emits at round w+1. Choosing which words carry a difference therefore sets each element's emission time | arrivals arranged to coincide should interfere measurably; if they add incoherently the light cone is not a usable delay line | untested |
 | H5 | **A differential characteristic is a transmit pattern, and a collision is null steering.** The attacker arranges message differences so everything cancels at the output, a null in the beam pattern | if adaptive-nulling mathematics gives nothing SAT search does not already get, the analogy is decorative | speculative, and the only one of these that touches the field's stated bottleneck |
 | H6 | **Round 17 is an arc.** The decrement is exactly 2048 through round 16 then breaks: 2035, 1995, 1635 | a mechanism that predicts the knee from the schedule or the cone would resolve it | **RESOLVED.** It is the message schedule expansion switching on. `no_schedule` is bit-identical to the full function through round 16 and diverges at 17, the first round to consume an expanded word |
 | H8 | **The difference is a two-component wave.** The XOR difference carries position and the modular difference carries magnitude; neither is conserved alone and the carry chain is the coupling that converts one into the other, as dE/dt drives B. Removing addition killing class 31 is that coupling being cut | track both weights per round. If energy oscillates between them it is a wave; if their ratio is fixed they are two quantities that merely travel together | untested |
 | H9 | **It may be circularly polarized.** If the two components are in quadrature and not in phase, the difference vector *rotates* in the (XOR, modular) plane, and the handedness is a chirality of the round function | measure the phase relation between the components | **REFUTED.** The PLL locks at rotation zero and never walks while it holds. Linearly polarized: the carries add magnitude, not angle |
-| H10 | **A rotating signal needs de-rotation before integration.** If H9 holds, every coherent integration in this work is decohering the thing it integrates, as uncorrected Faraday rotation does | apply a correction and see whether the matched filter gains | **moot.** H9 refuted, so there is nothing to de-rotate and nothing was being lost |
-| H12 | **Every instrument here is value-averaged, and blind in the same way.** The SAC matrix asks whether flipping *position* i moves *position* j, averaged over 2^18 messages. It sees where bits go and never what values sent them there - the same failure as reading a word by its token and never its letters. SHA-256's nonlinearity is entirely value-gated: Choose is a selector driven by e, Majority by the a chain, carries by everything. A structure present in two regimes with opposite sign cancels out of the average completely | split the messages by a selector and fold each half separately | **the criticism stands; the first consequence tested does not.** Gating on Choose's selector finds nothing (see Refuted). That tests one gate bit at one round at fold resolution, so it does not clear the general worry - a regime difference not aligned to residue classes stays invisible |
+| H10 | **A rotating signal needs de-rotation before integration.** If H9 holds, every coherent integration in this work is decohering the thing it integrates, as uncorrected Faraday rotation does | apply a correction and see whether the matched filter gains | **moot.** With H9 refuted there is nothing to de-rotate and nothing was being lost |
+| H12 | **Every instrument here is value-averaged, and blind in the same way.** The SAC matrix asks whether flipping *position* i moves *position* j, averaged over 2^18 messages. It sees where bits go and never what values sent them there - the same failure as reading a word by its token and never its letters. SHA-256's nonlinearity is entirely value-gated: Choose is a selector driven by e, Majority by the a chain, carries by everything. A structure present in two regimes with opposite sign cancels out of the average completely | split the messages by a selector and fold each half separately | **the criticism stands; the first consequence tested does not.** Gating on Choose's selector finds nothing (see Refuted). That tests one gate bit at one round at fold resolution and does not clear the general worry - a regime difference not aligned to residue classes stays invisible |
 | H11 | **The carry halves the linear model's power each round.** Agreement above chance runs 0.423, 0.214, 0.113 before accelerating away | measure it at other input bits and other difference weights. A halving that only holds for bit 0 at weight 1 is a coincidence of one path | **open**, and the only constant-*ratio* decay in a body where everything else decrements |
 | H7 | **The assay is a crowbar.** Shorting each sub-function and watching the reflection should remove exactly that sub-function's residues: no Sigma1 removes 6/11/25, no addition removes 31 | a removed rotation whose residue still stands refutes the spectral reading entirely | **running** |
 
@@ -313,7 +313,7 @@ path survives where a random one is long gone.
 **So `forward dies at 10` must not be read as `nothing survives past round 10`.** It means
 undirected
 statistics stop seeing at 10. Something directed reaches 31 in practice. Every null result in this
-document inherits that caveat, because every one of them probes instead of constructs.
+document carries that caveat, because every one of them probes instead of constructs.
 
 The one point of agreement found: the SAC literature reports sigma1, integer addition, choice and
 the message scheduler contributing to diffusion "at the earliest rounds", which is consistent with
@@ -361,7 +361,7 @@ largest of that many null draws peaks at sqrt(2 ln 131072) = **4.85**. Measuring
 that maximum, doing what a maximum does.
 
 **Both papers' anomalies are the same artifact.** The 2026 dip crosses a Bonferroni threshold of
-5.327 sigmas that sits only half a sigma above the null's own peak, so fluctuation crosses it
+5.327 sigmas that sits only half a sigma above the null's own peak, where fluctuation crosses it
 occasionally. The 2024 claim that SHA-256 never meets the SAC rests on a persistent 0.21%, which at
 their million trials is 4.2 sigmas - *below* the 4.85 the null produces unaided. Their own
 Bonferroni
@@ -373,7 +373,7 @@ recognisable way, which makes this a reusable instrument instead of one result.
 
 ### The operation map, and where it stands against the field
 
-Each operation isolated on the linear spine, so the only difference between arms is which single
+Each operation isolated on the linear spine, leaving as the only difference between arms which single
 nonlinear operation is present. Every cell measured here.
 
 | operation | diffusion, whether | diffusion, speed | algebraic degree |
@@ -394,7 +394,7 @@ Degree by round, one nonlinear operation at a time:
 | 7 | >=18 | 5 | 5 | >=18 | 1 |
 
 **The carry alone reproduces the whole function's degree.** The `>= 18` is this bench's cube ceiling
-instead of a measurement, so what is proved is the separation - carry-only past 18 while
+instead of a measurement. The proof covers the separation - carry-only past 18 while
 Choose-only sits at 3 - not the carry's absolute degree.
 
 **Majority is redundant on four independent measures**: SAC level, dampening ratio, diffusion speed,
@@ -456,20 +456,20 @@ the composition instead of something rotating, which answers the unwinding quest
 there is no moving structure to chase with an inverse rotation.
 
 **The decay is quantized.** The first four differences are 2048.33, 2048.21, 2048.83 and 2047.24,
-and one sigma of the class mean at that sample is 1.526e-5, so 2048 sigmas is **exactly 1/32**. The
+and one sigma of the class mean at that sample is 1.526e-5, which makes 2048 sigmas **exactly 1/32**. The
 ridge loses one thirty-second of its amplitude per round - one bit position of thirty-two going
 diffuse - holding to four decimal places for five rounds, then accelerating into collapse at 22.
 
-**Verified at four times the sample**, because 2048 is 2^11 and the trials were 2^18, so every clean
+**Verified at four times the sample**, because 2048 is 2^11 and the trials were 2^18: every clean
 power of two in that arithmetic came from the chosen sample size. At 2^20 the sigmas read 31546.74,
-27450.50 and 23354.13 - **exactly double**, sqrt(k) - with differences of 4096.24 and 4096.37, so
+27450.50 and 23354.13 - **exactly double**, sqrt(k) - with differences of 4096.24 and 4096.37:
 the absolute drop held at 1/32 while the sigma grew. That is the signature of signal, and the exact
 opposite of the refuted SAC dip which held its sigma and shrank its deviation.
 
 **And the null past round 23 is now the strongest in this document**: 2.09, 2.07 and 2.04 against a
 2.63 peak, with 4096 cells behind each number instead of one - roughly sixty-four times the
 sensitivity the maximum had, finding nothing. The harmonic sweep agrees: the round-23 profile
-transforms to a loudest tone of 1.80 against a 2.35 null, so no repeating trend, no harmonics and no
+transforms to a loudest tone of 1.80 against a 2.35 null: no repeating trend, no harmonics and no
 side lobes.
 
 Not claimed: which rotation residue 26 corresponds to. After twelve rounds the effective residue is
@@ -496,7 +496,7 @@ exact taint and cone structure that priced the miner's two savings.
   We have never attempted to construct one, only to detect one, and detection is the weaker
   instrument by a factor of three in rounds.
 - **Message freedom.** A collision attack varies the whole message to steer the path. Mining fixes
-  all but 32 bits, so most published technique does not transfer - but that is an argument about
+  all but 32 bits; most published technique does not transfer - but that is an argument about
   applicability, not one we have measured.
 - **Triples and higher combinations** of intermediate state bits. Pairs were tested and are null;
   2.7 million triples would push the null peak to about 5.4 and were judged not worth the run.
@@ -514,7 +514,7 @@ exact taint and cone structure that priced the miner's two savings.
   | **`bench_nature`** | **best grip over 4096 lags** | **4.08** | **none** | **uncorrected** |
 
   The conservative rows are safe in the direction that matters: a real signal between the null peak
-  and the threshold is missed instead of invented, so the depths reported here are lower bounds and
+  and the threshold is missed instead of invented, which makes the depths reported here lower bounds and
   not false positives.
 
   `bench_nature` is the finding. It takes the best grip over 4096 lags, a maximum over 4096
@@ -527,7 +527,7 @@ exact taint and cone structure that priced the miner's two savings.
 
 - ~~Whether the sub-function dampening survives the same treatment.~~ Answered: reproduced at 0.5082
   against the published 0.508, then explained. Majority contributes no diffusion that Choose does
-  not already provide, so measured equals A while the independence model predicts about 2A and the
+  not already provide. Measured therefore equals A while the independence model predicts about 2A and the
   ratio is one half by construction.
 - ~~Why the a half's per-slot depths looked irregular while the e half was clean.~~ Answered: both
   are exact chains, and the a half's offset depends on the chain length while the e half's does not.
@@ -572,7 +572,7 @@ stay clean. Ordered by how buildable instead of how likely.
 **The ridge is an eigenvector.** Residue 26 does not move for ten rounds while its amplitude decays
 by a fixed factor, as the dominant eigenvector of a linear transfer operator does,
 with 1/32 as the eigenvalue. **Test:** build the 32 by 32 operator that maps one round's residue
-profile to the next, diagonalise it, and check whether residue 26 is the dominant eigenvector and
+profile to the next, diagonalize it, and check whether residue 26 is the dominant eigenvector and
 1/32 the leading eigenvalue. **Falsified if** the operator's dominant eigenvector is anything else,
 which would make the fixed point a coincidence of this header. Buildable today.
 
@@ -591,7 +591,7 @@ Buildable, and it would turn a number into a law.
 **The carry direction matters.** The carry moves information one bit position upward. **Test:** a
 variant whose carry propagates downward instead, and whether algebraic degree still grows at the
 same rate. **Falsified if** it does, which would say the extradimensionality matters and the
-direction does not. Buildable but it is no longer SHA-256, so it says something about ARX instead of
+direction does not. Buildable but it is no longer SHA-256; it says something about ARX instead of
  about the standard.
 
 **Annealing must fail on the nonce space.** The winner distribution is flat by bit and by weight,
@@ -648,10 +648,10 @@ about how this kind of measurement fails.
 | line of work | what was assumed independent | what it actually is |
 |---|---|---|
 | multiple linear cryptanalysis -> multidimensional (Hermelin, Cho, Nyberg) | the linear approximations being combined | correlated; the multidimensional chi-square method exists to drop the assumption |
-| rotational cryptanalysis of ARX, 2015 revisit (Khovratovich et al.) | chained modular additions form a Markov chain | they do not, so per-addition rotational probabilities cannot be multiplied. The standard formula is wrong |
+| rotational cryptanalysis of ARX, 2015 revisit (Khovratovich et al.) | chained modular additions form a Markov chain | they do not, and per-addition rotational probabilities therefore cannot be multiplied. The standard formula is wrong |
 | our chi-square over 42 depths | the depths | one shared message set. -4.10 sigmas became -0.32 with a seed per depth |
-| our first residue-fold null | the 131072 cells | measured spread 452 against an analytic 512, so this one was nearly right, but only measurement said so |
-| our synthetic harness control | the rows | the row seed offset collided with splitmix's own Weyl constant, so adjacent rows shared seven words of eight and the variance came out 6.93 times too large |
+| our first residue-fold null | the 131072 cells | measured spread 452 against an analytic 512: this one was nearly right, but only measurement said so |
+| our synthetic harness control | the rows | the row seed offset collided with splitmix's own Weyl constant; adjacent rows shared seven words of eight and the variance came out 6.93 times too large |
 
 Three published literatures and three of our own instruments, all failing the same way. The lesson
 is procedural and it is the thing here that transfers to any other function: **the null must be
@@ -668,7 +668,7 @@ from running the instrument on data whose answer was already known.
 Two independent demonstrations that the wall is not a sensitivity limit. What moves the frontier is
 construction, and that is a different activity.
 
-**Direction asymmetry changes sign between measures**, so the pair identifies direction
+**Direction asymmetry changes sign between measures**, which lets the pair identify direction
 where neither does alone: differences survive longer backward, description survives longer forward.
 
 **Structures come in two components.** The inverse-versus-forward bit profile is a geometric carry
@@ -700,7 +700,7 @@ these were structural for a while. Every row names the measurement that ended it
 | a repeating-key corpus is a GF(2)-only control | **refuted** | a repeating XOR key creates a period both languages see: add 1.1585 against xor 0.9213 |
 | the inverted direction dies at 14 | **superseded** | 15, at more pairs |
 | the 5.0% word-round saving is worth 5.0% of runtime | **refuted** | implemented and exactly correct on 200,000 nonces, and measured at 0.998, 0.978, 1.079, 0.957 - median about 1.00. Word-rounds bound arithmetic, not runtime |
-| two scans agreeing over a nonce range tests the shortcut | **refuted** | an anchor survives about once in 2^32 nonces, so both arms agreeing that a range holds no share tests nothing. The check now compares anchor words against full digests nonce by nonce |
+| two scans agreeing over a nonce range tests the shortcut | **refuted** | an anchor survives about once in 2^32 nonces. Both arms agreeing that a range holds no share therefore tests nothing. The check now compares anchor words against full digests nonce by nonce |
 | a single timed pass can resolve a 5% effect | **refuted** | one pass each read 0.935 to 1.166 on this machine, a spread wider than the effect. Best-of-seven with alternating arms is what the figures use |
 | vector walk / hill climbing finds a gradient | **refuted** | walk 20.500 against enumeration 20.375: no landscape to climb (H13) |
 | a minimum weight per word measures sparsity | **refuted** | a minimum is a tail statistic: at 2^27 pairs chance alone gives a one-bit word once per word. The rate against 33/2^32 is the measurement; the first `bench_sparse` reported the minimum and had to be rewritten |
@@ -708,14 +708,14 @@ these were structural for a while. Every row names the measurement that ended it
 | the sparse words step by four (19, 23, 27) | **refuted** | the exact trace floors the nonce at 2, 1, 6, 2, 4, 2, 7, 6, 5, 2, 11 across W18-W28. Only W19 is a genuine path; the floor-2 words are 18, 21, 23, 27, spaced 3, 2, 4. The step was which cancellations cleared the sampling floor |
 | a linearized weight of zero means the word is not reached | **refuted** | taint and weight are different facts. W25 from a merkle difference cancels over GF(2) and still differs, through carries, at one bit 13% of the time |
 | a floor of one means the path is reachable | **refuted** | W0 floors at 1 on W33 and was never observed in 2^25 pairs. The floor needs a carry-free chain and that chance falls with its length |
-| the dependency matrix carries sub-binomial variance, -4.10 sigmas | **refuted** | the 42 pooled depths shared one seed, so one message set's fluctuation was counted 42 times and divided by sqrt(42). A seed per depth reads -22.5, which is -0.29 sigmas. The denominator was not the problem: the spread measured across 42 seeds is 452 against the analytic 512 |
+| the dependency matrix carries sub-binomial variance, -4.10 sigmas | **refuted** | the 42 pooled depths shared one seed: one message set's fluctuation was counted 42 times and divided by sqrt(42). A seed per depth reads -22.5, which is -0.29 sigmas. The denominator was not the problem: the spread measured across 42 seeds is 452 against the analytic 512 |
 | the residual field is smooth, with a length scale | **refuted** | autocorrelation at eight lags on both axes reads max abs 2.40 against a max-of-sixteen null peak of 2.36, and a binomial-by-construction harness reads 2.15 on the same code. The field is white in SHA-256 and in the harness alike |
 | the harness control's 6.93x variance was a property of the matrix | **refuted** | it was an injected constant collision: the row seed offset was splitmix's own Weyl increment, making row b slot j+1 the identical draw to row b+1 slot j. Adjacent rows shared seven words of eight. Fixed, the control reads 469 against the analytic 512 |
 | **the residue-26 ridge, and the 1/32 law as a rotational structure** | **refuted** | the fold never subtracted what all 32 classes share. Incomplete avalanche and the message-schedule light cone both offset every class equally, since neither depends on the output bit. Residue 26 sits at **-1.36 sigmas** from the class mean against a null peak of 2.63, on the *negative* side, and is never the loudest class. The 1/32 decay is real but it is the common mode's, which 26 tracked with a fixed offset. This was the largest claim in the body and it was in the research paper |
 
 ### What the residue fold holds once the common mode is removed
 
-Not nothing, and what is there is the round function's own bit transport. The ranking is identical
+Not nothing: the round function's own bit transport. The ranking is identical
 at every depth from 6 to 19.
 
 | rank | class | sigmas at round 12 | what it is |
@@ -762,7 +762,7 @@ to see in one look. `tools/radar/radar_receive.py`.
 | clutter estimate | what every class shares, removed per round | the common mode is what the refuted ridge was measuring |
 | **OS-CFAR** | background under a cell from its neighbors, by median and MAD | the earlier reading used the scatter of the other 31 classes, which **contains** 6, 11, 25 and 31 - all real targets. Targets in the training cells inflate the noise floor and mask the detection |
 | coherent integration | sum rounds 6-16, where the signature is constant | gains sqrt(11) on a stationary target and nothing on noise |
-| matched filter | project onto the waveform | the waveform comes from the standard, so there is no max-of-N to pay |
+| matched filter | project onto the waveform | the waveform comes from the standard, leaving no max-of-N to pay |
 
 | class | per round | integrated | identity |
 |---|---|---|---|
@@ -777,7 +777,7 @@ Matched filter **19.16**. Sigma1 through it reads **12.61** against Sigma0's **3
 reading, of which the CFAR fix is 1.14 and the integration the rest.
 
 **MTI is deliberately not used, and that is a result.** The clutter is linear in round. A double
-delay-line canceller annihilates it exactly - but class 0's excess is *constant*, and a second
+delay-line canceler annihilates it exactly - but class 0's excess is *constant*, and a second
 difference annihilates a constant too. That is the blind-speed problem, and it confirms
 independently that the target has zero Doppler.
 
@@ -812,7 +812,7 @@ transport, and the instrument reports exactly that with nothing left over.
 
 **The Sigma0 row is an underpowered test, not a refutation.** Those classes were already at 1.74,
 which is noise, and the removal of something that was not there cannot be detected. The
-pre-registration said as much, so this is consistent and carries no information either way.
+pre-registration said as much; this is consistent and carries no information either way.
 
 Side effects are informative: removing Sigma1 pushes the carry from 5.46 up to 10.84 and Sigma0's
 classes from about 1.7 to about 5.0. Take out the dominant channel and the rest become visible,
@@ -823,7 +823,7 @@ against a null. This one is validated against ground truth that we control: abla
 operation and its signature disappears. The residues are the operations.
 
 **The experiment is not novel; the readout is.** Vaughn and Borowczak's follow-up (Cryptography,
-May 2026) tests **all 127 combinations** of the seven sub-functions across all 64 rounds, so this
+May 2026) tests **all 127 combinations** of the seven sub-functions across all 64 rounds; this
 assay's seven single ablations are a strict subset of their design. What differs is what is read
 off the matrix. They measure SAC compliance, a threshold on its maximum, which answers *does it
 diffuse*. The residue spectrum answers *which channel does it carry* - Sigma1's classes collapse,
@@ -836,7 +836,7 @@ question, and the honest claim is the narrow one.
 Neither is a failure of the assay.
 
 **Removing the schedule must change nothing before round 17, and it validates the light cone to the
-round.** The expansion only produces W[16] onward, so at rounds 8 to 16 the function is still
+round.** The expansion only produces W[16] onward. At rounds 8 to 16 the function is still
 consuming raw message words and the expansion cannot matter yet. Checked across the boundary, the
 two are *bit-identical* at rounds 14, 15 and 16 - `-5126.9755`, `-3078.9525`, `-1033.5782` - and
 diverge from round 17.
@@ -844,11 +844,11 @@ diverge from round 17.
 > **This resolves H6.** The knee is the message schedule switching on. The common mode decrements
 > by exactly 2048 through round 16 and then breaks - 2035, 1995, 1635 - and round 17 is the first
 > round to consume an expanded word. Before it the function eats sixteen raw independent message
-> words; from it, combinations of them, so the input statistics change and the linear decrement
+> words; from it, combinations of them. The input statistics change and the linear decrement
 > stops. A control built for something else explained it.
 
 **Removing the round constants changes nothing because the constants do not diffuse.** Adding a
-fixed K_t to a uniformly distributed state leaves it uniformly distributed, so the constants cannot
+fixed K_t to a uniformly distributed state leaves it uniformly distributed. The constants therefore cannot
 move avalanche statistics. They exist to break symmetry - defeating rotational and slide attacks -
 and not to mix. This agrees independently with the refuted H2: the constants left no trace in
 the per-round modulation either, measured a completely different way.
@@ -895,8 +895,8 @@ phase-locked loop, and the rotation it locks to is the loop phase.
 | 7 | 2 | 0.49903 | -38.1 | 93 |
 | 8+ | walks | ~0.5000 | under 2.63 | - |
 
-**H9 is refuted, and H10 with it.** The lock sits at rotation zero and never walks while it holds,
-so the difference keeps its linear part's orientation: it is **linearly polarized**, the carries
+**H9 is refuted, and H10 with it.** The lock sits at rotation zero and never walks while it holds.
+The difference therefore keeps its linear part's orientation: it is **linearly polarized**, the carries
 adding magnitude and not angle. There is no handedness, and therefore nothing for a de-rotation to
 recover - no coherent integration in this work was losing anything to uncorrected rotation.
 
@@ -925,7 +925,7 @@ does not *detect* those paths, it *constructs* them, choosing the input instead 
 solving the constraints with SAT or SMT. Detection and construction are different questions, and
 no sharpening of the first reaches the second.
 
-The first step of construction was already built here without being recognised: `make_reference`
+The first step of construction was already built here without being recognized: `make_reference`
 is the linearized function that differential attacks on SHA-2 start from. `bench_sac ... construct`
 sweeps it **completely** - every single-bit difference and all 130,816 pairs - so the answer is a
 true minimum instead of the sparsest thing a sample happened to hold.
@@ -962,19 +962,19 @@ different construction entirely.
 - **Shadows** - the field collapsed along each axis, scrubbable round by round.
 - **Voxel field** - the same data as a turnable mesh under seven embeddings.
 
-The embedding selector is a test, not decoration. Residue is genuinely periodic mod 32, so the
+The embedding selector is a test, not decoration. Residue is genuinely periodic mod 32, and for that reason the
 **tube** is the honest map for it; the **toroid** imposes a periodicity on the round axis that does
 not exist and is included precisely because it lies. Structure appearing under one embedding and
-not another belongs to the map instead of the field, so agreement across embeddings is the
+not another belongs to the map instead of the field. Agreement across embeddings is therefore the
 invariant content - the same null-by-subtraction as every other reading here. The **balloon** puts
-the value in the radius, so the silhouette is the field itself.
+the value in the radius, making the silhouette the field itself.
 
 ### A soliton in the dependency field
 
 **The sharpest object found in this work, and it was invisible to every instrument here until the
 projection stopped squaring.**
 
-Summing `z^2` cannot separate a rate of 0 from a rate of 1, so cells that flip **every single time**
+Summing `z^2` cannot separate a rate of 0 from a rate of 1. Cells that flip **every single time**
 were painted identically to cells that do nothing. Counting the three states apart - `never`
 (count 0), `always` (count = trials), `mixed` (everything else) - separates them, and nothing
 cancels the way a signed sum would.
@@ -1002,7 +1002,7 @@ is translating:
 
 **A rigid object, 135 bits wide and 312 cells in area, moving at exactly 32 bits per round with zero
 change in form.** That is a soliton: a shape that propagates without dispersing. Stationary in the
-co-moving frame, so nothing that averaged over rounds could see it.
+co-moving frame, where nothing that averaged over rounds could see it.
 
 It is the **same slope 32** the slant-stack detected at 7.18 sigmas, but this is not a statistical
 detection - it is exact, with no variance across eleven rounds.
@@ -1013,12 +1013,12 @@ the waterfall's fall time.
 
 #### What the 312 cells are
 
-The projection sums over the output axis, so `bench_sac ... cells` names them instead. The answer
+The projection sums over the output axis; `bench_sac ... cells` names them instead. The answer
 is identical at rounds 8, 10 and 12.
 
 | part | count | mechanism |
 |---|---|---|
-| **aligned**, residue 0 | 256 | integer addition. Flipping bit k of an addend always flips bit k of the sum, since carries only run upward, so bit k of W drives bit k of T1 and thence of `a` and `e`. Two cells per bit, four words, 32 bits: 4 x 32 x 2 = 256 |
+| **aligned**, residue 0 | 256 | integer addition. Flipping bit k of an addend always flips bit k of the sum, since carries only run upward, and bit k of W therefore drives bit k of T1 and thence of `a` and `e`. Two cells per bit, four words, 32 bits: 4 x 32 x 2 = 256 |
 | **skewed**, residue 25 | 56 | Sigma1's ROTR25. Seven bits (25 to 31) x eight state words |
 
 **312 = 256 + 56 exactly**, and the word breakdown closes too: the newest word contributes 64
@@ -1029,9 +1029,9 @@ The certain cells spread perfectly evenly over the eight state words - 39 each a
 both copy chains carry them identically.
 
 **The skewed half is measured but not explained, and the obvious mechanism fails.** The natural
-story is that a flip propagates carries upward, so only the *lowest* of Sigma1's three images
+story is that a flip propagates carries upward, and therefore only the *lowest* of Sigma1's three images
 escapes contamination from below. That predicts residue 11 should appear for some source bits -
-at k = 20 the images are k-6 = 14, k-11 = 9 and k-25 = 27, so 9 is lowest and residue 11 should
+at k = 20 the images are k-6 = 14, k-11 = 9 and k-25 = 27: 9 is lowest and residue 11 should
 survive. It never does. **All 56 sit at residue 25 and none at 6 or 11**, at every depth measured.
 
 So: the aligned half is understood, and the skewed half is an exact measurement with a wrong
@@ -1053,7 +1053,7 @@ coincidental:
 |---|---|
 | "it is advantageous to ensure that many bits in the differential path are MSBs" (New Local Collisions for the SHA-2 Hash Family, ePrint 2007/352) | the 256 aligned cells *are* MSB-style carry-free propagation, arrived at from the other side |
 | "the message expansion of SHA-2 does not play any role in the first 16 steps" | the knee at round 17, confirmed by a schedule ablation that is bit-identical through round 16 |
-| generalised nonlinear local collisions that succeed with probability 1 | the "certain" cells are probability-one propagation, counted and not constructed |
+| generalized nonlinear local collisions that succeed with probability 1 | the "certain" cells are probability-one propagation, counted and not constructed |
 
 **And the boundary matches exactly.** Sanadhya and Sarkar's *Deterministic Constructions of 21-Step
 Collisions for the SHA-2 Hash Family* reaches 21 steps. The signed projection says probability-one
@@ -1080,7 +1080,7 @@ the total field power - the signed residue fold summed in magnitude over all 32 
 
 **Twenty-two consecutive falls with not one rise**, which is 2^-22 = 2.4e-07 under a random-walk
 null. Nothing anywhere in the live field gains structure. Past round 23 the rises are 24 of 41
-against an expected 20.5, which is +1.1 sigma: each round carries its own seed, so those are
+against an expected 20.5, which is +1.1 sigma: each round carries its own seed; those are
 independent draws wandering around a floor instead of anything being constructed.
 
 **And the rate is a power of two.** The decrement over rounds 8 to 16 is 65,534.9 with a spread of
@@ -1095,12 +1095,12 @@ computed once per header and reused across every nonce. Both were derived by rea
 recurrences. `bench_sac ... miner` measures them on block 125552's real header, varying only the
 nonce over 4,096 draws.
 
-A Bitcoin header is 80 bytes, so the second block holds bytes 64 to 79 and its padding, and the
+A Bitcoin header is 80 bytes. The second block holds bytes 64 to 79 and its padding, and the
 nonce at bytes 76 to 79 is **W[3]** of that block.
 
 | quantity | predicted by the cone | measured | in `sha256_core.c` |
 |---|---|---|---|
-| first round the nonce reaches | 4th, so 3 shared | **3** | `SHARED_ROUNDS 3` |
+| first round the nonce reaches | 4th, leaving 3 shared | **3** | `SHARED_ROUNDS 3` |
 | first expanded schedule word it reaches | W[18] | **18** | `SHARED_SCHEDULE 18` |
 
 The round follows from word w being unable to act before round w+1. The schedule word follows from
@@ -1112,7 +1112,7 @@ submits wrong shares instead of slow ones.
 
 A third check comes free from the running client. The anchor early exit fires about once in 2^32
 nonces, and the lifetime counters read 1,310 anchors over 5.50 TH. 5.50e12 / 2^32 = 1,281 expected,
-so the observed rate is 1.02 times chance. An early exit running hot would be passing work it should
+and the observed rate is 1.02 times chance. An early exit running hot would be passing work it should
 cut; one running cold would be discarding nonces that might be shares. Neither is happening.
 
 **A wrong first attempt, kept.** The first version of this measurement swept all 64 schedule slots
@@ -1129,7 +1129,7 @@ depends on.
 
 **The taint re-derives both miner constants from nothing.** 64 schedule bits is W[16] and W[17]
 entire, matching `SHARED_SCHEDULE 18`. 192 state bits is three rounds of two computed words,
-matching `SHARED_ROUNDS 3`. Neither constant was given to the tool, so both are maximal **for
+matching `SHARED_ROUNDS 3`. Neither constant was given to the tool; both are maximal **for
 sequential enumeration**. Everything below turns on that qualifier.
 
 | state discipline | 3:2 | 4:2 | 7:3 |
@@ -1140,14 +1140,14 @@ sequential enumeration**. Everything below turns on that qualifier.
 Compressor topology changes the climb - 3 bit positions for 3:2 against 2 for 4:2, measured out of a
 Wallace tree - and changes this total by nothing, because a carry-propagate adder erases the
 difference every round. Sigma is a xor of rotations and rotation does not distribute over addition,
-so `ROTR(s+c)` is not `ROTR(s)+ROTR(c)`: a and e must be settled before Sigma reads them. The
+and `ROTR(s+c)` is therefore not `ROTR(s)+ROTR(c)`: a and e must be settled before Sigma reads them. The
 resolved row is what a design can build.
 
 #### A retracted claim
 
 An earlier draft of this section concluded that **the ceiling is structural, not architectural**, and
 that no arrangement of blocks moves it. That was a universal bound drawn from a single unexamined
-assumption: that nonces are enumerated in sequence, so the varying field is the low bits.
+assumption: that nonces are enumerated in sequence, which makes the varying field the low bits.
 
 Nothing requires that. Enumeration order is free, and it is worth between 1.19x and 1.43x:
 
@@ -1159,7 +1159,7 @@ Nothing requires that. Enumeration order is free, and it is worth between 1.19x 
 | 2^16 | 4.5% | **5.4%** | 1.19x |
 
 Same silicon, same batch size, same nonce coverage, different counting order. A change at bit 0 can
-carry across the whole word; a change at bit 31 has nowhere above it to go, so it taints one
+carry across the whole word; a change at bit 31 has nowhere above it to go and taints one
 position. **That is the same most-significant-bit fact as the soliton's 256 aligned cells**, and the
 same one the local-collision literature exploits when it arranges differential paths to sit on MSBs.
 Three routes, one mechanism.
@@ -1213,18 +1213,18 @@ into two opposite surfaces.
 
 The staircase is a causal boundary and both of its edges are exact.
 
-- **Entry.** Round t consumes W_t, so message word w cannot affect the state before round w+1. Below
+- **Entry.** Round t consumes W_t, and message word w therefore cannot affect the state before round w+1. Below
   that edge every cell is pinned at z = -sqrt(n) exactly, giving a plateau of 67,108,608.0 to the
   last digit at 2^18 trials.
 - **Propagation.** Information moves one register per round down a -> b -> c -> d and
-  e -> f -> g -> h, so those words come alive at rounds 1, 2, 3 and 4.
+  e -> f -> g -> h, and those words come alive at rounds 1, 2, 3 and 4.
 
 **Shift invariance.** Aligned to its own wavefront, every message word's avalanche profile is the
 same to 1 part in 10^4, degrading to 1 part in 40 five rounds out. Within the register chains it is
 6 significant figures - 133888847, 133892160, 133891356, 133893525 for a, b, c, d.
 
 **The a/e asymmetry, finally a number.** The two chains differ by 2.3e-3, which is 66 times the
-within-chain spread, so it is real. At round 1 both a and e are T1 plus a constant, but *different*
+within-chain spread; it is real. At round 1 both a and e are T1 plus a constant, but *different*
 constants - Sigma0(a)+Maj for one, d for the other - so the asymmetry is carry geometry.
 
 | conditioning on the Choose selector splits the transport into two regimes | **refuted** | gating on bit 16 of e at round 8 and folding each half separately, the largest difference over 11 depths is 3.38 sigmas against a union peak of 3.42. The ratio test settles it: at 4x the sample the *deviation shrank*, 0.0066 to 0.0029 against 1/sqrt(4) = 0.5, which is noise. The sigmas only wander around the peak, 3.38 then 3.55 |
@@ -1240,7 +1240,7 @@ where each readout loses it. That converts "nothing found" into "nothing above t
 | readout | 5-sigma floor, per-cell bias | notes |
 |---|---|---|
 | residue fold | **3.05e-05** | a matched filter: the injected wave is residue-structured |
-| chi-square over all cells | ~1.7e-04 | generic, so about 6x worse on this shape |
+| chi-square over all cells | ~1.7e-04 | generic, and about 6x worse on this shape |
 
 The wave's recovered profile is the instrument's own proof: injected at frequency 3 across 32
 residues, the field autocorrelation comes back as a cosine of period 10.7, and 32/3 = 10.67. The
@@ -1252,7 +1252,7 @@ round 23. The published SAC dip of 0.00272 is 89 times that floor.
 
 **What the probe geometry contributes.** The matrix is never the function alone; it is the function
 convolved with the probe. The residue coordinate exists because input and output bits were indexed
-by 32-bit words, and the rotations act on that same lattice, so the ridge at residue 26 is an
+by 32-bit words, and the rotations act on that same lattice. The ridge at residue 26 is therefore an
 interference between the two instead of a property of either. That is worth stating because it
 bounds what any SAC-shaped reading can mean.
 
@@ -1262,7 +1262,7 @@ Every reading before this one looks at one round at a time. Something too faint 
 in any single round is invisible to all of them however many rounds are looked at, because they are
 compared one at a time and thrown away.
 
-The rounds are not independent samples of an unknown thing. They are a deterministic sequence, so
+The rounds are not independent samples of an unknown thing. They are a deterministic sequence:
 the structure at round r is related to the structure at r+1 by the round function, and that relation
 is carried in the *phase* of the residue spectrum, which every earlier reading discarded by taking a
 magnitude. A structure standing still holds its phase; one drifting at v residues per round advances
@@ -1303,13 +1303,13 @@ moving, at roughly 6.5 times the sensitivity of any standing reading - an effect
 **Three defects, all found by the instrument's own discipline and not by inspection:**
 
 - The scan was run on a uniform grid in velocity, but the phase a round advances is
-  2*pi*(f*v)*r/32, so the coordinate the readout lives in is drift = f*v. A uniform grid in v is
+  2*pi*(f*v)*r/32, and the coordinate the readout lives in is drift = f*v. A uniform grid in v is
   correct at one frequency and wrong at the rest: at f = 15 the step was 1.875 in drift where 42
   rounds resolve 0.195, ten times too coarse. SHA-256's loudest cell sat at f = 15, exactly where
   the grid was worst, so that reading was not trustworthy. The scan now runs uniformly in drift.
 - The magnitude channel weights each round by its own amplitude, and amplitude is where the noise
   is: a round that fluctuates large contributes large whatever its phase does. A phase-only channel
-  normalizes every round to unit length first, so what is asked is whether the phases line up
+  normalizes every round to unit length first, and asks whether the phases line up
   instead of
    whether anything is big. A faint but perfectly coherent structure is invisible to the first
   and plain to the second.
@@ -1323,7 +1323,7 @@ moving, at roughly 6.5 times the sensitivity of any standing reading - an effect
 **A ceiling on the phase channel.** Summing R unit vectors cannot exceed R, so that statistic is
 bounded above by sqrt(2R) whatever the data does: 9.17 at 42 rounds. The injected wave reads 9.15,
 which is saturation instead of a measurement. Against a null peak of 4.66 the channel has about a
-factor of two of usable range, so discarding amplitude is a good idea this baseline cannot afford.
+factor of two of usable range. Discarding amplitude is a good idea this baseline cannot afford.
 It would want many more rounds than SHA-256 has.
 
 ### The dispersion relation, pre-registered before it was run
@@ -1338,9 +1338,9 @@ round, or how fast it is being elided. Together they are one complex frequency, 
 of drift against frequency is what identifies a mechanism and not merely detecting one.
 
 What this can carry is **position, not value**. The phase of a component is the residue offset it
-sits at, so the arm locates structure. Nothing in it recovers the value of any bit.
+sits at: the arm locates structure. Nothing in it recovers the value of any bit.
 
-Written down before the run, so the reading cannot be fitted to the result afterwards:
+Written down before the run, which keeps the reading from being fitted to the result afterwards:
 
 | outcome | what it would mean |
 |---|---|
@@ -1391,7 +1391,7 @@ question for good: there is no rotation to chase at any frequency.
 | floor-limited fit, 12 points each | -0.193 | r = 0.68 |
 | floor-limited, dropping the f2 outlier | -0.205 | r = 0.44, t = 1.70 |
 
-The first fit was floor-limited: a component that has fallen into the noise stops falling, so those
+The first fit was floor-limited: a component that has fallen into the noise stops falling, and those
 rounds measure where the floor is instead of how fast the thing decayed - and worst for the
 faintest components, which had least room to fall. "Every scale dies at the same rate"
 turned out to mean, and it was the confound instead of the function.
@@ -1422,11 +1422,11 @@ carries the object's information along one plane exactly, with nothing lost and 
 Enough shadows at enough angles reconstruct the object.
 
 It also supplies a consistency condition that can be checked and not assumed: projections along
-directions related by a symmetry of the object must be identical, so their difference vanishes
+directions related by a symmetry of the object must be identical, and their difference vanishes
 exactly. **This has already been observed here without being named.** The wave control's
 autocorrelation along the input axis and along the output axis read 45.29 against 44.52, 16.63
 against 18.06, -62.98 against -62.95 and -52.68 against -52.56. That is the reflection symmetry of
-the residue coordinate `(i - j) mod 32` cancelling to three digits: a projection-slice check that
+the residue coordinate `(i - j) mod 32` canceling to three digits: a projection-slice check that
 passed, on data whose answer was known.
 
 **Where the map is singular.** Every frequency's cone passes through v = 0 together, because the
@@ -1442,7 +1442,7 @@ should say so instead of pretend it is injective.
   Measured: they differ, forward dying at **10** and inverted at **15** (both figures updated from
   an earlier 9 and "past 13", which were threshold crossings at fewer pairs). Not measured: the
   mechanism. Now partly constrained, though: the forward wall is the chain length plus two, exactly,
-  at every word count from 8 to 16, so the forward side has a law. The inverse reaching five rounds
+  at every word count from 8 to 16: the forward side has a law. The inverse reaching five rounds
   further is not explained by it and no equivalent law has been found for that side. The obvious
   candidate was topology and it was tested and **failed**  - the cone
   comparison runs the opposite way, backward saturating in 2 rounds against forward's 16, because a
@@ -1457,7 +1457,7 @@ should say so instead of pretend it is injective.
   is withdrawn. Read as a statistic and not as a crossing, the inverse scales as the square root
   of the sample at every depth from 9 to 14 - ratios of 4.00, 4.00, 3.99, 3.99, 4.22, 3.83 for
   sixteenfold more pairs, the textbook figure. The signal was always there and was only
-  ever under the threshold, so one more round per fourfold increase is the decay rate being
+  ever under the threshold. One more round per fourfold increase is therefore the decay rate being
   measured, not a trend to extrapolate. The inverse dies at 15 and reads noise at 16, where more
   pairs make it *smaller*: 2.438, 1.317, 0.881.
 
@@ -1467,7 +1467,7 @@ should say so instead of pretend it is injective.
   at the sizes first run - a genuine zero, or a slope steep enough to duck under the floor in a
   single step. Both were tested and both were subtracted:
 
-  - Not the readout going blind. A word's mean Hamming distance is the sum of 32 bit rates, so
+  - Not the readout going blind. A word's mean Hamming distance is the sum of 32 bit rates:
     opposed positions cancel there and survive a per-bit reading. The per-bit arm is a strict
     refinement and it does see more where there is more to see - inverse round 14 reads 18.5 by bit
     against 7.5 by word. It buys no reach in either direction: no depth anywhere reads by bit and
@@ -1475,7 +1475,7 @@ should say so instead of pretend it is injective.
   - Not a steeper slope. At 2^30 pairs, 64 times the sweep, a continued 29.7x slope predicts 9.706
     at forward round 10 and the reading is 2.386 - the floor, unmoved across 2^26, 2^28, 2^30 at
     2.050, 1.782, 2.386. The same extrapolation run on the inverse as a control lands within four
-    significant figures at all three sizes, so the method is sound and the forward row is a cliff.
+    significant figures at all three sizes. The method is sound, and the forward row is a cliff.
 
   **The slope comparison in the paragraph above is itself withdrawn.** Sweeping from round one
   and not from round eight shows neither direction is geometric. Rounds 1 to 3 read an identical
@@ -1499,7 +1499,7 @@ should say so instead of pretend it is injective.
   word width**. A wall set by how many words sit on the shift chain is what does not move
   when the bits inside them change, and a wall set by word width would have moved. That is evidence
   for chain length and against word size, and it is not conclusive: `bench_narrow` holds eight words
-  at every width, so the word count has never been varied. Varying it settles the question.
+  at every width, and the word count has never been varied. Varying it settles the question.
 
   Sub-round resolution on the peak, if it is wanted, wants the input difference weight swept instead
   of
@@ -1507,7 +1507,7 @@ should say so instead of pretend it is injective.
 
   There is a second reason the peak column is not a clean comparison, and it is arithmetic instead
   of
-   statistical. The rotation amounts are scaled from the standard's and rounded, so they change
+   statistical. The rotation amounts are scaled from the standard's and rounded; they change
   with the width, and a rotation by r on a w-bit word has orbit length w/gcd(w,r). Where the width
   shares a factor with an amount, that rotation has short orbits and mixes weakly:
 
@@ -1521,14 +1521,14 @@ should say so instead of pretend it is injective.
   | 24 | 2,10,17 | 5,8,19 | **8** | 3.03 |
   | 32 | 2,13,22 | 6,11,25 | 2 | 4.86 |
 
-  At width 4 the two triples are identical, so Sigma0 and Sigma1 are the same function and the
+  At width 4 the two triples are identical, which makes Sigma0 and Sigma1 the same function and the
   rotation design is gone. At width 24 one amount shares a factor of 8 with the width. **The sweep
   compares seven constructions, not one construction at seven sizes**, and the peak column
   is reading. The wall holding still across all seven is the more interesting fact for surviving it.
 
 - **The wall is the chain length, and the word count is what proves it.** `bench_narrow` found the
   wall unmoved across an eightfold change in word width, which was evidence and not proof because it
-  holds eight words at every width. `bench_words` generalises the round to any even word count -
+  holds eight words at every width. `bench_words` generalizes the round to any even word count -
   majority and Sigma0 from the low half's head, choice and Sigma1 from the high half's head, joined
   the way the standard joins them - and eight words reproduces `bench_depth_cuda`'s wall of 10
   exactly, the control that makes the other rows readable.
@@ -1549,12 +1549,12 @@ should say so instead of pretend it is injective.
   explain each other.
 
   Six words is the row that does not wall within 30 rounds, and it is the degenerate case: at
-  three words per half, choice reads the entire high half and majority the entire low half, so the
+  three words per half, choice reads the entire high half and majority the entire low half, and the
   functions no longer select among words.
 
   **The +2 is 3 minus 1, and reading each slot separately shows it.** Only two slots are mixed by
   the round at all: slot zero takes T1 + T2 and slot `half` takes d + T1. Every other slot is
-  `state[i] = state[i-1]`, a copy that transports a difference without touching it. So the tail of
+  `state[i] = state[i-1]`, a copy that carries a difference through untouched. So the tail of
   the chain holds whatever the join produced `count-1` rounds earlier, and the wall should be a
   mixing depth plus a transport delay. Measuring each slot's own death depth instead of the largest
   across slots:
@@ -1565,14 +1565,14 @@ should say so instead of pretend it is injective.
   | 10 | 5, 6, 7, 8, 9 | 8, 9, 10, 11, 12 |
   | 12 | 6, 7, 8, 9, 10, 11 | 9, 10, 11, 12, 13, 14 |
 
-  **Every slot at or below the e join dies at exactly k + 3.** The last slot is `count - 1`, so
+  **Every slot at or below the e join dies at exactly k + 3.** The last slot is `count - 1`, and
   `wall = (count - 1) + 3 = count + 2`. The 3 is the round function's mixing depth - how long T1 and
-  T2 take to saturate a freshly computed word - and it does not depend on the word count, so
+  T2 take to saturate a freshly computed word - and it does not depend on the word count:
   the wall tracked the count one for one. The -1 is that the chain is `count - 1` hops
   from the join to the tail instead of `count`.
 
   The a half is not as clean - 6, 7, 7, 9 against 7, 8, 9, 10 at eight words - because those slots
-  feed majority and Sigma0 and are read back, so they are not pure transport. The e half is, and it
+  feed majority and Sigma0 and are read back, which keeps them from being pure transport. The e half is, and it
   is the half that sets the wall.
 
   This also makes the wall predictable instead of searchable: read slot `count - 1` alone, or
@@ -1580,7 +1580,7 @@ should say so instead of pretend it is injective.
 
 - **The schedule functions are not weaker, and rank says so exactly.** The suspicion was that the
   schedule pair should be lossy where the state pair is not, since sigma0 and sigma1 each carry a
-  shift and a shift discards bits where a rotation cannot. All four are GF(2)-linear, so this needs
+  shift and a shift discards bits where a rotation cannot. All four are GF(2)-linear. This needs
   no sampling: each is a 32 by 32 matrix and its image is two to its rank.
 
   | function | serves | terms | rank | kernel |
@@ -1590,11 +1590,11 @@ should say so instead of pretend it is injective.
   | sigma0 | schedule | ROTR7 ^ ROTR18 ^ SHR3 | 32 | 0 |
   | sigma1 | schedule | ROTR17 ^ ROTR19 ^ SHR10 | 32 | 0 |
 
-  **Every one is a bijection.** Exclusive-or against two rotations restores what the shift drops, so
+  **Every one is a bijection.** Exclusive-or against two rotations restores what the shift drops, and
   the schedule pair collides no earlier than the state pair. There is no compression here.
 
   Narrowed, they do lose rank, and the deficit has a closed form. A rotation right by a on a w-bit
-  word is multiplication by x^(w-a) in GF(2)[x]/(x^w + 1), so three rotations exclusive-ored is
+  word is multiplication by x^(w-a) in GF(2)[x]/(x^w + 1), and three rotations exclusive-ored is therefore
   multiplication by a three-term polynomial and the kernel is **deg gcd(p(x), x^w + 1)** exactly.
   `bench_space` checks that against the elimination at eight widths and it agrees at every one,
   including the two nonzero cases - Sigma0 losing 4 ranks at width 6 and Sigma1 losing 2 at width
@@ -1613,7 +1613,7 @@ should say so instead of pretend it is injective.
 
   The two narrowed SHA-256s in this tree remain different objects and their rows must not be read
   against each other. `bench_narrow` never touches the schedule pair at all, since it feeds
-  independent random words instead of expanding a schedule, so the sigma columns bear on nothing it
+  independent random words instead of expanding a schedule, and the sigma columns therefore bear on nothing it
   reports.
 
   **The clamping also manufactures structure the standard does not have**, the fourth and
@@ -1628,7 +1628,7 @@ should say so instead of pretend it is injective.
   standard's schedule over 4096 random headers: the mean difference weight saturates at word 22,
   nineteen words after the nonce enters, but the **minimum stays at one bit through word 27**. A
   single-bit difference can cross 24 words of expansion without fanning out at all, for the right
-  header. W19 = W3 + sigma0(W4) + W12 + sigma1(W17) has only W3 tainted, so the difference passes
+  header. W19 = W3 + sigma0(W4) + W12 + sigma1(W17) has only W3 tainted. The difference therefore passes
   through additively unchanged whenever no carry fires - mean 1.94 is the carries, minimum 1 is when
   none of them do. The mean says the schedule has finished mixing five words before the tail does.
 
@@ -1656,13 +1656,13 @@ should say so instead of pretend it is injective.
   like a period and is not one - see the exact trace below, which dissolves it. The rates are
   4.8e-1, 4.7e-5 and 6e-7. A one-bit difference at W27 costs about 1.7
   million nonce pairs to find, which is nothing; W31 would cost around 1e8 and fell below this
-  sample's floor instead of being shown absent. All three headers agree, the invented one included,
-  so **this is the recurrence and not the header** - the padding and the ten zero words change
+  sample's floor instead of being shown absent. All three headers agree, the invented one included:
+  **the recurrence sets this, and the header does not** - the padding and the ten zero words change
   nothing about it.
 
   What it is worth is the part to keep. A schedule path at W27 enters the compression at round 27,
   and forward state difference visibility dies at round 10. The path arrives seventeen rounds after
-  the state stopped carrying anything, so there is nothing there for it to attach to. Reachable,
+  the state stopped carrying anything, and there is nothing there for it to attach to. Reachable,
   cheap, and pointed at saturated ground.
 
   There is an architectural reason this is hard to spend even where it is real. A differential
@@ -1675,12 +1675,12 @@ should say so instead of pretend it is injective.
 - **The path can be traced exactly, and once traced it needs no sampling at all.** Replacing addition
   with exclusive-or gives the difference the schedule carries when no carry ever fires, which is
   thirty-two words of arithmetic per input bit and no pairs. That is the *floor*: a word cannot come
-  out below its linearized weight except by a carry cancelling something. `bench_sparse` computes it
+  out below its linearized weight except by a carry canceling something. `bench_sparse` computes it
   for a difference placed in each of the four header words a miner can actually move.
 
   It immediately dissolves the step of four. For the nonce the floors at words 18 through 28 are
   **2, 1, 6, 2, 4, 2, 7, 6, 5, 2, 11** - so W19 is the only genuine one-bit path from a nonce, and
-  W23 and W27 have floor **2**. Their one-bit events are a carry cancelling a bit, not a path. The
+  W23 and W27 have floor **2**. Their one-bit events are a carry canceling a bit, not a path. The
   floor-2 words are 18, 21, 23, 27, spaced 3, 2, 4. There is no period; the apparent step of four
   was which floor-2 words happened to produce cancellations above the sampling floor.
 
@@ -1690,7 +1690,7 @@ should say so instead of pretend it is injective.
   | trace says | meaning | observed |
   |---|---|---|
   | floor 1 | a carry-free chain reaches one bit | common where the chain is short, absent where it is long |
-  | **cancels** | GF(2) terms sum to zero, so the real difference is *only* carries | often one bit - these are among the **sparsest** words, not the emptiest |
+  | **cancels** | GF(2) terms sum to zero, leaving carries as the *only* real difference | often one bit - these are among the **sparsest** words, not the emptiest |
   | floor 2 | one carry must cancel one bit | uncommon but reachable, order 0.2% |
   | floor 3+ | two or more bits must cancel | never observed |
 
@@ -1734,7 +1734,7 @@ should say so instead of pretend it is injective.
   Correctness is not in question. `bench_early` compares the shortcut's anchor word against word
   seven of the fully computed double digest on **200,000 consecutive nonces** and finds **zero
   disagreements**. An earlier version of that check only compared two scans over a range and was
-  vacuous: an anchor survives about once in 2^32 nonces, so both arms agreeing that a range holds no
+  vacuous: an anchor survives about once in 2^32 nonces, and both arms agreeing that a range holds no
   share tested nothing.
 
   The speed is another matter. Best-of-seven alternating trials, four times over:
@@ -1748,14 +1748,14 @@ should say so instead of pretend it is injective.
   Ratios of 0.998, 0.978, 1.079 and 0.957 - straddling one, median about 1.00. **There is no
   measurable speedup.** The 5.0% figure was a count of word-rounds, and word-rounds bound arithmetic
   instead of runtime; a modern core is limited by instruction-level parallelism and by what the
-  compiler can vectorise, and removing 5% of the adds changes neither. This was flagged as
+  compiler can vectorize, and removing 5% of the adds changes neither. This was flagged as
   unverified when the 5.0% was first written down, and it did not survive verification.
 
   A single-pass timing would have reported this wrong in either direction: one pass each read from
   0.935 to 1.166 on this machine, a spread wider than the effect. Best-of-seven with alternating
   arms is what the numbers above use.
 
-  The two savings have also **not** been carried into the eight-lane arm, so `btc_miner` does not
+  The two savings have also **not** been carried into the eight-lane arm: `btc_miner` does not
   have them, and on this evidence there is no reason to port them.
 
 - **The schedule's constants have never been narrowed by anything here.** The triples above are the
@@ -1769,16 +1769,16 @@ should say so instead of pretend it is injective.
   **Forward is off at round 10, not merely small, bounded at least 16x below a continued slope.**
   Why the round function should terminate in one direction and decay in the other is still not
   explained here. The direction of the asymmetry is at least the expected one: slow backward
-  diffusion is what meet-in-the-middle preimage attacks on reduced SHA-256 exploit, so the inverse
+  diffusion is what meet-in-the-middle preimage attacks on reduced SHA-256 exploit, and the inverse
   reaching deeper agrees with the literature. The measured rates, 29.7 against 2.1, are this tree's
   own and are not something we have found a published figure to check against.
 
 - **Every depth arm before this one measured state diffusion with the schedule contributing zero.**
   Those arms hand the same schedule word to both members of a pair, and in the additive difference
   that word cancels identically: `(h + S1 + Ch + K + W) - (h' + S1' + Ch' + K + W)` contains no W.
-  The nonce elides itself, so the curve comes out smooth - there is only one mechanism in
+  The nonce elides itself, and the curve comes out smooth - there is only one mechanism in
   it, the state chain unwinding - and it is the wrong experiment for mining, where the difference
-  lives in the nonce and expands through the schedule instead of cancelling.
+  lives in the nonce and expands through the schedule instead of canceling.
 
   The nonce arm places one bit in message word three, expands it with the standard's schedule, and
   reads the same statistic. It sits at the exact ceiling through round 6, which the dependency table
@@ -1788,7 +1788,7 @@ should say so instead of pretend it is injective.
   one past the state difference's 10.
 
 - **The nonce's reach is exact, not statistical, and it prices the inner loop.** W[at] draws on
-  at-16, at-15, at-7 and at-2, so taint from W3 propagates by four edges and 17 of the 64 schedule
+  at-16, at-15, at-7 and at-2. Taint from W3 therefore propagates by four edges and 17 of the 64 schedule
   words never see it - those are computed once per header instead of once per nonce. Running the
   same argument from the other end: Bitcoin compares the hash as a little-endian number. A
   rejection reads word seven alone, and the backward cone from it needs 1, 1, 1, 5, 6, 7 words over
@@ -1806,10 +1806,10 @@ should say so instead of pretend it is injective.
   word-rounds - and the two savings land in different blocks instead of both in one:
 
   - The **first** block takes the midstate as input and its rounds 0 to 2 read W0, W1 and W2, none
-    of which the nonce touches, so the front saving of 24 applies. Its whole eight-word output
-    becomes the second block's message, so no tail saving applies to it.
-  - The **second** block's message is the entire nonce-dependent first digest, so no front saving
-    applies. Only `word[7]` is read by the anchor, so the tail saving of 27 applies to it.
+    of which the nonce touches; the front saving of 24 applies. Its whole eight-word output
+    becomes the second block's message, and no tail saving applies to it.
+  - The **second** block's message is the entire nonce-dependent first digest, and no front saving
+    applies. Only `word[7]` is read by the anchor, and the tail saving of 27 applies to it.
 
   | | word-rounds |
   |---|---|
@@ -1820,7 +1820,7 @@ should say so instead of pretend it is injective.
 
   **5.0% per nonce, not 10%.** The miner currently takes neither saving: both calls go through the
   generic full-64-round `sha256_block_compress`, which rebuilds all 48 expanded schedule words each
-  time, including W16 and W17 which no nonce affects. Word-rounds are still not instructions, so
+  time, including W16 and W17 which no nonce affects. Word-rounds are still not instructions, and
   this bounds the arithmetic and not the runtime.
 
 ## 3. What We Do Not Know
@@ -1835,23 +1835,23 @@ Stated as gaps and not as conclusions, because several are cheap to close and on
    nonlinear perturbation. **This is the most structured object in SHA-256 and we have not touched
    it.**
 2. **Exact DAG reachability, as opposed to the statistical light cone.** The propagation front was
-   measured by sampling. The circuit is a fixed DAG, so reachability is *computable exactly*: after
+   measured by sampling. The circuit is a fixed DAG, which makes reachability *computable exactly*: after
    `r` rounds, which input bits can provably affect which output bits. Statistical measurement can
    only ever say "no effect observed"; the DAG says "no path exists." Those are different claims and
    only one of them is a constraint you can solve against.
-3. **Rounds 5 through 9 in detail.** Every projection dies in this window and none has characterised
+3. **Rounds 5 through 9 in detail.** Every projection dies in this window and none has characterized
    its interior. The decay curve's shape there is unmeasured.
 4. **The state as a torus and not as eight rows.** The Fourier and Walsh work transformed each
    32-bit row independently. The bit axis is genuinely cyclic under rotation, and the word axis is a
-   shift register, so the natural object is a product space, not eight separate circles. A transform
+   shift register. The natural object is therefore a product space, not eight separate circles. A transform
    over that product has not been tried.
 5. **Cycle structure of the round permutation.** For fixed `W[t]` the round is a permutation of a
    2^256 set. Permutations have cycle structure, fixed points, and order. None of this has been
-   examined, at any round count, even on a reduced-width analogue.
+   examined, at any round count, even on a reduced-width analog.
 6. **Full differential characteristics.** Per-bit difference bias was measured; the probability of a
    *specific complete output difference* given a specific input difference was not. That is the
    object real SHA-2 cryptanalysis works with.
-7. **Reduced-width analogues.** Nothing has been tried on a SHA-256 variant with 8-bit or 16-bit
+7. **Reduced-width analogs.** Nothing has been tried on a SHA-256 variant with 8-bit or 16-bit
    words, where the full state is small enough to enumerate completely and structure can be seen
    directly and not sampled.
 8. **Whether the seam at rounds 1-10 has internal structure across projections.** Six projections die
@@ -1865,7 +1865,7 @@ Stated as gaps and not as conclusions, because several are cheap to close and on
 | H1 | corpus size vs `N·2^-k` | model holds exactly | nothing to exploit |
 | H2 | entropy eddies, full digest | none above floor |  - |
 | H3 | repeating curve, 20 lags | none | rotations do not survive composition |
-| H4 | hitting time | geometric | memoryless, so no history predicts |
+| H4 | hitting time | geometric | memoryless: no history predicts |
 | H5 | boundary knows rotation | **exact, 1e-13** |  - |
 | H6 | that knowledge survives rounds | dies at **round 1** | `Σ0` turns one ramp into three summed |
 | H7 | diffusion depth | saturates round 10 |  - |
@@ -1885,8 +1885,8 @@ Stated as gaps and not as conclusions, because several are cheap to close and on
 
 ## 5. The Angle That Keeps Recurring, And Why It Fails
 
-Five separate proposals in this programme reduce to the same shape, and it is worth naming so the
-sixth is recognised on arrival:
+Five separate proposals in this program reduce to the same shape, and it is worth naming so the
+sixth is recognized on arrival:
 
 > Find a cheap test `t(n)` correlated with `Occ(n)`, and use it to skip candidates.
 
@@ -1896,7 +1896,7 @@ of `anchor-sift.md` names the joint exactly:
 **An anchor is sound because `A ⊆ D`.** It is a condition *copied out of the pattern being searched
 for*. That makes rejection exact and lossless. A test that is merely *correlated* with the
 target - a salt response, a neighborhood score, a landscape gradient - is not a subconfiguration of
-`D`, so Proposition 1 does not apply to it, and H20 measured the consequence directly: enrichment
+`D`. Proposition 1 therefore does not apply to it, and H20 measured the consequence directly: enrichment
 1.0, winners discarded in exact proportion.
 
 The only genuine `A ⊆ D` available here is *the target condition itself*: leading zero bits of the
@@ -1909,7 +1909,7 @@ a necessary condition on the digest readable without computing the digest. Nobod
 
 ## 6. Where The Exponential Gains Came From, And Whether They Transfer
 
-The gains in the anchor-sift programme came from domains where:
+The gains in the anchor-sift program came from domains where:
 
 1. the corpus is **already in memory**. An anchor probe is one load against `needle_len` compares;
 2. the domain is **skewed**, `H2` well under maximum. An informed measure beats an uninformed one
@@ -1948,7 +1948,7 @@ Any one of these, none observed:
 
 ## 8. Where The Published Literature Stands
 
-Fetched 2026-09-08, so this tree's results can be placed against the field and not guessed at.
+Fetched 2026-09-08. With it, this tree's results can be placed against the field and not guessed at.
 The relevant point for us: **every published result is on step-reduced SHA-256**, and the best of
 them
 stop well short of 64, let alone the 128 a Bitcoin header runs.
@@ -1993,7 +1993,7 @@ Ordered by information gained per hour, given everything above:
    provable constraint or converts a statistical claim into a proof. Highest value per effort.
 2. **The message schedule alone** (§3.1). The most structured object in the function and entirely
    unexamined here. `σ0`/`σ1` are GF(2)-linear; only three additions per word are not.
-3. **Reduced-width analogue** (§3.7). An 8-bit-word SHA-256 has a small enough state to enumerate
+3. **Reduced-width analog** (§3.7). An 8-bit-word SHA-256 has a small enough state to enumerate
    completely, turning every sampled measurement in this document into an exact one.
 4. **Rounds 5-9 interior** (§3.3). Where all six projections die. Map the decay instead of the
    endpoints.
@@ -2017,15 +2017,15 @@ The distinction worth holding onto: **this document is not evidence that no stru
 a record of twenty places it was looked for, with the sensitivity of each search stated.** Those are
 different claims, and only the second one has been earned.
 
-And "with the sensitivity of each search stated" is the load-bearing clause, so it has to be true of
-every row rather than most of them. H13 - the nonce landscape - did not meet it. Its null was drawn
+And "with the sensitivity of each search stated" is the clause the claim rests on. It has to be true of
+every row, not only most of them. H13 - the nonce landscape - did not meet it. Its null was drawn
 and its head-to-head was fair, but both of its arms read the digest through `fitness()`, the count
 of leading zero bits, and nothing in the bench established what size of gradient that readout could
 still have missed. An unbounded null was being quoted as though it excluded everything.
 
-`bench_walk.cpp` §5 now fixes that floor by injection rather than by argument. A known smooth
+`bench_walk.cpp` §5 now fixes that floor by injection instead of by argument. A known smooth
 gradient is added to the score - `alpha * set_bits(nonce)`, which moves by exactly one per single-bit
-step, so alpha is the gradient in the same units the readout carries - and faded until §1's own
+step, which makes alpha the gradient in the same units the readout carries - and faded until §1's own
 statistic loses it. Measured, with the unrelated-nonce control held beside it at every rung:
 
 | alpha, bits per single-bit step | flip correlation | z | control z | |
