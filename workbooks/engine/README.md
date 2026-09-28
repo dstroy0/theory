@@ -22,7 +22,8 @@ A claim changes status only when a run changes it, and the run is named. Nothing
 
 | file | what it holds |
 |---|---|
-| [keys_explained.md](keys_explained.md) | the ideas a programmer's defaults push against, from first principles with the engine's numbers: transitivity carried all the way, the imprint, AND and add, unbounded operations in a small key, folding a check into a pass, exact arithmetic with no floor, the noise read and never modeled |
+| [keys_explained.md](keys_explained.md) | the ideas a programmer's defaults push against, from first principles with the engine's numbers: transitivity carried all the way, the imprint, AND and add, unbounded operations in a small key, folding a check into a pass, exact arithmetic with no floor, the noise read and never modeled; transitivity across modules: no module reaches another, hand-offs as plain structs composed only in the entry |
+| [compression_tower.md](compression_tower.md) | the tower as one exact step recursed until the sample is one coefficient; zigzag and Rice coding in blocks and chunks, the file to the byte; the CRC-64 folded into the widen and the narrow, joined by GF(2) advance operators: the pixel-for-pixel test compressed in time |
 | [imprint_key_cycle.md](imprint_key_cycle.md) | the atom; imprinting a program onto the impulse; keys as AND masks; running a key over the set in one cycle |
 | [noise_sieve_tower.md](noise_sieve_tower.md) | the transfinite noise sieve and the fluidic architecture, section by section against the engine: control and data planes, the key and LUT, the tower and floor −4, the demon's eyes and arms, the construct kit, identity as coherence, entropy |
 | [noise_vector_integration_table.md](noise_vector_integration_table.md) | every noise term the detector is to read, one row each: how it moves, the exact sums that read it, its form in the camera law, what the 44b6 set measured, its status, and the experiment that moves it |

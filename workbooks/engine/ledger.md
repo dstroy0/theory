@@ -60,6 +60,27 @@ Per voxel and per bit, the flips in each window of 11 transitions (9 windows ove
 | a constant region | 44b6_0db75fae, 1574802b, 267148e4, 5740d24b, 587a1e22, 668e0cc7 | bits 0 to 3 drop together, identically within a window (e.g. 350, 350, 350, 350): voxels whose value never changes. 5740d24b holds it from the start; 267148e4 grows it from window 3 to about 30% of transitions | a fixed pattern term read exactly, with no flips in any bit; its cause is not established |
 | direction, bits 5 to 10 | the 25 | 12 samples move toward order (last window below the first), 13 toward the floor; peaks fall in different windows; 44b6_0db75fae falls 1,293 to 532 per mille, 44b6_668e0cc7 rises 684 to 1,421 | the direction is each sample's own; the window 4 bump on 44b6_0113de3b is that sample's, not the set's |
 
+### The codec split: no module reaches another
+
+| what | samples | result | settles |
+|---|---|---|---|
+| `python maint/audit_reaching.py` at d5f6a06 | | 18 modules reach nothing, among them `keymath`, `key_schedule`, `cycle`, `tower`, `compression`, `apxrep`, `entropy_history` (`tower`, `apxrep` and `entropy_history` include only `crc` beyond their own, and `crc` is a root); 19 still reach, `score_sample` reaching 14 modules and `binomial_basins`, `flatten` and `score_sample` reaching up into `entry` | the key chain and the codec hold the rule (proved); the tracker's modules do not yet (not so yet, being split) ([keys_explained.md](keys_explained.md) §9) |
+| `bash maint/prove_codec.sh` at d5f6a06, run by the session that split the codec | the 25; 44b6_0113de3b re-ingested | every .kcr proved from the file alone, set CRC 091daa41e1aceb7e; the re-ingested .kcr byte identical to the cached one | the split changed nothing in the codec (proved) |
+
+### The codec, to the byte
+
+Read from the code at d5f6a06 and the files in `cache/iapx`; the claims are in [compression_tower.md](compression_tower.md).
+
+| what | samples | result | settles |
+|---|---|---|---|
+| the .kcr of 44b6_0113de3b, part by part | 44b6_0113de3b | head 16 + seven words 56 + 102,400 chunk first bits × 8 = 819,200 + stream 340,189,016 = 341,008,288 bytes, of 838,860,800 raw | the file and the stream are separate numbers: 406 per mille of raw for the file, 405 for the stream, both rounded down |
+| the driver's share of raw | | printed as (1000 × bytes / raw) rounded down, shown as a percent with one decimal: "40.6%" is 406 per mille rounded down | the 25 at "42.0%" are 420 per mille: 8,809,343,524 of 20,971,520,000 |
+| floors printed on ingestion | the 25 (`logs/iapx_all.log`) | 8 floors, 25 of 25 | a 100 × 64 × 256 × 256 sample reaches one coefficient in 8 floors (proved) |
+| the floors' blocks | a 44b6 extent | 419,430,400 + 26,214,400 + 1,638,400 + 106,496 + 7,168 + 512 + 32 + 4 = 447,397,412 lanes, 1,066 per mille of the sample | depth is paid in shrinking blocks, not in passes over the whole |
+| the CRC join | a 44b6 extent | 6,553,600 segments of 64 voxels, joined in 23 levels by operators 2^7 to 2^29; the key's last operator, 2^47, is reached at level 40, so the join takes any message below 2^48 bytes | the 24,576 byte key covers 2^48 byte steps, as keys_explained §4 states |
+| the Rice cost bound | | 24 + 32 = 56 bits a value at most; 5 + 64 × 56 = 3,589 bits a block at most | the escape bounds every value |
+| whether the 5/3 lift is linear | | the high of (0, 0, 1) is 0, of (1, 0, 0) is 0, of (1, 0, 1) is −1 | not so: the tower is exact and reversible, but it cannot be imprinted as one key by its impulse |
+
 ## 2026-09-23
 
 ### The period reading

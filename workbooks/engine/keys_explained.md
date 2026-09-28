@@ -1,7 +1,7 @@
 # Keys, explained from the ground up
 
 **Purpose:** Explain, from first principles and with this engine's own numbers, the ideas a programmer's defaults push against hardest: that a whole program becomes one small exact object, that applying it is AND and add, that any number of operations can fit in a key of fixed size, that a check costs no pass of its own, and that exact arithmetic has no floor. Each was resisted in this project before it was built, and each held once built. They are explained here thoroughly so the next reader does not have to be argued into them.
-**Scope:** `engine/base/keymath/`, `engine/base/key_schedule/`, `engine/base/cycle/`, `engine/base/crc.h`, and every place a key is folded into a pass. The ledger's statuses ([README.md](README.md)) apply to every claim.
+**Scope:** anchor_sift's `src/engine/compiler/keymath/`, `src/engine/compiler/key_schedule/`, `src/engine/compiler/cycle/`, `src/engine/codecs/crc/`, every place a key is folded into a pass, and the hand-offs between modules: the plain structs in `src/engine/engine_config.h` and their composition in the entry, `src/engine/engine_*.cu`. The ledger's statuses ([README.md](README.md)) apply to every claim.
 
 ## 0. Why these ideas get resisted
 
@@ -59,7 +59,7 @@ This is the claim that meets the most doubt on sight. Here it is exactly, with t
 
 **The residual's key, measured.** Its weights are 1,130 words, 4,520 bytes, plus a 256 byte term table. The chain it replaces takes 268 unit steps at every voxel (2 + 34 + 34 narrow, 6 + 96 + 96 wide). Per sample that is 268 × 4,194,304 voxels × 100 frames = 112,407,347,200 unit step applications. None of them is ever run. The 4.5 KB key does all of them, and its answer is the step by step answer, lane for lane.
 
-**The CRC key: 2^48 steps in 24 KiB.** A CRC is linear over GF(2). Its advance across 2^k zero bytes is a 64 × 64 bit matrix, and squaring the matrix doubles the distance. The key holds 48 of them: 48 × 64 columns × 8 bytes = 24,576 bytes. With them the register is carried across any run of up to 2^48 bytes (about 281 trillion byte steps) in at most 48 matrix applications. **Proved:** the folded CRC of 44b6_0113de3b equals the CRC taken byte by byte, 363bf8bdffac8f29.
+**The CRC key: 2^48 steps in 24 KiB.** A CRC is linear over GF(2). Its advance across 2^k zero bytes is a 64 × 64 bit matrix, and squaring the matrix doubles the distance. The key holds 48 of them: 48 × 64 columns × 8 bytes = 24,576 bytes. With them the register is carried across any run of up to 2^48 bytes (about 281 trillion byte steps) in at most 48 matrix applications. How the tower folds it, segment by segment and joined one operator a level, is in [compression_tower.md](compression_tower.md) §3. **Proved:** the folded CRC of 44b6_0113de3b equals the CRC taken byte by byte, 363bf8bdffac8f29.
 
 **Periodic operations: infinitely many steps in one period.** Anything that repeats is known entirely from one period. Modulo is a wave. The mirror fold at a frame's edges repeats with period twice the line, and the cycle lays one period down once as a table and reads every tap from it. The two's complement expansion of 1/d, for odd d, is eventually periodic with period the order of 2 modulo d. Division by d is one period of limbs, repeated. In each case the operation applied without end is held completely in one period.
 
@@ -73,6 +73,8 @@ This is the claim that meets the most doubt on sight. Here it is exactly, with t
 | a key's size does not depend on how many inputs pass through it | built: the same key runs every frame of every sample |
 
 ## 5. key : transform → product, in one cycle
+
+This is the first standing rule of the project, and the first line of `cell_tracking/CLAUDE.md` at d5f6a06: **key:transform->product, 1 cycle.**
 
 A check or a filter is a key too, and it does not need a pass of its own. Fold it into the pass that already touches the data. The tower's widen reads every voxel once, and the CRC is taken there. The narrow writes every rebuilt voxel once, and the rebuilt sample's CRC is taken there. The product comes out of the same pass.
 
@@ -104,3 +106,57 @@ The residue left after the bodies are subtracted is the sample's own field noise
 | the run | `cycle` | the laid out key held on the device and run over a set of atoms in one cooperative launch |
 | a key over GF(2) | `crc` | the CRC's byte table and advance operators, generated and held at compile time to the published check value |
 | a fold into a pass | `tower` | the CRC taken in the widen and the narrow, costing no pass of its own |
+| the composition | the entry | where stages meet: `engine_key_encode` composes the three above, and the codec is composed the same way ([compression_tower.md](compression_tower.md)); §9 says why nowhere else |
+
+## 9. Transitivity across modules: no module reaches another
+
+§1 carried transitivity down a chain of arithmetic steps. The same property has to hold one scale up, between the modules that hold those steps, or the chain breaks at the first module boundary. The engine's second standing rule (`cell_tracking/CLAUDE.md` at d5f6a06) states it:
+
+> **No module reaches another.** A module includes `engine_config.h` and its own header, nothing else. The one exception is `crc/`, a root directory callable by anything. Stages hand each other plain structs from `engine_config.h`, and they are composed only in the entry.
+
+This rule was argued for before it was accepted, because the ordinary default runs the other way: a module that needs another's result calls it, and a module that needs another's type includes its header. Both look free. Here is why neither is.
+
+**The hand-off is the b.** §1's condition was that a → b and b → c give a → c only where the b one step hands over is exactly the b the next takes in. Between modules, the b is the value that crosses the boundary. Where that value is a plain struct from `engine_config.h` (named fields, ownership stated on each, no behavior), the whole of b is visible: whoever holds it can see every part of what passed, and nothing else passed. The steps then compose as §1 says, and the chain can be written from outside:
+
+    stage3(stage2(stage1(x)))  =  (stage3 ∘ stage2 ∘ stage1)(x)
+
+**A reach hides part of the chain.** Where module 1 includes module 2 and calls it, the value module 1 hands on is no longer its own output: it already has some of module 2 folded into it, at a place nobody composing the chain can see. Nobody can then say where stage 1 ends. It cannot be regrouped, tested alone, replaced, or checked at its boundary, because it has no boundary. Composition still happens, but it happens inside a module, out of reach of the one place meant to hold the whole program. A chain like that is a tangle, and a tangle cannot collapse to one object.
+
+**A reach up into the composer is worse.** A module that includes the entry calls the thing that is meant to call it. The chain then contains itself, and "compose first, apply after" is no longer well founded.
+
+**Composed only in the entry.** The entry, `src/engine/engine_*.cu`, is where the program is written as a chain, and so the one place a chain is meant to be composed. At d5f6a06 it was the only place that included more than one of the key's or the codec's stages (the tracker's modules were not there yet: see the table below). Two chains are composed there.
+
+*The key* (`engine_key_encode`):
+
+| stage | takes | hands on |
+|---|---|---|
+| `keymath_encode` | the program, an array of `EngineStep` | `EngineKey`: the impulse pushed through the program once, exact integers as wide as they grow |
+| `key_schedule_layout` | `EngineKey` | `EngineKeyLayout`: the key laid out for the machine, every lane width proved from its own bounds |
+| `cycle_key_load` | `EngineKeyLayout` | `CycleKey`: the layout held on the device, a type only `cycle` sees inside |
+
+Each producer releases what it made (`keymath_key_release`, `key_schedule_release`) as soon as the next stage has taken it, so ownership closes at every hand-off as well as the value.
+
+*The codec* (`engine_ingest_set`, `engine_iapx_prove_set`, `engine_iapx_load`; `engine_entropy_set` and `engine_entropy_cloud` compose the entropy history the same way):
+
+| stage | takes | hands on |
+|---|---|---|
+| `tower_lift` | the sample's voxels on the device | every coefficient on the device, as a plain array of exact integers, and the sample's CRC-64 |
+| `compression_encode` | the coefficients and their count | `EngineStream`: the chunks, the bits, each chunk's first bit and the stream's limbs |
+| `apxrep_input_write` / `apxrep_input_read` | `EngineStream` | the .kcr file / `EngineStream` again |
+| `compression_decode` | `EngineStream` | the coefficients, written into the capacity `tower_capacity` hands out |
+| `tower_lower` | the held coefficients | the rebuilt sample, its CRC-64, and the voxels that differ |
+
+None of these stages knows another exists. The tower does not know its coefficients are Rice coded, and the coder does not know they came from a tower. That is what let the compression step be split out of the tower with the .kcr coming out byte identical, and keymath and key_schedule be split out of the cycle with the tracker's edges identical ([ledger.md](ledger.md), 22 September). Each split was a regrouping of the chain in the entry, and every module stayed as it was.
+
+**Why `crc` is not a reach.** `crc/` is a key, not a stage. It holds a constant (the byte table and 48 advance operators, generated by `maint/emit_crc_key.py` and held to CRC-64/XZ's published check value by a `static_assert` at compile time) and pure inline functions over it. It keeps no state, takes no hand-off and hands nothing on. Including it is including a constant, the way every module includes `engine_config.h`. A key that any pass may fold in is exactly what §5 asks for, and `crc/` is where that key lives, callable by anything.
+
+**How it was checked.** `python maint/audit_reaching.py`, at d5f6a06, read every module's includes and named each one that reaches.
+
+| claim | status |
+|---|---|
+| no module reaches another; hand-offs are plain structs in `engine_config.h`, composed only in the entry | the rule and the target (`cell_tracking/CLAUDE.md` at d5f6a06) |
+| the key chain (`keymath`, `key_schedule`, `cycle`) reaches nothing | proved: `audit_reaching.py` at d5f6a06 |
+| the codec (`tower`, `compression`, `apxrep`, `entropy_history`) reaches nothing but `crc` | proved: `audit_reaching.py` at d5f6a06; `iapx` is gone, composed in the entry |
+| a split that regroups the chain in the entry changes no output | proved for three splits: compression from the tower (.kcr byte identical, set CRC 091daa41e1aceb7e), keymath and key_schedule from the cycle (edges identical), the driver split (edges and score rows identical) |
+| `crc` is a root and not a reach | by the rule; it is a compile-time constant and pure functions, held to the published check value |
+| the tracker's modules reach nothing | **not so yet**: at d5f6a06, 19 modules still reach and 18 reach nothing. `score_sample` reaches 14 modules; `binomial_basins`, `flatten` and `score_sample` reach up into `entry`; the rest reach `track` and one another. They are being split next, and each stays listed here until the audit clears it |
